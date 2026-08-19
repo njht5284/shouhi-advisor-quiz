@@ -1,0 +1,229 @@
+[
+  {
+    "categoryId": "B-01",
+    "label": "B-01　消費者政策の基本法制と消費者行政",
+    "needsSupplement": false,
+    "questionCount": 4,
+    "rawVariants": [
+      "B-01",
+      "B-01消費者基本法"
+    ]
+  },
+  {
+    "categoryId": "B-02/B-03",
+    "label": "B-02/B-03　民法１・民法２",
+    "needsSupplement": false,
+    "questionCount": 5,
+    "rawVariants": [
+      "B-02/B-03",
+      "B-02/B-03民法"
+    ]
+  },
+  {
+    "categoryId": "B-04",
+    "label": "B-04　消費者契約法",
+    "needsSupplement": false,
+    "questionCount": 6,
+    "rawVariants": [
+      "B-04",
+      "B-04消費者契約法"
+    ]
+  },
+  {
+    "categoryId": "B-05〜B-07",
+    "label": "B-05〜B-07　特定商取引法の基礎(1)〜特定商取引法の基礎(3)",
+    "needsSupplement": false,
+    "questionCount": 5,
+    "rawVariants": [
+      "B-05〜B-07",
+      "B-05〜B-07特定商取引法"
+    ]
+  },
+  {
+    "categoryId": "B-09",
+    "label": "B-09　金融商品と関連法制の基礎知識",
+    "needsSupplement": false,
+    "questionCount": 5,
+    "rawVariants": [
+      "B-09",
+      "B-09金融商品と関連法"
+    ]
+  },
+  {
+    "categoryId": "B-11",
+    "label": "B-11　情報通信",
+    "needsSupplement": false,
+    "questionCount": 5,
+    "rawVariants": [
+      "B-11情報通信",
+      "B-11情報通信 / グループA"
+    ]
+  },
+  {
+    "categoryId": "B-12",
+    "label": "B-12　表示と広告に関する法律",
+    "needsSupplement": false,
+    "questionCount": 10,
+    "rawVariants": [
+      "B-12",
+      "B-12 / グループA（広告市場動向）",
+      "B-12景品表示法"
+    ]
+  },
+  {
+    "categoryId": "B-14",
+    "label": "B-14　住宅の知識",
+    "needsSupplement": true,
+    "questionCount": 5,
+    "rawVariants": [
+      "B-14",
+      "B-14住宅（建材知識は要補完）"
+    ]
+  },
+  {
+    "categoryId": "B-15",
+    "label": "B-15　食生活",
+    "needsSupplement": false,
+    "questionCount": 5,
+    "rawVariants": [
+      "B-15",
+      "B-15食生活"
+    ]
+  },
+  {
+    "categoryId": "グループA",
+    "label": "グループA（全般）",
+    "needsSupplement": false,
+    "questionCount": 72,
+    "rawVariants": [
+      "グループA"
+    ]
+  },
+  {
+    "categoryId": "グループA（エネルギー・環境）",
+    "label": "グループA（エネルギー・環境）",
+    "needsSupplement": false,
+    "questionCount": 1,
+    "rawVariants": [
+      "グループA（エネルギー・環境）"
+    ]
+  },
+  {
+    "categoryId": "グループA（エネルギー）",
+    "label": "グループA（エネルギー）",
+    "needsSupplement": false,
+    "questionCount": 1,
+    "rawVariants": [
+      "グループA（エネルギー）"
+    ]
+  },
+  {
+    "categoryId": "グループA（マーケティング）",
+    "label": "グループA（マーケティング）",
+    "needsSupplement": false,
+    "questionCount": 2,
+    "rawVariants": [
+      "グループA（マーケティング）"
+    ]
+  },
+  {
+    "categoryId": "グループA（企業経営）",
+    "label": "グループA（企業経営）",
+    "needsSupplement": false,
+    "questionCount": 2,
+    "rawVariants": [
+      "グループA（企業経営）"
+    ]
+  },
+  {
+    "categoryId": "グループA（医療・社会保障）",
+    "label": "グループA（医療・社会保障）",
+    "needsSupplement": false,
+    "questionCount": 1,
+    "rawVariants": [
+      "グループA（医療・社会保障）"
+    ]
+  },
+  {
+    "categoryId": "グループA（消費者問題の歴史・国際）",
+    "label": "グループA（消費者問題の歴史・国際）",
+    "needsSupplement": false,
+    "questionCount": 1,
+    "rawVariants": [
+      "グループA（消費者問題の歴史・国際）"
+    ]
+  },
+  {
+    "categoryId": "グループA（消費者問題の現状・統計）",
+    "label": "グループA（消費者問題の現状・統計）",
+    "needsSupplement": false,
+    "questionCount": 1,
+    "rawVariants": [
+      "グループA（消費者問題の現状・統計）"
+    ]
+  },
+  {
+    "categoryId": "グループA（消費者教育）",
+    "label": "グループA（消費者教育）",
+    "needsSupplement": false,
+    "questionCount": 1,
+    "rawVariants": [
+      "グループA（消費者教育）"
+    ]
+  },
+  {
+    "categoryId": "グループA（社会保障・家計）",
+    "label": "グループA（社会保障・家計）",
+    "needsSupplement": false,
+    "questionCount": 1,
+    "rawVariants": [
+      "グループA（社会保障・家計）"
+    ]
+  },
+  {
+    "categoryId": "グループA（社会保障）",
+    "label": "グループA（社会保障）",
+    "needsSupplement": false,
+    "questionCount": 2,
+    "rawVariants": [
+      "グループA（社会保障）"
+    ]
+  },
+  {
+    "categoryId": "グループA（経済・消費者政策史）",
+    "label": "グループA（経済・消費者政策史）",
+    "needsSupplement": false,
+    "questionCount": 1,
+    "rawVariants": [
+      "グループA（経済・消費者政策史）"
+    ]
+  },
+  {
+    "categoryId": "グループA（経済学）",
+    "label": "グループA（経済学）",
+    "needsSupplement": false,
+    "questionCount": 3,
+    "rawVariants": [
+      "グループA（経済学）"
+    ]
+  },
+  {
+    "categoryId": "グループA（統計）",
+    "label": "グループA（統計）",
+    "needsSupplement": false,
+    "questionCount": 1,
+    "rawVariants": [
+      "グループA（統計）"
+    ]
+  },
+  {
+    "categoryId": "講義資料に該当箇所なし",
+    "label": "該当講義資料なし",
+    "needsSupplement": true,
+    "questionCount": 10,
+    "rawVariants": [
+      "講義資料に該当箇所なし",
+      "講義資料に該当箇所なし（要補完）"
+    ]
+  }
+]

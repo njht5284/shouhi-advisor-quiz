@@ -1,0 +1,2537 @@
+[
+  {
+    "examId": "2023-10-14",
+    "questions": [
+      {
+        "questionNumber": 1,
+        "passage": "第二次世界大戦後になると、世界経済は、自由貿易の下、ネットワークでつながるようになった。先進国で起こった消費者問題は、即座に全世界に影響するようになった。このように消費者問題が広がりを見せるようになると、国際的な組織が必要となってきた。この結果、オランダ消費者協会、ベルギー消費者協会、イギリス消費者協会、アメリカ消費者同盟、【ア】消費者協会の5ヵ国の消費者団体によって、商品テストの共有化、情報交流などの運動の交流を図るため、【イ】(CI(設立時はIOCU))が【ウ】年に設立された。これは非営利、非政府系の唯一の国際的連絡組織である。加盟国の3分の2は発展途上国、3分の1は先進国からなっている。 1983年から3月15日を「世界消費者権利の日」と名付けて、消費者の権利の促進と保護を推進している。【エ】は、「消費者の8つの権利と【オ】つの責任」を推進し、CI活動の基盤を強固なものにし、消費者運動の国際化に尽力した。",
+        "subQuestions": [
+          {
+            "subNumber": 1,
+            "type": "fill_blank",
+            "prompt": "【ア】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① ニュージーランド",
+              "② オーストラリア",
+              "③ イタリア",
+              "④ フランス"
+            ],
+            "correctAnswer": "② オーストラリア",
+            "explanation": "IOCU（現CI）は1960年、オランダ・ベルギー・イギリス・アメリカ・オーストラリアの5カ国の消費者団体により設立された。",
+            "categoryId": "グループA（消費者問題の歴史・国際）",
+            "categoryLabel": "グループA（消費者問題の歴史・国際）",
+            "categoryRaw": "グループA（消費者問題の歴史・国際）",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 2,
+            "type": "fill_blank",
+            "prompt": "【イ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 国際消費者機構",
+              "② 国際消費者連盟",
+              "③ 国際消費者連合",
+              "④ 国際消費者協会"
+            ],
+            "correctAnswer": "① 国際消費者機構",
+            "explanation": "CIはConsumers International（設立時はIOCU：国際消費者機構連合）の略称。選択肢のうち「国際消費者機構」が該当。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 3,
+            "type": "fill_blank",
+            "prompt": "【ウ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 1950",
+              "② 1960",
+              "③ 1970",
+              "④ 1980"
+            ],
+            "correctAnswer": "② 1960",
+            "explanation": "1960年に5カ国の消費者団体により設立された。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 4,
+            "type": "fill_blank",
+            "prompt": "【エ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① ケネディ大統領",
+              "② フォード大統領",
+              "③ アンワー・ファザール",
+              "④ ラルフ・ネーダー"
+            ],
+            "correctAnswer": "③ アンワー・ファザール",
+            "explanation": "CI元会長のアンワー・ファザールが消費者の権利・責任の拡張を提唱し、国際化に尽力した。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 5,
+            "type": "fill_blank",
+            "prompt": "【オ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 4",
+              "② 5",
+              "③ 6",
+              "④ 7"
+            ],
+            "correctAnswer": "② 5",
+            "explanation": "「消費者の8つの権利と5つの責任」として知られる。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          }
+        ]
+      },
+      {
+        "questionNumber": 2,
+        "passage": "次の文章は、2021年の販売購入形態別にみた消費生活相談の状況を説明したものである。正しい場合は○、誤っている場合は×を選びなさい。",
+        "subQuestions": [
+          {
+            "subNumber": 1,
+            "type": "true_false",
+            "prompt": "全体では「インターネット通販」の割合が前年に比べ減少した。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "消費生活相談の統計上、当該年はインターネット通販の相談割合が前年に比べ減少したとされる。",
+            "categoryId": "グループA（消費者問題の現状・統計）",
+            "categoryLabel": "グループA（消費者問題の現状・統計）",
+            "categoryRaw": "グループA（消費者問題の現状・統計）",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 2,
+            "type": "true_false",
+            "prompt": "65歳以上では、2019年以降、徐々に「訪問販売」の割合が増加している。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "高齢者を中心に訪問販売トラブルの割合が増加傾向にあった。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 3,
+            "type": "true_false",
+            "prompt": "65歳以上では、2019年以降、徐々に「電話勧誘販売」の割合が増加している。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "電話勧誘販売の割合は訪問販売とは異なる推移を示しており、設問の『徐々に増加』という記述は事実と異なる。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 4,
+            "type": "true_false",
+            "prompt": "20歳未満では、「インターネット通販」の割合が高かった。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "若年層ではインターネット通販に関する相談が高い割合を占める。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 5,
+            "type": "true_false",
+            "prompt": "各年齢層別にみた際、年齢層(20歳代~80歳以上)が上がっていくにつれて、「店舗購入」の割合は高くなっている。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "実際の統計では年齢層と店舗購入割合の関係は単調増加ではなく、設問の説明は不正確。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          }
+        ]
+      },
+      {
+        "questionNumber": 3,
+        "passage": "消費者教育の推進に関する基本的な方針(2013(平成25)年6月28日閣議決定、 2018(平成30)年3月20日変更)が2023年3月に変更され、今後【ア】年間を対象とした方針として策定された。消費者を取り巻く現状と課題は多岐に渡るが、今期の基本方針における基本的視点として4項目が挙げられ、その1つとして【イ】への対応が示されている。消費者教育の推進においては、各主体の連携・協働が重要であり、今回の基本方針には新たに【ウ】の連携・協働の重要性が具体的に明示された。また、他の消費生活に関連する教育との連携推進について【エ】教育との連携の視点が追加されている。地域における多様な主体間のネットワーク化を図り、連携・協働を促進するため、【オ】の配置・育成が求められている。",
+        "subQuestions": [
+          {
+            "subNumber": 1,
+            "type": "fill_blank",
+            "prompt": "【ア】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 3",
+              "② 5",
+              "③ 7",
+              "④ 10"
+            ],
+            "correctAnswer": "③ 7",
+            "explanation": "今期の基本方針は今後7年間を対象として策定された。",
+            "categoryId": "グループA（消費者教育）",
+            "categoryLabel": "グループA（消費者教育）",
+            "categoryRaw": "グループA（消費者教育）",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 2,
+            "type": "fill_blank",
+            "prompt": "【イ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① デジタル化",
+              "② 成年年齢引き下げ",
+              "③ 金融経済教育",
+              "④ 気候変動"
+            ],
+            "correctAnswer": "① デジタル化",
+            "explanation": "デジタル化への対応が基本的視点の一つとして明示された。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 3,
+            "type": "fill_blank",
+            "prompt": "【ウ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 国と地方公共団体",
+              "② 消費者行政と教育行政",
+              "③ 地方公共団体と消費者団体、事業者等",
+              "④ 消費者と事業者"
+            ],
+            "correctAnswer": "④ 消費者と事業者",
+            "explanation": "消費者と事業者の連携・協働の重要性が新たに具体的に明示された。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 4,
+            "type": "fill_blank",
+            "prompt": "【エ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 金融経済",
+              "② 環境",
+              "③ 情報",
+              "④ 主権者"
+            ],
+            "correctAnswer": "③ 情報",
+            "explanation": "情報教育との連携の視点が追加された。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 5,
+            "type": "fill_blank",
+            "prompt": "【オ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 行政職員",
+              "② 消費生活相談員",
+              "③ コーディネーター",
+              "④ 専門講師"
+            ],
+            "correctAnswer": "③ コーディネーター",
+            "explanation": "消費者教育コーディネーターの配置・育成が求められている。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          }
+        ]
+      },
+      {
+        "questionNumber": 4,
+        "passage": "次の文章は、消費生活上のデジタル用語に関連した事項を説明したものである。正しい場合は○、誤っている場合は×を選びなさい。",
+        "subQuestions": [
+          {
+            "subNumber": 1,
+            "type": "true_false",
+            "prompt": "一般的に商品・サービスの量や回数に応じて、その都度対価を支払うサービス体系をサブスクリプションという。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "サブスクリプションは利用量・回数によらず一定期間定額で利用できる仕組みであり、都度課金とは異なる。",
+            "categoryId": "B-11",
+            "categoryLabel": "B-11　情報通信",
+            "categoryRaw": "B-11情報通信 / グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 2,
+            "type": "true_false",
+            "prompt": "AIが人間の能力を上回る技術的な転換点をシンギュラリティという。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "AI技術の進展に関する基本用語として正しい説明。",
+            "categoryId": "B-11",
+            "categoryLabel": "B-11　情報通信",
+            "categoryRaw": "B-11情報通信",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 3,
+            "type": "true_false",
+            "prompt": "SNS(Social Networking Service)や動画配信などの活用において、他の人に強い影響力を及ぼす者のことをビッグコンシューマーという。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "正しくは『インフルエンサー』。ビッグコンシューマーという用語は誤り。",
+            "categoryId": "B-11",
+            "categoryLabel": "B-11　情報通信",
+            "categoryRaw": "B-11情報通信",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 4,
+            "type": "true_false",
+            "prompt": "情報通信技術をICTといい、メールやSNS等の活用を通じて、インターネットによって様々な人々をつなぐ役割を果たす。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "ICT（Information and Communication Technology）の一般的な説明として正しい。",
+            "categoryId": "B-11",
+            "categoryLabel": "B-11　情報通信",
+            "categoryRaw": "B-11情報通信",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 5,
+            "type": "true_false",
+            "prompt": "生活全般における様々なモノをインターネットにつなげ、生活上の利便性を高めるしくみのことをIoTという。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "IoT（Internet of Things）の一般的な説明として正しい。",
+            "categoryId": "B-11",
+            "categoryLabel": "B-11　情報通信",
+            "categoryRaw": "B-11情報通信",
+            "needsSupplement": false
+          }
+        ]
+      },
+      {
+        "questionNumber": 5,
+        "passage": "次の文章につき、正しい場合は○、誤っている場合は×を選びなさい。",
+        "subQuestions": [
+          {
+            "subNumber": 1,
+            "type": "true_false",
+            "prompt": "1990年代の日本経済は停滞が著しくなり、経常収支の赤字が大きくなってアメリカとの貿易摩擦が激化した。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "実際は日本の経常収支『黒字』の拡大が貿易摩擦の原因とされた。『赤字』という記述が誤り。",
+            "categoryId": "グループA（経済・消費者政策史）",
+            "categoryLabel": "グループA（経済・消費者政策史）",
+            "categoryRaw": "グループA（経済・消費者政策史）",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 2,
+            "type": "true_false",
+            "prompt": "1990年代の貿易摩擦の原因として政府の過剰な規制が指摘されるようになったため、1993年に政府は平岩研究会報告書において本格的な規制緩和に着手することを宣言した。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "政府の過剰規制が貿易摩擦の一因とされ、平岩研究会報告書により規制緩和路線が示された。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 3,
+            "type": "true_false",
+            "prompt": "規制緩和以前は、消費者問題の多くは行政指導によって解決されてきた。行政指導のメリットは、客観的で透明性が高いことにあった。ただし、行政コストは高いため、問題であるとされていた。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "行政指導はむしろ裁量的・不透明であることが問題視されていた。『客観的で透明性が高い』は誤り。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 4,
+            "type": "true_false",
+            "prompt": "規制緩和では、企業、消費者などの当事者は、政府の規制、指導に依存せず、自己責任に基づいて、市場のルールを遵守していくことを基本とすべきであるとの考え方が採用された。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "規制緩和以降、事後チェック型・自己責任型の政策思想が採用された。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 5,
+            "type": "true_false",
+            "prompt": "1999年の「今後の消費者取引ルールに関する提言」において、個別分野のルール整備について、市場監視型の公的規制、クーリングオフのような民事ルール、自主ルール・ガイドラインなどの「ベストミックス」が提唱された。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "公的規制・民事ルール・自主ルールを組み合わせる『ベストミックス』の考え方が示された。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          }
+        ]
+      },
+      {
+        "questionNumber": 6,
+        "passage": "消費者基本法の第 1 条では、【ア】が定められているが、この規定の特色は、 2004年の改正の際に、消費者と事業者との間の【イ】の質と量や【ウ】力の格差を表明したことである。同法第2条では、【エ】が定められている。消費者契約法第3条では、事業者及び消費者の努力義務が定められている。事業者の努力義務として、「消費者契約の締結について勧誘をするに際しては、消費者の理解を深めるために、物品、権利、役務その他の消費者契約の目的となるものの性質に応じ、個々の消費者の【オ】を考慮した上で、消費者の権利義務その他の消費者契約の内容についての必要な情報を提供すること」と規定されていたが、 2022年6月の改正で、考慮要素として年齢と心身の状態が追加された。",
+        "subQuestions": [
+          {
+            "subNumber": 1,
+            "type": "fill_blank",
+            "prompt": "【ア】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 基本理念",
+              "② 目的",
+              "③ 定義",
+              "④ 定款"
+            ],
+            "correctAnswer": "② 目的",
+            "explanation": "第1条は法律の『目的』を定める規定。",
+            "categoryId": "B-01",
+            "categoryLabel": "B-01　消費者政策の基本法制と消費者行政",
+            "categoryRaw": "B-01消費者基本法",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 2,
+            "type": "fill_blank",
+            "prompt": "【イ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 経済",
+              "② 交渉",
+              "③ 情報",
+              "④ 知識"
+            ],
+            "correctAnswer": "③ 情報",
+            "explanation": "情報の質及び量の格差が明記された。",
+            "categoryId": "B-01",
+            "categoryLabel": "B-01　消費者政策の基本法制と消費者行政",
+            "categoryRaw": "B-01",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 3,
+            "type": "fill_blank",
+            "prompt": "【ウ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 経済",
+              "② 交渉",
+              "③ 情報",
+              "④ 知識"
+            ],
+            "correctAnswer": "② 交渉",
+            "explanation": "交渉力の格差が明記された。",
+            "categoryId": "B-01",
+            "categoryLabel": "B-01　消費者政策の基本法制と消費者行政",
+            "categoryRaw": "B-01",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 4,
+            "type": "fill_blank",
+            "prompt": "【エ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 基本理念",
+              "② 目的",
+              "③ 定義",
+              "④ 定款"
+            ],
+            "correctAnswer": "① 基本理念",
+            "explanation": "第2条は法律の『基本理念』を定める規定。",
+            "categoryId": "B-01",
+            "categoryLabel": "B-01　消費者政策の基本法制と消費者行政",
+            "categoryRaw": "B-01",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 5,
+            "type": "fill_blank",
+            "prompt": "【オ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 知識及び経験",
+              "② 情報量及び経験",
+              "③ 知識及び経済力",
+              "④ 情報量及び経済力"
+            ],
+            "correctAnswer": "① 知識及び経験",
+            "explanation": "改正前は『知識及び経験』が考慮要素とされ、2022年改正で『年齢』『心身の状態』が追加された。",
+            "categoryId": "B-04",
+            "categoryLabel": "B-04　消費者契約法",
+            "categoryRaw": "B-04消費者契約法",
+            "needsSupplement": false
+          }
+        ]
+      },
+      {
+        "questionNumber": 7,
+        "passage": "次の文章は、定型約款に関する民法の規定について説明したものである。正しい場合は○、誤っている場合は×を選びなさい。",
+        "subQuestions": [
+          {
+            "subNumber": 1,
+            "type": "true_false",
+            "prompt": "定型約款準備者とその相手方は、定型約款を利用することを合意したときは個別の条項について合意したものとみなされるが、定型約款準備者が定型約款を用いる旨を相手方に表示しただけでは、個別の条項について合意したものとはみなされない。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "民法548条の2により、定型約款を用いる旨を相手方に『表示』しただけでも個別条項に合意したものとみなされる。",
+            "categoryId": "B-02/B-03",
+            "categoryLabel": "B-02/B-03　民法１・民法２",
+            "categoryRaw": "B-02/B-03民法",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 2,
+            "type": "true_false",
+            "prompt": "定型約款準備者は、取引の前に、必ず定型約款の内容を相手方に示さなければならない。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "原則は相手方の請求があった場合に遅滞なく開示する義務であり、事前の提示が常に必須ではない。",
+            "categoryId": "B-02/B-03",
+            "categoryLabel": "B-02/B-03　民法１・民法２",
+            "categoryRaw": "B-02/B-03",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 3,
+            "type": "true_false",
+            "prompt": "取引の相手方の権利を制限し、または義務を加重する定型約款の条項であって、その取引の態様や実情、取引上の社会通念に照らして、信義則に反して相手方の利益を一方的に害するものは、無効となる。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "正しくは『合意しなかったものとみなす』（みなし合意排除）であり、『無効』という構成ではない。",
+            "categoryId": "B-02/B-03",
+            "categoryLabel": "B-02/B-03　民法１・民法２",
+            "categoryRaw": "B-02/B-03",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 4,
+            "type": "true_false",
+            "prompt": "定型約款準備者は、定型約款の変更が契約をした目的に反せず、かつ、変更の必要性、変更後の内容の相当性、定型約款の変更がある旨の定めの有無、その他の事情に照らして合理的なものであるときは、個別の相手方と合意することなく変更することができる。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "民法548条の4の要件（目的適合性・変更の必要性・相当性等）を満たせば個別合意なく変更可能。",
+            "categoryId": "B-02/B-03",
+            "categoryLabel": "B-02/B-03　民法１・民法２",
+            "categoryRaw": "B-02/B-03",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 5,
+            "type": "true_false",
+            "prompt": "定型約款準備者は、定型約款の変更が相手方の一般の利益に適合するときでも、変更後の定型約款の内容および効力発生時期を周知しなければならない。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "変更内容・効力発生時期の周知は、利益適合的な変更であっても必要。",
+            "categoryId": "B-02/B-03",
+            "categoryLabel": "B-02/B-03　民法１・民法２",
+            "categoryRaw": "B-02/B-03",
+            "needsSupplement": false
+          }
+        ]
+      },
+      {
+        "questionNumber": 8,
+        "passage": "次の文章は、消費者契約法に基づく誤認による取消しに関して説明したものである。正しい場合は○、誤っている場合は×を選びなさい。",
+        "subQuestions": [
+          {
+            "subNumber": 1,
+            "type": "true_false",
+            "prompt": "消費者が、「海の見える眺望良好なマンション」との事業者の説明を信じて購入したが、約半年後に隣接地に大きな建物が建築され眺望が遮られた場合、消費者は、事業者が隣接地における建築の予定について知らず、知らなかったことにつき重大な過失がないときでも、契約を取り消すことができる。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "不利益事実の不告知による取消しには事業者の故意（または重過失）が要件であり、知らず重過失もなければ原則取消し不可。",
+            "categoryId": "B-04",
+            "categoryLabel": "B-04　消費者契約法",
+            "categoryRaw": "B-04消費者契約法",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 2,
+            "type": "true_false",
+            "prompt": "消費者が、「この株は将来絶対に儲かる」との事業者の説明を信じて購入した場合において、株に関するその予想が正しいと事業者が信じていたときは、消費者は契約を取り消すことができない。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "断定的判断の提供は事業者の認識の真偽を問わず、要件を満たせば取消し可能。",
+            "categoryId": "B-04",
+            "categoryLabel": "B-04　消費者契約法",
+            "categoryRaw": "B-04",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 3,
+            "type": "true_false",
+            "prompt": "消費者が、「床下にシロアリが発生しているので、すぐに駆除工事をしなければ家の土台が傷んでしまう」との事業者の嘘の説明を信じて契約を締結した場合、シロアリが発生していて家に危険が及ぶとの事情は「重要事項」に該当しないため、消費者は契約を取り消すことができない。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "家屋の安全性に関わる事項は重要事項に該当し得るため、この主張は誤り。",
+            "categoryId": "B-04",
+            "categoryLabel": "B-04　消費者契約法",
+            "categoryRaw": "B-04",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 4,
+            "type": "true_false",
+            "prompt": "民法第96条第1項の詐欺による取消しの場合とは異なり、消費者契約法第4条第1項第1号の不実告知による取消しの場合には、事業者が勧誘時にその説明が虚偽であることを知らなかったとしても、消費者は契約を取り消すことができる。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "消費者契約法の不実告知取消しは事業者の主観的要件を問わない点で民法の詐欺取消しと異なる。",
+            "categoryId": "B-04",
+            "categoryLabel": "B-04　消費者契約法",
+            "categoryRaw": "B-04",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 5,
+            "type": "true_false",
+            "prompt": "消費者契約法第4条にいう「事業者が消費者契約の締結について勧誘をするに際し」との要件については、新聞折り込みチラシ広告のように不特定多数の消費者に向けられたものであっても、そのことから直ちに「勧誘」に該当しないことにはならない。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "最高裁判例により、不特定多数向けの表示であっても『勧誘』該当性が直ちに否定されるわけではない。",
+            "categoryId": "B-04",
+            "categoryLabel": "B-04　消費者契約法",
+            "categoryRaw": "B-04",
+            "needsSupplement": false
+          }
+        ]
+      },
+      {
+        "questionNumber": 9,
+        "passage": "特定商取引法(特定商取引に関する法律)の定める民事規定の代表的なものとして、クーリングオフ権、誤認による取消権、【ア】、中途解約権がある。クーリングオフは、法定書面を受領した日から起算して一定期間に限り行使することができ、その期間は、例えば訪問販売については8日間とされているが、【イ】については 20日間とされている。この定められた期間内に、クーリングオフの通知が【ウ】を要する。訪問購入においては、クーリングオフによる消費者保護の実効性を確保するために、【エ】などの規定が設けられている。【オ】については、クーリングオフ期間経過後の解約権に関する規定も設けられている。",
+        "subQuestions": [
+          {
+            "subNumber": 1,
+            "type": "fill_blank",
+            "prompt": "【ア】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 困惑による取消権",
+              "② 過量販売取消権",
+              "③ 過量販売解除権",
+              "④ 撤回権"
+            ],
+            "correctAnswer": "③ 過量販売解除権",
+            "explanation": "クーリングオフ権・誤認取消権・過量販売解除権・中途解約権が代表的な民事規定。",
+            "categoryId": "B-05〜B-07",
+            "categoryLabel": "B-05〜B-07　特定商取引法の基礎(1)〜特定商取引法の基礎(3)",
+            "categoryRaw": "B-05〜B-07特定商取引法",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 2,
+            "type": "fill_blank",
+            "prompt": "【イ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 特定継続的役務提供",
+              "② 電話勧誘販売",
+              "③ 通信販売",
+              "④ 連鎖販売取引"
+            ],
+            "correctAnswer": "④ 連鎖販売取引",
+            "explanation": "訪問販売等は8日間、連鎖販売取引・業務提供誘引販売取引等は20日間。",
+            "categoryId": "B-05〜B-07",
+            "categoryLabel": "B-05〜B-07　特定商取引法の基礎(1)〜特定商取引法の基礎(3)",
+            "categoryRaw": "B-05〜B-07",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 3,
+            "type": "fill_blank",
+            "prompt": "【ウ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 相手方に到達したこと",
+              "② 相手方またはその代理人に認識されたこと",
+              "③ 発信されたこと",
+              "④ 所定の様式に記入されたこと"
+            ],
+            "correctAnswer": "③ 発信されたこと",
+            "explanation": "クーリングオフの意思表示は発信主義がとられ、発信した時点で効力が生じる。",
+            "categoryId": "B-05〜B-07",
+            "categoryLabel": "B-05〜B-07　特定商取引法の基礎(1)〜特定商取引法の基礎(3)",
+            "categoryRaw": "B-05〜B-07",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 4,
+            "type": "fill_blank",
+            "prompt": "【エ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① クーリングオフ期間中の物品引渡拒絶権",
+              "② 物品返還請求権",
+              "③ 物品の引渡しと代金支払いとの同時履行の抗弁権",
+              "④ 相当価格との差額の不当利得返還請求権"
+            ],
+            "correctAnswer": "① クーリングオフ期間中の物品引渡拒絶権",
+            "explanation": "訪問購入では、クーリングオフ期間中は消費者が物品の引渡しを拒める規定が設けられている。",
+            "categoryId": "B-05〜B-07",
+            "categoryLabel": "B-05〜B-07　特定商取引法の基礎(1)〜特定商取引法の基礎(3)",
+            "categoryRaw": "B-05〜B-07",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 5,
+            "type": "fill_blank",
+            "prompt": "【オ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 訪問販売と電話勧誘販売",
+              "② 業務提供誘引販売取引",
+              "③ 連鎖販売取引と特定継続的役務提供",
+              "④ 訪問購入"
+            ],
+            "correctAnswer": "③ 連鎖販売取引と特定継続的役務提供",
+            "explanation": "この2類型には中途解約権（クーリングオフ後の解約権）の規定がある。",
+            "categoryId": "B-05〜B-07",
+            "categoryLabel": "B-05〜B-07　特定商取引法の基礎(1)〜特定商取引法の基礎(3)",
+            "categoryRaw": "B-05〜B-07",
+            "needsSupplement": false
+          }
+        ]
+      },
+      {
+        "questionNumber": 10,
+        "passage": "景品表示法(不当景品類及び不当表示防止法)に関する次の文章につき、正しい場合は○、誤っている場合は×を選びなさい。",
+        "subQuestions": [
+          {
+            "subNumber": 1,
+            "type": "true_false",
+            "prompt": "景品表示法は、表示の適正化のための包括的・横断的な規制を定める法律であり、表示の適正化は、消費者基本法が掲げる消費者の権利のうち、特に「商品及び役務について消費者の自主的かつ合理的な選択の機会が確保される権利」と「消費者に対し必要な情報が提供される権利」に関わる。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "消費者基本法の掲げる権利のうち『選択の機会の確保』『情報提供』に関連する法律として位置づけられる。",
+            "categoryId": "B-12",
+            "categoryLabel": "B-12　表示と広告に関する法律",
+            "categoryRaw": "B-12景品表示法",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 2,
+            "type": "true_false",
+            "prompt": "景品表示法は、当初、民法の特例法として制定されたが、その後、消費者庁の設置とともに、消費者保護の趣旨を明確化したうえで消費者庁に移管された。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "正しくは『独占禁止法』の特例法として1962年に制定された。",
+            "categoryId": "B-12",
+            "categoryLabel": "B-12　表示と広告に関する法律",
+            "categoryRaw": "B-12",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 3,
+            "type": "true_false",
+            "prompt": "景品表示法は、優良誤認表示、有利誤認表示を不当表示として禁止しており、例えば取引の申出に係る商品の供給量が著しく限定されているのにその限定の内容を記載せずに行う広告(おとり広告)も、優良誤認表示や有利誤認表示に該当する限りで同法により禁止されている。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "おとり広告についても、優良誤認・有利誤認の要件を満たせば景品表示法上の規制対象となり得る。",
+            "categoryId": "B-12",
+            "categoryLabel": "B-12　表示と広告に関する法律",
+            "categoryRaw": "B-12",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 4,
+            "type": "true_false",
+            "prompt": "景品表示法は、同法による不当表示禁止の実効性を確保するために、行政による措置命令や課徴金納付命令のほか、適格消費者団体の差止請求権や不当表示により誤認して契約した消費者の返金請求権に関する規定を設けている。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "景品表示法自体には消費者の返金請求権を定める規定はない。措置命令・課徴金・差止請求等が実効性確保の手段。",
+            "categoryId": "B-12",
+            "categoryLabel": "B-12　表示と広告に関する法律",
+            "categoryRaw": "B-12",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 5,
+            "type": "true_false",
+            "prompt": "優良誤認と有利誤認については、それが実際のものと異なっているかを立証することが難しいため、景品表示法は、行政は不当表示の疑いのある事業者に対して所定の期間内に表示の裏付けとなる合理的な根拠を示す資料の提出を命じることができ、期限までに提出がなかったときは当該不当表示があったものとみなす旨の規定を設けている。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "期限内に資料提出がない場合、当該表示は不当表示とみなされる（不実証広告規制）。",
+            "categoryId": "B-12",
+            "categoryLabel": "B-12　表示と広告に関する法律",
+            "categoryRaw": "B-12",
+            "needsSupplement": false
+          }
+        ]
+      },
+      {
+        "questionNumber": 11,
+        "passage": "次の文章につき、正しい場合は○、誤っている場合は×を選びなさい。",
+        "subQuestions": [
+          {
+            "subNumber": 1,
+            "type": "true_false",
+            "prompt": "企業が「通常価格4,000円」および「販売価格1,480円」と表示して商品を販売していたが、実際には通常価格での販売実績がなかったと認められた場合には、景品表示法の優良誤認表示に該当するおそれがある。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "価格に関する不当表示は『優良誤認』ではなく『有利誤認』に該当し得る問題であり、記述が不正確。",
+            "categoryId": "B-12",
+            "categoryLabel": "B-12　表示と広告に関する法律",
+            "categoryRaw": "B-12",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 2,
+            "type": "true_false",
+            "prompt": "景品表示法における「表示」には、ダイレクトメールによるものは含まれない。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "ダイレクトメールも『表示』に含まれる。",
+            "categoryId": "B-12",
+            "categoryLabel": "B-12　表示と広告に関する法律",
+            "categoryRaw": "B-12",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 3,
+            "type": "true_false",
+            "prompt": "広告の監視は、(公社)日本広告審査機構(JARO)など民間団体によってのみ、行われている。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "消費者庁など行政機関による監視・規制も行われており、『JAROのみ』は誤り。",
+            "categoryId": "B-12",
+            "categoryLabel": "B-12　表示と広告に関する法律",
+            "categoryRaw": "B-12",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 4,
+            "type": "true_false",
+            "prompt": "みその公正マークは、公正マークを付けようとする当該製品の包装等の表示について消費者庁が審査し、問題がないと承認を受けたものに表示することができる。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "公正マークの審査は業界の公正取引協議会が行うのが一般的であり、消費者庁が直接審査するわけではない。",
+            "categoryId": "B-12",
+            "categoryLabel": "B-12　表示と広告に関する法律",
+            "categoryRaw": "B-12",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 5,
+            "type": "true_false",
+            "prompt": "電通「2022 日本の広告費」によると、鉄道の主要駅における大型デジタルサイネージやタクシーにおけるサイネージ広告の展開により、交通広告におけるデジタル広告の需要が増加した。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "大型デジタルサイネージ等の普及により交通広告分野のデジタル需要が増加した。",
+            "categoryId": "B-12",
+            "categoryLabel": "B-12　表示と広告に関する法律",
+            "categoryRaw": "B-12 / グループA（広告市場動向）",
+            "needsSupplement": false
+          }
+        ]
+      },
+      {
+        "questionNumber": 12,
+        "passage": "次の文章は、環境分析や経営分析に関わる事項について説明したものである。正しい場合は○、誤っている場合は×を選びなさい。",
+        "subQuestions": [
+          {
+            "subNumber": 1,
+            "type": "true_false",
+            "prompt": "安全性分析として用いられる指標として売上高利益率がある。これは企業の短期的な支払能力を見るための代表的指標である。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "短期支払能力の代表指標は流動比率・当座比率であり、売上高利益率は収益性の指標。",
+            "categoryId": "グループA（企業経営）",
+            "categoryLabel": "グループA（企業経営）",
+            "categoryRaw": "グループA（企業経営）",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 2,
+            "type": "true_false",
+            "prompt": "労働生産性は、売上高、原材料費・外注費など外部から調達したものの原価、従業員数の三つの値から計算できる。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "労働生産性の一般的な算出方法として正しい。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 3,
+            "type": "true_false",
+            "prompt": "技術発展のスピードが速く進む産業においては、自社の強みを明確にできるSWOT分析は、戦略策定のための最適なツールといえる。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "SWOT分析はあくまで一手法であり、『最適』と断定するのは不適切。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 4,
+            "type": "true_false",
+            "prompt": "企業の成長性を分析するために売上高成長率を見たところ、前期と比較して伸びていることが確認できた。その企業は成長性が高く、将来性のある企業であると結論付けられる。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "業界全体の成長率や物価上昇率と比較しなければ実質的な成長性は判断できない。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 5,
+            "type": "true_false",
+            "prompt": "年度内に企業が最終的に得た利益を見るためには、損益計算書において営業利益に営業外利益を足し、営業外費用を引いて求めた「経常利益」を見れば良い。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "最終的な利益は特別損益や税金を反映した『当期純利益』であり、経常利益とは異なる。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          }
+        ]
+      },
+      {
+        "questionNumber": 13,
+        "passage": "企業活動を理解するための基本的な視点は三つある。一つ目は組織である。これは単なる人々の集まりではなく、【ア】という特徴を持つことで機能している。二つ目の環境とは【イ】。三つ目の【ウ】は、組織の状況や環境の変化を踏まえながら、企業の将来像とその実現に向けた道筋を描き、実行されるものである。なお、環境に応じて適切な組織の構造も異なる。例えば、【エ】という構造は、比較的安定した環境において適しているとされる。【オ】に最終的な意思決定や調整が委ねられ、スピーディに物事を進めることには向かないからである。",
+        "subQuestions": [
+          {
+            "subNumber": 1,
+            "type": "fill_blank",
+            "prompt": "【ア】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 群集心理",
+              "② 役割分担と調整",
+              "③ プライミング効果",
+              "④ ネットワーク外部性"
+            ],
+            "correctAnswer": "② 役割分担と調整",
+            "explanation": "組織は単なる人の集まりではなく、役割分担と調整によって機能する。",
+            "categoryId": "グループA（企業経営）",
+            "categoryLabel": "グループA（企業経営）",
+            "categoryRaw": "グループA（企業経営）",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 2,
+            "type": "fill_blank",
+            "prompt": "【イ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 自然環境のことであり、企業活動との調和が不可欠である",
+              "② 組織の外側のことであり、顧客や供給業者、競合他社などが含まれる",
+              "③ 組織成員の周囲のことであり、労働環境ともいわれる",
+              "④ 企業が果たす責任の範囲のことである"
+            ],
+            "correctAnswer": "② 組織の外側のことであり、顧客や供給業者、競合他社などが含まれる",
+            "explanation": "経営学における環境とは組織外部の諸要因を指す。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 3,
+            "type": "fill_blank",
+            "prompt": "【ウ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① ガバナンス",
+              "② 戦略",
+              "③ 戦術",
+              "④ 計画"
+            ],
+            "correctAnswer": "② 戦略",
+            "explanation": "将来像と実現への道筋を描き実行するのが『戦略』。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 4,
+            "type": "fill_blank",
+            "prompt": "【エ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① フラット組織",
+              "② 有機的組織",
+              "③ マトリックス組織",
+              "④ 機能別組織"
+            ],
+            "correctAnswer": "④ 機能別組織",
+            "explanation": "機能別組織は専門性を活かせるが、安定的環境に適するとされる。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 5,
+            "type": "fill_blank",
+            "prompt": "【オ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① BU長",
+              "② 経営トップ",
+              "③ ロワー",
+              "④ 人事部"
+            ],
+            "correctAnswer": "② 経営トップ",
+            "explanation": "機能別組織は部門間調整をトップに依存しやすく、意思決定のスピードに課題がある。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          }
+        ]
+      },
+      {
+        "questionNumber": 14,
+        "passage": "次の文章につき、正しい場合は○、誤っている場合は×を選びなさい。",
+        "subQuestions": [
+          {
+            "subNumber": 1,
+            "type": "true_false",
+            "prompt": "マーケティングの4Pに、購買(purchasing)は、含まれない。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "4PはProduct・Price・Place・Promotionであり、購買は含まれない。",
+            "categoryId": "グループA（マーケティング）",
+            "categoryLabel": "グループA（マーケティング）",
+            "categoryRaw": "グループA（マーケティング）",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 2,
+            "type": "true_false",
+            "prompt": "マズローの欲求5段階説において、生理的欲求は、承認欲求よりも高次の欲求とされている。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "生理的欲求は最も低次の欲求であり、承認欲求より上位ではない。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 3,
+            "type": "true_false",
+            "prompt": "Customer(顧客)、Competitor(競合)、Cash Flow(キャッシュフロー)は、マーケティング環境を把握するための3C分析の3要素である。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "3C分析はCustomer・Competitor・Companyの3要素であり、Cash Flowは含まれない。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 4,
+            "type": "true_false",
+            "prompt": "顧客満足は、当該製品・サービスに対する事前の期待と事後的な品質評価の不一致度によって測ることができる。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "期待不一致モデルによる顧客満足の測定は一般的な考え方。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 5,
+            "type": "true_false",
+            "prompt": "開放型チャネル政策とは、小売業者が商品の仕入れ先をできるだけ絞り込まず品揃えの幅を拡大することを意味している。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "開放型チャネル政策はメーカーが『取扱い店を幅広く確保する』流通戦略の話であり、設問の説明（仕入れ先の話）とは論点が異なる。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          }
+        ]
+      },
+      {
+        "questionNumber": 15,
+        "passage": "【ア】などに対する消費者の反応プロセスを示すモデルは、【イ】プロセス・モデルと呼ばれる。なかでも、AIDMAモデルは有名であり、そのモデルのIは、【ウ】を表し、Mは【エ】を表す。また、【オ】モデルは、インターネット上における消費者の反応プロセス・モデルとして知られている。",
+        "subQuestions": [
+          {
+            "subNumber": 1,
+            "type": "fill_blank",
+            "prompt": "【ア】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 広告",
+              "② インターネット",
+              "③ 価格上昇",
+              "④ 所得上昇"
+            ],
+            "correctAnswer": "① 広告",
+            "explanation": "広告等に対する消費者の反応プロセスを説明するモデル。",
+            "categoryId": "グループA（マーケティング）",
+            "categoryLabel": "グループA（マーケティング）",
+            "categoryRaw": "グループA（マーケティング）",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 2,
+            "type": "fill_blank",
+            "prompt": "【イ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 消費者情報処理",
+              "② 販売",
+              "③ イノベーション・",
+              "④ コミュニケーション・"
+            ],
+            "correctAnswer": "④ コミュニケーション・",
+            "explanation": "広告効果に関する『コミュニケーション・プロセス・モデル』の代表例。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 3,
+            "type": "fill_blank",
+            "prompt": "【ウ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 関心",
+              "② 記憶",
+              "③ 相互作用",
+              "④ 所得"
+            ],
+            "correctAnswer": "① 関心",
+            "explanation": "Attention→Interest→Desire→Memory→Actionの流れ。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 4,
+            "type": "fill_blank",
+            "prompt": "【エ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 関心",
+              "② 記憶",
+              "③ 金銭",
+              "④ 動機"
+            ],
+            "correctAnswer": "② 記憶",
+            "explanation": "Mは『Memory（記憶）』を表す。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 5,
+            "type": "fill_blank",
+            "prompt": "【オ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① AISAS",
+              "② AIDA",
+              "③ AIDAS",
+              "④ AIDCA"
+            ],
+            "correctAnswer": "① AISAS",
+            "explanation": "Attention→Interest→Search→Action→Shareの頭文字。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          }
+        ]
+      },
+      {
+        "questionNumber": 16,
+        "passage": "次の文章は、AD-AS分析について説明したものである。正しい場合は○、誤っている場合は×を選びなさい。",
+        "subQuestions": [
+          {
+            "subNumber": 1,
+            "type": "true_false",
+            "prompt": "物価水準が上昇すると、実質賃金が低下するため、消費者の購買力が低下し、総需要は低下する。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "AD-AS分析における基本的な物価と総需要の関係として正しい。",
+            "categoryId": "グループA（経済学）",
+            "categoryLabel": "グループA（経済学）",
+            "categoryRaw": "グループA（経済学）",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 2,
+            "type": "true_false",
+            "prompt": "このモデルにおいて、総需要曲線と総供給曲線が一致する均衡点は、物価水準と均衡国内総生産を決定する点として表される。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "AD-AS分析の基本的な均衡概念として正しい。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 3,
+            "type": "true_false",
+            "prompt": "総供給曲線が右にシフトすると、物価水準は上昇し、実質国内総生産は減少する。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "総供給曲線の右シフトは物価下落・実質GDP増加をもたらす。設問の記述は逆。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 4,
+            "type": "true_false",
+            "prompt": "長期的に見たとき、総供給曲線が垂直になるケースが知られている。この場合、総需要の増加は、物価の上昇のみを引き起こす。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "長期総供給曲線は完全雇用GDP水準で垂直となり、総需要増加は物価のみを押し上げる。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 5,
+            "type": "true_false",
+            "prompt": "技術革新により労働生産性が上昇した場合、総供給曲線は左側にシフトし、物価を押し上げる働きがある。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "労働生産性の上昇は総供給曲線を右シフトさせ、物価は下落方向に働く。設問の記述は逆。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          }
+        ]
+      },
+      {
+        "questionNumber": 17,
+        "passage": "次の文章は、完全競争市場における企業行動について説明したものである。正しい場合は○、誤っている場合は×を選びなさい。ただし、企業の総費用曲線は、可変費用と固定費用からなり、逆S字型であるものとする。",
+        "subQuestions": [
+          {
+            "subNumber": 1,
+            "type": "true_false",
+            "prompt": "企業は、その費用構造から、利潤を最大にすることは、生産量を最大にすることを意味する。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "利潤最大化は限界収入＝限界費用となる点で決まり、生産量の最大化とは異なる。",
+            "categoryId": "グループA（経済学）",
+            "categoryLabel": "グループA（経済学）",
+            "categoryRaw": "グループA（経済学）",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 2,
+            "type": "true_false",
+            "prompt": "追加的な一単位の生産量増加に対する追加的な費用の増加の割合を連続的に表した曲線は、限界費用曲線と呼ばれる。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "限界費用の一般的な定義として正しい。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 3,
+            "type": "true_false",
+            "prompt": "固定費用は、生産量とともに比例的に上昇するため、右上がりの直線として表すことができる。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "固定費用は生産量にかかわらず一定であり、比例的に上昇するのは可変費用。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 4,
+            "type": "true_false",
+            "prompt": "費用を最小に抑えるという観点から、利潤を最大化するためには、限界費用の最低点で生産量を決定すればよい。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "利潤最大化点は限界収入＝限界費用となる点であり、限界費用の最低点ではない。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 5,
+            "type": "true_false",
+            "prompt": "利潤が0の点よりも生産量が多い場合、限界費用は平均費用を必ず上回る。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "利潤最大化点（限界費用＝限界収入）は平均費用曲線の上方に位置するため正しい。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          }
+        ]
+      },
+      {
+        "questionNumber": 18,
+        "passage": "次の文章につき、正しい場合は○、誤っている場合は×を選びなさい。",
+        "subQuestions": [
+          {
+            "subNumber": 1,
+            "type": "true_false",
+            "prompt": "中心の特性値である平均値、中央値、最頻値のうち、異常値の影響を受け、最も値が変動するのは中央値である。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "異常値の影響を最も受けやすいのは『平均値』であり、中央値は影響を受けにくい代表値。",
+            "categoryId": "グループA（統計）",
+            "categoryLabel": "グループA（統計）",
+            "categoryRaw": "グループA（統計）",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 2,
+            "type": "true_false",
+            "prompt": "基幹統計は様々な省庁が主体となり作成されているが、最も多くの基幹統計を作成しているのは総務省である。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "国勢調査など多数の基幹統計を総務省（統計局）が所管している。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 3,
+            "type": "true_false",
+            "prompt": "あるデータの四半期での成長率がa%であった場合、そのデータの年率換算成長率を計算すると4a%となる。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "正確には複利計算（(1+a)^4－1）で求めるべきであり、単純な4倍は近似に過ぎない。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 4,
+            "type": "true_false",
+            "prompt": "企業物価指数は企業間で取引される財とサービスの価格を指数化した指標であり、日本銀行が毎月公表している。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "企業物価指数（CGPI）は主に『財（モノ）』の価格を対象とする指標であり、サービス価格は別途『企業向けサービス価格指数』で扱われる。公表主体が日本銀行である点は正しいが、対象範囲の記述に誤りがある。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 5,
+            "type": "true_false",
+            "prompt": "第3次産業のGDPに占める割合が大きくなっている状況を踏まえ、サービス産業動向調査が2008年から実施されている。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "第3次産業のGDP比重増大を背景に2008年に開始された。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          }
+        ]
+      },
+      {
+        "questionNumber": 19,
+        "passage": "金融商品取引を巡る金融機関とのトラブルを解決する手段として、時間や費用がかかる裁判による紛争解決以外にも金融【ア】が整備されている。金融【ア】では、銀行業務については、銀行業務の指定紛争解決機関である【イ】が紛争解決業務を担うこととされているほか、株式や投資信託等に関する業務については【ウ】が紛争解決業務を行う。このほか、金融商品ごとに金融機関が破綻した場合の【エ】が整備されている。ただし、従来は預金者及び投資者の保護では全額が保護されてきたが、その資金負担が利用者以外の者を含めた国民全体に及ぶことから、利用者の【オ】を回避するためにも、現在は金融商品の保護に一定の限度額が設けられている。",
+        "subQuestions": [
+          {
+            "subNumber": 1,
+            "type": "fill_blank",
+            "prompt": "【ア】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① SDR",
+              "② CEO",
+              "③ AED",
+              "④ ADR"
+            ],
+            "correctAnswer": "④ ADR",
+            "explanation": "裁判外紛争解決手続（ADR）が整備されている。",
+            "categoryId": "B-09",
+            "categoryLabel": "B-09　金融商品と関連法制の基礎知識",
+            "categoryRaw": "B-09金融商品と関連法",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 2,
+            "type": "fill_blank",
+            "prompt": "【イ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 全国銀行協会",
+              "② 金融広報委員会",
+              "③ 金融商品取引監視委員会",
+              "④ 金融商品相談窓口"
+            ],
+            "correctAnswer": "① 全国銀行協会",
+            "explanation": "銀行業務のADRを担うのは全国銀行協会。",
+            "categoryId": "B-09",
+            "categoryLabel": "B-09　金融商品と関連法制の基礎知識",
+            "categoryRaw": "B-09",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 3,
+            "type": "fill_blank",
+            "prompt": "【ウ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 日本証券業協会",
+              "② 金融広報委員会",
+              "③ 金融商品取引監視委員会",
+              "④ 証券・金融商品あっせん相談センター"
+            ],
+            "correctAnswer": "④ 証券・金融商品あっせん相談センター",
+            "explanation": "株式・投資信託等のADRを担う機関。",
+            "categoryId": "B-09",
+            "categoryLabel": "B-09　金融商品と関連法制の基礎知識",
+            "categoryRaw": "B-09",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 4,
+            "type": "fill_blank",
+            "prompt": "【エ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 破綻相談窓口",
+              "② 金融商品あんしん補償制度",
+              "③ セキュリティシステム",
+              "④ セーフティーネット"
+            ],
+            "correctAnswer": "④ セーフティーネット",
+            "explanation": "預金保険・投資者保護基金等の総称としてセーフティーネットが整備されている。",
+            "categoryId": "B-09",
+            "categoryLabel": "B-09　金融商品と関連法制の基礎知識",
+            "categoryRaw": "B-09",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 5,
+            "type": "fill_blank",
+            "prompt": "【オ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 逆選択",
+              "② モラルハザード",
+              "③ 自信過剰バイアス",
+              "④ フリーライド"
+            ],
+            "correctAnswer": "② モラルハザード",
+            "explanation": "全額保護は利用者のモラルハザードを招くおそれがあるため限度額が設けられた。",
+            "categoryId": "B-09",
+            "categoryLabel": "B-09　金融商品と関連法制の基礎知識",
+            "categoryRaw": "B-09",
+            "needsSupplement": false
+          }
+        ]
+      },
+      {
+        "questionNumber": 20,
+        "passage": "次の文章は、家計と国民経済について説明したものである。正しい場合は○、誤っている場合は×を選びなさい。",
+        "subQuestions": [
+          {
+            "subNumber": 1,
+            "type": "true_false",
+            "prompt": "国民経済には家庭内で生産された家事サービスなどの付加価値は金額として含まれない。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "市場を通さない家庭内労働の価値は原則としてGDP計上外。",
+            "categoryId": "グループA（経済学）",
+            "categoryLabel": "グループA（経済学）",
+            "categoryRaw": "グループA（経済学）",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 2,
+            "type": "true_false",
+            "prompt": "GDPには、外国企業が日本国内で生産した付加価値は含まれない。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "GDPは『国内』概念のため、外国企業でも国内生産分はGDPに算入される。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 3,
+            "type": "true_false",
+            "prompt": "「国内総生産=国内総所得=国内総支出」が成り立つ。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "三面等価の原則として正しい。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 4,
+            "type": "true_false",
+            "prompt": "日本の名目GDPに占める家計消費の割合は50%を超えている。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "家計最終消費支出はGDPの過半を占める。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 5,
+            "type": "true_false",
+            "prompt": "自分が所有する持ち家では家賃は発生しないので、GDPにも含まれない。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "持ち家についても『帰属家賃』として市場家賃相当額がGDPに計上される。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          }
+        ]
+      },
+      {
+        "questionNumber": 21,
+        "passage": "次の文章につき、正しい場合は○、誤っている場合は×を選びなさい。",
+        "subQuestions": [
+          {
+            "subNumber": 1,
+            "type": "true_false",
+            "prompt": "超高齢社会の日本は、国勢調査(2020年)によると、「65歳以上世帯員のいる一般世帯」が一般世帯のうちの6割を占めている。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "実際の割合は6割に達しておらず、設問の数値は過大。",
+            "categoryId": "グループA（社会保障・家計）",
+            "categoryLabel": "グループA（社会保障・家計）",
+            "categoryRaw": "グループA（社会保障・家計）",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 2,
+            "type": "true_false",
+            "prompt": "無職の高齢者の実収入は、一般的に9割近くが社会保障給付であるが、それだけでは赤字になることもあり、不足分を貯蓄から取り崩さなければならなくなるため、足りない分を現役時代から準備しておく必要がある。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "高齢者無職世帯の家計構造として正しい。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 3,
+            "type": "true_false",
+            "prompt": "金融審議会の「市場ワーキング・グループ報告書」(2019年)では、単独世帯に必要な老後資金は約2千万円と試算され、老後資金に関心が高まった。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "この試算は『夫婦（無職）世帯』を前提としたものであり、単独世帯の話ではない。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 4,
+            "type": "true_false",
+            "prompt": "家計調査(2021年)では、2人以上の世帯のうち世帯主が65歳以上の世帯の貯蓄保有世帯の中央値は、金融審議会の「市場ワーキング・グループ報告書」(2019年)で必要と試算された金額より少ない。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "実際の貯蓄中央値は試算額を下回る水準にある。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 5,
+            "type": "true_false",
+            "prompt": "高齢期の家計を勤労者世帯と比較すると、教育費はほぼ0%であるのに、保健医療費の割合が増加し、その他の消費支出の中では、交際費の割合が高くなるという特徴がみられる。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "高齢期家計の消費構造の特徴として正しい。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          }
+        ]
+      },
+      {
+        "questionNumber": 22,
+        "passage": "次の文章につき、正しい場合は○、誤っている場合は×を選びなさい。",
+        "subQuestions": [
+          {
+            "subNumber": 1,
+            "type": "true_false",
+            "prompt": "動物繊維である毛や絹の主成分はタンパク質であるためアルカリに強い。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "タンパク質を主成分とする動物繊維はアルカリに『弱い』（酸に強い）性質を持つ。",
+            "categoryId": "講義資料に該当箇所なし",
+            "categoryLabel": "該当講義資料なし",
+            "categoryRaw": "講義資料に該当箇所なし（要補完）",
+            "needsSupplement": true
+          },
+          {
+            "subNumber": 2,
+            "type": "true_false",
+            "prompt": "朱子織はたて糸またはよこ糸の浮きにより、布面に斜めのうねが現れる組織である。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "斜めのうねが現れるのは『綾織（斜文織）』の特徴。朱子織は交錯点が少なく滑らかで光沢のある織り目が特徴。",
+            "categoryId": "講義資料に該当箇所なし",
+            "categoryLabel": "該当講義資料なし",
+            "categoryRaw": "講義資料に該当箇所なし",
+            "needsSupplement": true
+          },
+          {
+            "subNumber": 3,
+            "type": "true_false",
+            "prompt": "一般に、糸の太さは長さと質量をもとに番手で表される。標準質量の糸の長さが、単位長さの何倍あるかで表される恒重式番手にはデニールやテックスがある。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "糸の太さを表す恒重式番手の説明として正しい。",
+            "categoryId": "講義資料に該当箇所なし",
+            "categoryLabel": "該当講義資料なし",
+            "categoryRaw": "講義資料に該当箇所なし",
+            "needsSupplement": true
+          },
+          {
+            "subNumber": 4,
+            "type": "true_false",
+            "prompt": "編物は織物と比較して、しわになりやすい。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "編物は伸縮性が高い分、型崩れ・しわが生じやすい。",
+            "categoryId": "講義資料に該当箇所なし",
+            "categoryLabel": "該当講義資料なし",
+            "categoryRaw": "講義資料に該当箇所なし",
+            "needsSupplement": true
+          },
+          {
+            "subNumber": 5,
+            "type": "true_false",
+            "prompt": "天然繊維の中で、水分率が最も高く吸湿性のある繊維は羊毛(毛)である。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "動物繊維である羊毛は天然繊維の中でも特に吸湿性が高い。",
+            "categoryId": "講義資料に該当箇所なし",
+            "categoryLabel": "該当講義資料なし",
+            "categoryRaw": "講義資料に該当箇所なし",
+            "needsSupplement": true
+          }
+        ]
+      },
+      {
+        "questionNumber": 23,
+        "passage": "次の文章につき、正しい場合は○、誤っている場合は×を選びなさい。",
+        "subQuestions": [
+          {
+            "subNumber": 1,
+            "type": "true_false",
+            "prompt": "サルモネラ属菌は、食肉、特に鶏肉や卵を汚染することが多いので、十分に加熱(75°C以上、1分以上)し、卵の生食は新鮮なものに限るなどの注意を要する。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "サルモネラ食中毒対策の基本として正しい。",
+            "categoryId": "B-15",
+            "categoryLabel": "B-15　食生活",
+            "categoryRaw": "B-15食生活",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 2,
+            "type": "true_false",
+            "prompt": "「残留農薬等のネガティブリスト制度」では、ヒトの健康への障害を未然に防ぐ目的で食品中に残留する農薬の限度値を定めて、この値を超えた食品は市場に流通しないように規制している。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "正しくは『ポジティブリスト制度』（基準のない農薬等は一律基準を適用）。",
+            "categoryId": "B-15",
+            "categoryLabel": "B-15　食生活",
+            "categoryRaw": "B-15",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 3,
+            "type": "true_false",
+            "prompt": "食品に砂糖を添加する糖蔵は、食品中の自由水の割合を増加させ、水分活性を低下させる保存方法である。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "糖蔵は自由水を『減少』させることで水分活性を低下させる保存方法。",
+            "categoryId": "B-15",
+            "categoryLabel": "B-15　食生活",
+            "categoryRaw": "B-15",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 4,
+            "type": "true_false",
+            "prompt": "飽和脂肪酸を多く含む動物性の油脂は融点が高く、不飽和脂肪酸を多く含む魚や植物性の油脂は融点が低い。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "脂肪酸の基本的性質として正しい。",
+            "categoryId": "B-15",
+            "categoryLabel": "B-15　食生活",
+            "categoryRaw": "B-15",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 5,
+            "type": "true_false",
+            "prompt": "カリウムは血圧を下げる効果があるとされ、「日本人の食事摂取基準(2020年版)」では、男性3,000mg /日以上、女性2,600mg /日以上(男性・女性とも30~49歳)が目標量として設定されている。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "日本人の食事摂取基準に基づく記述として正しい。",
+            "categoryId": "B-15",
+            "categoryLabel": "B-15　食生活",
+            "categoryRaw": "B-15",
+            "needsSupplement": false
+          }
+        ]
+      },
+      {
+        "questionNumber": 24,
+        "passage": "次の文章につき、正しい場合は○、誤っている場合は×を選びなさい。",
+        "subQuestions": [
+          {
+            "subNumber": 1,
+            "type": "true_false",
+            "prompt": "テラスハウスとは、連続住宅ともいわれ複数の低層階建物が境界の壁を共有して横に連なった型式の集合住宅をいい、独立した庭などが各戸に設けられている。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "連続建て（テラスハウス）の一般的説明として正しい。",
+            "categoryId": "B-14",
+            "categoryLabel": "B-14　住宅の知識",
+            "categoryRaw": "B-14住宅（建材知識は要補完）",
+            "needsSupplement": true
+          },
+          {
+            "subNumber": 2,
+            "type": "true_false",
+            "prompt": "枠組壁工法とは、建築構造の木構造のひとつであり、この工法において柱が見えるような仕上がりのことを真壁造という。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "枠組壁工法（2×4）は柱を見せない大壁造が基本。真壁造は在来軸組工法における伝統的な壁の造り方。",
+            "categoryId": "B-14",
+            "categoryLabel": "B-14　住宅の知識",
+            "categoryRaw": "B-14",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 3,
+            "type": "true_false",
+            "prompt": "鉄筋コンクリート構造は、引張りに強い鉄筋と圧縮に強いコンクリートを組み合わせた構造であり、耐火性、耐震性、耐久性、強度に優れた構造体である。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "RC構造の基本的特徴として正しい。",
+            "categoryId": "B-14",
+            "categoryLabel": "B-14　住宅の知識",
+            "categoryRaw": "B-14",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 4,
+            "type": "true_false",
+            "prompt": "建築物の構造方式のひとつである架構式とは、コンクリートブロックなどの単位体をモルタルで接着しながら積み重ねて構造体となる壁を作る方式である。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "これは『組積式（壁式）』の説明。架構式は柱・梁の骨組みで構成する方式。",
+            "categoryId": "B-14",
+            "categoryLabel": "B-14　住宅の知識",
+            "categoryRaw": "B-14",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 5,
+            "type": "true_false",
+            "prompt": "コンクリートの中性化とは、集合住宅などの躯体で使われるコンクリートに、空気中の二酸化炭素が侵入して化学反応を起こし、コンクリートが劣化する現象である。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "中性化現象の説明として正しい。",
+            "categoryId": "B-14",
+            "categoryLabel": "B-14　住宅の知識",
+            "categoryRaw": "B-14",
+            "needsSupplement": false
+          }
+        ]
+      },
+      {
+        "questionNumber": 25,
+        "passage": "理容師法によると理容とは「【ア】の刈込、【イ】等の方法により容姿を整えること」をいう。一方、美容師法によると、美容とは「パーマネントウエーブ、【ウ】、化粧等の方法により、容姿を美しくすること」をいう。また両サービスに共通するものの一つとして、【エ】が含まれている。理容・美容の技術者には、【オ】の免許を受けることが義務付けられている。",
+        "subQuestions": [
+          {
+            "subNumber": 1,
+            "type": "fill_blank",
+            "prompt": "【ア】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 結髪",
+              "② 毛髪",
+              "③ 頭髪",
+              "④ 毛"
+            ],
+            "correctAnswer": "③ 頭髪",
+            "explanation": "理容師法における理容の定義は『頭髪の刈込み等により容姿を整えること』。",
+            "categoryId": "講義資料に該当箇所なし",
+            "categoryLabel": "該当講義資料なし",
+            "categoryRaw": "講義資料に該当箇所なし（要補完）",
+            "needsSupplement": true
+          },
+          {
+            "subNumber": 2,
+            "type": "fill_blank",
+            "prompt": "【イ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 結髪",
+              "② 染毛",
+              "③ マッサージ",
+              "④ 顔そり"
+            ],
+            "correctAnswer": "④ 顔そり",
+            "explanation": "理容には頭髪の刈込みに加え顔そり等が含まれる。",
+            "categoryId": "講義資料に該当箇所なし",
+            "categoryLabel": "該当講義資料なし",
+            "categoryRaw": "講義資料に該当箇所なし",
+            "needsSupplement": true
+          },
+          {
+            "subNumber": 3,
+            "type": "fill_blank",
+            "prompt": "【ウ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 結髪",
+              "② 染毛",
+              "③ マッサージ",
+              "④ 顔そり"
+            ],
+            "correctAnswer": "① 結髪",
+            "explanation": "美容師法の定義は『パーマ・結髪・化粧等により容姿を美しくすること』。",
+            "categoryId": "講義資料に該当箇所なし",
+            "categoryLabel": "該当講義資料なし",
+            "categoryRaw": "講義資料に該当箇所なし",
+            "needsSupplement": true
+          },
+          {
+            "subNumber": 4,
+            "type": "fill_blank",
+            "prompt": "【エ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 結髪",
+              "② 染毛",
+              "③ マッサージ",
+              "④ 顔そり"
+            ],
+            "correctAnswer": "② 染毛",
+            "explanation": "染毛は理容・美容双方に共通するサービス。",
+            "categoryId": "講義資料に該当箇所なし",
+            "categoryLabel": "該当講義資料なし",
+            "categoryRaw": "講義資料に該当箇所なし",
+            "needsSupplement": true
+          },
+          {
+            "subNumber": 5,
+            "type": "fill_blank",
+            "prompt": "【オ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 内閣総理大臣",
+              "② 厚生労働大臣",
+              "③ 都道府県知事",
+              "④ 保健所"
+            ],
+            "correctAnswer": "② 厚生労働大臣",
+            "explanation": "理容師・美容師の免許は厚生労働大臣が付与する。",
+            "categoryId": "講義資料に該当箇所なし",
+            "categoryLabel": "該当講義資料なし",
+            "categoryRaw": "講義資料に該当箇所なし",
+            "needsSupplement": true
+          }
+        ]
+      },
+      {
+        "questionNumber": 26,
+        "passage": "わが国の医療に関する次の文章につき、正しい場合は○、誤っている場合は×を選びなさい。",
+        "subQuestions": [
+          {
+            "subNumber": 1,
+            "type": "true_false",
+            "prompt": "診療報酬と介護報酬の同時改定は5年ごとに実施されてきている。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "同時改定は診療報酬（2年周期）と介護報酬（3年周期）が重なる『6年ごと』に実施される。",
+            "categoryId": "グループA（医療・社会保障）",
+            "categoryLabel": "グループA（医療・社会保障）",
+            "categoryRaw": "グループA（医療・社会保障）",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 2,
+            "type": "true_false",
+            "prompt": "日本は諸外国に比べ病床数が多く、平均在院日数が長くなっている。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "日本の医療提供体制の特徴として正しい。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 3,
+            "type": "true_false",
+            "prompt": "2024年度からの医療計画では、新興感染症対策が6事業の1つとして位置付けられる。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "従来の5事業に新興感染症対策が加わり6事業となった。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 4,
+            "type": "true_false",
+            "prompt": "要指導医薬品の販売・購入に当たっては、処方せんが必要である。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "要指導医薬品は薬剤師の対面情報提供等により処方せんなしで購入できる医薬品。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 5,
+            "type": "true_false",
+            "prompt": "処方せんの有効期限は、発行日を含めて1週間である。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "原則として発行日を含め4日以内が有効期限。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          }
+        ]
+      },
+      {
+        "questionNumber": 27,
+        "passage": "介護保険制度は、65歳以上の【ア】被保険者が制度発足当初の1.6倍に増加する中で、近年特に要介護1や【イ】の認定者数の増加が大きい。介護保険制度における施設サービスとしては、介護老人保健施設、介護療養病床、【ウ】等の他、近年、介護医療院が制度化され、急速に増加している。介護医療院においては、住まいの機能を重視するとともに、【エ】まで担う機能を有することが求められている。介護保険の財源のうち、公費50%については、国、都道府県、市町村がそれぞれこの順で【オ】の割合で負担している。",
+        "subQuestions": [
+          {
+            "subNumber": 1,
+            "type": "fill_blank",
+            "prompt": "【ア】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 第1号",
+              "② 第2号",
+              "③ 第3号",
+              "④ 第4号"
+            ],
+            "correctAnswer": "① 第1号",
+            "explanation": "65歳以上は第1号被保険者、40〜64歳の医療保険加入者は第2号被保険者。",
+            "categoryId": "グループA（社会保障）",
+            "categoryLabel": "グループA（社会保障）",
+            "categoryRaw": "グループA（社会保障）",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 2,
+            "type": "fill_blank",
+            "prompt": "【イ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 要介護2",
+              "② 要介護5",
+              "③ 要支援",
+              "④ 要保護"
+            ],
+            "correctAnswer": "③ 要支援",
+            "explanation": "要介護1とともに、要支援認定者数の増加が近年大きい。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 3,
+            "type": "fill_blank",
+            "prompt": "【ウ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 医療療養病床",
+              "② 回復期病床",
+              "③ 特別養護老人ホーム",
+              "④ 地域包括ケア病床"
+            ],
+            "correctAnswer": "③ 特別養護老人ホーム",
+            "explanation": "介護老人保健施設・介護療養病床・特別養護老人ホームが従来の施設サービス。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 4,
+            "type": "fill_blank",
+            "prompt": "【エ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 急性期医療",
+              "② 回復期医療",
+              "③ 在宅復帰",
+              "④ 看取り"
+            ],
+            "correctAnswer": "④ 看取り",
+            "explanation": "住まいの機能に加え、看取り・ターミナルケアの機能が求められる。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 5,
+            "type": "fill_blank",
+            "prompt": "【オ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 30%、10%、10%",
+              "② 25%、12.5%、12.5%",
+              "③ 25%、15%、10%",
+              "④ 20%、15%、15%"
+            ],
+            "correctAnswer": "② 25%、12.5%、12.5%",
+            "explanation": "公費50％のうち国25％、都道府県12.5％、市町村12.5％の割合で負担。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          }
+        ]
+      },
+      {
+        "questionNumber": 28,
+        "passage": "わが国の社会保障に関する次の文章につき、正しい場合は○、誤っている場合は× を選びなさい。",
+        "subQuestions": [
+          {
+            "subNumber": 1,
+            "type": "true_false",
+            "prompt": "「社会保障と税の一体改革」における「税の改革」とは、もっぱら所得税・法人税に関する税制改正を指している。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "一体改革の中心は『消費税』の社会保障財源化であり、所得税・法人税が中心ではない。",
+            "categoryId": "グループA（社会保障）",
+            "categoryLabel": "グループA（社会保障）",
+            "categoryRaw": "グループA（社会保障）",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 2,
+            "type": "true_false",
+            "prompt": "前期高齢者医療制度の運営主体は、都道府県ごとにすべての市町村が参加する広域連合である。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "広域連合が運営するのは『後期高齢者医療制度』。前期高齢者医療制度は各医療保険者間の財政調整の仕組み。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 3,
+            "type": "true_false",
+            "prompt": "遺族厚生年金の年金額は、老齢厚生年金の報酬比例の年金額の4分の 3が基本である。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "遺族厚生年金の給付水準として正しい。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 4,
+            "type": "true_false",
+            "prompt": "認定こども園の数は、2022年4月現在、保育所の数を上回るに至っている。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "2022年時点でも保育所数の方が多い。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 5,
+            "type": "true_false",
+            "prompt": "生活保護の医療扶助においては、後発医薬品の使用が原則とされている。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "医療扶助における後発医薬品使用原則として正しい。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          }
+        ]
+      },
+      {
+        "questionNumber": 29,
+        "passage": "次の文章につき、正しい場合は○、誤っている場合は×を選びなさい。",
+        "subQuestions": [
+          {
+            "subNumber": 1,
+            "type": "true_false",
+            "prompt": "石炭、石油や天然ガスは化石燃料と呼ばれるが、化石燃料は生成起源が同じことから、それぞれ地球全体に均等に埋蔵されている。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "× 誤り",
+            "explanation": "化石燃料の埋蔵は中東等、地域的に大きく偏在している。",
+            "categoryId": "グループA（エネルギー・環境）",
+            "categoryLabel": "グループA（エネルギー・環境）",
+            "categoryRaw": "グループA（エネルギー・環境）",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 2,
+            "type": "true_false",
+            "prompt": "世界の原子力利用状況について、原子力発電量は世界全体発電量の 10%(2020年)を賄っており、2022年には431基で約4億kWの設備容量を備えている。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "原子力発電の世界的な位置づけとして正しい。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 3,
+            "type": "true_false",
+            "prompt": "加害者と被害者が同一である都市型公害問題として、1970年代に発生した光化学スモッグが挙げられる。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "1970年代の公害問題としての光化学スモッグの説明は正しい。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 4,
+            "type": "true_false",
+            "prompt": "1992 年、世界全体での地球温暖化対策への取り組みに合意がなされ、国連気候変動枠組条約に基づき国連気候変動枠組条約締約国会議(COP)が1995年から毎年(コロナ禍期除く)開催されている。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "国連気候変動枠組条約とCOPの経緯として正しい。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 5,
+            "type": "true_false",
+            "prompt": "ZEH(net Zero Energy House)のメリットとして「経済性」「快適・健康性」「レジリエンス」などが挙げられる。",
+            "choices": [
+              "〇 正しい",
+              "× 誤り"
+            ],
+            "correctAnswer": "〇 正しい",
+            "explanation": "ZEH（ネット・ゼロ・エネルギー・ハウス）のメリットとして正しい。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          }
+        ]
+      },
+      {
+        "questionNumber": 30,
+        "passage": "無尽蔵といわれる水力、太陽光、【ア】やバイオマス等の再生可能エネルギーは、温室効果ガスを排出せず、国内で生産できることから、エネルギー安全保障にも寄与できる重要な【イ】国産エネルギー源である。わが国において電力の【ウ】%程度を賄っている水力発電は、近年は中小水力発電の建設が活発化しており、河川の流水を利用する以外にも農業用水や上下水道を利用する場合もある。単位発電電力量当たりの面積が火力発電や原子力発電に比べて【エ】倍程度になる太陽光発電は、日射量に左右されるためバックアップ電源または電力貯蔵等が不可欠である。風力発電は国内発電量の【オ】が、毎年大きな規模での新設があり、今後は大きな導入ポテンシャルを持つ洋上風力発電も検討、計画されている。",
+        "subQuestions": [
+          {
+            "subNumber": 1,
+            "type": "fill_blank",
+            "prompt": "【ア】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 石油",
+              "② 原子力",
+              "③ 地熱",
+              "④ 燃料電池"
+            ],
+            "correctAnswer": "③ 地熱",
+            "explanation": "水力、太陽光、地熱、バイオマス等が再生可能エネルギーとして挙げられる。",
+            "categoryId": "グループA（エネルギー）",
+            "categoryLabel": "グループA（エネルギー）",
+            "categoryRaw": "グループA（エネルギー）",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 2,
+            "type": "fill_blank",
+            "prompt": "【イ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 低炭素の",
+              "② 省エネの",
+              "③ 安定した",
+              "④ 安価な"
+            ],
+            "correctAnswer": "① 低炭素の",
+            "explanation": "温室効果ガスを排出しない『低炭素の』国産エネルギー源として位置づけられる。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 3,
+            "type": "fill_blank",
+            "prompt": "【ウ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 5",
+              "② 10",
+              "③ 20",
+              "④ 30"
+            ],
+            "correctAnswer": "② 10",
+            "explanation": "日本の電力に占める水力発電の割合はおおむね1割程度。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 4,
+            "type": "fill_blank",
+            "prompt": "【エ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 2",
+              "② 10",
+              "③ 50",
+              "④ 100"
+            ],
+            "correctAnswer": "④ 100",
+            "explanation": "太陽光発電はエネルギー密度が小さく、火力・原子力と比べ広い面積を要する。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          },
+          {
+            "subNumber": 5,
+            "type": "fill_blank",
+            "prompt": "【オ】の部分に最も適当なものを、下記の選択肢から選びなさい。",
+            "choices": [
+              "① 1%に満たない",
+              "② 5%程度である",
+              "③ 10%程度である",
+              "④ 20%程度である"
+            ],
+            "correctAnswer": "① 1%に満たない",
+            "explanation": "2023年時点で日本の風力発電の発電量シェアはごく小さい。",
+            "categoryId": "グループA",
+            "categoryLabel": "グループA（全般）",
+            "categoryRaw": "グループA",
+            "needsSupplement": false
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "name": "消費生活アドバイザー試験対策",
+  "short_name": "消費生活アドバイザー試験対策",
+  "description": "消費生活アドバイザー資格試験（消費生活相談員資格試験兼用）第1次試験の過去問12回・1,800問をオフラインで反復学習できるアプリ",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f8f4e8",
+  "theme_color": "#1d3557",
+  "orientation": "portrait-primary",
+  "lang": "ja",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "icon-maskable.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}
