@@ -40,15 +40,15 @@ const App = (() => {
   }
 
   async function refreshHomeReviewCount() {
-    const missed = await Storage.getMissedQuestionIds();
-    const valid = missed.filter((id) => allData.questions.has(id));
+    const weakIds = await Storage.getWeakQuestions();
+    const valid = weakIds.filter((id) => allData.questions.has(id));
     const desc = document.getElementById('review-count-desc');
     const reviewCard = document.querySelector('.mode-card[data-mode="review"]');
     if (valid.length === 0) {
       desc.textContent = '不正解の問題はまだありません';
       reviewCard.disabled = true;
     } else {
-      desc.textContent = `直近の不正解 ${valid.length}問を再出題`;
+      desc.textContent = `苦手問題 ${valid.length}問を復習`;
       reviewCard.disabled = false;
     }
   }
@@ -57,7 +57,7 @@ const App = (() => {
     if (mode === 'honban') renderHonbanConfig();
     else if (mode === 'random') renderRandomConfig();
     else if (mode === 'category') renderCategoryConfig();
-    else if (mode === 'review') startReview();
+    else if (mode === 'review') renderReviewConfig();
   }
 
   function showModeConfig(title, bodyEl) {
@@ -68,13 +68,22 @@ const App = (() => {
     showScreen('mode-config');
   }
 
-  function renderHonbanConfig() {
+  // 回答済み件数の内訳: questionId -> 回答済みかどうか の判定に使う一覧を取得する。
+  async function getAnsweredIdSet() {
+    const results = await Storage.getAllResults();
+    return new Set(results.map((r) => r.questionId));
+  }
+
+  async function renderHonbanConfig() {
+    const answered = await getAnsweredIdSet();
     const list = document.createElement('div');
     list.className = 'config-list';
     for (const exam of allData.examList) {
+      const ids = allData.byExam.get(exam.examId) || [];
+      const answeredCount = ids.filter((id) => answered.has(id)).length;
       const item = document.createElement('button');
       item.className = 'config-item';
-      item.innerHTML = `<span>${escapeHtml(exam.label)}</span><span class="count-badge">${exam.count}問</span>`;
+      item.innerHTML = `<span>${escapeHtml(exam.label)}</span><span class="count-badge">${answeredCount}/${exam.count} 回答済み</span>`;
       item.addEventListener('click', () => beginSession(Modes.honban(allData, exam.examId)));
       list.appendChild(item);
     }
@@ -94,23 +103,43 @@ const App = (() => {
     showModeConfig('ランダムモード：問題数を選択', list);
   }
 
-  function renderCategoryConfig() {
+  async function renderCategoryConfig() {
+    const answered = await getAnsweredIdSet();
     const list = document.createElement('div');
     list.className = 'config-list';
     for (const cat of allData.categories) {
+      const ids = allData.byCategory.get(cat.categoryId) || [];
+      const answeredCount = ids.filter((id) => answered.has(id)).length;
       const item = document.createElement('button');
       item.className = 'config-item';
       const badge = cat.needsSupplement ? '<span class="badge">要補完</span>' : '';
-      item.innerHTML = `<span>${escapeHtml(cat.label)} ${badge}</span><span class="count-badge">${cat.questionCount}問</span>`;
+      item.innerHTML = `<span>${escapeHtml(cat.label)} ${badge}</span><span class="count-badge">${answeredCount}/${cat.questionCount} 回答済み</span>`;
       item.addEventListener('click', () => beginSession(Modes.category(allData, cat.categoryId)));
       list.appendChild(item);
     }
     showModeConfig('分野別モード：分野を選択', list);
   }
 
-  async function startReview() {
-    const result = await Modes.review(allData);
-    beginSession(result);
+  async function renderReviewConfig() {
+    const weakIds = await Storage.getWeakQuestions();
+    const poolSize = weakIds.filter((id) => allData.questions.has(id)).length;
+
+    const list = document.createElement('div');
+    list.className = 'config-list';
+
+    const note = document.createElement('p');
+    note.className = 'config-note';
+    note.textContent = `対象（一度でも間違えた問題）: ${poolSize}問`;
+    list.appendChild(note);
+
+    for (const count of [10, 30, 50]) {
+      const item = document.createElement('button');
+      item.className = 'config-item';
+      item.innerHTML = `<span>${count}問</span><span class="count-badge">正答率が低い順</span>`;
+      item.addEventListener('click', async () => beginSession(await Modes.review(allData, count)));
+      list.appendChild(item);
+    }
+    showModeConfig('復習モード：問題数を選択', list);
   }
 
   // ---------- クイズ実行 ----------

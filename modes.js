@@ -31,18 +31,19 @@ const Modes = (() => {
     return { queue, meta: { mode: 'category', label: `分野別モード（${label}）`, categoryId } };
   }
 
-  async function review(allData) {
-    const missedIds = await Storage.getMissedQuestionIds();
-    const valid = missedIds.filter((id) => allData.questions.has(id));
-    const queue = shuffle(valid);
-    return { queue, meta: { mode: 'review', label: '復習モード' } };
+  // 一度でも間違えたことがある問題を正答率が低い順に、指定件数まで出題する。
+  async function review(allData, count) {
+    const weakIds = await Storage.getWeakQuestions();
+    const valid = weakIds.filter((id) => allData.questions.has(id));
+    const queue = valid.slice(0, Math.min(count, valid.length));
+    return { queue, meta: { mode: 'review', label: `復習モード（${count}問）`, count } };
   }
 
   async function rebuild(allData, meta) {
     if (meta.mode === 'honban') return honban(allData, meta.examId);
     if (meta.mode === 'random') return random(allData, meta.count);
     if (meta.mode === 'category') return category(allData, meta.categoryId);
-    if (meta.mode === 'review') return review(allData);
+    if (meta.mode === 'review') return review(allData, meta.count);
     throw new Error(`unknown mode: ${meta.mode}`);
   }
 

@@ -220,6 +220,13 @@ body {
   margin-top: 2rem;
 }
 
+.config-note {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  text-align: left;
+  margin: 0;
+}
+
 /* クイズ画面 */
 .quiz-progress {
   display: flex;

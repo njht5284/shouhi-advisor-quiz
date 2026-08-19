@@ -59,16 +59,23 @@ const Storage = (() => {
     return record;
   }
 
-  async function getMissedQuestionIds() {
-    const store = await tx('questionResults', 'readonly');
-    const index = store.index('lastResult');
-    const rows = await promisify(index.getAll('incorrect'));
-    return rows.map((r) => r.questionId);
-  }
-
   async function getAllResults() {
     const store = await tx('questionResults', 'readonly');
     return promisify(store.getAll());
+  }
+
+  // 一度でも間違えたことがある問題を、正答率が低い順（同率なら挑戦回数が多い順）に返す。
+  // 復習モードの出題プールとして使う。
+  async function getWeakQuestions() {
+    const all = await getAllResults();
+    const weak = all.filter((r) => r.correctCount < r.attemptCount);
+    weak.sort((a, b) => {
+      const accA = a.correctCount / a.attemptCount;
+      const accB = b.correctCount / b.attemptCount;
+      if (accA !== accB) return accA - accB;
+      return b.attemptCount - a.attemptCount;
+    });
+    return weak.map((r) => r.questionId);
   }
 
   async function saveSession(session) {
@@ -83,5 +90,5 @@ const Storage = (() => {
     return all.slice(0, limit);
   }
 
-  return { recordAnswer, getMissedQuestionIds, getAllResults, saveSession, getRecentSessions };
+  return { recordAnswer, getAllResults, getWeakQuestions, saveSession, getRecentSessions };
 })();
