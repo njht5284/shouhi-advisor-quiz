@@ -77,6 +77,22 @@ def merge_exam(exam_id, pdf_path, xlsx_path, sheet_name):
             category_id = category_id or "未分類"
             supplement = needs_supplement(excel_row["categoryRaw"], category_id)
 
+            # 誤り箇所ハイライト用フレーズ: promptに実在する部分文字列のみ採用する
+            # （Excel側のデータ不整合やprompt側の抽出変更で不一致になった場合に
+            # 誤ったハイライトを出さないための最終防衛ライン）。
+            wrong_phrases = []
+            if sq["type"] == "true_false" and final_correct_answer.startswith("×"):
+                prompt_norm = unicodedata.normalize("NFKC", sq["prompt"])
+                for phrase in excel_row.get("wrongPhrases", []):
+                    phrase_norm = unicodedata.normalize("NFKC", phrase)
+                    if phrase_norm and phrase_norm in prompt_norm:
+                        wrong_phrases.append(phrase)
+                    else:
+                        warnings.append(
+                            f"[{exam_id}] 問{mq['questionNumber']}-{sq['subNumber']}: "
+                            f"[参考]誤り箇所フレーズ'{phrase}'がpromptに見つからず除外"
+                        )
+
             out_subs.append(
                 {
                     "subNumber": sq["subNumber"],
@@ -89,6 +105,7 @@ def merge_exam(exam_id, pdf_path, xlsx_path, sheet_name):
                     "categoryLabel": label,
                     "categoryRaw": excel_row["categoryRaw"],
                     "needsSupplement": supplement,
+                    "wrongPhrases": wrong_phrases,
                 }
             )
 

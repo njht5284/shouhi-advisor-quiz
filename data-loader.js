@@ -88,6 +88,7 @@ const DataLoader = (() => {
               categoryId: sq.categoryId,
               categoryLabel: sq.categoryLabel,
               needsSupplement: sq.needsSupplement,
+              wrongPhrases: sq.wrongPhrases || [],
             };
             questions.set(blankId, single);
             unitIds.push(blankId);

@@ -255,6 +255,16 @@ body {
   color: var(--navy);
 }
 
+/* 正誤判定型で正答が「× 誤り」の場合、回答後に問題文中の誤り箇所を強調表示する */
+.wrong-phrase {
+  color: var(--incorrect);
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-color: var(--incorrect);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+}
+
 .quiz-choices {
   display: flex;
   flex-direction: column;

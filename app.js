@@ -19,6 +19,35 @@ const App = (() => {
     return div.innerHTML;
   }
 
+  // 問題文(text)中の誤り箇所(phrases)を <span class="wrong-phrase"> で囲んだHTMLを返す。
+  // 各フレーズの最初の出現箇所のみ対象。重なる範囲は先に見つかった方を優先する。
+  function highlightWrongPhrases(text, phrases) {
+    const spans = [];
+    for (const phrase of phrases) {
+      const start = text.indexOf(phrase);
+      if (start === -1) continue;
+      spans.push({ start, end: start + phrase.length });
+    }
+    spans.sort((a, b) => a.start - b.start);
+
+    const merged = [];
+    for (const span of spans) {
+      const last = merged[merged.length - 1];
+      if (last && span.start < last.end) continue; // 重複範囲はスキップ
+      merged.push(span);
+    }
+
+    let html = '';
+    let cursor = 0;
+    for (const span of merged) {
+      html += escapeHtml(text.slice(cursor, span.start));
+      html += `<span class="wrong-phrase">${escapeHtml(text.slice(span.start, span.end))}</span>`;
+      cursor = span.end;
+    }
+    html += escapeHtml(text.slice(cursor));
+    return html;
+  }
+
   async function init() {
     showScreen('loading');
     allData = await DataLoader.load();
@@ -224,6 +253,11 @@ const App = (() => {
     });
 
     document.getElementById('quiz-score-text').textContent = `正解 ${session.score}`;
+
+    // 正答が「× 誤り」の設問は、問題文中の誤り箇所を赤字でハイライトする。
+    if (q.correctAnswer.startsWith('×') && q.wrongPhrases && q.wrongPhrases.length > 0) {
+      document.getElementById('quiz-prompt').innerHTML = highlightWrongPhrases(q.prompt, q.wrongPhrases);
+    }
 
     const feedback = document.getElementById('quiz-feedback');
     const resultEl = document.getElementById('quiz-feedback-result');
