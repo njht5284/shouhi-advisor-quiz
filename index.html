@@ -61,16 +61,28 @@
       <span id="quiz-score-text"></span>
     </div>
     <div id="quiz-passage" class="quiz-passage" hidden></div>
-    <div id="quiz-prompt" class="quiz-prompt"></div>
-    <div id="quiz-choices" class="quiz-choices"></div>
-    <div id="quiz-feedback" class="quiz-feedback" hidden>
-      <div id="quiz-feedback-result" class="feedback-result"></div>
-      <div id="quiz-feedback-explanation" class="feedback-explanation"></div>
-      <div id="quiz-feedback-supplement" class="feedback-supplement" hidden>
-        ※この分野は提供講義資料に該当箇所が見当たらず、解説は一般知識に基づく参考情報です。
+
+    <!-- 正誤判定型（小問1つ） -->
+    <div id="quiz-single" hidden>
+      <div id="quiz-prompt" class="quiz-prompt"></div>
+      <div id="quiz-choices" class="quiz-choices"></div>
+      <div id="quiz-feedback" class="quiz-feedback" hidden>
+        <div id="quiz-feedback-result" class="feedback-result"></div>
+        <div id="quiz-feedback-explanation" class="feedback-explanation"></div>
+        <div id="quiz-feedback-supplement" class="feedback-supplement" hidden>
+          ※この分野は提供講義資料に該当箇所が見当たらず、解説は一般知識に基づく参考情報です。
+        </div>
       </div>
-      <button id="quiz-next-btn" class="primary-btn">次へ</button>
     </div>
+
+    <!-- 穴埋め型（大問1つ、【ア】〜【オ】をまとめて解答） -->
+    <div id="quiz-group" hidden>
+      <div id="quiz-blank-list" class="blank-list"></div>
+      <button id="group-submit-btn" class="primary-btn" disabled>採点する</button>
+      <div id="quiz-group-feedback" class="blank-feedback-list" hidden></div>
+    </div>
+
+    <button id="quiz-next-btn" class="primary-btn" hidden>次へ</button>
   </section>
 
   <!-- 結果画面 -->

@@ -40,15 +40,14 @@ const App = (() => {
   }
 
   async function refreshHomeReviewCount() {
-    const weakIds = await Storage.getWeakQuestions();
-    const valid = weakIds.filter((id) => allData.questions.has(id));
+    const units = await Modes.weakUnitIds(allData);
     const desc = document.getElementById('review-count-desc');
     const reviewCard = document.querySelector('.mode-card[data-mode="review"]');
-    if (valid.length === 0) {
+    if (units.length === 0) {
       desc.textContent = '不正解の問題はまだありません';
       reviewCard.disabled = true;
     } else {
-      desc.textContent = `苦手問題 ${valid.length}問を復習`;
+      desc.textContent = `苦手問題 ${units.length}問を復習`;
       reviewCard.disabled = false;
     }
   }
@@ -79,7 +78,7 @@ const App = (() => {
     const list = document.createElement('div');
     list.className = 'config-list';
     for (const exam of allData.examList) {
-      const ids = allData.byExam.get(exam.examId) || [];
+      const ids = allData.examBlankIds.get(exam.examId) || [];
       const answeredCount = ids.filter((id) => answered.has(id)).length;
       const item = document.createElement('button');
       item.className = 'config-item';
@@ -108,7 +107,7 @@ const App = (() => {
     const list = document.createElement('div');
     list.className = 'config-list';
     for (const cat of allData.categories) {
-      const ids = allData.byCategory.get(cat.categoryId) || [];
+      const ids = allData.categoryBlankIds.get(cat.categoryId) || [];
       const answeredCount = ids.filter((id) => answered.has(id)).length;
       const item = document.createElement('button');
       item.className = 'config-item';
@@ -121,8 +120,7 @@ const App = (() => {
   }
 
   async function renderReviewConfig() {
-    const weakIds = await Storage.getWeakQuestions();
-    const poolSize = weakIds.filter((id) => allData.questions.has(id)).length;
+    const poolSize = (await Modes.weakUnitIds(allData)).length;
 
     const list = document.createElement('div');
     list.className = 'config-list';
@@ -161,8 +159,12 @@ const App = (() => {
     return p;
   }
 
+  const BLANK_LABELS = ['ア', 'イ', 'ウ', 'エ', 'オ', 'カ', 'キ', 'ク'];
+  let groupSelections = null; // 穴埋めグループ回答中: blanks と同じ順の選択インデックス配列（未選択はnull）
+
   function wireQuiz() {
     document.getElementById('quiz-next-btn').addEventListener('click', onNextClicked);
+    document.getElementById('group-submit-btn').addEventListener('click', onGroupSubmit);
   }
 
   function renderQuestion() {
@@ -179,13 +181,28 @@ const App = (() => {
       passageEl.hidden = true;
     }
 
+    document.getElementById('quiz-next-btn').hidden = true;
+
+    if (q.kind === 'group') {
+      document.getElementById('quiz-single').hidden = true;
+      document.getElementById('quiz-group').hidden = false;
+      renderGroupQuestion(q);
+    } else {
+      document.getElementById('quiz-group').hidden = true;
+      document.getElementById('quiz-single').hidden = false;
+      renderSingleQuestion(q);
+    }
+  }
+
+  // ---------- 正誤判定型（小問1つ） ----------
+  function renderSingleQuestion(q) {
     document.getElementById('quiz-prompt').textContent = q.prompt;
 
     const choicesEl = document.getElementById('quiz-choices');
     choicesEl.innerHTML = '';
     q.choices.forEach((choice, idx) => {
       const btn = document.createElement('button');
-      btn.className = 'choice-btn' + (q.type === 'true_false' ? ' tf' : '');
+      btn.className = 'choice-btn tf';
       btn.textContent = choice;
       btn.addEventListener('click', () => onChoiceClicked(idx));
       choicesEl.appendChild(btn);
@@ -214,8 +231,102 @@ const App = (() => {
     resultEl.className = 'feedback-result ' + (result.isCorrect ? 'is-correct' : 'is-incorrect');
     document.getElementById('quiz-feedback-explanation').textContent = q.explanation || '';
     document.getElementById('quiz-feedback-supplement').hidden = !q.needsSupplement;
-    document.getElementById('quiz-next-btn').textContent = QuizEngine.isLast(session) ? '結果を見る' : '次へ';
     feedback.hidden = false;
+
+    showNextButton();
+  }
+
+  // ---------- 穴埋め型（大問1つ、【ア】〜【オ】をまとめて解答） ----------
+  function renderGroupQuestion(group) {
+    groupSelections = new Array(group.blanks.length).fill(null);
+
+    const listEl = document.getElementById('quiz-blank-list');
+    listEl.innerHTML = '';
+
+    group.blanks.forEach((blank, blankIdx) => {
+      const item = document.createElement('div');
+      item.className = 'blank-item';
+
+      const label = document.createElement('div');
+      label.className = 'blank-label';
+      label.textContent = `【${BLANK_LABELS[blankIdx] || blankIdx + 1}】`;
+      item.appendChild(label);
+
+      const choicesEl = document.createElement('div');
+      choicesEl.className = 'blank-choices';
+      blank.choices.forEach((choice, choiceIdx) => {
+        const btn = document.createElement('button');
+        btn.className = 'blank-choice-btn';
+        btn.textContent = choice;
+        btn.addEventListener('click', () => onBlankChoiceClicked(blankIdx, choiceIdx));
+        choicesEl.appendChild(btn);
+      });
+      item.appendChild(choicesEl);
+      listEl.appendChild(item);
+    });
+
+    const submitBtn = document.getElementById('group-submit-btn');
+    submitBtn.disabled = true;
+    submitBtn.hidden = false;
+
+    const feedbackEl = document.getElementById('quiz-group-feedback');
+    feedbackEl.hidden = true;
+    feedbackEl.innerHTML = '';
+  }
+
+  function onBlankChoiceClicked(blankIdx, choiceIdx) {
+    groupSelections[blankIdx] = choiceIdx;
+    const item = document.querySelectorAll('#quiz-blank-list .blank-item')[blankIdx];
+    item.querySelectorAll('.blank-choice-btn').forEach((b, i) => {
+      b.classList.toggle('selected', i === choiceIdx);
+    });
+    document.getElementById('group-submit-btn').disabled = groupSelections.some((v) => v === null);
+  }
+
+  async function onGroupSubmit() {
+    document.querySelectorAll('#quiz-blank-list .blank-choice-btn').forEach((b) => { b.disabled = true; });
+    document.getElementById('group-submit-btn').hidden = true;
+
+    const results = await QuizEngine.answerGroup(session, groupSelections);
+
+    const items = document.querySelectorAll('#quiz-blank-list .blank-item');
+    results.forEach((r, blankIdx) => {
+      items[blankIdx].querySelectorAll('.blank-choice-btn').forEach((b) => {
+        if (b.textContent === r.correctAnswer) b.classList.add('correct');
+        else if (b.classList.contains('selected') && !r.isCorrect) b.classList.add('incorrect');
+      });
+    });
+
+    document.getElementById('quiz-score-text').textContent = `正解 ${session.score}`;
+
+    const feedbackEl = document.getElementById('quiz-group-feedback');
+    feedbackEl.innerHTML = '';
+    results.forEach((r, i) => {
+      const item = document.createElement('div');
+      item.className = 'blank-feedback-item ' + (r.isCorrect ? 'is-correct' : 'is-incorrect');
+      const answerLine = r.isCorrect
+        ? `正答: ${escapeHtml(r.correctAnswer)}`
+        : `あなたの回答: ${escapeHtml(r.chosen)}　正答: ${escapeHtml(r.correctAnswer)}`;
+      const supplementHtml = r.needsSupplement
+        ? '<div class="blank-feedback-supplement">※この分野は提供講義資料に該当箇所が見当たらず、解説は一般知識に基づく参考情報です。</div>'
+        : '';
+      item.innerHTML = `
+        <div class="blank-feedback-head">【${BLANK_LABELS[i] || i + 1}】 ${r.isCorrect ? '正解' : '不正解'}</div>
+        <div class="blank-feedback-answer">${answerLine}</div>
+        <div class="blank-feedback-explanation">${escapeHtml(r.explanation || '')}</div>
+        ${supplementHtml}
+      `;
+      feedbackEl.appendChild(item);
+    });
+    feedbackEl.hidden = false;
+
+    showNextButton();
+  }
+
+  function showNextButton() {
+    const btn = document.getElementById('quiz-next-btn');
+    btn.textContent = QuizEngine.isLast(session) ? '結果を見る' : '次へ';
+    btn.hidden = false;
   }
 
   async function onNextClicked() {

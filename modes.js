@@ -31,11 +31,26 @@ const Modes = (() => {
     return { queue, meta: { mode: 'category', label: `分野別モード（${label}）`, categoryId } };
   }
 
-  // 一度でも間違えたことがある問題を正答率が低い順に、指定件数まで出題する。
+  // 一度でも間違えたことがある小問(blank)を正答率が低い順に、出題単位(unit)の
+  // IDへ変換して返す（重複除去、順序は弱点順を維持）。穴埋め型の小問は、
+  // その小問を含む大問（グループ）ごと1件として扱う（同じ大問の他の小問が
+  // まだ弱点でなくても、文脈のため一緒に出題する）。
+  async function weakUnitIds(allData) {
+    const weakBlankIds = await Storage.getWeakQuestions();
+    const seen = new Set();
+    const units = [];
+    for (const blankId of weakBlankIds) {
+      const unitId = allData.blankToUnit.get(blankId);
+      if (!unitId || !allData.questions.has(unitId) || seen.has(unitId)) continue;
+      seen.add(unitId);
+      units.push(unitId);
+    }
+    return units;
+  }
+
   async function review(allData, count) {
-    const weakIds = await Storage.getWeakQuestions();
-    const valid = weakIds.filter((id) => allData.questions.has(id));
-    const queue = valid.slice(0, Math.min(count, valid.length));
+    const units = await weakUnitIds(allData);
+    const queue = units.slice(0, Math.min(count, units.length));
     return { queue, meta: { mode: 'review', label: `復習モード（${count}問）`, count } };
   }
 
@@ -47,5 +62,5 @@ const Modes = (() => {
     throw new Error(`unknown mode: ${meta.mode}`);
   }
 
-  return { honban, random, category, review, rebuild, shuffle };
+  return { honban, random, category, review, weakUnitIds, rebuild, shuffle };
 })();

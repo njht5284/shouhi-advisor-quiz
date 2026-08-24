@@ -10,7 +10,10 @@ const StatsView = (() => {
     const allSessions = await Storage.getRecentSessions(500);
 
     const totalAttempted = results.length;
-    const totalQuestions = allData.questions.size;
+    // 学習済み問題数の分母は小問(blank)単位の総数(1,800件)。
+    // allData.questions は穴埋め型をグループ化した出題単位のため件数が少ない。
+    let totalQuestions = 0;
+    for (const ids of allData.examBlankIds.values()) totalQuestions += ids.length;
     const cumulativeAttempts = results.reduce((s, r) => s + r.attemptCount, 0);
     const cumulativeCorrect = results.reduce((s, r) => s + r.correctCount, 0);
     const currentCorrect = results.filter((r) => r.lastResult === 'correct').length;

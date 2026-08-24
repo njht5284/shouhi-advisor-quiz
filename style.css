@@ -326,6 +326,118 @@ body {
   line-height: 1.5;
 }
 
+/* 穴埋め型（グループ出題）: 【ア】〜【オ】をまとめて表示・解答する */
+.blank-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.blank-item {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1rem;
+}
+
+.blank-item:last-child {
+  border-bottom: none;
+}
+
+.blank-label {
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.blank-choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.blank-choice-btn {
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 0.5rem 0.7rem;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  cursor: pointer;
+  color: var(--text);
+  flex: 1 1 auto;
+  min-width: 40%;
+  text-align: center;
+}
+
+.blank-choice-btn:active { background: var(--ice); }
+
+.blank-choice-btn.selected {
+  border-color: var(--navy);
+  background: var(--ice);
+  font-weight: 700;
+}
+
+.blank-choice-btn.correct {
+  border-color: var(--correct);
+  background: #eaf3e3;
+  color: #375524;
+  font-weight: 700;
+}
+
+.blank-choice-btn.incorrect {
+  border-color: var(--incorrect);
+  background: #fbeae5;
+  color: #8a3a26;
+}
+
+.blank-choice-btn[disabled] { cursor: default; }
+
+.blank-feedback-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.blank-feedback-item {
+  border-left: 4px solid var(--border);
+  padding-left: 0.7rem;
+}
+
+.blank-feedback-item.is-correct { border-left-color: var(--correct); }
+.blank-feedback-item.is-incorrect { border-left-color: var(--incorrect); }
+
+.blank-feedback-head {
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+}
+
+.blank-feedback-item.is-correct .blank-feedback-head { color: var(--correct); }
+.blank-feedback-item.is-incorrect .blank-feedback-head { color: var(--incorrect); }
+
+.blank-feedback-answer {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+}
+
+.blank-feedback-explanation {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.blank-feedback-supplement {
+  font-size: 0.72rem;
+  color: var(--supplement);
+  margin-top: 0.3rem;
+  line-height: 1.5;
+}
+
 /* 結果画面 */
 .result-score {
   text-align: center;
