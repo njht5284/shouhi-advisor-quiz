@@ -57,6 +57,7 @@ const App = (() => {
     wireResult();
     wireBackButtons();
     await refreshHomeReviewCount();
+    await refreshResumeBanner();
     showScreen('home');
   }
 
@@ -66,6 +67,47 @@ const App = (() => {
       btn.addEventListener('click', () => onModeSelected(btn.dataset.mode));
     });
     document.getElementById('about-link').addEventListener('click', () => showScreen('about'));
+    document.getElementById('resume-btn').addEventListener('click', resumeSession);
+    document.getElementById('resume-dismiss-btn').addEventListener('click', async () => {
+      await Storage.clearInProgressSession();
+      await refreshResumeBanner();
+    });
+  }
+
+  // 進行中セッション（直近1件のみ）の保存内容から、ホーム画面の再開バナーを更新する。
+  async function refreshResumeBanner() {
+    const saved = await Storage.getInProgressSession();
+    const banner = document.getElementById('resume-banner');
+    const valid = saved && saved.queue.every((id) => allData.questions.has(id))
+      && saved.index >= 0 && saved.index < saved.queue.length;
+
+    if (!valid) {
+      if (saved) await Storage.clearInProgressSession(); // 無効なデータは片付けておく
+      banner.hidden = true;
+      return;
+    }
+
+    document.getElementById('resume-label').textContent = saved.meta.label;
+    document.getElementById('resume-progress').textContent = `問 ${saved.index + 1} / ${saved.queue.length}`;
+    banner.hidden = false;
+  }
+
+  async function resumeSession() {
+    const saved = await Storage.getInProgressSession();
+    const restored = saved && QuizEngine.restore(saved, allData.questions);
+    if (!restored) {
+      await refreshResumeBanner();
+      return;
+    }
+    session = restored;
+    renderQuestion();
+    showScreen('quiz');
+  }
+
+  // 現在のセッションの進行状況をIndexedDBへ保存する（回答・次へ、のたびに呼ぶ）。
+  // ページを閉じる/リロードする等で中断しても、直前の状態から再開できるようにするため。
+  async function persistProgress() {
+    await Storage.saveInProgressSession(QuizEngine.snapshot(session));
   }
 
   async function refreshHomeReviewCount() {
@@ -170,13 +212,15 @@ const App = (() => {
   }
 
   // ---------- クイズ実行 ----------
-  function beginSession(built) {
+  async function beginSession(built) {
     if (!built.queue || built.queue.length === 0) {
       showModeConfig('出題できる問題がありません', emptyNote());
       return;
     }
     built.meta.startedAt = new Date().toISOString();
     session = QuizEngine.createSession(built.queue, allData.questions, built.meta);
+    // 新しいセッションを開始するので、直近1件だけ保持する「続きから」データは上書きする。
+    await persistProgress();
     renderQuestion();
     showScreen('quiz');
   }
@@ -267,6 +311,7 @@ const App = (() => {
     document.getElementById('quiz-feedback-supplement').hidden = !q.needsSupplement;
     feedback.hidden = false;
 
+    await persistProgress();
     showNextButton();
   }
 
@@ -354,6 +399,7 @@ const App = (() => {
     });
     feedbackEl.hidden = false;
 
+    await persistProgress();
     showNextButton();
   }
 
@@ -368,15 +414,18 @@ const App = (() => {
       await finishSession();
     } else {
       QuizEngine.advance(session);
+      await persistProgress();
       renderQuestion();
     }
   }
 
   async function finishSession() {
     const record = await QuizEngine.finish(session);
+    await Storage.clearInProgressSession(); // 完了したので「続きから」の対象ではなくなる
     renderResult(record);
     showScreen('result');
     await refreshHomeReviewCount();
+    await refreshResumeBanner();
   }
 
   // ---------- 結果画面 ----------
@@ -406,7 +455,10 @@ const App = (() => {
 
   // ---------- 統計・ヘッダー ----------
   function wireHeader() {
-    document.getElementById('nav-home').addEventListener('click', () => showScreen('home'));
+    document.getElementById('nav-home').addEventListener('click', async () => {
+      await refreshResumeBanner();
+      showScreen('home');
+    });
     document.getElementById('nav-stats').addEventListener('click', async () => {
       await StatsView.render(allData);
       showScreen('stats');

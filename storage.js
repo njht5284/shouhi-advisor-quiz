@@ -1,7 +1,8 @@
 // IndexedDB永続化層: 回答結果(questionResults)とセッション履歴(sessions)を管理する。
 const Storage = (() => {
   const DB_NAME = 'shouhi-advisor-quiz-db';
-  const DB_VERSION = 1;
+  const DB_VERSION = 2;
+  const IN_PROGRESS_KEY = 'current';
   let dbPromise = null;
 
   function openDB() {
@@ -18,6 +19,9 @@ const Storage = (() => {
         if (!db.objectStoreNames.contains('sessions')) {
           const store = db.createObjectStore('sessions', { keyPath: 'sessionId', autoIncrement: true });
           store.createIndex('startedAt', 'startedAt');
+        }
+        if (!db.objectStoreNames.contains('inProgressSession')) {
+          db.createObjectStore('inProgressSession', { keyPath: 'id' });
         }
       };
       req.onsuccess = () => resolve(req.result);
@@ -90,5 +94,30 @@ const Storage = (() => {
     return all.slice(0, limit);
   }
 
-  return { recordAnswer, getAllResults, getWeakQuestions, saveSession, getRecentSessions };
+  // 進行中のクイズを1件だけ保存する（直近1件のみ、新しいセッション開始で上書き/破棄される）。
+  async function saveInProgressSession(snapshot) {
+    const store = await tx('inProgressSession', 'readwrite');
+    await promisify(store.put({ ...snapshot, id: IN_PROGRESS_KEY }));
+  }
+
+  async function getInProgressSession() {
+    const store = await tx('inProgressSession', 'readonly');
+    return promisify(store.get(IN_PROGRESS_KEY));
+  }
+
+  async function clearInProgressSession() {
+    const store = await tx('inProgressSession', 'readwrite');
+    await promisify(store.delete(IN_PROGRESS_KEY));
+  }
+
+  return {
+    recordAnswer,
+    getAllResults,
+    getWeakQuestions,
+    saveSession,
+    getRecentSessions,
+    saveInProgressSession,
+    getInProgressSession,
+    clearInProgressSession,
+  };
 })();

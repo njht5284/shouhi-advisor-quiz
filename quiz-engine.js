@@ -84,6 +84,37 @@ const QuizEngine = (() => {
     return map;
   }
 
+  // 進行中セッションの保存用スナップショット（questionsMapは含めない。allDataから復元可能なため）。
+  function snapshot(session) {
+    return {
+      queue: session.queue,
+      index: session.index,
+      score: session.score,
+      totalBlanks: session.totalBlanks,
+      answers: session.answers,
+      meta: session.meta,
+      savedAt: new Date().toISOString(),
+    };
+  }
+
+  // 保存されたスナップショットからセッションを復元する。
+  // queueに含まれるIDが1つでも現在のデータに存在しなければ null を返す
+  // （データが更新された等でスナップショットが無効な場合の安全策）。
+  function restore(saved, questionsMap) {
+    if (!saved || !Array.isArray(saved.queue) || saved.queue.length === 0) return null;
+    if (saved.index < 0 || saved.index >= saved.queue.length) return null;
+    if (!saved.queue.every((id) => questionsMap.has(id))) return null;
+    return {
+      queue: saved.queue,
+      questionsMap,
+      meta: saved.meta,
+      index: saved.index,
+      score: saved.score,
+      totalBlanks: saved.totalBlanks,
+      answers: saved.answers,
+    };
+  }
+
   async function finish(session) {
     const record = {
       mode: session.meta.mode,
@@ -108,6 +139,8 @@ const QuizEngine = (() => {
     advance,
     progressText,
     categoryBreakdown,
+    snapshot,
+    restore,
     finish,
   };
 })();
