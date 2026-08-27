@@ -36,6 +36,10 @@
         <button id="resume-dismiss-btn" class="link-btn">この続きを破棄</button>
       </div>
     </div>
+    <div id="priority-block" class="priority-block" hidden>
+      <div class="priority-title">優先して学習すべき分野</div>
+      <div id="priority-list" class="priority-list"></div>
+    </div>
     <div class="mode-grid">
       <button class="mode-card" data-mode="honban">
         <span class="mode-title">本番モード</span>
@@ -70,6 +74,10 @@
       <span id="quiz-progress-text"></span>
       <span id="quiz-score-text"></span>
     </div>
+    <div id="quiz-timer-row" class="quiz-timer-row" hidden>
+      <span id="quiz-timer-text" class="quiz-timer-text"></span>
+      <button id="quiz-pause-btn" class="pause-btn">一時停止</button>
+    </div>
     <div id="quiz-passage" class="quiz-passage" hidden></div>
 
     <!-- 正誤判定型（小問1つ） -->
@@ -101,7 +109,8 @@
     <div id="result-score" class="result-score"></div>
     <div id="result-breakdown" class="result-breakdown"></div>
     <div class="result-actions">
-      <button id="result-retry-btn" class="primary-btn">もう一度</button>
+      <button id="result-mistakes-btn" class="primary-btn" hidden>今回間違えた問題だけもう一度</button>
+      <button id="result-retry-btn" class="secondary-btn">もう一度（同じ条件で）</button>
       <button id="result-home-btn" class="secondary-btn">ホームへ</button>
     </div>
   </section>

@@ -123,6 +123,47 @@ body {
   white-space: nowrap;
 }
 
+/* ホーム画面: 優先して学習すべき分野 */
+.priority-block {
+  margin-top: 1rem;
+}
+
+.priority-title {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.priority-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.priority-item {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--terra);
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  width: 100%;
+}
+
+.priority-item:active { background: var(--ice); }
+
+.priority-item-accuracy {
+  font-size: 0.78rem;
+  color: var(--incorrect);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
 .mode-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -277,6 +318,42 @@ body {
   font-size: 0.85rem;
   color: var(--text-muted);
   margin-bottom: 0.8rem;
+}
+
+/* 本番モードの制限時間タイマー */
+.quiz-timer-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.7rem;
+  margin-bottom: 0.8rem;
+}
+
+.quiz-timer-text {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--navy);
+}
+
+.quiz-timer-text.time-up {
+  color: var(--incorrect);
+}
+
+.pause-btn {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.pause-btn.is-paused {
+  border-color: var(--navy);
+  color: var(--navy);
+  font-weight: 700;
 }
 
 .quiz-passage {

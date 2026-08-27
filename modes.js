@@ -1,5 +1,7 @@
 // 4モードそれぞれの出題キュー構築ロジック。
 const Modes = (() => {
+  const HONBAN_TIME_LIMIT_SECONDS = 120 * 60; // 実際の試験と同じ120分
+
   function shuffle(arr) {
     const a = arr.slice();
     for (let i = a.length - 1; i > 0; i -= 1) {
@@ -13,7 +15,12 @@ const Modes = (() => {
     const ids = (allData.byExam.get(examId) || []).slice();
     return {
       queue: ids,
-      meta: { mode: 'honban', label: `本番モード（${DataLoader.examLabel(examId)}）`, examId },
+      meta: {
+        mode: 'honban',
+        label: `本番モード（${DataLoader.examLabel(examId)}）`,
+        examId,
+        timeLimitSeconds: HONBAN_TIME_LIMIT_SECONDS,
+      },
     };
   }
 

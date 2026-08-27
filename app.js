@@ -58,7 +58,31 @@ const App = (() => {
     wireBackButtons();
     await refreshHomeReviewCount();
     await refreshResumeBanner();
+    await refreshPriorityCategories();
     showScreen('home');
+  }
+
+  // 3回以上挑戦した分野に限定した「優先して学習すべき分野」トップ3をホーム画面に表示する。
+  // タップすると設定画面を経由せず、直接その分野の分野別モードを開始する。
+  async function refreshPriorityCategories() {
+    const rows = await StatsView.getPriorityCategories(allData, { minAttempts: 3, limit: 3 });
+    const block = document.getElementById('priority-block');
+    const list = document.getElementById('priority-list');
+    list.innerHTML = '';
+
+    if (rows.length === 0) {
+      block.hidden = true;
+      return;
+    }
+
+    for (const row of rows) {
+      const item = document.createElement('button');
+      item.className = 'priority-item';
+      item.innerHTML = `<span>${escapeHtml(row.label)}</span><span class="priority-item-accuracy">正答率 ${row.accuracy}%</span>`;
+      item.addEventListener('click', () => beginSession(Modes.category(allData, row.categoryId)));
+      list.appendChild(item);
+    }
+    block.hidden = false;
   }
 
   // ---------- ホーム ----------
@@ -102,6 +126,7 @@ const App = (() => {
     session = restored;
     renderQuestion();
     showScreen('quiz');
+    startTimerTick();
   }
 
   // 現在のセッションの進行状況をIndexedDBへ保存する（回答・次へ、のたびに呼ぶ）。
@@ -223,6 +248,7 @@ const App = (() => {
     await persistProgress();
     renderQuestion();
     showScreen('quiz');
+    startTimerTick();
   }
 
   function emptyNote() {
@@ -238,6 +264,54 @@ const App = (() => {
   function wireQuiz() {
     document.getElementById('quiz-next-btn').addEventListener('click', onNextClicked);
     document.getElementById('group-submit-btn').addEventListener('click', onGroupSubmit);
+    document.getElementById('quiz-pause-btn').addEventListener('click', onPauseClicked);
+  }
+
+  // ---------- 本番モードの制限時間タイマー ----------
+  let timerIntervalId = null;
+  let timerTickCount = 0;
+
+  function startTimerTick() {
+    if (timerIntervalId) clearInterval(timerIntervalId);
+    if (!session || !session.timer) return;
+    timerTickCount = 0;
+    timerIntervalId = setInterval(async () => {
+      // クイズ画面から離れた/セッションが終わったら自動的に停止する。
+      if (!session || !session.timer || document.getElementById('screen-quiz').hidden) {
+        clearInterval(timerIntervalId);
+        timerIntervalId = null;
+        return;
+      }
+      QuizEngine.tickTimer(session);
+      updateTimerDisplay();
+      timerTickCount += 1;
+      if (timerTickCount % 10 === 0) await persistProgress(); // 10秒ごとに保存
+    }, 1000);
+  }
+
+  function updateTimerDisplay() {
+    const row = document.getElementById('quiz-timer-row');
+    if (!session || !session.timer) {
+      row.hidden = true;
+      return;
+    }
+    row.hidden = false;
+    const textEl = document.getElementById('quiz-timer-text');
+    const timeUp = session.timer.remainingSeconds <= 0;
+    textEl.textContent = timeUp
+      ? `${QuizEngine.formatTime(0)}（制限時間になりました）`
+      : QuizEngine.formatTime(session.timer.remainingSeconds);
+    textEl.classList.toggle('time-up', timeUp);
+
+    const pauseBtn = document.getElementById('quiz-pause-btn');
+    pauseBtn.textContent = session.timer.paused ? '再開' : '一時停止';
+    pauseBtn.classList.toggle('is-paused', session.timer.paused);
+  }
+
+  async function onPauseClicked() {
+    QuizEngine.togglePause(session);
+    updateTimerDisplay();
+    await persistProgress();
   }
 
   function renderQuestion() {
@@ -245,6 +319,7 @@ const App = (() => {
 
     document.getElementById('quiz-progress-text').textContent = QuizEngine.progressText(session);
     document.getElementById('quiz-score-text').textContent = `正解 ${session.score}`;
+    updateTimerDisplay();
 
     const passageEl = document.getElementById('quiz-passage');
     if (q.passage) {
@@ -426,6 +501,7 @@ const App = (() => {
     showScreen('result');
     await refreshHomeReviewCount();
     await refreshResumeBanner();
+    await refreshPriorityCategories();
   }
 
   // ---------- 結果画面 ----------
@@ -435,10 +511,51 @@ const App = (() => {
       const built = await Modes.rebuild(allData, session.meta);
       beginSession(built);
     });
+    document.getElementById('result-mistakes-btn').addEventListener('click', () => {
+      const mistakeUnitIds = getMistakeUnitIds(session);
+      if (mistakeUnitIds.length === 0) return;
+      beginSession({
+        queue: mistakeUnitIds,
+        meta: {
+          mode: 'mistakes',
+          label: `今回の間違い（${session.meta.label}）`,
+          startedAt: new Date().toISOString(),
+        },
+      });
+    });
+  }
+
+  // 直前に終えたセッションの回答のうち、間違えた小問(blank)を出題単位(unit)へ
+  // 変換して返す（重複除去、出題順を維持）。穴埋め型の小問は、それを含む
+  // 大問（グループ）ごと1件として扱う（復習モードと同じ考え方）。
+  function getMistakeUnitIds(finishedSession) {
+    const seen = new Set();
+    const units = [];
+    for (const a of finishedSession.answers) {
+      if (a.isCorrect) continue;
+      const unitId = allData.blankToUnit.get(a.questionId);
+      if (!unitId || !allData.questions.has(unitId) || seen.has(unitId)) continue;
+      seen.add(unitId);
+      units.push(unitId);
+    }
+    return units;
   }
 
   function renderResult(record) {
     document.getElementById('result-score').textContent = `${record.correctCount} / ${record.questionCount}`;
+
+    // 「間違い抽出」セッション自体には、それを同一条件で再現する意味のある
+    // 「もう一度（同じ条件で）」の対象がないため、そのボタンは隠す。
+    document.getElementById('result-retry-btn').hidden = session.meta.mode === 'mistakes';
+
+    const mistakeCount = getMistakeUnitIds(session).length;
+    const mistakesBtn = document.getElementById('result-mistakes-btn');
+    if (mistakeCount > 0) {
+      mistakesBtn.textContent = `今回間違えた${mistakeCount}問だけもう一度`;
+      mistakesBtn.hidden = false;
+    } else {
+      mistakesBtn.hidden = true;
+    }
 
     const breakdown = QuizEngine.categoryBreakdown(session);
     const catMap = new Map(allData.categories.map((c) => [c.categoryId, c.label]));
@@ -457,6 +574,7 @@ const App = (() => {
   function wireHeader() {
     document.getElementById('nav-home').addEventListener('click', async () => {
       await refreshResumeBanner();
+      await refreshPriorityCategories();
       showScreen('home');
     });
     document.getElementById('nav-stats').addEventListener('click', async () => {

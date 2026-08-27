@@ -5,6 +5,33 @@ const StatsView = (() => {
     return Math.round((numerator / denominator) * 100);
   }
 
+  // 分野別の累計正答率を、正答率が低い順に並べて返す（弱点分野が先頭）。
+  async function computeCategoryStats(allData) {
+    const results = await Storage.getAllResults();
+    const byCategory = new Map();
+    for (const r of results) {
+      if (!byCategory.has(r.categoryId)) byCategory.set(r.categoryId, { attempts: 0, correct: 0 });
+      const e = byCategory.get(r.categoryId);
+      e.attempts += r.attemptCount;
+      e.correct += r.correctCount;
+    }
+    const rows = [];
+    for (const cat of allData.categories) {
+      const e = byCategory.get(cat.categoryId);
+      if (!e || e.attempts === 0) continue;
+      rows.push({ categoryId: cat.categoryId, label: cat.label, accuracy: pct(e.correct, e.attempts), attempts: e.attempts });
+    }
+    rows.sort((a, b) => a.accuracy - b.accuracy);
+    return rows;
+  }
+
+  // ホーム画面用: 一定回数以上挑戦した分野に限定した「優先して学習すべき分野」上位N件。
+  // 挑戦回数が少なすぎる分野（たまたま1回間違えただけ等）をノイズとして除外するため。
+  async function getPriorityCategories(allData, { minAttempts = 3, limit = 3 } = {}) {
+    const rows = await computeCategoryStats(allData);
+    return rows.filter((r) => r.attempts >= minAttempts).slice(0, limit);
+  }
+
   async function render(allData) {
     const results = await Storage.getAllResults();
     const allSessions = await Storage.getRecentSessions(500);
@@ -25,20 +52,7 @@ const StatsView = (() => {
     summaryEl.appendChild(statTile(`${pct(cumulativeCorrect, cumulativeAttempts)}%`, '累計正答率'));
 
     // 分野別正答率（弱い分野を上位に）
-    const byCategory = new Map();
-    for (const r of results) {
-      if (!byCategory.has(r.categoryId)) byCategory.set(r.categoryId, { attempts: 0, correct: 0 });
-      const e = byCategory.get(r.categoryId);
-      e.attempts += r.attemptCount;
-      e.correct += r.correctCount;
-    }
-    const catRows = [];
-    for (const cat of allData.categories) {
-      const e = byCategory.get(cat.categoryId);
-      if (!e || e.attempts === 0) continue;
-      catRows.push({ label: cat.label, accuracy: pct(e.correct, e.attempts), attempts: e.attempts });
-    }
-    catRows.sort((a, b) => a.accuracy - b.accuracy);
+    const catRows = await computeCategoryStats(allData);
 
     const catEl = document.getElementById('stats-categories');
     catEl.innerHTML = '';
@@ -96,5 +110,5 @@ const StatsView = (() => {
     return div.innerHTML;
   }
 
-  return { render };
+  return { render, getPriorityCategories };
 })();
