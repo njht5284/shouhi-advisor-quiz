@@ -480,6 +480,22 @@ body {
   margin-bottom: 0.5rem;
 }
 
+.blank-prompt {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 0.6rem;
+}
+
+.blank-prompt.is-negative {
+  color: var(--terra);
+  font-weight: 700;
+  background: #fdf1ec;
+  border-left: 3px solid var(--terra);
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+}
+
 .blank-choices {
   display: flex;
   flex-wrap: wrap;
@@ -692,4 +708,5 @@ body {
   .choice-btn.correct { background: #1e3521; color: #bfe3a6; }
   .choice-btn.incorrect { background: #3a2320; color: #f0b6a3; }
   .badge { background: #4a3c12; color: #f0c766; }
+  .blank-prompt.is-negative { background: #3a2320; color: #f0b6a3; }
 }

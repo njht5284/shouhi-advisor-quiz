@@ -406,6 +406,14 @@ const App = (() => {
       label.textContent = `【${BLANK_LABELS[blankIdx] || blankIdx + 1}】`;
       item.appendChild(label);
 
+      if (blank.prompt) {
+        const promptEl = document.createElement('div');
+        const isNegative = blank.prompt.includes('適当でない');
+        promptEl.className = 'blank-prompt' + (isNegative ? ' is-negative' : '');
+        promptEl.textContent = blank.prompt;
+        item.appendChild(promptEl);
+      }
+
       const choicesEl = document.createElement('div');
       choicesEl.className = 'blank-choices';
       blank.choices.forEach((choice, choiceIdx) => {
