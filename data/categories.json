@@ -3,7 +3,7 @@
     "categoryId": "B-01",
     "label": "B-01　消費者政策の基本法制と消費者行政",
     "needsSupplement": false,
-    "questionCount": 13,
+    "questionCount": 15,
     "rawVariants": [
       "B-01",
       "B-01消費者基本法"
@@ -23,7 +23,7 @@
     "categoryId": "B-04",
     "label": "B-04　消費者契約法",
     "needsSupplement": false,
-    "questionCount": 55,
+    "questionCount": 68,
     "rawVariants": [
       "B-04",
       "B-04 / グループA",
@@ -34,7 +34,7 @@
     "categoryId": "B-05〜B-07",
     "label": "B-05〜B-07　特定商取引法の基礎(1)〜特定商取引法の基礎(3)",
     "needsSupplement": false,
-    "questionCount": 54,
+    "questionCount": 59,
     "rawVariants": [
       "B-05〜B-07",
       "B-05〜B-07特定商取引法"
@@ -44,7 +44,7 @@
     "categoryId": "B-08",
     "label": "B-08　割賦販売法と資金決済法",
     "needsSupplement": false,
-    "questionCount": 15,
+    "questionCount": 18,
     "rawVariants": [
       "B-08",
       "B-08割賦販売法",
@@ -77,13 +77,14 @@
     "categoryId": "B-12",
     "label": "B-12　表示と広告に関する法律",
     "needsSupplement": false,
-    "questionCount": 74,
+    "questionCount": 93,
     "rawVariants": [
       "B-12",
       "B-12 / グループA",
       "B-12 / グループA（広告市場動向）",
       "B-12景品表示法",
-      "B-12景品表示法 / グループA"
+      "B-12景品表示法 / グループA",
+      "B-12表示と広告"
     ]
   },
   {
@@ -100,7 +101,7 @@
     "categoryId": "B-14",
     "label": "B-14　住宅の知識",
     "needsSupplement": true,
-    "questionCount": 21,
+    "questionCount": 25,
     "rawVariants": [
       "B-14",
       "B-14住宅",
@@ -120,37 +121,28 @@
     ]
   },
   {
-    "categoryId": "グループA",
-    "label": "グループA（全般）",
-    "needsSupplement": false,
-    "questionCount": 1012,
-    "rawVariants": [
-      "グループA"
-    ]
-  },
-  {
     "categoryId": "グループA（エネルギー・環境）",
     "label": "グループA（エネルギー・環境）",
     "needsSupplement": false,
-    "questionCount": 20,
+    "questionCount": 132,
     "rawVariants": [
       "グループA（エネルギー・環境）"
     ]
   },
   {
-    "categoryId": "グループA（エネルギー）",
-    "label": "グループA（エネルギー）",
+    "categoryId": "グループA（サービスの知識）",
+    "label": "グループA（サービスの知識）",
     "needsSupplement": false,
-    "questionCount": 5,
+    "questionCount": 3,
     "rawVariants": [
-      "グループA（エネルギー）"
+      "グループA（サービスの知識）"
     ]
   },
   {
     "categoryId": "グループA（マーケティング）",
     "label": "グループA（マーケティング）",
     "needsSupplement": false,
-    "questionCount": 21,
+    "questionCount": 119,
     "rawVariants": [
       "グループA（マーケティング）"
     ]
@@ -159,7 +151,7 @@
     "categoryId": "グループA（人口）",
     "label": "グループA（人口）",
     "needsSupplement": false,
-    "questionCount": 3,
+    "questionCount": 15,
     "rawVariants": [
       "グループA（人口）"
     ]
@@ -168,124 +160,79 @@
     "categoryId": "グループA（企業経営）",
     "label": "グループA（企業経営）",
     "needsSupplement": false,
-    "questionCount": 21,
+    "questionCount": 120,
     "rawVariants": [
       "グループA（企業経営）"
-    ]
-  },
-  {
-    "categoryId": "グループA（医療・社会保障）",
-    "label": "グループA（医療・社会保障）",
-    "needsSupplement": false,
-    "questionCount": 1,
-    "rawVariants": [
-      "グループA（医療・社会保障）"
     ]
   },
   {
     "categoryId": "グループA（医療）",
     "label": "グループA（医療）",
     "needsSupplement": false,
-    "questionCount": 14,
+    "questionCount": 75,
     "rawVariants": [
       "グループA（医療）"
-    ]
-  },
-  {
-    "categoryId": "グループA（家計・人口）",
-    "label": "グループA（家計・人口）",
-    "needsSupplement": false,
-    "questionCount": 1,
-    "rawVariants": [
-      "グループA（家計・人口）"
-    ]
-  },
-  {
-    "categoryId": "グループA（家計・多重債務）",
-    "label": "グループA（家計・多重債務）",
-    "needsSupplement": false,
-    "questionCount": 1,
-    "rawVariants": [
-      "グループA（家計・多重債務）"
     ]
   },
   {
     "categoryId": "グループA（家計）",
     "label": "グループA（家計）",
     "needsSupplement": false,
-    "questionCount": 8,
+    "questionCount": 51,
     "rawVariants": [
       "グループA（家計）"
     ]
   },
   {
-    "categoryId": "グループA（消費者問題の歴史・国際）",
-    "label": "グループA（消費者問題の歴史・国際）",
+    "categoryId": "グループA（情報通信・デジタル）",
+    "label": "グループA（情報通信・デジタル）",
     "needsSupplement": false,
-    "questionCount": 1,
+    "questionCount": 13,
     "rawVariants": [
-      "グループA（消費者問題の歴史・国際）"
+      "グループA（情報通信・デジタル）"
     ]
   },
   {
     "categoryId": "グループA（消費者問題の歴史）",
     "label": "グループA（消費者問題の歴史）",
     "needsSupplement": false,
-    "questionCount": 12,
+    "questionCount": 72,
     "rawVariants": [
       "グループA（消費者問題の歴史）"
-    ]
-  },
-  {
-    "categoryId": "グループA（消費者問題の現状・統計）",
-    "label": "グループA（消費者問題の現状・統計）",
-    "needsSupplement": false,
-    "questionCount": 1,
-    "rawVariants": [
-      "グループA（消費者問題の現状・統計）"
     ]
   },
   {
     "categoryId": "グループA（消費者問題の現状）",
     "label": "グループA（消費者問題の現状）",
     "needsSupplement": false,
-    "questionCount": 9,
+    "questionCount": 73,
     "rawVariants": [
       "グループA（消費者問題の現状）"
+    ]
+  },
+  {
+    "categoryId": "グループA（消費者政策・行政）",
+    "label": "グループA（消費者政策・行政）",
+    "needsSupplement": false,
+    "questionCount": 47,
+    "rawVariants": [
+      "グループA（消費者政策・行政）"
     ]
   },
   {
     "categoryId": "グループA（消費者教育）",
     "label": "グループA（消費者教育）",
     "needsSupplement": false,
-    "questionCount": 13,
+    "questionCount": 64,
     "rawVariants": [
       "グループA（消費者教育）"
-    ]
-  },
-  {
-    "categoryId": "グループA（環境）",
-    "label": "グループA（環境）",
-    "needsSupplement": false,
-    "questionCount": 2,
-    "rawVariants": [
-      "グループA（環境）"
-    ]
-  },
-  {
-    "categoryId": "グループA（社会保障・家計）",
-    "label": "グループA（社会保障・家計）",
-    "needsSupplement": false,
-    "questionCount": 1,
-    "rawVariants": [
-      "グループA（社会保障・家計）"
     ]
   },
   {
     "categoryId": "グループA（社会保障）",
     "label": "グループA（社会保障）",
     "needsSupplement": false,
-    "questionCount": 24,
+    "questionCount": 121,
     "rawVariants": [
       "グループA（社会保障）"
     ]
@@ -294,34 +241,16 @@
     "categoryId": "グループA（税制）",
     "label": "グループA（税制）",
     "needsSupplement": false,
-    "questionCount": 4,
+    "questionCount": 20,
     "rawVariants": [
       "グループA（税制）"
-    ]
-  },
-  {
-    "categoryId": "グループA（経済・家計）",
-    "label": "グループA（経済・家計）",
-    "needsSupplement": false,
-    "questionCount": 1,
-    "rawVariants": [
-      "グループA（経済・家計）"
-    ]
-  },
-  {
-    "categoryId": "グループA（経済・消費者政策史）",
-    "label": "グループA（経済・消費者政策史）",
-    "needsSupplement": false,
-    "questionCount": 1,
-    "rawVariants": [
-      "グループA（経済・消費者政策史）"
     ]
   },
   {
     "categoryId": "グループA（経済学）",
     "label": "グループA（経済学）",
     "needsSupplement": false,
-    "questionCount": 25,
+    "questionCount": 130,
     "rawVariants": [
       "グループA（経済学）"
     ]
@@ -330,7 +259,7 @@
     "categoryId": "グループA（統計）",
     "label": "グループA（統計）",
     "needsSupplement": false,
-    "questionCount": 13,
+    "questionCount": 65,
     "rawVariants": [
       "グループA（統計）"
     ]
@@ -339,7 +268,7 @@
     "categoryId": "グループA（製品安全）",
     "label": "グループA（製品安全）",
     "needsSupplement": false,
-    "questionCount": 13,
+    "questionCount": 52,
     "rawVariants": [
       "グループA（製品安全）"
     ]
@@ -348,7 +277,7 @@
     "categoryId": "グループA（金融）",
     "label": "グループA（金融）",
     "needsSupplement": false,
-    "questionCount": 1,
+    "questionCount": 10,
     "rawVariants": [
       "グループA（金融）"
     ]
