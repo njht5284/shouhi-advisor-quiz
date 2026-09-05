@@ -406,9 +406,15 @@ const App = (() => {
       label.textContent = `【${BLANK_LABELS[blankIdx] || blankIdx + 1}】`;
       item.appendChild(label);
 
+      // 全600問の穴埋め設問の指示文は「最も適当なもの」575件・「適当でないもの」24件・
+      // 「最も適用なもの」1件（原文の誤植。意味は肯定形）の3種類のみで、
+      // この判定で全件正しく分類できることを確認済み。
+      // 指示文が無い場合は極性を断定しない（現データには該当なし）。
+      const isNegative = !!(blank.prompt && blank.prompt.includes('適当でない'));
+      item.dataset.polarity = blank.prompt ? (isNegative ? 'negative' : 'positive') : 'unknown';
+
       if (blank.prompt) {
         const promptEl = document.createElement('div');
-        const isNegative = blank.prompt.includes('適当でない');
         promptEl.className = 'blank-prompt' + (isNegative ? ' is-negative' : '');
         promptEl.textContent = blank.prompt;
         item.appendChild(promptEl);
@@ -424,6 +430,15 @@ const App = (() => {
         choicesEl.appendChild(btn);
       });
       item.appendChild(choicesEl);
+
+      // 選択直後に「何を選んだことになるか」を平易な文で言い直す。
+      // ラベル表示だけでは読み飛ばされるため、自分の操作の結果として
+      // 極性を毎回言語化させ、逆選択に気づける最後の砦とする。
+      const confirmEl = document.createElement('div');
+      confirmEl.className = 'blank-confirm';
+      confirmEl.hidden = true;
+      item.appendChild(confirmEl);
+
       listEl.appendChild(item);
     });
 
@@ -439,9 +454,21 @@ const App = (() => {
   function onBlankChoiceClicked(blankIdx, choiceIdx) {
     groupSelections[blankIdx] = choiceIdx;
     const item = document.querySelectorAll('#quiz-blank-list .blank-item')[blankIdx];
-    item.querySelectorAll('.blank-choice-btn').forEach((b, i) => {
+    const buttons = item.querySelectorAll('.blank-choice-btn');
+    buttons.forEach((b, i) => {
       b.classList.toggle('selected', i === choiceIdx);
     });
+
+    const polarity = item.dataset.polarity;
+    const isNegative = polarity === 'negative';
+    const chosenText = buttons[choiceIdx].textContent;
+    const confirmEl = item.querySelector('.blank-confirm');
+    confirmEl.className = 'blank-confirm' + (isNegative ? ' is-negative' : '');
+    confirmEl.textContent = polarity === 'unknown'
+      ? `→ ${chosenText} を選択`
+      : `→ 「${isNegative ? '適当でないもの' : '最も適当なもの'}」として ${chosenText} を選択`;
+    confirmEl.hidden = false;
+
     document.getElementById('group-submit-btn').disabled = groupSelections.some((v) => v === null);
   }
 

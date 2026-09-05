@@ -539,6 +539,17 @@ body {
 
 .blank-choice-btn[disabled] { cursor: default; }
 
+.blank-confirm {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.blank-confirm.is-negative {
+  color: var(--terra);
+}
+
 .blank-feedback-list {
   display: flex;
   flex-direction: column;
@@ -709,4 +720,5 @@ body {
   .choice-btn.incorrect { background: #3a2320; color: #f0b6a3; }
   .badge { background: #4a3c12; color: #f0c766; }
   .blank-prompt.is-negative { background: #3a2320; color: #f0b6a3; }
+  .blank-confirm.is-negative { color: #f0b6a3; }
 }
