@@ -367,6 +367,32 @@ body {
   color: var(--text);
 }
 
+/* 穴埋め型は選択肢が縦に長い。本文をヘッダー直下に固定し、
+   本文が長い場合は本文エリアの中だけをスクロールさせて、
+   選択肢の表示領域を必ず確保する。 */
+.quiz-passage.is-sticky {
+  position: sticky;
+  top: var(--header-h, 3rem);
+  z-index: 5;
+  max-height: 40dvh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  box-shadow: 0 4px 10px rgba(29, 53, 87, 0.08);
+}
+
+/* 本文中の【ア】〜【オ】。いま解いている空欄だけを強調する。 */
+.passage-blank {
+  font-weight: 700;
+  border-radius: 3px;
+  padding: 0 1px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.passage-blank.is-active {
+  background: var(--navy);
+  color: var(--ice);
+}
+
 .quiz-prompt {
   font-size: 1.02rem;
   font-weight: 600;
@@ -721,4 +747,6 @@ body {
   .badge { background: #4a3c12; color: #f0c766; }
   .blank-prompt.is-negative { background: #3a2320; color: #f0b6a3; }
   .blank-confirm.is-negative { color: #f0b6a3; }
+  .quiz-passage.is-sticky { box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); }
+  .passage-blank.is-active { background: var(--navy); color: #0f1620; }
 }

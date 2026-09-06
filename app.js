@@ -50,6 +50,7 @@ const App = (() => {
 
   async function init() {
     showScreen('loading');
+    trackHeaderHeight();
     allData = await DataLoader.load();
     wireHome();
     wireHeader();
@@ -260,6 +261,8 @@ const App = (() => {
 
   const BLANK_LABELS = ['ア', 'イ', 'ウ', 'エ', 'オ', 'カ', 'キ', 'ク'];
   let groupSelections = null; // 穴埋めグループ回答中: blanks と同じ順の選択インデックス配列（未選択はnull）
+  let activeBlankIdx = null;  // 本文側で強調中の空欄
+  let blankObserver = null;   // 画面内に入った空欄を検知する IntersectionObserver
 
   function wireQuiz() {
     document.getElementById('quiz-next-btn').addEventListener('click', onNextClicked);
@@ -322,23 +325,87 @@ const App = (() => {
     updateTimerDisplay();
 
     const passageEl = document.getElementById('quiz-passage');
+    const isGroup = q.kind === 'group';
+    // 穴埋め型は選択肢が縦に長く、スクロールすると本文が画面外へ出てしまう。
+    // 本文を上部に固定し、【ア】〜【オ】の目印を後から強調できるようにする。
+    passageEl.classList.toggle('is-sticky', isGroup && !!q.passage);
     if (q.passage) {
-      passageEl.textContent = q.passage;
+      if (isGroup) {
+        passageEl.innerHTML = markBlanks(q.passage);
+      } else {
+        passageEl.textContent = q.passage;
+      }
       passageEl.hidden = false;
+      passageEl.scrollTop = 0;
     } else {
       passageEl.hidden = true;
     }
 
     document.getElementById('quiz-next-btn').hidden = true;
 
-    if (q.kind === 'group') {
+    if (isGroup) {
       document.getElementById('quiz-single').hidden = true;
       document.getElementById('quiz-group').hidden = false;
       renderGroupQuestion(q);
     } else {
+      if (blankObserver) { blankObserver.disconnect(); blankObserver = null; }
+      activeBlankIdx = null;
       document.getElementById('quiz-group').hidden = true;
       document.getElementById('quiz-single').hidden = false;
       renderSingleQuestion(q);
+    }
+  }
+
+  // 本文中の【ア】〜【ク】を、後から強調できるよう span で包む。
+  function markBlanks(passage) {
+    const re = new RegExp(`【(${BLANK_LABELS.join('|')})】`, 'g');
+    let html = '';
+    let cursor = 0;
+    let m;
+    while ((m = re.exec(passage)) !== null) {
+      html += escapeHtml(passage.slice(cursor, m.index));
+      const idx = BLANK_LABELS.indexOf(m[1]);
+      html += `<span class="passage-blank" data-blank="${idx}">${escapeHtml(m[0])}</span>`;
+      cursor = m.index + m[0].length;
+    }
+    html += escapeHtml(passage.slice(cursor));
+    return html;
+  }
+
+  // スクロールに追従して「いま画面の上寄りにある空欄」を検知する。
+  function observeBlanks(listEl) {
+    if (blankObserver) blankObserver.disconnect();
+    if (typeof IntersectionObserver === 'undefined') return;
+    const visible = new Set();
+    blankObserver = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        const idx = Number(e.target.dataset.blank);
+        if (e.isIntersecting) visible.add(idx);
+        else visible.delete(idx);
+      }
+      if (visible.size > 0) setActiveBlank(Math.min(...visible));
+    }, {
+      // 固定した本文の下端あたりを基準線にして、そこを最初に横切った空欄を選ぶ
+      rootMargin: '-45% 0px -45% 0px',
+      threshold: 0
+    });
+    listEl.querySelectorAll('.blank-item').forEach((el) => blankObserver.observe(el));
+  }
+
+  // いま見ている空欄を本文側で強調し、その位置まで本文内をスクロールする。
+  function setActiveBlank(blankIdx) {
+    if (activeBlankIdx === blankIdx) return;
+    activeBlankIdx = blankIdx;
+    const passageEl = document.getElementById('quiz-passage');
+    let target = null;
+    passageEl.querySelectorAll('.passage-blank').forEach((el) => {
+      const on = Number(el.dataset.blank) === blankIdx;
+      el.classList.toggle('is-active', on);
+      if (on) target = el;
+    });
+    if (target) {
+      const offset = target.offsetTop - passageEl.clientHeight / 2 + target.offsetHeight / 2;
+      passageEl.scrollTo({ top: Math.max(0, offset), behavior: 'smooth' });
     }
   }
 
@@ -412,6 +479,7 @@ const App = (() => {
       // 指示文が無い場合は極性を断定しない（現データには該当なし）。
       const isNegative = !!(blank.prompt && blank.prompt.includes('適当でない'));
       item.dataset.polarity = blank.prompt ? (isNegative ? 'negative' : 'positive') : 'unknown';
+      item.dataset.blank = String(blankIdx);
 
       if (blank.prompt) {
         const promptEl = document.createElement('div');
@@ -442,6 +510,10 @@ const App = (() => {
       listEl.appendChild(item);
     });
 
+    observeBlanks(listEl);
+    activeBlankIdx = null;
+    setActiveBlank(0);
+
     const submitBtn = document.getElementById('group-submit-btn');
     submitBtn.disabled = true;
     submitBtn.hidden = false;
@@ -453,6 +525,7 @@ const App = (() => {
 
   function onBlankChoiceClicked(blankIdx, choiceIdx) {
     groupSelections[blankIdx] = choiceIdx;
+    setActiveBlank(blankIdx);
     const item = document.querySelectorAll('#quiz-blank-list .blank-item')[blankIdx];
     const buttons = item.querySelectorAll('.blank-choice-btn');
     buttons.forEach((b, i) => {
@@ -616,6 +689,19 @@ const App = (() => {
       await StatsView.render(allData);
       showScreen('stats');
     });
+  }
+
+  // 固定表示した本文をヘッダーの真下に置くため、実測した高さをCSS変数に渡す。
+  // 文字サイズ設定や端末で高さが変わるので、リサイズ時にも取り直す。
+  function trackHeaderHeight() {
+    const header = document.querySelector('.app-header');
+    if (!header) return;
+    const apply = () => {
+      document.documentElement.style.setProperty('--header-h', `${header.offsetHeight}px`);
+    };
+    apply();
+    window.addEventListener('resize', apply);
+    if (typeof ResizeObserver !== 'undefined') new ResizeObserver(apply).observe(header);
   }
 
   function wireBackButtons() {
