@@ -1,4 +1,4 @@
-const CACHE_NAME = 'shouhi-quiz-v15';
+const CACHE_NAME = 'shouhi-quiz-v16';
 const STATIC_FILES = [
   './',
   './index.html',

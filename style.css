@@ -41,26 +41,36 @@ body {
   justify-content: space-between;
   background: var(--navy);
   color: var(--ice);
-  padding: 0.6rem 0.8rem;
-  padding-top: calc(0.6rem + env(safe-area-inset-top));
+  /* スマホでは1問あたりの表示領域が最優先。ヘッダーの高さはタイトル文字ではなく
+     アイコンボタンで決まるため、余白とボタンを詰めてバー自体を薄くする。
+     上下の余白はボタン側に持たせ、バー全体をタップ領域にする。 */
+  padding: 0 0.6rem;
+  padding-top: env(safe-area-inset-top);
 }
 
 .app-header h1 {
-  font-size: 1rem;
+  font-size: 0.8rem;
   margin: 0;
   font-weight: 600;
   text-align: center;
   flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .header-btn {
   background: none;
   border: none;
   color: var(--ice);
-  font-size: 1.3rem;
-  padding: 0.3rem 0.5rem;
+  font-size: 1.05rem;
   cursor: pointer;
   line-height: 1;
+  /* バーを薄くした分アイコンが小さくなるため、当たり判定はバーの高さいっぱいに
+     広げてタップしやすさを保つ（ヘッダーの外へはみ出さないので誤爆もしない）。 */
+  padding: 0.4rem 0.75rem;
+  display: flex;
+  align-items: center;
 }
 
 #app {
