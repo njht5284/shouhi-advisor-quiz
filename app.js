@@ -320,6 +320,11 @@ const App = (() => {
   function renderQuestion() {
     const q = QuizEngine.currentQuestion(session);
 
+    // 長い問題を解き終えた位置のまま次の問題が描画されると、本文の途中や
+    // 選択肢の末尾から始まってしまう。描画前に先頭へ戻す（描画後だと
+    // IntersectionObserverが画面内の空欄を誤検知することがある）。
+    window.scrollTo(0, 0);
+
     document.getElementById('quiz-progress-text').textContent = QuizEngine.progressText(session);
     document.getElementById('quiz-score-text').textContent = `正解 ${session.score}`;
     updateTimerDisplay();
