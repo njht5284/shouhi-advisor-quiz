@@ -317,6 +317,12 @@ const App = (() => {
     await persistProgress();
   }
 
+  // 一時停止したまま解答を進めると、時間を計らずに解けてしまう。
+  // 解答操作をした時点で自動的に計測を再開する。
+  function resumeTimerOnAnswer() {
+    if (QuizEngine.resumeTimer(session)) updateTimerDisplay();
+  }
+
   function renderQuestion() {
     const q = QuizEngine.currentQuestion(session);
 
@@ -432,6 +438,7 @@ const App = (() => {
   }
 
   async function onChoiceClicked(idx) {
+    resumeTimerOnAnswer();
     const q = QuizEngine.currentQuestion(session);
     const buttons = Array.from(document.querySelectorAll('#quiz-choices .choice-btn'));
     buttons.forEach((b) => { b.disabled = true; });
@@ -529,6 +536,7 @@ const App = (() => {
   }
 
   function onBlankChoiceClicked(blankIdx, choiceIdx) {
+    resumeTimerOnAnswer();
     groupSelections[blankIdx] = choiceIdx;
     setActiveBlank(blankIdx);
     const item = document.querySelectorAll('#quiz-blank-list .blank-item')[blankIdx];
@@ -551,6 +559,7 @@ const App = (() => {
   }
 
   async function onGroupSubmit() {
+    resumeTimerOnAnswer();
     document.querySelectorAll('#quiz-blank-list .blank-choice-btn').forEach((b) => { b.disabled = true; });
     document.getElementById('group-submit-btn').hidden = true;
 

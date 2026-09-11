@@ -91,6 +91,14 @@ const QuizEngine = (() => {
     if (session.timer) session.timer.paused = !session.timer.paused;
   }
 
+  // 一時停止中でも選択肢は押せてしまうため、解答操作を合図に計測を再開する。
+  // 動作中や、タイマーの無いモードでは何もしない。再開したときだけ true を返す。
+  function resumeTimer(session) {
+    if (!session.timer || !session.timer.paused) return false;
+    session.timer.paused = false;
+    return true;
+  }
+
   function formatTime(totalSeconds) {
     const s = Math.max(0, Math.floor(totalSeconds));
     const m = Math.floor(s / 60);
@@ -190,6 +198,7 @@ const QuizEngine = (() => {
     categoryBreakdown,
     tickTimer,
     togglePause,
+    resumeTimer,
     formatTime,
     snapshot,
     restore,
