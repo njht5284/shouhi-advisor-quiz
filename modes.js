@@ -1,4 +1,4 @@
-// 4モードそれぞれの出題キュー構築ロジック。
+// 各モードの出題キュー構築ロジック。
 const Modes = (() => {
   const HONBAN_TIME_LIMIT_SECONDS = 120 * 60; // 実際の試験と同じ120分
 
@@ -61,13 +61,48 @@ const Modes = (() => {
     return { queue, meta: { mode: 'review', label: `復習モード（${count}問）`, count } };
   }
 
+  // 未回答・解答回数が少ない出題単位を「手薄な順」に返す。
+  // 穴埋め型は大問ごと出題するため、含まれる小問の平均解答回数で評価する
+  // （5問中1問だけ未回答の大問より、5問とも未回答の大問を先に出すため）。
+  // 同点のものは毎回違う顔ぶれになるよう、並べ替え前にシャッフルする。
+  async function coverageUnits(allData) {
+    const counts = await Storage.getAttemptCounts();
+    const scored = [];
+    for (const [unitId, unit] of allData.questions) {
+      const blankIds = unit.kind === 'group' ? unit.blanks.map((b) => b.id) : [unit.id];
+      let attempts = 0;
+      let unanswered = 0;
+      for (const id of blankIds) {
+        const n = counts.get(id) || 0;
+        attempts += n;
+        if (n === 0) unanswered += 1;
+      }
+      scored.push({
+        unitId,
+        score: attempts / blankIds.length,
+        unansweredBlanks: unanswered,
+        totalBlanks: blankIds.length,
+      });
+    }
+    const shuffled = shuffle(scored);
+    shuffled.sort((a, b) => a.score - b.score);
+    return shuffled;
+  }
+
+  async function coverage(allData, count) {
+    const units = await coverageUnits(allData);
+    const queue = units.slice(0, Math.min(count, units.length)).map((u) => u.unitId);
+    return { queue, meta: { mode: 'coverage', label: `未着手モード（${count}問）`, count } };
+  }
+
   async function rebuild(allData, meta) {
     if (meta.mode === 'honban') return honban(allData, meta.examId);
     if (meta.mode === 'random') return random(allData, meta.count);
     if (meta.mode === 'category') return category(allData, meta.categoryId);
     if (meta.mode === 'review') return review(allData, meta.count);
+    if (meta.mode === 'coverage') return coverage(allData, meta.count);
     throw new Error(`unknown mode: ${meta.mode}`);
   }
 
-  return { honban, random, category, review, weakUnitIds, rebuild, shuffle };
+  return { honban, random, category, review, coverage, weakUnitIds, coverageUnits, rebuild, shuffle };
 })();

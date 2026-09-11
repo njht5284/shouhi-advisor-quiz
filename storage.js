@@ -82,6 +82,15 @@ const Storage = (() => {
     return weak.map((r) => r.questionId);
   }
 
+  // 小問ID -> 解答回数 の対応表。未回答の小問はキーごと存在しない。
+  // 未着手モードで「手薄な問題」を選ぶために使う。
+  async function getAttemptCounts() {
+    const all = await getAllResults();
+    const map = new Map();
+    for (const r of all) map.set(r.questionId, r.attemptCount);
+    return map;
+  }
+
   async function saveSession(session) {
     const store = await tx('sessions', 'readwrite');
     await promisify(store.add(session));
@@ -114,6 +123,7 @@ const Storage = (() => {
     recordAnswer,
     getAllResults,
     getWeakQuestions,
+    getAttemptCounts,
     saveSession,
     getRecentSessions,
     saveInProgressSession,

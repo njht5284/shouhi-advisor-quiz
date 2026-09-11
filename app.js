@@ -58,6 +58,7 @@ const App = (() => {
     wireResult();
     wireBackButtons();
     await refreshHomeReviewCount();
+    await refreshHomeCoverageCount();
     await refreshResumeBanner();
     await refreshPriorityCategories();
     showScreen('home');
@@ -149,11 +150,29 @@ const App = (() => {
     }
   }
 
+  // 未着手モードのカードに、まだ一度も解いていない小問の残数を表示する。
+  // 全問カバーできたあとも、解答回数が少ない順の出題として使い続けられるよう
+  // カードは無効化しない。
+  async function refreshHomeCoverageCount() {
+    const answered = await getAnsweredIdSet();
+    let total = 0;
+    let unanswered = 0;
+    for (const ids of allData.examBlankIds.values()) {
+      total += ids.length;
+      unanswered += ids.filter((id) => !answered.has(id)).length;
+    }
+    const desc = document.getElementById('coverage-count-desc');
+    desc.textContent = unanswered > 0
+      ? `未回答 ${unanswered}問 / 全${total}問`
+      : `全${total}問カバー済み・回数が少ない順`;
+  }
+
   function onModeSelected(mode) {
     if (mode === 'honban') renderHonbanConfig();
     else if (mode === 'random') renderRandomConfig();
     else if (mode === 'category') renderCategoryConfig();
     else if (mode === 'review') renderReviewConfig();
+    else if (mode === 'coverage') renderCoverageConfig();
   }
 
   function showModeConfig(title, bodyEl) {
@@ -235,6 +254,35 @@ const App = (() => {
       list.appendChild(item);
     }
     showModeConfig('復習モード：問題数を選択', list);
+  }
+
+  async function renderCoverageConfig() {
+    const answered = await getAnsweredIdSet();
+    let totalBlanks = 0;
+    for (const ids of allData.examBlankIds.values()) totalBlanks += ids.length;
+    let unansweredBlanks = 0;
+    for (const ids of allData.examBlankIds.values()) {
+      unansweredBlanks += ids.filter((id) => !answered.has(id)).length;
+    }
+
+    const list = document.createElement('div');
+    list.className = 'config-list';
+
+    const note = document.createElement('p');
+    note.className = 'config-note';
+    note.textContent = unansweredBlanks > 0
+      ? `未回答: ${unansweredBlanks}問 / 全${totalBlanks}問（残りは解答回数が少ない順に出題）`
+      : `全${totalBlanks}問を一度は解答済みです。解答回数が少ない順に出題します`;
+    list.appendChild(note);
+
+    for (const count of [10, 30, 50, 100]) {
+      const item = document.createElement('button');
+      item.className = 'config-item';
+      item.innerHTML = `<span>${count}問</span><span class="count-badge">手薄な順</span>`;
+      item.addEventListener('click', async () => beginSession(await Modes.coverage(allData, count)));
+      list.appendChild(item);
+    }
+    showModeConfig('未着手モード：問題数を選択', list);
   }
 
   // ---------- クイズ実行 ----------
@@ -622,6 +670,7 @@ const App = (() => {
     renderResult(record);
     showScreen('result');
     await refreshHomeReviewCount();
+    await refreshHomeCoverageCount();
     await refreshResumeBanner();
     await refreshPriorityCategories();
   }
