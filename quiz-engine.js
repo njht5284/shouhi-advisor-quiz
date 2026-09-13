@@ -5,6 +5,29 @@
 //   kind:'group'  … 穴埋め型の大問1つ（【ア】〜【オ】をまとめて解答・採点）
 // 採点・統計・復習キューは、グループの場合も内部的には小問(blank)単位で記録する。
 const QuizEngine = (() => {
+  // 本番試験の配点: 30大問×10点=300点満点。小問は150問なので1小問2点。
+  // 合格は65%=195点、つまり150小問中98問正解（97.5問の切り上げ）。
+  const HONBAN_FULL_SCORE = 300;
+  const HONBAN_BLANK_COUNT = 150;
+  const HONBAN_PASS_RATIO = 0.65;
+
+  // 正解した小問数を、本番の配点に換算する。
+  // 本番モード（150小問を通しで解いたセッション）の結果表示にのみ使う。
+  function examScore(correctCount) {
+    const pointsPerBlank = HONBAN_FULL_SCORE / HONBAN_BLANK_COUNT;
+    const passPoints = HONBAN_FULL_SCORE * HONBAN_PASS_RATIO;
+    const passBlanks = Math.ceil(passPoints / pointsPerBlank);
+    return {
+      points: correctCount * pointsPerBlank,
+      fullScore: HONBAN_FULL_SCORE,
+      passPoints,
+      passBlanks,
+      blankCount: HONBAN_BLANK_COUNT,
+      remainingBlanks: Math.max(0, passBlanks - correctCount),
+      passed: correctCount >= passBlanks,
+    };
+  }
+
   function createSession(queue, questionsMap, meta) {
     return {
       queue,
@@ -203,5 +226,7 @@ const QuizEngine = (() => {
     snapshot,
     restore,
     finish,
+    examScore,
+    HONBAN_BLANK_COUNT,
   };
 })();

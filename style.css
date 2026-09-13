@@ -640,6 +640,80 @@ body {
   margin: 1.5rem 0;
 }
 
+/* 合格ライン判定（本番モードのみ）。ゲージ上の縦線が65%＝195点の位置。 */
+.result-pass {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.9rem 1rem 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.result-pass-points {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.result-pass-full {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.result-pass-gauge {
+  position: relative;
+  height: 12px;
+  border-radius: 6px;
+  background: var(--border);
+  /* 合格ラインのラベルを線の上に置くため、上側に余白を確保する */
+  margin: 1.6rem 0 0.2rem;
+}
+
+.result-pass-fill {
+  height: 100%;
+  border-radius: 6px;
+  background: var(--navy);
+  transition: width 0.4s ease-out;
+}
+
+.result-pass-fill.is-passed {
+  background: var(--sage);
+}
+
+.result-pass-line {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  left: 65%;
+  width: 2px;
+  background: var(--terra);
+}
+
+.result-pass-line-label {
+  position: absolute;
+  bottom: calc(100% + 3px);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--terra);
+}
+
+.result-pass-verdict {
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--terra);
+  margin-top: 0.7rem;
+}
+
+.result-pass-verdict.is-passed {
+  color: var(--sage);
+}
+
 .result-breakdown {
   display: flex;
   flex-direction: column;
@@ -759,4 +833,8 @@ body {
   .blank-confirm.is-negative { color: #f0b6a3; }
   .quiz-passage.is-sticky { box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); }
   .passage-blank.is-active { background: var(--navy); color: #0f1620; }
+  .result-pass-verdict { color: #f0b6a3; }
+  .result-pass-verdict.is-passed { color: #bfe3a6; }
+  .result-pass-line-label { color: #f0b6a3; }
+  .result-pass-fill.is-passed { background: #4d7a35; }
 }

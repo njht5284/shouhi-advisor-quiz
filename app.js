@@ -714,6 +714,7 @@ const App = (() => {
 
   function renderResult(record) {
     document.getElementById('result-score').textContent = `${record.correctCount} / ${record.questionCount}`;
+    renderPassLine(record);
 
     // 「間違い抽出」セッション自体には、それを同一条件で再現する意味のある
     // 「もう一度（同じ条件で）」の対象がないため、そのボタンは隠す。
@@ -739,6 +740,30 @@ const App = (() => {
       row.innerHTML = `<span>${escapeHtml(label)}</span><span>${e.correct} / ${e.total}</span>`;
       breakdownEl.appendChild(row);
     }
+  }
+
+  // 本番モード（150小問を通しで解いたセッション）のときだけ、本番の配点に
+  // 換算した点数と合格ライン（195点＝98問）までの距離を表示する。
+  // 問数が違うセッションに同じ換算を当てると1問の重みが変わってしまうため、
+  // 本番モードでも問数が150でなければ出さない。
+  function renderPassLine(record) {
+    const passEl = document.getElementById('result-pass');
+    const isFullHonban = record.mode === 'honban' &&
+      record.questionCount === QuizEngine.HONBAN_BLANK_COUNT;
+    passEl.hidden = !isFullHonban;
+    if (!isFullHonban) return;
+
+    const exam = QuizEngine.examScore(record.correctCount);
+    document.getElementById('result-pass-points').textContent = `${exam.points}点`;
+    const fillEl = document.getElementById('result-pass-fill');
+    fillEl.style.width = `${(exam.points / exam.fullScore) * 100}%`;
+    fillEl.classList.toggle('is-passed', exam.passed);
+
+    const verdictEl = document.getElementById('result-pass-verdict');
+    verdictEl.textContent = exam.passed
+      ? `合格ライン${exam.passPoints}点を${exam.points - exam.passPoints}点クリア`
+      : `合格まであと${exam.remainingBlanks}問（${exam.passPoints - exam.points}点）`;
+    verdictEl.classList.toggle('is-passed', exam.passed);
   }
 
   // ---------- 統計・ヘッダー ----------
