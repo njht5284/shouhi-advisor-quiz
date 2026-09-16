@@ -55,6 +55,19 @@ const Modes = (() => {
     return units;
   }
 
+  // 復習対象を出題単位に直したときの件数と、そのうち復習時期が来ているものの件数。
+  // ホーム画面のカードと、復習モードの設定画面の説明文に出す。
+  async function weakUnitStats(allData) {
+    const units = await weakUnitIds(allData);
+    const dueBlankIds = await Storage.getDueWeakQuestionIds();
+    const dueUnits = new Set();
+    for (const blankId of dueBlankIds) {
+      const unitId = allData.blankToUnit.get(blankId);
+      if (unitId && allData.questions.has(unitId)) dueUnits.add(unitId);
+    }
+    return { total: units.length, due: units.filter((id) => dueUnits.has(id)).length };
+  }
+
   async function review(allData, count) {
     const units = await weakUnitIds(allData);
     const queue = units.slice(0, Math.min(count, units.length));
@@ -104,5 +117,5 @@ const Modes = (() => {
     throw new Error(`unknown mode: ${meta.mode}`);
   }
 
-  return { honban, random, category, review, coverage, weakUnitIds, coverageUnits, rebuild, shuffle };
+  return { honban, random, category, review, coverage, weakUnitIds, weakUnitStats, coverageUnits, rebuild, shuffle };
 })();

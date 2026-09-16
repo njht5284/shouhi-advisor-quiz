@@ -138,16 +138,18 @@ const App = (() => {
   }
 
   async function refreshHomeReviewCount() {
-    const units = await Modes.weakUnitIds(allData);
+    const stats = await Modes.weakUnitStats(allData);
     const desc = document.getElementById('review-count-desc');
     const reviewCard = document.querySelector('.mode-card[data-mode="review"]');
-    if (units.length === 0) {
+    if (stats.total === 0) {
       desc.textContent = '不正解の問題はまだありません';
       reviewCard.disabled = true;
-    } else {
-      desc.textContent = `苦手問題 ${units.length}問を復習`;
-      reviewCard.disabled = false;
+      return;
     }
+    reviewCard.disabled = false;
+    desc.textContent = stats.due > 0
+      ? `苦手問題 ${stats.total}問（復習時期 ${stats.due}問）`
+      : `苦手問題 ${stats.total}問を復習`;
   }
 
   // 未着手モードのカードに、まだ一度も解いていない小問の残数を表示する。
@@ -266,20 +268,22 @@ const App = (() => {
   }
 
   async function renderReviewConfig() {
-    const poolSize = (await Modes.weakUnitIds(allData)).length;
+    const stats = await Modes.weakUnitStats(allData);
 
     const list = document.createElement('div');
     list.className = 'config-list';
 
     const note = document.createElement('p');
     note.className = 'config-note';
-    note.textContent = `対象（一度でも間違えた問題）: ${poolSize}問`;
+    note.textContent = stats.due > 0
+      ? `対象（一度でも間違えた問題）: ${stats.total}問。うち復習時期が来たもの: ${stats.due}問`
+      : `対象（一度でも間違えた問題）: ${stats.total}問。今すぐ復習時期のものはありません`;
     list.appendChild(note);
 
     for (const count of [10, 30, 50]) {
       const item = document.createElement('button');
       item.className = 'config-item';
-      item.innerHTML = `<span>${count}問</span><span class="count-badge">正答率が低い順</span>`;
+      item.innerHTML = `<span>${count}問</span><span class="count-badge">復習時期が来た順</span>`;
       item.addEventListener('click', async () => beginSession(await Modes.review(allData, count)));
       list.appendChild(item);
     }
@@ -384,9 +388,29 @@ const App = (() => {
       : QuizEngine.formatTime(session.timer.remainingSeconds);
     textEl.classList.toggle('time-up', timeUp);
 
+    updatePaceDisplay();
+
     const pauseBtn = document.getElementById('quiz-pause-btn');
     pauseBtn.textContent = session.timer.paused ? '再開' : '一時停止';
     pauseBtn.classList.toggle('is-paused', session.timer.paused);
+  }
+
+  // 本番のペース管理。残り時間だけでは「間に合うのか」が分からないため、
+  // 経過時間に対する解答数の過不足を問数で出す。
+  // 穴埋めの大問はまとめて採点するので、この表示も5問単位で動く。
+  function updatePaceDisplay() {
+    const paceEl = document.getElementById('quiz-pace-text');
+    const pace = QuizEngine.paceStatus(session);
+    if (!pace) {
+      paceEl.hidden = true;
+      return;
+    }
+    paceEl.hidden = false;
+    if (pace.diff === 0) paceEl.textContent = 'ペース 予定どおり';
+    else if (pace.diff > 0) paceEl.textContent = `ペース +${pace.diff}問`;
+    else paceEl.textContent = `ペース −${-pace.diff}問`;
+    paceEl.classList.toggle('is-behind', pace.behind);
+    paceEl.classList.toggle('is-ahead', pace.diff > 0);
   }
 
   async function onPauseClicked() {

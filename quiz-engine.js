@@ -28,6 +28,30 @@ const QuizEngine = (() => {
     };
   }
 
+  // 本番の時間配分の目安。150小問を120分なので1小問48秒。
+  // 何問分の遅れから警告色にするか（48秒×5問＝4分の遅れ）。
+  const PACE_BEHIND_BLANKS = 5;
+
+  // 経過時間から「本来解き終えているべき小問数」を出し、実際の解答数と比べる。
+  // 制限時間つきのセッション（本番モード）でのみ意味を持つ。
+  // 1問あたりの持ち時間はセッション自身の値から出すので、問数が変わっても崩れない。
+  function paceStatus(session) {
+    if (!session.timer || !session.totalBlanks) return null;
+    const elapsed = session.timer.totalSeconds - session.timer.remainingSeconds;
+    if (elapsed <= 0) return null;
+    const secondsPerBlank = session.timer.totalSeconds / session.totalBlanks;
+    const expected = Math.min(session.totalBlanks, Math.floor(elapsed / secondsPerBlank));
+    const answered = session.answers.length;
+    const diff = answered - expected;
+    return {
+      answered,
+      expected,
+      diff,
+      secondsPerBlank,
+      behind: diff <= -PACE_BEHIND_BLANKS,
+    };
+  }
+
   function createSession(queue, questionsMap, meta) {
     return {
       queue,
@@ -227,6 +251,7 @@ const QuizEngine = (() => {
     restore,
     finish,
     examScore,
+    paceStatus,
     HONBAN_BLANK_COUNT,
   };
 })();

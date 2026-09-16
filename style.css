@@ -367,6 +367,18 @@ body {
   color: var(--navy);
 }
 
+/* ペース表示。行は右寄せなので、margin-right:autoで左端に置く。 */
+.quiz-pace-text {
+  margin-right: auto;
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--text-muted);
+}
+
+.quiz-pace-text.is-ahead { color: var(--sage); }
+.quiz-pace-text.is-behind { color: var(--incorrect); }
+
 .quiz-timer-text.time-up {
   color: var(--incorrect);
 }
@@ -860,4 +872,6 @@ body {
   .result-pass-fill.is-passed { background: #4d7a35; }
   .config-item.is-done { color: #bfe3a6; border-color: #4d7a35; background: #1e3521; }
   .count-badge.is-done { color: #bfe3a6; }
+  .quiz-pace-text.is-ahead { color: #bfe3a6; }
+  .quiz-pace-text.is-behind { color: #f0b6a3; }
 }

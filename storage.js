@@ -68,18 +68,56 @@ const Storage = (() => {
     return promisify(store.getAll());
   }
 
-  // 一度でも間違えたことがある問題を、正答率が低い順（同率なら挑戦回数が多い順）に返す。
-  // 復習モードの出題プールとして使う。
+  // ---- 間隔反復（スペースドリピティション）----
+  // 記録として持っているのは attemptCount / correctCount / lastResult / lastAnsweredAt だけなので、
+  // Leitnerの考え方を単純化し「正解を重ねた問題ほど次に出すまでの間隔を延ばす」で近似する。
+  // 直前に間違えた問題は、何回正解していても間隔を最短に戻す。
+  const REVIEW_INTERVAL_DAYS = [1, 3, 7, 14, 30];
+
+  function reviewIntervalDays(record) {
+    if (record.lastResult === 'incorrect') return REVIEW_INTERVAL_DAYS[0];
+    const level = Math.min(record.correctCount, REVIEW_INTERVAL_DAYS.length - 1);
+    return REVIEW_INTERVAL_DAYS[level];
+  }
+
+  // 「間隔に対してどれだけ放置されたか」。1.0以上なら復習時期が来ている。
+  // 解答日時が欠けている古い記録は、最優先で拾えるよう無限大にする。
+  function reviewDueRatio(record, now) {
+    const last = record.lastAnsweredAt ? Date.parse(record.lastAnsweredAt) : NaN;
+    if (!Number.isFinite(last)) return Number.POSITIVE_INFINITY;
+    const days = Math.max(0, (now - last) / 86400000);
+    return days / reviewIntervalDays(record);
+  }
+
+  function weakRecords(all) {
+    return all.filter((r) => r.correctCount < r.attemptCount);
+  }
+
+  // 一度でも間違えたことがある問題を、復習すべき順に返す。
+  // 第1基準は間隔反復の期限超過度、第2基準は正答率の低さ、第3基準は挑戦回数。
   async function getWeakQuestions() {
     const all = await getAllResults();
-    const weak = all.filter((r) => r.correctCount < r.attemptCount);
+    const now = Date.now();
+    const weak = weakRecords(all);
     weak.sort((a, b) => {
+      const dueA = reviewDueRatio(a, now);
+      const dueB = reviewDueRatio(b, now);
+      if (dueA !== dueB) return dueB - dueA;
       const accA = a.correctCount / a.attemptCount;
       const accB = b.correctCount / b.attemptCount;
       if (accA !== accB) return accA - accB;
       return b.attemptCount - a.attemptCount;
     });
     return weak.map((r) => r.questionId);
+  }
+
+  // 復習対象のうち、間隔反復の期限が来ている小問のID。
+  async function getDueWeakQuestionIds() {
+    const all = await getAllResults();
+    const now = Date.now();
+    return weakRecords(all)
+      .filter((r) => reviewDueRatio(r, now) >= 1)
+      .map((r) => r.questionId);
   }
 
   // 小問ID -> 解答回数 の対応表。未回答の小問はキーごと存在しない。
@@ -149,6 +187,7 @@ const Storage = (() => {
     recordAnswer,
     getAllResults,
     getWeakQuestions,
+    getDueWeakQuestionIds,
     getAttemptCounts,
     saveSession,
     getHonbanSummary,
