@@ -191,18 +191,48 @@ const App = (() => {
 
   async function renderHonbanConfig() {
     const answered = await getAnsweredIdSet();
+    const honbanDone = await Storage.getHonbanSummary();
     const list = document.createElement('div');
     list.className = 'config-list';
+    let doneCount = 0;
     for (const exam of allData.examList) {
       const ids = allData.examBlankIds.get(exam.examId) || [];
       const answeredCount = ids.filter((id) => answered.has(id)).length;
+      const done = honbanDone.get(exam.examId);
+      if (done) doneCount += 1;
       const item = document.createElement('button');
-      item.className = 'config-item';
-      item.innerHTML = `<span>${escapeHtml(exam.label)}</span><span class="count-badge">${answeredCount}/${exam.count} 回答済み</span>`;
+      item.className = done ? 'config-item is-done' : 'config-item';
+      const label = done
+        ? `<span class="config-done-mark">✓</span>${escapeHtml(exam.label)}`
+        : escapeHtml(exam.label);
+      // 通しで解き終えた回は、残りの回と区別できるよう色と✓を変え、
+      // 「何問解いたか」ではなく「何点取れたか」を出す
+      // （完走していれば全問が解答済みなので、回答済み件数は情報にならない）。
+      const badge = done
+        ? `<span class="count-badge is-done">${escapeHtml(honbanBadgeText(done))}</span>`
+        : `<span class="count-badge">${answeredCount}/${exam.count} 回答済み</span>`;
+      item.innerHTML = `<span>${label}</span>${badge}`;
       item.addEventListener('click', () => beginSession(Modes.honban(allData, exam.examId)));
       list.appendChild(item);
     }
+
+    const note = document.createElement('p');
+    note.className = 'config-note';
+    note.textContent = doneCount > 0
+      ? `通しで解き終えた回: ${doneCount} / ${allData.examList.length}回（✓の回）`
+      : `まだ通しで解き終えた回はありません（全${allData.examList.length}回）`;
+    list.insertBefore(note, list.firstChild);
+
     showModeConfig('本番モード：試験回を選択', list);
+  }
+
+  // 通し済みの試験回に出すバッジ文言。本番と同じ150小問のときだけ点数に換算する。
+  function honbanBadgeText(done) {
+    const isFull = done.questionCount === QuizEngine.HONBAN_BLANK_COUNT;
+    const best = isFull
+      ? `${QuizEngine.examScore(done.bestCorrect).points}点`
+      : `${done.bestCorrect}/${done.questionCount}`;
+    return done.runs > 1 ? `${done.runs}回・最高 ${best}` : `${best}`;
   }
 
   function renderRandomConfig() {

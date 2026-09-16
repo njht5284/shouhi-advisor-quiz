@@ -91,6 +91,32 @@ const Storage = (() => {
     return map;
   }
 
+  // 本番モードを最後まで解き終えた記録を、試験回ごとに集計する。
+  // sessionsには完走したセッションしか入らないため、ここに出てくる試験回は
+  // 「一度は150問を通しで解き切った」ことを意味する。
+  async function getHonbanSummary() {
+    const store = await tx('sessions', 'readonly');
+    const all = await promisify(store.getAll());
+    const map = new Map();
+    for (const r of all) {
+      if (r.mode !== 'honban' || !r.examId) continue;
+      const e = map.get(r.examId) || {
+        runs: 0,
+        bestCorrect: 0,
+        questionCount: r.questionCount,
+        lastFinishedAt: null,
+      };
+      e.runs += 1;
+      if (r.correctCount > e.bestCorrect) e.bestCorrect = r.correctCount;
+      if (!e.lastFinishedAt || r.finishedAt > e.lastFinishedAt) {
+        e.lastFinishedAt = r.finishedAt;
+        e.questionCount = r.questionCount;
+      }
+      map.set(r.examId, e);
+    }
+    return map;
+  }
+
   async function saveSession(session) {
     const store = await tx('sessions', 'readwrite');
     await promisify(store.add(session));
@@ -125,6 +151,7 @@ const Storage = (() => {
     getWeakQuestions,
     getAttemptCounts,
     saveSession,
+    getHonbanSummary,
     getRecentSessions,
     saveInProgressSession,
     getInProgressSession,

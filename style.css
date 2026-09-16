@@ -272,6 +272,8 @@ body {
 
 .config-item {
   background: var(--bg);
+  /* 他のボタンと違い色指定が漏れており、ダークモードで黒文字になっていた */
+  color: var(--text);
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 0.8rem 1rem;
@@ -285,6 +287,25 @@ body {
 }
 
 .config-item:active { background: var(--ice); }
+
+/* 本番モードで通しで解き終えた試験回。色・✓・点数表示の3つで区別する
+   （色だけだと屋外や色覚特性で伝わらないことがあるため）。 */
+.config-item.is-done {
+  color: var(--sage);
+  font-weight: 700;
+  border-color: var(--sage);
+  background: #f2f7ee;
+}
+
+.config-done-mark {
+  margin-right: 0.35rem;
+  font-weight: 800;
+}
+
+.count-badge.is-done {
+  color: var(--sage);
+  font-weight: 700;
+}
 
 .config-item-sub {
   font-size: 0.75rem;
@@ -837,4 +858,6 @@ body {
   .result-pass-verdict.is-passed { color: #bfe3a6; }
   .result-pass-line-label { color: #f0b6a3; }
   .result-pass-fill.is-passed { background: #4d7a35; }
+  .config-item.is-done { color: #bfe3a6; border-color: #4d7a35; background: #1e3521; }
+  .count-badge.is-done { color: #bfe3a6; }
 }
