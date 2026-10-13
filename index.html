@@ -26,6 +26,40 @@
 
   <!-- ホーム -->
   <section id="screen-home" class="screen" hidden>
+    <div class="exam-tabs" role="tablist">
+      <button id="tab-1st" class="exam-tab is-active" role="tab" aria-selected="true">第1次試験</button>
+      <button id="tab-2nd" class="exam-tab" role="tab" aria-selected="false">第2次試験</button>
+    </div>
+
+    <!-- 第2次試験のホーム -->
+    <div id="home-2nd" hidden>
+      <div id="essay-priority" class="priority-block" hidden>
+        <div class="priority-title">今日の優先</div>
+        <div id="essay-priority-list" class="priority-list"></div>
+      </div>
+      <div class="mode-grid">
+        <button class="mode-card" data-essay="build">
+          <span class="mode-title">構成練習</span>
+          <span class="mode-desc">論点カードを選び、序論〜結論に振り分ける</span>
+        </button>
+        <button class="mode-card" data-essay="recall">
+          <span class="mode-title">想起カード</span>
+          <span class="mode-desc" id="recall-count-desc">論点の要旨を思い出す</span>
+        </button>
+        <button class="mode-card" data-essay="interview">
+          <span class="mode-title">面接カード</span>
+          <span class="mode-desc">想定問答の回答を準備・練習する</span>
+        </button>
+        <button class="mode-card" data-essay="flags">
+          <span class="mode-title">要確認リスト</span>
+          <span class="mode-desc" id="flag-count-desc">気になったカードを書き出す</span>
+        </button>
+      </div>
+      <p class="config-note essay-home-note">論文本体は紙に手書きで練習します。本番は11月29日（日）、論文60分・800字以内。</p>
+    </div>
+
+    <!-- 第1次試験のホーム（従来の画面） -->
+    <div id="home-1st">
     <div id="resume-banner" class="resume-banner" hidden>
       <div class="resume-info">
         <span id="resume-label" class="resume-label"></span>
@@ -62,7 +96,57 @@
         <span class="mode-desc" id="coverage-count-desc">未回答・解答回数が少ない問題</span>
       </button>
     </div>
+    </div>
     <button id="about-link" class="link-btn">このアプリについて</button>
+  </section>
+
+  <!-- 第2次：一覧画面（論題一覧・想起カードの選択・面接の質問一覧・要確認リスト・統計） -->
+  <section id="screen-essay-list" class="screen" hidden>
+    <button class="back-btn" data-back="home">← ホームへ</button>
+    <h2 id="essay-list-title" class="essay-h2"></h2>
+    <div id="essay-list-body"></div>
+  </section>
+
+  <!-- 第2次：構成練習 -->
+  <section id="screen-essay-build" class="screen" hidden>
+    <button class="back-btn" id="essay-build-back">← 論題一覧へ</button>
+    <div id="essay-build-head"></div>
+    <div class="slot-legend" id="essay-slot-legend"></div>
+    <div id="essay-build-cards" class="build-cards"></div>
+    <button id="essay-grade-btn" class="primary-btn">採点する</button>
+  </section>
+
+  <!-- 第2次：構成練習の結果 -->
+  <section id="screen-essay-result" class="screen" hidden>
+    <h2 class="essay-h2">構成練習の結果</h2>
+    <div id="essay-result-body"></div>
+    <div class="result-actions">
+      <button id="essay-copy-btn" class="primary-btn">必須論点をコピー（添削依頼用）</button>
+      <button id="essay-retry-btn" class="secondary-btn">もう一度この論題</button>
+      <button id="essay-list-btn" class="secondary-btn">論題一覧へ</button>
+    </div>
+  </section>
+
+  <!-- 第2次：想起カード・面接カード -->
+  <section id="screen-recall" class="screen" hidden>
+    <div class="quiz-progress">
+      <span id="recall-progress"></span>
+      <button class="link-btn recall-quit" id="recall-quit">終了</button>
+    </div>
+    <div id="recall-card" class="recall-card"></div>
+    <div id="recall-actions"></div>
+  </section>
+
+  <!-- 第2次：面接の回答を編集 -->
+  <section id="screen-interview-edit" class="screen" hidden>
+    <button class="back-btn" id="interview-edit-back">← 質問一覧へ</button>
+    <div id="interview-edit-body"></div>
+  </section>
+
+  <!-- 第2次：第1次試験の関連問題（閲覧のみ、回答記録には残さない） -->
+  <section id="screen-essay-ref" class="screen" hidden>
+    <button class="back-btn" id="essay-ref-back">← 戻る</button>
+    <div id="essay-ref-body"></div>
   </section>
 
   <!-- モード設定パネル -->
@@ -147,6 +231,7 @@
       <p>本アプリは消費生活アドバイザー資格試験（消費生活相談員資格試験兼用）第1次試験の過去問（12回分・1,800小問）を学習するための非公式の個人利用アプリです。</p>
       <p>収録している解説は、公表されている正答表と講義資料等をもとに作成した学習用の要約です。法令の正確な適用や最新の改正状況については、必ず原典（法令・公式資料）でご確認ください。</p>
       <p>一部の分野（繊維学、建材科学の一部など）は、提供された講義資料に該当箇所が見当たらなかったため「要補完」として扱っています。該当する設問の解説には、一般知識に基づく参考情報である旨を付記しています。</p>
+      <p>第2次試験（論文・面接）の対策として、構成練習・想起カード・面接カードを収録しています。論題は出題の要旨を独自にまとめたもので、問題文の原文は収録していません。論点カードの条文・施行日は法令の原文（e-Gov法令検索）等と照合済みですが、学習用の要約であるため、最新の状況は原典でご確認ください。</p>
       <p>データはすべて端末内（ローカル）に保存されます。外部サーバーへの送信や利用状況の追跡は行っていません。</p>
       <h3>ホーム画面への追加方法</h3>
       <p><strong>iOS Safari:</strong> 共有ボタン → 「ホーム画面に追加」</p>
@@ -161,6 +246,7 @@
 <script src="./quiz-engine.js"></script>
 <script src="./modes.js"></script>
 <script src="./stats-view.js"></script>
+<script src="./essay.js"></script>
 <script src="./app.js"></script>
 </body>
 </html>

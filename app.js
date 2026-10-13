@@ -3,7 +3,9 @@ const App = (() => {
   let allData = null;
   let session = null;
 
-  const screens = ['loading', 'home', 'mode-config', 'quiz', 'result', 'stats', 'about'];
+  const screens = ['loading', 'home', 'mode-config', 'quiz', 'result', 'stats', 'about',
+    // 第2次試験対策（essay.js が描画する）
+    'essay-list', 'essay-build', 'essay-result', 'recall', 'interview-edit', 'essay-ref'];
 
   function showScreen(name) {
     for (const s of screens) {
@@ -57,6 +59,8 @@ const App = (() => {
     wireQuiz();
     wireResult();
     wireBackButtons();
+    await Essay.init({ allData, showScreen, escapeHtml });
+    wireExamTabs();
     await refreshHomeReviewCount();
     await refreshHomeCoverageCount();
     await refreshResumeBanner();
@@ -825,9 +829,15 @@ const App = (() => {
     document.getElementById('nav-home').addEventListener('click', async () => {
       await refreshResumeBanner();
       await refreshPriorityCategories();
+      await Essay.refreshHome();
       showScreen('home');
     });
     document.getElementById('nav-stats').addEventListener('click', async () => {
+      // 第2次のタブを開いているときは、第2次（構成練習・想起カード）の統計を出す。
+      if (currentExamTab === '2nd') {
+        await Essay.showStats();
+        return;
+      }
       await StatsView.render(allData);
       showScreen('stats');
     });
@@ -848,8 +858,37 @@ const App = (() => {
 
   function wireBackButtons() {
     document.querySelectorAll('[data-back="home"]').forEach((btn) => {
-      btn.addEventListener('click', () => showScreen('home'));
+      btn.addEventListener('click', async () => {
+        await Essay.refreshHome();
+        showScreen('home');
+      });
     });
+  }
+
+  // ---------- 第1次／第2次の切り替えタブ ----------
+  // 最後に開いたタブを端末に記憶する（保存できない環境では毎回第1次から始める）。
+  const EXAM_TAB_KEY = 'shouhi-exam-tab';
+  let currentExamTab = '1st';
+
+  function wireExamTabs() {
+    let saved = null;
+    try { saved = localStorage.getItem(EXAM_TAB_KEY); } catch (e) { saved = null; }
+    selectExamTab(saved === '2nd' ? '2nd' : '1st');
+    document.getElementById('tab-1st').addEventListener('click', () => selectExamTab('1st'));
+    document.getElementById('tab-2nd').addEventListener('click', () => selectExamTab('2nd'));
+  }
+
+  function selectExamTab(tab) {
+    currentExamTab = tab;
+    try { localStorage.setItem(EXAM_TAB_KEY, tab); } catch (e) { /* 保存できなくても動作は続ける */ }
+    document.getElementById('home-1st').hidden = tab !== '1st';
+    document.getElementById('home-2nd').hidden = tab !== '2nd';
+    for (const t of ['1st', '2nd']) {
+      const btn = document.getElementById(`tab-${t}`);
+      btn.classList.toggle('is-active', t === tab);
+      btn.setAttribute('aria-selected', String(t === tab));
+    }
+    if (tab === '2nd') Essay.refreshHome();
   }
 
   return { init };

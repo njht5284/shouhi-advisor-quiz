@@ -1,7 +1,9 @@
 // IndexedDB永続化層: 回答結果(questionResults)とセッション履歴(sessions)を管理する。
 const Storage = (() => {
   const DB_NAME = 'shouhi-advisor-quiz-db';
-  const DB_VERSION = 2;
+  // v3: 第2次試験対策用の保存領域（essayResults / recallState / interviewAnswers / flags）を追加。
+  // 第1次の保存領域（questionResults / sessions / inProgressSession）には手を加えない。
+  const DB_VERSION = 3;
   const IN_PROGRESS_KEY = 'current';
   let dbPromise = null;
 
@@ -22,6 +24,20 @@ const Storage = (() => {
         }
         if (!db.objectStoreNames.contains('inProgressSession')) {
           db.createObjectStore('inProgressSession', { keyPath: 'id' });
+        }
+        // ---- 第2次試験対策 ----
+        if (!db.objectStoreNames.contains('essayResults')) {
+          const store = db.createObjectStore('essayResults', { keyPath: 'resultId', autoIncrement: true });
+          store.createIndex('topicId', 'topicId');
+        }
+        if (!db.objectStoreNames.contains('recallState')) {
+          db.createObjectStore('recallState', { keyPath: 'cardId' });
+        }
+        if (!db.objectStoreNames.contains('interviewAnswers')) {
+          db.createObjectStore('interviewAnswers', { keyPath: 'id' });
+        }
+        if (!db.objectStoreNames.contains('flags')) {
+          db.createObjectStore('flags', { keyPath: 'cardId' });
         }
       };
       req.onsuccess = () => resolve(req.result);
@@ -183,7 +199,83 @@ const Storage = (() => {
     await promisify(store.delete(IN_PROGRESS_KEY));
   }
 
+  // ---------- 第2次試験対策 ----------
+  async function saveEssayResult(result) {
+    const store = await tx('essayResults', 'readwrite');
+    await promisify(store.add(result));
+  }
+
+  async function getEssayResults() {
+    const store = await tx('essayResults', 'readonly');
+    return promisify(store.getAll());
+  }
+
+  // 想起カード・面接カードの間隔反復。自己判定 good / vague / bad で段階を上下させる。
+  // 段階ごとの次回までの日数は第1次の復習モードと同じ [1, 3, 7, 14, 30]。
+  async function rateRecall(cardId, rating) {
+    const store = await tx('recallState', 'readwrite');
+    const existing = await promisify(store.get(cardId));
+    const rec = existing || { cardId, level: 0, attempts: 0 };
+    if (rating === 'good') rec.level = Math.min(rec.level + 1, REVIEW_INTERVAL_DAYS.length - 1);
+    else if (rating === 'vague') rec.level = Math.max(rec.level - 1, 0);
+    else rec.level = 0;
+    rec.lastRating = rating;
+    rec.lastAt = new Date().toISOString();
+    rec.attempts += 1;
+    await promisify(store.put(rec));
+    return rec;
+  }
+
+  async function getRecallStates() {
+    const store = await tx('recallState', 'readonly');
+    const all = await promisify(store.getAll());
+    return new Map(all.map((r) => [r.cardId, r]));
+  }
+
+  // 未学習（記録なし）は常に期限扱い。「言えなかった」は翌日、それ以外は段階に応じた日数。
+  function isRecallDue(rec, now = Date.now()) {
+    if (!rec || !rec.lastAt) return true;
+    const days = (now - Date.parse(rec.lastAt)) / 86400000;
+    return days >= REVIEW_INTERVAL_DAYS[rec.level];
+  }
+
+  async function saveInterviewAnswer(answer) {
+    const store = await tx('interviewAnswers', 'readwrite');
+    await promisify(store.put({ ...answer, updatedAt: new Date().toISOString() }));
+  }
+
+  async function getInterviewAnswers() {
+    const store = await tx('interviewAnswers', 'readonly');
+    const all = await promisify(store.getAll());
+    return new Map(all.map((a) => [a.id, a]));
+  }
+
+  async function toggleFlag(cardId, title) {
+    const store = await tx('flags', 'readwrite');
+    const existing = await promisify(store.get(cardId));
+    if (existing) {
+      await promisify(store.delete(cardId));
+      return false;
+    }
+    await promisify(store.put({ cardId, title, flaggedAt: new Date().toISOString() }));
+    return true;
+  }
+
+  async function getFlags() {
+    const store = await tx('flags', 'readonly');
+    return promisify(store.getAll());
+  }
+
   return {
+    saveEssayResult,
+    getEssayResults,
+    rateRecall,
+    getRecallStates,
+    isRecallDue,
+    saveInterviewAnswer,
+    getInterviewAnswers,
+    toggleFlag,
+    getFlags,
     recordAnswer,
     getAllResults,
     getWeakQuestions,
