@@ -1,4 +1,4 @@
-const CACHE_NAME = 'shouhi-quiz-v25';
+const CACHE_NAME = 'shouhi-quiz-v26';
 const STATIC_FILES = [
   './',
   './index.html',
@@ -21,7 +21,9 @@ const STATIC_FILES = [
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then((cache) => cache.addAll(STATIC_FILES))
+      // HTTPキャッシュ（GitHub Pages は max-age=600）を経由すると、公開直後に古いファイルを
+      // 取り込むことがあるため、必ずサーバーから取り直す。
+      .then((cache) => cache.addAll(STATIC_FILES.map((url) => new Request(url, { cache: 'reload' }))))
       .then(() => self.skipWaiting())
   );
 });

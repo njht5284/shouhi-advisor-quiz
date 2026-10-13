@@ -752,7 +752,11 @@ const Essay = (() => {
 
   // ---------- 第2次の統計 ----------
   async function showStats() {
-    if (loadError || !data) return;
+    if (loadError || !data) {
+      showList('第2次試験の統計', el('p', 'empty-note',
+        '第2次試験のデータを読み込めませんでした。通信できる状態で一度開き直してください。第1次の統計は「第1次試験」タブで📊を押すと表示されます。'));
+      return;
+    }
     const results = await Storage.getEssayResults();
     const best = bestByTopic(results);
     const states = await Storage.getRecallStates();

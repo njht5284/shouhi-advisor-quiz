@@ -241,6 +241,22 @@
 
 </main>
 
+<script>
+  // 更新された Service Worker に切り替わったら、一度だけ再読み込みする。
+  // index.html は常に最新を取得する一方、JSは旧キャッシュのまま読まれることがあり、
+  // 版が混在するのを防ぐため。この処理は旧版のJSに依存しないよう index.html に直接書く。
+  // 初回インストール時（もともと制御下にない）は再読み込みしない。
+  (function () {
+    if (!('serviceWorker' in navigator)) return;
+    var hadController = Boolean(navigator.serviceWorker.controller);
+    var reloaded = false;
+    navigator.serviceWorker.addEventListener('controllerchange', function () {
+      if (!hadController || reloaded) return;
+      reloaded = true;
+      window.location.reload();
+    });
+  })();
+</script>
 <script src="./data-loader.js"></script>
 <script src="./storage.js"></script>
 <script src="./quiz-engine.js"></script>

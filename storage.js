@@ -40,7 +40,23 @@ const Storage = (() => {
           db.createObjectStore('flags', { keyPath: 'cardId' });
         }
       };
-      req.onsuccess = () => resolve(req.result);
+      // 旧版のアプリ（別タブやホーム画面のアプリ）が開いたままだと、版の更新が待たされる。
+      // そのまま無言で止まらないよう、読み込み中の画面に案内を出す。
+      req.onblocked = () => {
+        const msg = document.querySelector('#screen-loading .loading-text');
+        if (msg) {
+          msg.textContent = 'アプリの更新中です。開いている他のタブや、ホーム画面から開いたこのアプリを閉じてから、もう一度開き直してください。';
+        }
+      };
+      req.onsuccess = () => {
+        const db = req.result;
+        // 次に新しい版が開かれたとき、こちらが接続を手放して更新を妨げないようにする。
+        db.onversionchange = () => {
+          db.close();
+          dbPromise = null;
+        };
+        resolve(db);
+      };
       req.onerror = () => reject(req.error);
     });
     return dbPromise;

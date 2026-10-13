@@ -59,7 +59,10 @@ const App = (() => {
     wireQuiz();
     wireResult();
     wireBackButtons();
-    await Essay.init({ allData, showScreen, escapeHtml });
+    // 第2次の初期化に失敗しても、第1次は従来どおり使えるようにする。
+    try {
+      await Essay.init({ allData, showScreen, escapeHtml });
+    } catch (e) { /* 第2次のホームに読み込みエラーの案内が出る */ }
     wireExamTabs();
     await refreshHomeReviewCount();
     await refreshHomeCoverageCount();
@@ -829,8 +832,8 @@ const App = (() => {
     document.getElementById('nav-home').addEventListener('click', async () => {
       await refreshResumeBanner();
       await refreshPriorityCategories();
-      await Essay.refreshHome();
       showScreen('home');
+      refreshEssayHomeIfOpen();
     });
     document.getElementById('nav-stats').addEventListener('click', async () => {
       // 第2次のタブを開いているときは、第2次（構成練習・想起カード）の統計を出す。
@@ -858,9 +861,9 @@ const App = (() => {
 
   function wireBackButtons() {
     document.querySelectorAll('[data-back="home"]').forEach((btn) => {
-      btn.addEventListener('click', async () => {
-        await Essay.refreshHome();
+      btn.addEventListener('click', () => {
         showScreen('home');
+        refreshEssayHomeIfOpen();
       });
     });
   }
@@ -878,6 +881,13 @@ const App = (() => {
     document.getElementById('tab-2nd').addEventListener('click', () => selectExamTab('2nd'));
   }
 
+  // 第2次のホームは、第2次タブを開いているときだけ更新する。
+  // 第2次側で何か失敗しても、第1次の画面遷移は止めない。
+  function refreshEssayHomeIfOpen() {
+    if (currentExamTab !== '2nd') return;
+    Essay.refreshHome().catch(() => {});
+  }
+
   function selectExamTab(tab) {
     currentExamTab = tab;
     try { localStorage.setItem(EXAM_TAB_KEY, tab); } catch (e) { /* 保存できなくても動作は続ける */ }
@@ -888,7 +898,7 @@ const App = (() => {
       btn.classList.toggle('is-active', t === tab);
       btn.setAttribute('aria-selected', String(t === tab));
     }
-    if (tab === '2nd') Essay.refreshHome();
+    refreshEssayHomeIfOpen();
   }
 
   return { init };
