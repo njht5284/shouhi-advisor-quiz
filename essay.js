@@ -465,7 +465,9 @@ const Essay = (() => {
       if (flagBtn.disabled) return;
       flagBtn.disabled = true;
       try {
-        const on = await Storage.toggleFlag(cardId, c.title);
+        // 画面に表示している状態の逆を明示的に保存する（読み込み失敗で表示がずれていても、記録を誤って消さない）
+        const on = !flags.has(cardId);
+        if (on) await Storage.setFlag(cardId, c.title); else await Storage.removeFlag(cardId);
         if (on) flags.add(cardId); else flags.delete(cardId);
         flagBtn.textContent = on ? '要確認 ✓' : '要確認';
         flagBtn.classList.toggle('is-on', on);
@@ -757,7 +759,12 @@ const Essay = (() => {
         notifyError('回答を保存できませんでした。入力内容はそのまま残っています。もう一度「保存する」を押してください。');
         return;
       }
-      showInterviewList();
+      try {
+        await showInterviewList();
+      } catch (e) {
+        save.disabled = false;
+        notifyError('回答は保存しましたが、質問一覧の表示に失敗しました。ホームから開き直してください。');
+      }
     });
     body.appendChild(save);
     ctx.showScreen('interview-edit');

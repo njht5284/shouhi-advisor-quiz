@@ -277,6 +277,15 @@ const Storage = (() => {
     return true;
   }
 
+  // 要確認を付ける（すでに付いていてもそのまま。表示と保存内容がずれても逆の操作にならないよう、
+  // 画面からは toggle ではなく setFlag / removeFlag を明示的に使う）
+  async function setFlag(cardId, title) {
+    const store = await tx('flags', 'readwrite');
+    const existing = await promisify(store.get(cardId));
+    if (existing) return;
+    await promisify(store.put({ cardId, title, flaggedAt: new Date().toISOString() }));
+  }
+
   async function removeFlag(cardId) {
     const store = await tx('flags', 'readwrite');
     await promisify(store.delete(cardId));
@@ -296,6 +305,7 @@ const Storage = (() => {
     saveInterviewAnswer,
     getInterviewAnswers,
     toggleFlag,
+    setFlag,
     removeFlag,
     getFlags,
     recordAnswer,
