@@ -31,7 +31,18 @@ const Essay = (() => {
       loadError = true;
     }
     wire();
-    await refreshHome();
+    try {
+      await refreshHome();
+    } catch (e) {
+      // 端末内の保存領域（IndexedDB）が使えない等。第2次を利用不能として案内する。
+      loadError = true;
+      await refreshHome();
+    }
+  }
+
+  // 保存処理などの失敗を利用者に知らせる（無言で止まらないようにする）
+  function notifyError(message) {
+    window.alert(message);
   }
 
   function wire() {
@@ -112,9 +123,17 @@ const Essay = (() => {
       return;
     }
 
-    const states = await Storage.getRecallStates();
-    const flags = await Storage.getFlags();
-    const best = bestByTopic(await Storage.getEssayResults());
+    let states; let flags; let best;
+    try {
+      states = await Storage.getRecallStates();
+      flags = await Storage.getFlags();
+      best = bestByTopic(await Storage.getEssayResults());
+    } catch (e) {
+      if (gen !== homeGen) return;
+      block.hidden = false;
+      list.innerHTML = '<p class="config-note">学習記録を読み込めませんでした。アプリを完全に終了してから開き直してください。</p>';
+      return;
+    }
     if (gen !== homeGen) return; // より新しい呼出しがあるので描画しない
 
     const ids = recallCardIds();
@@ -180,6 +199,7 @@ const Essay = (() => {
 
   // ---------- 構成練習：論題一覧 ----------
   async function showTopicList() {
+    buildToken += 1;
     const best = bestByTopic(await Storage.getEssayResults());
     const wrap = el('div', 'config-list');
     const groups = [
@@ -207,7 +227,10 @@ const Essay = (() => {
   }
 
   // ---------- 構成練習：振り分け ----------
+  let buildToken = 0; // 構成練習の画面を開き直すたびに増やす（古い採点処理の描画を捨てるため）
+
   function startBuild(topicId) {
+    buildToken += 1;
     const topic = topicById(topicId);
     build = { topic, order: shuffle(topic.cards.map((c) => c.id)), assign: new Map() };
     renderBuild();
@@ -280,14 +303,18 @@ const Essay = (() => {
     if (grading || !build) return;
     grading = true;
     document.getElementById('essay-grade-btn').disabled = true;
+    const token = buildToken;
     try {
-      await gradeInner();
+      await gradeInner(token);
+    } catch (e) {
+      notifyError('採点結果を保存できませんでした。もう一度「採点する」を押してください。');
     } finally {
       grading = false;
+      if (build && token === buildToken) syncBuildUi(); // ボタンの状態を元に戻す
     }
   }
 
-  async function gradeInner() {
+  async function gradeInner(token) {
     const t = build.topic;
     const missed = []; const dummies = []; const wrongSlot = []; const ok = [];
     let required = 0; let requiredOk = 0;
@@ -324,6 +351,7 @@ const Essay = (() => {
       dummies: dummies.map((x) => x.entry.id),
       wrongSlot: wrongSlot.map((x) => x.entry.id),
     });
+    if (token !== buildToken) return; // 採点中に別の画面へ移った場合は結果画面へ引き戻さない
     await renderResult();
     ctx.showScreen('essay-result');
   }
@@ -584,7 +612,14 @@ const Essay = (() => {
     r.busy = true;
     document.querySelectorAll('#recall-actions .rate-btn').forEach((b) => { b.disabled = true; });
     const id = r.items[r.idx];
-    await Storage.rateRecall(r.kind === 'iv' ? IV_PREFIX + id : id, rating);
+    try {
+      await Storage.rateRecall(r.kind === 'iv' ? IV_PREFIX + id : id, rating);
+    } catch (e) {
+      r.busy = false;
+      document.querySelectorAll('#recall-actions .rate-btn').forEach((b) => { b.disabled = false; });
+      notifyError('評価を保存できませんでした。もう一度押すか、「終了」で中断してください。');
+      return;
+    }
     r.tally[rating] += 1;
     // 言えなかったカードは、このセッションの最後にもう一度だけ出す
     if (rating === 'bad' && !r.requeued.has(id)) {

@@ -1275,3 +1275,22 @@ body {
   .essay-result-section.is-wrong .essay-result-title { color: #f0c766; }
   .flag-btn.is-on { background: #f0b6a3; border-color: #f0b6a3; color: #0f1620; }
 }
+
+/* 新しい版の案内（Service Worker 更新時、入力途中の画面で表示） */
+.update-bar {
+  position: fixed;
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: calc(0.75rem + env(safe-area-inset-bottom));
+  z-index: 50;
+  background: var(--navy);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  min-height: 44px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
