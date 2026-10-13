@@ -40,6 +40,21 @@ const Essay = (() => {
     }
   }
 
+  // 要確認の一覧を読む。読めなくても画面の描画は続ける（空として扱う）
+  async function loadFlagSet() {
+    try {
+      return new Set((await Storage.getFlags()).map((f) => f.cardId));
+    } catch (e) {
+      return new Set();
+    }
+  }
+
+  // 構成練習の画面にまだいるか（採点中に別の画面へ移ったかどうかの判定に使う）
+  function stillOnBuild(token) {
+    const el = document.getElementById('screen-essay-build');
+    return token === buildToken && el && !el.hidden;
+  }
+
   // 保存処理などの失敗を利用者に知らせる（無言で止まらないようにする）
   function notifyError(message) {
     window.alert(message);
@@ -351,8 +366,15 @@ const Essay = (() => {
       dummies: dummies.map((x) => x.entry.id),
       wrongSlot: wrongSlot.map((x) => x.entry.id),
     });
-    if (token !== buildToken) return; // 採点中に別の画面へ移った場合は結果画面へ引き戻さない
-    await renderResult();
+    // ここから先は保存済み。描画で失敗しても再採点（＝二重保存）を促さない。
+    if (!stillOnBuild(token)) return; // 採点中に別の画面へ移った場合は結果画面へ引き戻さない
+    try {
+      await renderResult();
+    } catch (e) {
+      notifyError('採点結果は保存しましたが、表示に失敗しました。統計画面から結果を確認できます。');
+      return;
+    }
+    if (!stillOnBuild(token)) return;
     ctx.showScreen('essay-result');
   }
 
@@ -361,7 +383,7 @@ const Essay = (() => {
   async function renderResult() {
     const r = lastResult;
     const body = document.getElementById('essay-result-body');
-    const flags = new Set((await Storage.getFlags()).map((f) => f.cardId));
+    const flags = await loadFlagSet();
     body.innerHTML = '';
 
     const scoreEl = el('div', 'essay-score',
@@ -440,10 +462,18 @@ const Essay = (() => {
     const flagBtn = el('button', 'chip-btn flag-btn', flags.has(cardId) ? '要確認 ✓' : '要確認');
     flagBtn.classList.toggle('is-on', flags.has(cardId));
     flagBtn.addEventListener('click', async () => {
-      const on = await Storage.toggleFlag(cardId, c.title);
-      if (on) flags.add(cardId); else flags.delete(cardId);
-      flagBtn.textContent = on ? '要確認 ✓' : '要確認';
-      flagBtn.classList.toggle('is-on', on);
+      if (flagBtn.disabled) return;
+      flagBtn.disabled = true;
+      try {
+        const on = await Storage.toggleFlag(cardId, c.title);
+        if (on) flags.add(cardId); else flags.delete(cardId);
+        flagBtn.textContent = on ? '要確認 ✓' : '要確認';
+        flagBtn.classList.toggle('is-on', on);
+      } catch (e) {
+        notifyError('要確認の記録を保存できませんでした。もう一度押してください。');
+      } finally {
+        flagBtn.disabled = false;
+      }
     });
     actions.appendChild(flagBtn);
     foot.appendChild(actions);
@@ -568,7 +598,7 @@ const Essay = (() => {
       cardEl.appendChild(el('div', 'recall-front', esc(c.title)));
       if (r.revealed) {
         cardEl.appendChild(el('div', 'recall-back', esc(c.gist)));
-        const flags = new Set((await Storage.getFlags()).map((f) => f.cardId));
+        const flags = await loadFlagSet();
         cardEl.appendChild(cardFooter(id, flags, 'recall'));
       }
     } else {
@@ -718,7 +748,15 @@ const Essay = (() => {
     });
     const save = el('button', 'primary-btn', '保存する');
     save.addEventListener('click', async () => {
-      await Storage.saveInterviewAnswer({ id, lines: inputs.map((t) => t.value.trim()) });
+      if (save.disabled) return;
+      save.disabled = true;
+      try {
+        await Storage.saveInterviewAnswer({ id, lines: inputs.map((t) => t.value.trim()) });
+      } catch (e) {
+        save.disabled = false;
+        notifyError('回答を保存できませんでした。入力内容はそのまま残っています。もう一度「保存する」を押してください。');
+        return;
+      }
       showInterviewList();
     });
     body.appendChild(save);
@@ -753,8 +791,14 @@ const Essay = (() => {
       off.addEventListener('click', async () => {
         if (off.disabled) return;
         off.disabled = true;
-        await Storage.removeFlag(f.cardId);
-        await refreshHome();
+        try {
+          await Storage.removeFlag(f.cardId);
+        } catch (e) {
+          off.disabled = false;
+          notifyError('解除できませんでした。もう一度押してください。');
+          return;
+        }
+        refreshHome().catch(() => {});
         showFlags();
       });
       row.appendChild(off);
