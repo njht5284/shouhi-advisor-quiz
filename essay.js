@@ -174,6 +174,7 @@ const Essay = (() => {
     const groups = [
       { tier: 'core', title: '中核：日本産業協会の過去問（本番と同じ形式）' },
       { tier: 'applied', title: '応用：国民生活センターの過去問（指定語句つき）' },
+      { tier: 'predicted', title: '予想論題（過去に出題されていない主要テーマ・最新の時事）' },
     ];
     for (const g of groups) {
       wrap.appendChild(el('div', 'essay-group-title', esc(g.title)));
