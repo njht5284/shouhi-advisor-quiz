@@ -875,3 +875,375 @@ body {
   .quiz-pace-text.is-ahead { color: #bfe3a6; }
   .quiz-pace-text.is-behind { color: #f0b6a3; }
 }
+
+/* ---------- 第1次／第2次の切り替えタブ ---------- */
+.exam-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 3px;
+  gap: 3px;
+}
+
+.exam-tab {
+  background: none;
+  border: none;
+  border-radius: 8px;
+  padding: 0.55rem 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.exam-tab.is-active {
+  background: var(--navy);
+  color: #ffffff;
+}
+
+.essay-home-note { margin-top: 1rem; }
+
+.priority-item.is-essay { border-left-color: var(--navy); }
+.priority-item.is-essay .priority-item-accuracy { color: var(--navy); }
+
+/* ---------- 第2次：一覧 ---------- */
+.essay-h2 { color: var(--navy); font-size: 1.1rem; }
+
+.essay-group-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-top: 0.6rem;
+}
+
+.topic-item-main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.topic-item-label { font-weight: 700; color: var(--navy); }
+
+.config-item:disabled { opacity: 0.5; cursor: not-allowed; }
+.primary-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ---------- 第2次：構成練習 ---------- */
+.essay-topic-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 0.3rem;
+}
+
+.essay-summary {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.8rem 0.9rem;
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.essay-asks-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-top: 0.8rem;
+}
+
+.essay-asks {
+  margin: 0.3rem 0 0;
+  padding-left: 1.2rem;
+  font-size: 0.86rem;
+  line-height: 1.6;
+}
+
+.essay-keywords {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.7rem;
+}
+
+.essay-kw-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-right: 0.2rem;
+}
+
+.essay-kw {
+  font-size: 0.78rem;
+  border: 1px solid var(--navy);
+  color: var(--navy);
+  border-radius: 999px;
+  padding: 0.1rem 0.55rem;
+}
+
+.slot-legend {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin: 1rem 0 0.5rem;
+  line-height: 1.5;
+}
+
+.build-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin-bottom: 1rem;
+}
+
+.build-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--border);
+  border-radius: 10px;
+  padding: 0.65rem 0.75rem;
+}
+
+.build-card.is-selected { border-left-color: var(--navy); }
+
+.build-card-title {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+
+.build-slots {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.35rem;
+}
+
+.slot-btn {
+  background: var(--sand);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 0.45rem 0;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.slot-btn.is-on {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* ---------- 第2次：結果 ---------- */
+.essay-score {
+  text-align: center;
+  margin: 0.5rem 0 1rem;
+  color: var(--navy);
+}
+
+.essay-score-num { font-size: 2.6rem; font-weight: 800; }
+.essay-score-unit { font-size: 1rem; margin-left: 0.2rem; }
+.essay-score-sub { font-size: 0.8rem; color: var(--text-muted); }
+
+.essay-result-section { margin-bottom: 1.1rem; }
+
+.essay-result-title {
+  font-size: 0.92rem;
+  color: var(--navy);
+  margin: 0 0 0.5rem;
+}
+
+.essay-result-section.is-missed .essay-result-title,
+.essay-result-section.is-dummy .essay-result-title { color: var(--incorrect); }
+.essay-result-section.is-wrong .essay-result-title { color: var(--supplement); }
+.essay-result-section.is-ok summary { cursor: pointer; color: var(--correct); }
+
+.essay-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.7rem 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.essay-card-title { font-weight: 700; font-size: 0.9rem; line-height: 1.5; }
+
+.essay-card-note {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+  line-height: 1.5;
+}
+
+.essay-card-gist {
+  font-size: 0.86rem;
+  line-height: 1.7;
+  margin-top: 0.4rem;
+}
+
+.essay-card-foot { margin-top: 0.55rem; }
+
+.essay-card-basis {
+  display: block;
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.essay-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.45rem;
+}
+
+.chip-btn {
+  background: var(--bg);
+  color: var(--navy);
+  border: 1px solid var(--navy);
+  border-radius: 999px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.flag-btn.is-on {
+  background: var(--terra);
+  border-color: var(--terra);
+  color: #ffffff;
+}
+
+.essay-model {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.8rem 0.9rem;
+  margin-bottom: 1.2rem;
+}
+
+.essay-model-row {
+  border-top: 1px solid var(--border);
+  padding: 0.5rem 0;
+}
+
+.essay-model-head {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.essay-model-gist { font-size: 0.84rem; line-height: 1.6; margin-top: 0.2rem; }
+
+/* ---------- 第2次：想起カード・面接カード ---------- */
+.recall-quit { margin: 0; font-size: 0.8rem; }
+
+.recall-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.1rem 1rem;
+  margin: 0.6rem 0 1rem;
+  min-height: 180px;
+}
+
+.recall-label { font-size: 0.72rem; color: var(--text-muted); font-weight: 700; }
+
+.recall-front {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.6;
+  margin: 0.3rem 0 0.4rem;
+}
+
+.recall-back {
+  border-top: 1px dashed var(--border);
+  padding-top: 0.7rem;
+  margin-top: 0.6rem;
+  font-size: 0.92rem;
+  line-height: 1.8;
+}
+
+.rate-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.rate-btn {
+  border-radius: 8px;
+  padding: 0.8rem 0.2rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  color: var(--text);
+}
+
+.rate-good { border-color: var(--correct); color: var(--correct); }
+.rate-vague { border-color: var(--supplement); color: var(--supplement); }
+.rate-bad { border-color: var(--incorrect); color: var(--incorrect); }
+
+.iv-answer {
+  border-top: 1px dashed var(--border);
+  padding-top: 0.6rem;
+  margin-top: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.iv-answer-row {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.iv-answer-label { font-size: 0.72rem; font-weight: 700; color: var(--text-muted); }
+
+.iv-field-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0.8rem 0 0.3rem;
+}
+
+.iv-field {
+  width: 100%;
+  font: inherit;
+  font-size: 16px; /* iOSで入力時に画面が拡大されないよう16px以上にする */
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.6rem;
+  resize: vertical;
+}
+
+#interview-edit-body .primary-btn { margin-top: 1rem; }
+
+.flag-row { cursor: default; }
+.flag-date { display: block; }
+
+.essay-ref-meta { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.6rem; }
+
+@media (prefers-color-scheme: dark) {
+  .exam-tab.is-active, .slot-btn.is-on { color: #0f1620; }
+  .flag-btn.is-on { color: #0f1620; }
+  .rate-good { color: #bfe3a6; border-color: #4d7a35; }
+  .rate-vague { color: #f0c766; border-color: #8a6d1a; }
+  .rate-bad { color: #f0b6a3; border-color: #8a4a3a; }
+  .essay-result-section.is-missed .essay-result-title,
+  .essay-result-section.is-dummy .essay-result-title { color: #f0b6a3; }
+  .essay-result-section.is-wrong .essay-result-title { color: #f0c766; }
+  .essay-result-section.is-ok summary { color: #bfe3a6; }
+}

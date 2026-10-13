@@ -1,0 +1,1673 @@
+{
+ "version": 1,
+ "generatedFor": "第2次試験（2026年11月29日）",
+ "slots": [
+  {
+   "id": "intro",
+   "label": "序論"
+  },
+  {
+   "id": "body1",
+   "label": "本論①"
+  },
+  {
+   "id": "body2",
+   "label": "本論②"
+  },
+  {
+   "id": "concl",
+   "label": "結論"
+  }
+ ],
+ "cards": {
+  "c-assen": {
+   "title": "消費生活センターのあっせん",
+   "gist": "相談員が消費者と事業者の間に入り、契約の取消し・解除や返金の交渉を支援する。自主交渉が難しい高齢者・若年者の被害回復の中核となる。",
+   "basis": "消費者安全法 第8条（都道府県・市町村の事務）",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/421AC0000000050",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [],
+   "checked": "double"
+  },
+  "c-pionet": {
+   "title": "PIO-NETへの登録と情報の活用",
+   "gist": "受け付けた相談はPIO-NETに登録され、国民生活センター・消費者庁の注意喚起や、行政処分・法改正の基礎資料として活用される。",
+   "basis": "国民生活センター「PIO-NET（全国消費生活情報ネットワークシステム）」",
+   "sourceUrl": "https://www.kokusen.go.jp/pionet/",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "c-keihatsu": {
+   "title": "注意喚起と消費者教育",
+   "gist": "手口や対処法を出前講座・広報・SNSで周知し、被害の未然防止を図る。学校・地域・家族など、本人以外の周囲にも情報を届けることが重要。",
+   "basis": "消費者教育の推進に関する法律／消費者安全法",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/421AC0000000050",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [
+    "2024-10-12-4-4",
+    "2025-10-05-4-2"
+   ],
+   "checked": "single"
+  },
+  "c-mimamori": {
+   "title": "見守りネットワーク（消費者安全確保地域協議会）",
+   "gist": "地方公共団体が福祉・警察・事業者等と協議会を組織し、高齢者・障害者など配慮を要する消費者を地域で見守る。異変に気付いた関係者がセンターにつなぐ。",
+   "basis": "消費者安全法 第11条の3",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/421AC0000000050",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [],
+   "checked": "double"
+  },
+  "k-gonin": {
+   "title": "誤認類型による取消し（不実告知・不利益事実の不告知）",
+   "gist": "重要事項について事実と異なることを告げられ誤認した場合（4条1項1号）や、利益を告げつつ不利益な事実を故意・重過失で告げなかった場合（4条2項）に取り消せる。",
+   "basis": "消費者契約法 第4条第1項・第2項",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/412AC0000000061",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [
+    "2023-10-14-8-4",
+    "2024-10-13-7-2"
+   ],
+   "checked": "double"
+  },
+  "k-koukoku-kanyu": {
+   "title": "広告も「勧誘」に当たり得る（最高裁判決）",
+   "gist": "不特定多数に向けた広告でも、個別の消費者の意思形成に直接影響を与えるものは消費者契約法の「勧誘」に当たり得るとされた（最判平成29年1月24日）。ネット広告による誤認にも取消しの余地がある。",
+   "basis": "最高裁判所 平成29年1月24日判決（クロレラチラシ事件）",
+   "sourceUrl": "https://www.courts.go.jp/app/hanrei_jp/detail2?id=86454",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [],
+   "checked": "double"
+  },
+  "k-futou-jouko": {
+   "title": "不当条項の無効（高額な解約料など）",
+   "gist": "解約時の違約金のうち、同種契約で事業者に生ずべき平均的な損害を超える部分は無効（9条1項1号）。消費者の利益を一方的に害する条項も無効（10条）。",
+   "basis": "消費者契約法 第9条第1項第1号・第10条",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/412AC0000000061",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [
+    "2023-10-22-8-3"
+   ],
+   "checked": "double"
+  },
+  "k-konwaku-zentai": {
+   "title": "困惑類型による取消しの全体像",
+   "gist": "不退去・退去妨害、退去困難な場所への同行、相談の連絡妨害、不安をあおる告知、デート商法、判断力低下へのつけ込み、霊感等、契約前の義務実施などで困惑して契約した場合に取り消せる（4条3項1〜10号）。",
+   "basis": "消費者契約法 第4条第3項",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/412AC0000000061",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [
+    "2023-10-21-8-1",
+    "2023-10-21-8-2",
+    "2023-10-21-8-3"
+   ],
+   "checked": "double"
+  },
+  "k-futaikyo": {
+   "title": "不退去・退去妨害（4条3項1号・2号）",
+   "gist": "帰ってほしいと伝えたのに居座る、帰りたいと伝えたのに帰さない勧誘で困惑した契約は取り消せる。高齢者宅に長時間居座る訪問販売が典型。",
+   "basis": "消費者契約法 第4条第3項第1号・第2号",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/412AC0000000061",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [
+    "2023-10-21-8-1",
+    "2023-10-21-8-2"
+   ],
+   "checked": "double"
+  },
+  "k-keiken-fuan": {
+   "title": "社会生活上の経験不足につけ込む不安のあおり（5号）",
+   "gist": "経験が乏しいことから進学・就職・容姿等の願望に過大な不安を抱いているのを知りながら、不安をあおり契約が必要と告げる勧誘。就活セミナーや美容契約など若年者の被害が典型。",
+   "basis": "消費者契約法 第4条第3項第5号",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/412AC0000000061",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [
+    "2023-10-21-8-3",
+    "2023-10-21-8-4"
+   ],
+   "checked": "double"
+  },
+  "k-date": {
+   "title": "恋愛感情等につけ込む勧誘（デート商法、6号）",
+   "gist": "経験の乏しさから勧誘者に好意を抱き、相手も同じ気持ちと誤信していることを知りながら、契約しなければ関係が破綻すると告げる勧誘。若年者に多い。",
+   "basis": "消費者契約法 第4条第3項第6号",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/412AC0000000061",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [
+    "2023-10-21-8-4"
+   ],
+   "checked": "double"
+  },
+  "k-handan": {
+   "title": "判断力の低下につけ込む生活不安のあおり（7号）",
+   "gist": "加齢や心身の故障で判断力が著しく低下し生活の維持に過大な不安を抱いているのを知りながら、契約しなければ生活が困難になると告げる勧誘。高齢者の投資・住宅・健康関連契約が典型。",
+   "basis": "消費者契約法 第4条第3項第7号",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/412AC0000000061",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [],
+   "checked": "double"
+  },
+  "k-reikan": {
+   "title": "霊感等による知見を用いた告知（8号）",
+   "gist": "霊感など合理的に実証困難な能力による知見として不安をあおり、契約が不可欠と告げる勧誘。取消権の行使期間は追認可能時から3年・締結から10年に延長されている。",
+   "basis": "消費者契約法 第4条第3項第8号・第7条第1項",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/412AC0000000061",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [
+    "2023-10-21-8-5",
+    "2023-10-15-2-4"
+   ],
+   "checked": "double"
+  },
+  "k-jizen-jisshi": {
+   "title": "契約前の義務実施・現状変更（9号）",
+   "gist": "申込み前に契約上の義務を実施し、または目的物の現状を変更して原状回復を著しく困難にし、困惑させて契約させた場合に取り消せる。頼んでいない工事を先に始める点検商法が典型。",
+   "basis": "消費者契約法 第4条第3項第9号",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/412AC0000000061",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [],
+   "checked": "double"
+  },
+  "k-kajou": {
+   "title": "過量契約の取消し（4条4項）",
+   "gist": "通常の分量・回数・期間を著しく超えることを事業者が知りながら勧誘した契約は取り消せる。既存の同種契約と合算して過量となる「次々販売」も対象。",
+   "basis": "消費者契約法 第4条第4項",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/412AC0000000061",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [
+    "2024-10-20-9-4"
+   ],
+   "checked": "double"
+  },
+  "k-kikan": {
+   "title": "取消権の行使期間（7条）",
+   "gist": "追認できる時から1年、契約締結から5年で消滅する。霊感等（4条3項8号）は3年・10年。被害の自覚が遅れやすい高齢者には短い期間が壁になる。",
+   "basis": "消費者契約法 第7条第1項",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/412AC0000000061",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [
+    "2023-10-21-8-5"
+   ],
+   "checked": "double"
+  },
+  "k-genkai-youken": {
+   "title": "限界①：要件が限定的で、事業者の認識も必要",
+   "gist": "取消しは列挙された場面に限られ、「社会生活上の経験が乏しい」「判断力が著しく低下」「知りながら」などの要件を満たす必要がある。列挙に当たらないつけ込みは救済されない。",
+   "basis": "消費者契約法 第4条第3項各号の要件",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/412AC0000000061",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [],
+   "checked": "double"
+  },
+  "k-genkai-rissho": {
+   "title": "限界②：密室での勧誘を消費者が立証する負担",
+   "gist": "取消しを主張する消費者側が、勧誘時の言動や困惑の事実を立証する必要がある。録音や書面がない訪問・電話勧誘では立証が難しく、交渉が長期化しやすい。",
+   "basis": "消費者契約法 第4条（取消しの主張・立証）",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/412AC0000000061",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "k-kadai-houkatsu": {
+   "title": "課題：つけ込み型勧誘への包括的な対応",
+   "gist": "手口の変化に個別列挙の追加で対応するには限界がある。脆弱な消費者へのつけ込みを広く捉える受け皿規定の検討や、相談現場での早期発見・あっせんとの組合せが課題となる。",
+   "basis": "消費者庁における消費者法制度の見直しの議論",
+   "sourceUrl": "https://www.caa.go.jp/",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "k-hairyo": {
+   "title": "事業者の情報提供の努力義務（3条1項2号）",
+   "gist": "事業者は勧誘時に、消費者の年齢・心身の状態・知識・経験を総合的に考慮して必要な情報を提供するよう努めなければならない。努力義務であり、違反しても取消しにはつながらない。",
+   "basis": "消費者契約法 第3条第1項第2号",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/412AC0000000061",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [],
+   "checked": "double"
+  },
+  "t-cooling": {
+   "title": "訪問販売のクーリング・オフ（9条）",
+   "gist": "法定書面を受け取った日から8日以内なら、書面または電磁的記録で無条件に撤回・解除できる。工事完了後でも可能で、損害賠償・違約金は請求されず、原状回復も無償で求められる。",
+   "basis": "特定商取引法 第9条",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/351AC0000000057",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [
+    "2024-10-13-9"
+   ],
+   "checked": "double"
+  },
+  "t-meiji": {
+   "title": "勧誘目的等の明示義務（3条）",
+   "gist": "訪問販売では、勧誘に先立ち事業者名・勧誘目的・商品の種類を告げなければならない。「無料点検」を口実に勧誘目的を隠して訪問する行為はこれに反する。",
+   "basis": "特定商取引法 第3条",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/351AC0000000057",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [],
+   "checked": "double"
+  },
+  "t-saikanyu": {
+   "title": "再勧誘の禁止（3条の2）",
+   "gist": "訪問販売で契約しない意思を示した者への再勧誘は禁止される（2項）。勧誘を受ける意思の確認は努力義務（1項）。在宅率の高い高齢者への執拗な勧誘を抑止する。",
+   "basis": "特定商取引法 第3条の2",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/351AC0000000057",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [
+    "2025-10-11-9"
+   ],
+   "checked": "double"
+  },
+  "t-fujitsu": {
+   "title": "不実告知・威迫困惑の禁止と取消し（6条・9条の3）",
+   "gist": "契約の重要事項について不実を告げること、故意に事実を告げないこと、威迫して困惑させることを禁止。不実告知・故意の不告知で誤認した契約は取り消せる（追認可能時から1年・締結から5年）。",
+   "basis": "特定商取引法 第6条・第9条の3",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/351AC0000000057",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [],
+   "checked": "double"
+  },
+  "t-kajou": {
+   "title": "過量販売の解除（9条の2）",
+   "gist": "日常生活で通常必要な量を著しく超える訪問販売の契約は、締結から1年以内に解除できる。既存の契約と合わせて過量となる次々販売は、事業者がそれを知っていた場合が対象。消費者に特別の事情があった場合は除かれる。",
+   "basis": "特定商取引法 第9条の2",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/351AC0000000057",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [
+    "2024-10-20-9-4",
+    "2023-10-21-10-3"
+   ],
+   "checked": "double"
+  },
+  "t-koukoku": {
+   "title": "通信販売の広告表示義務と誇大広告の禁止（11条・12条）",
+   "gist": "通信販売の広告には価格・支払時期・引渡時期・解除に関する事項などの表示が必要（11条）。著しく事実に相違する表示や、実際より著しく優良・有利と誤認させる表示は禁止（12条）。",
+   "basis": "特定商取引法 第11条・第12条",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/351AC0000000057",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [],
+   "checked": "double"
+  },
+  "t-kakunin": {
+   "title": "最終確認画面の表示義務（12条の6）",
+   "gist": "申込みの最終段階の画面に、分量、価格・支払時期、引渡時期、申込期間、解除に関する事項などを表示する義務。申込みとなることや契約内容を誤認させる表示も禁止。2022年6月施行。",
+   "basis": "特定商取引法 第12条の6",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/351AC0000000057",
+   "effective": "2022年6月1日施行",
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [
+    "2025-10-11-9"
+   ],
+   "checked": "double"
+  },
+  "t-kakunin-torikeshi": {
+   "title": "最終確認画面の表示違反による取消し（15条の4）",
+   "gist": "12条の6に違反する不実の表示・不表示・誤認させる表示により誤認して申し込んだ場合、申込みを取り消せる。行使期間は追認可能時から1年・締結から5年。",
+   "basis": "特定商取引法 第15条の4（第9条の3第4項を準用）",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/351AC0000000057",
+   "effective": "2022年6月1日施行",
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [
+    "2023-10-15-9-5",
+    "2025-10-11-9"
+   ],
+   "checked": "double"
+  },
+  "t-kaiyaku-bougai": {
+   "title": "解約妨害のための不実告知の禁止（13条の2）",
+   "gist": "通信販売で、申込みの撤回や契約の解除を妨げるため、解除に関する事項や契約が必要な事情について不実を告げることを禁止。「解約できない」などの虚偽説明が対象。",
+   "basis": "特定商取引法 第13条の2",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/351AC0000000057",
+   "effective": "2022年6月1日施行",
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [],
+   "checked": "double"
+  },
+  "t-henpin": {
+   "title": "通信販売の返品制度（15条の3）",
+   "gist": "通信販売にクーリング・オフはない。商品の引渡しから8日以内なら返品できるが、返品特約が広告に表示され、ネット通販では最終確認画面にも表示されていれば、特約に従う。",
+   "basis": "特定商取引法 第15条の3",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/351AC0000000057",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [
+    "2024-10-12-9",
+    "2025-10-12-10-1",
+    "2024-10-19-2-5"
+   ],
+   "checked": "double"
+  },
+  "h-yuuryou-yuuri": {
+   "title": "優良誤認・有利誤認表示の禁止（5条1号・2号）",
+   "gist": "商品の品質等を実際より著しく優良と示す表示（1号）、価格等の取引条件を著しく有利と誤認させる表示（2号）を禁止。違反には措置命令や課徴金（売上額の3%）が科される。",
+   "basis": "景品表示法 第5条・第8条",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/337AC0000000134",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [
+    "2023-10-14-10-3",
+    "2023-10-15-11-1"
+   ],
+   "checked": "double"
+  },
+  "h-uchikeshi": {
+   "title": "「初回無料」の強調と打消し表示",
+   "gist": "「初回無料」を大きく表示し、定期購入が条件であることを小さな文字や離れた位置に記載する手法は、取引条件を著しく有利と誤認させる有利誤認表示となり得る。",
+   "basis": "景品表示法 第5条第2号（消費者庁「打消し表示に関する実態調査報告書」）",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/337AC0000000134",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [
+    "2024-10-12-11-1",
+    "2025-10-12-10-3"
+   ],
+   "checked": "double"
+  },
+  "h-fujisshou": {
+   "title": "不実証広告規制（7条2項・8条3項）",
+   "gist": "効果・性能の表示について、消費者庁は合理的な根拠資料の提出を求めることができる。期間内に提出がなければ優良誤認表示とみなされ（措置命令）、課徴金でも推定される。",
+   "basis": "景品表示法 第7条第2項・第8条第3項",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/337AC0000000134",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [
+    "2024-10-12-11-2",
+    "2023-10-14-10-5",
+    "2024-10-13-11-2"
+   ],
+   "checked": "double"
+  },
+  "h-stema": {
+   "title": "ステルスマーケティング規制（5条3号の指定告示）",
+   "gist": "事業者が表示内容の決定に関与しているのに、一般消費者が事業者の表示であると判別することが困難な表示を不当表示に指定。規制対象は広告主で、依頼を受けたインフルエンサー自身は対象外。",
+   "basis": "景品表示法 第5条第3号に基づく告示",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/337AC0000000134",
+   "effective": "2023年10月1日施行",
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [
+    "2024-10-13-11-4",
+    "2024-10-12-10-1",
+    "2024-10-20-2-3"
+   ],
+   "checked": "double"
+  },
+  "h-2023kaisei": {
+   "title": "2023年改正景品表示法（2024年10月施行）",
+   "gist": "確約手続の導入、繰り返し違反した事業者への課徴金の割増（4.5%）、優良誤認・有利誤認への直罰（100万円以下の罰金）の新設など、執行の強化と柔軟化が図られた。",
+   "basis": "景品表示法 第8条第5項・第26条以下・第48条",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/337AC0000000134",
+   "effective": "2024年10月1日施行",
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [
+    "2025-10-05-10-5"
+   ],
+   "checked": "double"
+  },
+  "m-miseinen": {
+   "title": "未成年者取消権（民法5条）",
+   "gist": "未成年者が法定代理人の同意なく行った契約は取り消せる（5条2項）。取消し後は、現に利益を受けている限度で返還すれば足りる。成年年齢は2022年4月から18歳。",
+   "basis": "民法 第5条・第4条・第121条の2第3項",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/129AC0000000089",
+   "effective": "成年年齢18歳：2022年4月1日施行",
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [
+    "2025-10-05-8",
+    "2023-10-22-7"
+   ],
+   "checked": "double"
+  },
+  "m-genkai": {
+   "title": "未成年者取消権が使えない場合",
+   "gist": "法定代理人が処分を許した財産（小遣いの範囲など）の処分は取り消せない（5条3項）。未成年者が成年と信じさせるため詐術を用いた場合も取り消せない（21条）。年齢確認画面での虚偽入力が詐術に当たるかは個別に判断される。",
+   "basis": "民法 第5条第3項・第21条",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/129AC0000000089",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [
+    "2025-10-05-8",
+    "2024-10-19-8-3"
+   ],
+   "checked": "double"
+  },
+  "s-teiki-higai": {
+   "title": "定期購入トラブルの実態と消費者の不利益",
+   "gist": "「初回無料」「お試し」と表示しながら、実際は複数回の購入が条件の定期契約。解約の連絡がつかない、解約条件が厳しいなどで、意図しない高額の支払いを強いられる。",
+   "basis": "国民生活センター「定期購入」に関する注意喚起",
+   "sourceUrl": "https://www.kokusen.go.jp/",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [
+    "2024-10-19-2-5",
+    "2025-10-12-10-3"
+   ],
+   "checked": "single"
+  },
+  "s-teiki-kadai": {
+   "title": "課題：定期購入対策の実効性",
+   "gist": "SNS広告やアフィリエイト経由の勧誘、海外事業者、表示を変えて規制をすり抜ける手口が残る。行政処分の迅速化と、消費者への「申込み前に最終確認画面と解約条件を確認・保存する」啓発の両輪が必要。",
+   "basis": "国民生活センター・消費者庁の注意喚起",
+   "sourceUrl": "https://www.caa.go.jp/",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [
+    "2025-10-12-10-3"
+   ],
+   "checked": "single"
+  },
+  "s-ad-stema-rei": {
+   "title": "ネット広告の問題例①：広告であることを隠した表示",
+   "gist": "インフルエンサーの投稿や口コミサイトの記事が、実は事業者の依頼による広告であるのに、中立的な感想に見える。消費者は広告と気付かず信用してしまう。",
+   "basis": "消費者庁「ステルスマーケティング」関連資料",
+   "sourceUrl": "https://www.caa.go.jp/",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [
+    "2025-10-05-10-3"
+   ],
+   "checked": "single"
+  },
+  "s-ad-uchikeshi-rei": {
+   "title": "ネット広告の問題例②：強調表示と小さな注記",
+   "gist": "「たった1週間で」「今だけ無料」などの強調表示と、条件や「個人の感想です」の小さな注記の組合せで、効果や取引条件を誤認させる。",
+   "basis": "消費者庁「打消し表示に関する実態調査報告書」",
+   "sourceUrl": "https://www.caa.go.jp/",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [
+    "2024-10-12-11-1"
+   ],
+   "checked": "single"
+  },
+  "s-ad-dark": {
+   "title": "ネット広告の問題例③：ダークパターン",
+   "gist": "「残りわずか」のカウントダウン、解約手続を見つけにくくする画面設計など、消費者を意図しない選択に誘導するウェブデザイン。",
+   "basis": "消費者庁・OECD等の調査報告",
+   "sourceUrl": "https://www.caa.go.jp/",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [
+    "2025-10-04-11-2",
+    "2025-10-11-11-2",
+    "2025-10-12-11-2"
+   ],
+   "checked": "single"
+  },
+  "s-ad-kadai": {
+   "title": "課題：ネット広告規制に残る穴",
+   "gist": "依頼を受けた投稿者自身は景表法の規制対象外、海外事業者への執行が困難、ダークパターンを包括的に規制する法律がない、膨大な広告を監視する行政の体制にも限界がある。",
+   "basis": "消費者庁の検討会資料等",
+   "sourceUrl": "https://www.caa.go.jp/",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "s-dpf": {
+   "title": "取引デジタルプラットフォーム消費者保護法",
+   "gist": "オンラインモール等の運営者に、販売業者との円滑な連絡の確保等の努力義務を課した。危険な商品等の出品削除の要請や、一定額を超える金銭債権（損害賠償請求等）を行使するための販売業者情報の開示請求も可能にした。",
+   "basis": "取引デジタルプラットフォームを利用する消費者の利益の保護に関する法律",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/503AC0000000032",
+   "effective": "2022年5月1日施行",
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [
+    "2023-10-15-9-2"
+   ],
+   "checked": "double"
+  },
+  "s-koureisha": {
+   "title": "高齢者被害の特徴",
+   "gist": "在宅率が高く訪問・電話勧誘を受けやすい、判断力の低下で契約内容を理解しにくい、孤立していて相談相手がいない、資産を狙われやすい、被害の自覚が遅れやすい。",
+   "basis": "消費者白書（高齢者の消費生活相談の傾向）",
+   "sourceUrl": "https://www.caa.go.jp/policies/policy/consumer_research/white_paper/",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "s-tenken": {
+   "title": "点検商法の手口と特徴",
+   "gist": "「無料で点検する」と訪問し、「屋根が壊れている」など不安をあおって高額なリフォーム工事を契約させる。即日着工や次々の追加工事で、高齢者の被害が多い。",
+   "basis": "国民生活センター「点検商法」に関する注意喚起",
+   "sourceUrl": "https://www.kokusen.go.jp/",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "s-mitsumori": {
+   "title": "啓発：その場で契約せず見積もりを比較する",
+   "gist": "突然の訪問ではその場で契約しない、複数の事業者から見積もりを取る、家族やセンターに相談する。住宅リフォーム・紛争処理支援センター（住まいるダイヤル）も相談先になる。",
+   "basis": "公益財団法人住宅リフォーム・紛争処理支援センター",
+   "sourceUrl": "https://www.chord.or.jp/",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "s-game": {
+   "title": "未成年者のオンラインゲーム高額課金の特徴",
+   "gist": "保護者のクレジットカードやキャリア決済が端末に登録されたまま無断で使われ、少額の課金が積み重なって高額になる。利用明細や請求で初めて発覚することが多い。",
+   "basis": "国民生活センター「子どものオンラインゲーム」に関する注意喚起",
+   "sourceUrl": "https://www.kokusen.go.jp/",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "s-kessai": {
+   "title": "予防策：決済手段の管理",
+   "gist": "保護者はカード情報を端末に登録したままにしない、キャリア決済に上限を設定する、ペアレンタルコントロールで課金を承認制にする。",
+   "basis": "国民生活センターの注意喚起",
+   "sourceUrl": "https://www.kokusen.go.jp/",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "s-meisai": {
+   "title": "早期発見：利用明細の定期的な確認",
+   "gist": "クレジットカードや携帯電話料金の利用明細を毎月確認すれば、無断課金を早く発見できる。早期であるほど取消し・返金の交渉が進めやすい。",
+   "basis": "国民生活センターの注意喚起",
+   "sourceUrl": "https://www.kokusen.go.jp/",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "s-nenrei": {
+   "title": "事業者の年齢確認と課金上限",
+   "gist": "日本オンラインゲーム協会のガイドライン（2013年）は、未成年かどうかの確認、保護者の同意、課金上限の設定や課金履歴の表示を事業者に求めている。年齢確認が形骸化していないかは、未成年者取消しの可否とも関わる。",
+   "basis": "日本オンラインゲーム協会「スマートフォンゲームアプリケーション運用ガイドライン」（2013年4月制定）",
+   "sourceUrl": "https://japanonlinegame.org/wp-content/uploads/2017/06/JOGA130405-1.pdf",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "d-pl": {
+   "title": "製造物責任法による損害賠償",
+   "gist": "製品の欠陥で生命・身体・財産に被害が生じた場合に、製造業者等が過失の有無を問わず賠償責任を負う。",
+   "basis": "製造物責任法 第3条",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/406AC0000000085",
+   "effective": null,
+   "dummy": true,
+   "dummyReason": "製品の欠陥による事故の救済制度。契約や広告・勧誘の問題を問う論題とは関係がない。",
+   "legal": true,
+   "related1st": [],
+   "checked": "single"
+  },
+  "d-tsuhan-cooling": {
+   "title": "通信販売のクーリング・オフ（8日間）",
+   "gist": "通信販売でも、商品到着から8日以内であれば無条件で解除できる。",
+   "basis": "（誤った理解）",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/351AC0000000057",
+   "effective": null,
+   "dummy": true,
+   "dummyReason": "誤り。通信販売にクーリング・オフはなく、あるのは返品特約に従う返品制度（15条の3）である。",
+   "legal": true,
+   "related1st": [],
+   "checked": "single"
+  },
+  "d-kappu": {
+   "title": "割賦販売法の抗弁の接続",
+   "gist": "個別クレジットで購入した商品に問題がある場合、販売業者に対する抗弁をクレジット会社にも主張して支払いを拒める。",
+   "basis": "割賦販売法 第30条の4・第35条の3の19",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/336AC0000000159",
+   "effective": null,
+   "dummy": true,
+   "dummyReason": "クレジット払いの場合の救済で、この論題の中心論点ではない。字数が限られる中で優先度は低い。",
+   "legal": true,
+   "related1st": [],
+   "checked": "single"
+  }
+ },
+ "topics": [
+  {
+   "topicId": "nsk-2023-law",
+   "org": "nissankyo",
+   "year": 2023,
+   "label": "日産協 2023年度 法律",
+   "tier": "core",
+   "field": "law",
+   "summary": "消費者契約法の困惑類型による取消しのうち、若年者・高齢者の被害に多い代表的な場合を3つ挙げ、具体例とともに規定内容を説明する。あわせて、困惑による取消し規定の限界と残された課題を論じる。",
+   "keywords": [],
+   "asks": [
+    "若年者・高齢者に多い困惑類型3つ（具体例つき）",
+    "規定の内容",
+    "規定の限界と課題"
+   ],
+   "cards": [
+    {
+     "id": "k-konwaku-zentai",
+     "slots": [
+      "intro"
+     ]
+    },
+    {
+     "id": "k-keiken-fuan",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "k-date",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "k-handan",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "k-futaikyo",
+     "slots": [
+      "body1",
+      "optional"
+     ]
+    },
+    {
+     "id": "k-kikan",
+     "slots": [
+      "body2",
+      "optional"
+     ]
+    },
+    {
+     "id": "k-genkai-youken",
+     "slots": [
+      "body2"
+     ]
+    },
+    {
+     "id": "k-genkai-rissho",
+     "slots": [
+      "body2"
+     ]
+    },
+    {
+     "id": "k-kadai-houkatsu",
+     "slots": [
+      "concl"
+     ]
+    },
+    {
+     "id": "c-assen",
+     "slots": [
+      "concl",
+      "optional"
+     ]
+    },
+    {
+     "id": "k-gonin",
+     "slots": []
+    },
+    {
+     "id": "t-cooling",
+     "slots": []
+    },
+    {
+     "id": "d-pl",
+     "slots": []
+    }
+   ],
+   "model": [
+    {
+     "slot": "intro",
+     "chars": 100,
+     "gist": "消費者契約法は、事業者の不当な勧誘で困惑して結んだ契約を取り消せるとしている。若年者・高齢者の被害に多い3類型を取り上げる。"
+    },
+    {
+     "slot": "body1",
+     "chars": 400,
+     "gist": "①経験不足につけ込む不安のあおり（就活・美容の例）、②デート商法、③判断力低下につけ込む生活不安のあおり（高齢者の例）について、それぞれ要件と具体例を説明する。"
+    },
+    {
+     "slot": "body2",
+     "chars": 200,
+     "gist": "限界：要件が限定的で事業者の認識も必要、勧誘状況の立証が消費者の負担。"
+    },
+    {
+     "slot": "concl",
+     "chars": 100,
+     "gist": "課題：つけ込み型勧誘への包括的な対応と、相談現場での早期発見・あっせんの組合せ。"
+    }
+   ]
+  },
+  {
+   "topicId": "nsk-2024-law",
+   "org": "nissankyo",
+   "year": 2024,
+   "label": "日産協 2024年度 法律",
+   "tier": "core",
+   "field": "law",
+   "summary": "インターネット上の広告表示について、①消費者の視点から問題となる状況を具体例とともに紹介し、②現行法による広告表示規制の概要を近時の改正にも触れて説明し、③残された課題を論じる。",
+   "keywords": [],
+   "asks": [
+    "問題となる状況の具体例",
+    "規制の概要と近時の改正",
+    "残された課題"
+   ],
+   "cards": [
+    {
+     "id": "s-ad-stema-rei",
+     "slots": [
+      "intro"
+     ]
+    },
+    {
+     "id": "s-ad-uchikeshi-rei",
+     "slots": [
+      "intro"
+     ]
+    },
+    {
+     "id": "s-ad-dark",
+     "slots": [
+      "intro",
+      "optional"
+     ]
+    },
+    {
+     "id": "h-yuuryou-yuuri",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "h-fujisshou",
+     "slots": [
+      "body1",
+      "optional"
+     ]
+    },
+    {
+     "id": "h-stema",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "h-2023kaisei",
+     "slots": [
+      "body1",
+      "body2"
+     ]
+    },
+    {
+     "id": "t-koukoku",
+     "slots": [
+      "body2"
+     ]
+    },
+    {
+     "id": "t-kakunin",
+     "slots": [
+      "body2",
+      "optional"
+     ]
+    },
+    {
+     "id": "s-dpf",
+     "slots": [
+      "body2",
+      "optional"
+     ]
+    },
+    {
+     "id": "s-ad-kadai",
+     "slots": [
+      "concl"
+     ]
+    },
+    {
+     "id": "d-tsuhan-cooling",
+     "slots": []
+    },
+    {
+     "id": "k-futaikyo",
+     "slots": []
+    },
+    {
+     "id": "d-pl",
+     "slots": []
+    }
+   ],
+   "model": [
+    {
+     "slot": "intro",
+     "chars": 150,
+     "gist": "ステマ、強調表示と小さな注記、ダークパターンなど、消費者が広告と気付かず、または条件を誤認して契約する状況を具体例で示す。"
+    },
+    {
+     "slot": "body1",
+     "chars": 300,
+     "gist": "景表法：優良誤認・有利誤認の禁止、ステマ告示（2023年10月）、2023年改正（2024年10月施行：確約手続・課徴金割増・直罰）。"
+    },
+    {
+     "slot": "body2",
+     "chars": 200,
+     "gist": "特商法：通信販売の広告表示義務・誇大広告の禁止、最終確認画面の表示義務。"
+    },
+    {
+     "slot": "concl",
+     "chars": 150,
+     "gist": "課題：投稿者自身は規制対象外、海外事業者への執行、ダークパターンへの包括規制の欠如、監視体制。"
+    }
+   ]
+  },
+  {
+   "topicId": "nsk-2025-law",
+   "org": "nissankyo",
+   "year": 2025,
+   "label": "日産協 2025年度 法律",
+   "tier": "core",
+   "field": "law",
+   "summary": "ネット広告で「初回無料」と表示された健康食品を注文したら、実は高額な定期購入契約だった事例。消費者が被る不利益と、消費者契約法・特定商取引法・景品表示法がそれぞれどのような規制をしているかを論じる。",
+   "keywords": [],
+   "asks": [
+    "消費者が被る不利益",
+    "消費者契約法の規制",
+    "特定商取引法の規制",
+    "景品表示法の規制"
+   ],
+   "cards": [
+    {
+     "id": "s-teiki-higai",
+     "slots": [
+      "intro"
+     ]
+    },
+    {
+     "id": "k-gonin",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "k-koukoku-kanyu",
+     "slots": [
+      "body1",
+      "optional"
+     ]
+    },
+    {
+     "id": "k-futou-jouko",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "t-kakunin",
+     "slots": [
+      "body2"
+     ]
+    },
+    {
+     "id": "t-kakunin-torikeshi",
+     "slots": [
+      "body2"
+     ]
+    },
+    {
+     "id": "t-kaiyaku-bougai",
+     "slots": [
+      "body2",
+      "optional"
+     ]
+    },
+    {
+     "id": "h-uchikeshi",
+     "slots": [
+      "body2",
+      "concl"
+     ]
+    },
+    {
+     "id": "h-yuuryou-yuuri",
+     "slots": [
+      "body2",
+      "concl",
+      "optional"
+     ]
+    },
+    {
+     "id": "s-teiki-kadai",
+     "slots": [
+      "concl"
+     ]
+    },
+    {
+     "id": "d-tsuhan-cooling",
+     "slots": []
+    },
+    {
+     "id": "k-handan",
+     "slots": []
+    },
+    {
+     "id": "d-kappu",
+     "slots": []
+    }
+   ],
+   "model": [
+    {
+     "slot": "intro",
+     "chars": 120,
+     "gist": "「初回無料」の表示を信じて申し込んだが実は定期購入で、意図しない支払いと解約の困難という不利益を被る。"
+    },
+    {
+     "slot": "body1",
+     "chars": 200,
+     "gist": "消費者契約法：不実告知・不利益事実の不告知による取消し（広告も勧誘に当たり得る）、高額な解約料の無効。"
+    },
+    {
+     "slot": "body2",
+     "chars": 330,
+     "gist": "特商法：最終確認画面の表示義務と違反時の取消し、解約妨害の禁止。景表法：「初回無料」の強調と打消し表示は有利誤認となり得、措置命令・課徴金の対象。"
+    },
+    {
+     "slot": "concl",
+     "chars": 100,
+     "gist": "3法の組合せで救済と抑止を図りつつ、SNS広告等の新手口への対応と消費者への啓発が課題。"
+    }
+   ]
+  },
+  {
+   "topicId": "ksn-2024-teiki",
+   "org": "kokusen",
+   "year": 2024,
+   "label": "国セン 2024年度 テーマ2",
+   "tier": "applied",
+   "field": "law",
+   "summary": "インターネット通信販売の詐欺的な定期購入商法の特徴を述べ、被害の予防・救済のための法制度と、消費者に啓発すべき点を論じる。消費生活センター・相談員の役割を考慮する。",
+   "keywords": [
+    "広告表示",
+    "特定商取引法",
+    "最終確認画面",
+    "取消し"
+   ],
+   "asks": [
+    "定期購入商法の特徴",
+    "予防・救済の法制度",
+    "消費者への啓発",
+    "センター・相談員の役割"
+   ],
+   "cards": [
+    {
+     "id": "s-teiki-higai",
+     "slots": [
+      "intro"
+     ]
+    },
+    {
+     "id": "h-uchikeshi",
+     "slots": [
+      "intro",
+      "body1"
+     ]
+    },
+    {
+     "id": "t-kakunin",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "t-kakunin-torikeshi",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "t-kaiyaku-bougai",
+     "slots": [
+      "body1",
+      "optional"
+     ]
+    },
+    {
+     "id": "k-gonin",
+     "slots": [
+      "body1",
+      "optional"
+     ]
+    },
+    {
+     "id": "c-assen",
+     "slots": [
+      "body2"
+     ]
+    },
+    {
+     "id": "c-keihatsu",
+     "slots": [
+      "body2",
+      "concl"
+     ]
+    },
+    {
+     "id": "s-teiki-kadai",
+     "slots": [
+      "concl"
+     ]
+    },
+    {
+     "id": "c-pionet",
+     "slots": [
+      "body2",
+      "concl",
+      "optional"
+     ]
+    },
+    {
+     "id": "d-tsuhan-cooling",
+     "slots": []
+    },
+    {
+     "id": "m-miseinen",
+     "slots": []
+    },
+    {
+     "id": "d-pl",
+     "slots": []
+    }
+   ],
+   "model": [
+    {
+     "slot": "intro",
+     "chars": 120,
+     "gist": "「初回無料」等の広告表示で定期購入であることを分かりにくくし、解約も困難にする手口。"
+    },
+    {
+     "slot": "body1",
+     "chars": 300,
+     "gist": "特定商取引法：最終確認画面の表示義務、違反による誤認の取消し、解約妨害の禁止。景表法の有利誤認。"
+    },
+    {
+     "slot": "body2",
+     "chars": 200,
+     "gist": "センターは取消しを根拠にあっせんし、PIO-NETで情報共有。"
+    },
+    {
+     "slot": "concl",
+     "chars": 150,
+     "gist": "申込み前に最終確認画面と解約条件を確認・保存するよう啓発。"
+    }
+   ]
+  },
+  {
+   "topicId": "ksn-2022-koureisha",
+   "org": "kokusen",
+   "year": 2022,
+   "label": "国セン 2022年度 テーマ2",
+   "tier": "applied",
+   "field": "law",
+   "summary": "高齢者の消費者被害の特徴を説明し、高齢者の被害を救済するために活用できる消費者契約法と特定商取引法の規定を述べる。消費生活センター・相談員の役割を考慮する。",
+   "keywords": [
+    "在宅率",
+    "判断力の低下",
+    "困惑",
+    "過量契約",
+    "再勧誘の禁止"
+   ],
+   "asks": [
+    "高齢者被害の特徴",
+    "消費者契約法の規定",
+    "特定商取引法の規定",
+    "センター・相談員の役割"
+   ],
+   "cards": [
+    {
+     "id": "s-koureisha",
+     "slots": [
+      "intro"
+     ]
+    },
+    {
+     "id": "k-handan",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "k-futaikyo",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "k-kajou",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "t-saikanyu",
+     "slots": [
+      "body2"
+     ]
+    },
+    {
+     "id": "t-cooling",
+     "slots": [
+      "body2"
+     ]
+    },
+    {
+     "id": "t-kajou",
+     "slots": [
+      "body2"
+     ]
+    },
+    {
+     "id": "t-fujitsu",
+     "slots": [
+      "body2",
+      "optional"
+     ]
+    },
+    {
+     "id": "c-mimamori",
+     "slots": [
+      "concl"
+     ]
+    },
+    {
+     "id": "c-assen",
+     "slots": [
+      "concl"
+     ]
+    },
+    {
+     "id": "k-kikan",
+     "slots": [
+      "body1",
+      "concl",
+      "optional"
+     ]
+    },
+    {
+     "id": "m-miseinen",
+     "slots": []
+    },
+    {
+     "id": "t-kakunin",
+     "slots": []
+    },
+    {
+     "id": "d-pl",
+     "slots": []
+    }
+   ],
+   "model": [
+    {
+     "slot": "intro",
+     "chars": 150,
+     "gist": "在宅率が高く、判断力の低下や孤立から被害に遭いやすく、被害の自覚も遅れがち。"
+    },
+    {
+     "slot": "body1",
+     "chars": 250,
+     "gist": "消費者契約法：判断力低下へのつけ込み・不退去による困惑の取消し、過量契約の取消し。"
+    },
+    {
+     "slot": "body2",
+     "chars": 250,
+     "gist": "特定商取引法：再勧誘の禁止、クーリング・オフ、過量販売の解除。"
+    },
+    {
+     "slot": "concl",
+     "chars": 150,
+     "gist": "相談員はこれらを根拠にあっせんし、見守りネットワークで早期発見につなげる。"
+    }
+   ]
+  },
+  {
+   "topicId": "ksn-2025-tenken",
+   "org": "kokusen",
+   "year": 2025,
+   "label": "国セン 2025年度 テーマ2",
+   "tier": "applied",
+   "field": "law",
+   "summary": "点検商法による消費者被害の現状と特徴を述べ、被害救済のための法制度と、被害の未然防止のために消費生活センターとして啓発すべき内容を論じる。消費生活センター・相談員の役割を考慮する。",
+   "keywords": [
+    "リフォーム工事",
+    "高齢者",
+    "見積もり",
+    "見守り"
+   ],
+   "asks": [
+    "点検商法の現状と特徴",
+    "救済のための法制度",
+    "未然防止の啓発",
+    "センター・相談員の役割"
+   ],
+   "cards": [
+    {
+     "id": "s-tenken",
+     "slots": [
+      "intro"
+     ]
+    },
+    {
+     "id": "s-koureisha",
+     "slots": [
+      "intro",
+      "optional"
+     ]
+    },
+    {
+     "id": "t-meiji",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "t-cooling",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "t-fujitsu",
+     "slots": [
+      "body1",
+      "optional"
+     ]
+    },
+    {
+     "id": "k-jizen-jisshi",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "t-kajou",
+     "slots": [
+      "body1",
+      "optional"
+     ]
+    },
+    {
+     "id": "s-mitsumori",
+     "slots": [
+      "body2",
+      "concl"
+     ]
+    },
+    {
+     "id": "c-mimamori",
+     "slots": [
+      "body2",
+      "concl"
+     ]
+    },
+    {
+     "id": "c-assen",
+     "slots": [
+      "body2",
+      "concl"
+     ]
+    },
+    {
+     "id": "d-tsuhan-cooling",
+     "slots": []
+    },
+    {
+     "id": "m-miseinen",
+     "slots": []
+    },
+    {
+     "id": "d-pl",
+     "slots": []
+    }
+   ],
+   "model": [
+    {
+     "slot": "intro",
+     "chars": 150,
+     "gist": "「無料点検」を口実に訪問し、不安をあおって高額なリフォーム工事を契約させる。高齢者の被害が多い。"
+    },
+    {
+     "slot": "body1",
+     "chars": 300,
+     "gist": "特商法：勧誘目的の明示義務、クーリング・オフ（工事後も可・原状回復は無償）。消契法：契約前の工事着手は取消し。"
+    },
+    {
+     "slot": "body2",
+     "chars": 200,
+     "gist": "啓発：その場で契約しない、複数社の見積もり、家族やセンターへの相談。"
+    },
+    {
+     "slot": "concl",
+     "chars": 150,
+     "gist": "見守りネットワークで異変を早期に把握し、相談員があっせんで救済する。"
+    }
+   ]
+  },
+  {
+   "topicId": "ksn-2023-game",
+   "org": "kokusen",
+   "year": 2023,
+   "label": "国セン 2023年度 テーマ2",
+   "tier": "applied",
+   "field": "law",
+   "summary": "未成年者のオンラインゲームによる高額課金トラブルについて、救済・解決の問題点とトラブルの予防方法を論じる。消費生活センター・相談員の役割を考慮する。",
+   "keywords": [
+    "決済手段",
+    "年齢確認",
+    "未成年者取消し",
+    "利用明細"
+   ],
+   "asks": [
+    "トラブルの特徴",
+    "救済・解決の問題点",
+    "予防方法",
+    "センター・相談員の役割"
+   ],
+   "cards": [
+    {
+     "id": "s-game",
+     "slots": [
+      "intro"
+     ]
+    },
+    {
+     "id": "m-miseinen",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "m-genkai",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "s-nenrei",
+     "slots": [
+      "body1",
+      "body2",
+      "optional"
+     ]
+    },
+    {
+     "id": "s-kessai",
+     "slots": [
+      "body2"
+     ]
+    },
+    {
+     "id": "s-meisai",
+     "slots": [
+      "body2"
+     ]
+    },
+    {
+     "id": "c-assen",
+     "slots": [
+      "body1",
+      "concl"
+     ]
+    },
+    {
+     "id": "c-keihatsu",
+     "slots": [
+      "concl"
+     ]
+    },
+    {
+     "id": "t-cooling",
+     "slots": []
+    },
+    {
+     "id": "k-date",
+     "slots": []
+    },
+    {
+     "id": "t-kajou",
+     "slots": []
+    }
+   ],
+   "model": [
+    {
+     "slot": "intro",
+     "chars": 120,
+     "gist": "保護者の決済手段が無断で使われ、少額課金が積み重なって高額化し、利用明細で発覚する。"
+    },
+    {
+     "slot": "body1",
+     "chars": 300,
+     "gist": "未成年者取消しが救済の柱だが、処分許容財産や年齢確認での虚偽入力（詐術）で取消しが争われる。"
+    },
+    {
+     "slot": "body2",
+     "chars": 200,
+     "gist": "予防：決済手段の管理、利用明細の定期確認、事業者の年齢確認と課金上限。"
+    },
+    {
+     "slot": "concl",
+     "chars": 150,
+     "gist": "相談員は取消しのあっせんを行い、学校・保護者向けの啓発で未然防止を図る。"
+    }
+   ]
+  }
+ ],
+ "interview": {
+  "frame": [
+   "結論",
+   "根拠となる経験",
+   "資格取得後の展望"
+  ],
+  "questions": [
+   {
+    "id": "iv-01",
+    "q": "消費生活アドバイザーを目指した動機を教えてください。",
+    "hint": "最も聞かれる質問。業務経験と資格を結び付ける。"
+   },
+   {
+    "id": "iv-02",
+    "q": "現在の仕事の内容と、そこで消費者と接する場面を教えてください。",
+    "hint": "具体的な場面を1つ挙げる。"
+   },
+   {
+    "id": "iv-03",
+    "q": "資格を取得したら、仕事や地域でどのように活かしますか。",
+    "hint": "具体的な行動レベルで答える。"
+   },
+   {
+    "id": "iv-04",
+    "q": "最近関心を持った消費者問題を1つ挙げ、その理由を教えてください。",
+    "hint": "論文で扱った論題と結び付けてもよい。"
+   },
+   {
+    "id": "iv-05",
+    "q": "論文ではどの論題を選び、どのような主張をしましたか。",
+    "hint": "当日の論文の要旨を30秒で言えるように。"
+   },
+   {
+    "id": "iv-06",
+    "q": "消費者と事業者の間に立つ立場として、大切にしたいことは何ですか。",
+    "hint": "中立性・双方への説明責任。"
+   },
+   {
+    "id": "iv-07",
+    "q": "企業が消費者の声を経営に活かすには、何が必要だと考えますか。",
+    "hint": "苦情を改善につなげる仕組み。"
+   },
+   {
+    "id": "iv-08",
+    "q": "高齢者の消費者被害を防ぐために、どのような取組が有効だと思いますか。",
+    "hint": "見守り・家族・地域の連携。"
+   },
+   {
+    "id": "iv-09",
+    "q": "若年者の消費者被害を防ぐために、どのような取組が有効だと思いますか。",
+    "hint": "成年年齢引下げ後の課題。"
+   },
+   {
+    "id": "iv-10",
+    "q": "クレームを受けたときに、どのように対応しますか。",
+    "hint": "傾聴→事実確認→説明→再発防止。"
+   },
+   {
+    "id": "iv-11",
+    "q": "あなたの長所と短所を教えてください。",
+    "hint": "業務での具体例を添える。"
+   },
+   {
+    "id": "iv-12",
+    "q": "これまでの仕事で困難を乗り越えた経験を教えてください。",
+    "hint": "状況→行動→結果。"
+   },
+   {
+    "id": "iv-13",
+    "q": "デジタル化が進む中で、消費者が注意すべきことは何だと思いますか。",
+    "hint": "定期購入・SNS・キャッシュレス。"
+   },
+   {
+    "id": "iv-14",
+    "q": "持続可能な社会の実現に向けて、消費者ができることは何ですか。",
+    "hint": "エシカル消費・食品ロス削減。"
+   },
+   {
+    "id": "iv-15",
+    "q": "最後に、何か伝えておきたいことはありますか。",
+    "hint": "意欲を簡潔に述べて締める。"
+   }
+  ]
+ },
+ "checkedAt": "2026-10-13"
+}

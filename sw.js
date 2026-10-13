@@ -1,4 +1,4 @@
-const CACHE_NAME = 'shouhi-quiz-v23';
+const CACHE_NAME = 'shouhi-quiz-v24';
 const STATIC_FILES = [
   './',
   './index.html',
@@ -9,11 +9,13 @@ const STATIC_FILES = [
   './quiz-engine.js',
   './modes.js',
   './stats-view.js',
+  './essay.js',
   './app.js',
   './icon.svg',
   './icon-maskable.svg',
   './data/questions.json',
-  './data/categories.json'
+  './data/categories.json',
+  './data/essays.json'
 ];
 
 self.addEventListener('install', (event) => {
