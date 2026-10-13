@@ -84,6 +84,7 @@ const Essay = (() => {
     else if (kind === 'recall') showRecallDecks();
     else if (kind === 'interview') showInterviewList();
     else if (kind === 'flags') showFlags();
+    else if (kind === 'patterns') showPatterns();
   }
 
   // ---------- データの参照 ----------
@@ -103,6 +104,82 @@ const Essay = (() => {
   }
 
   function topicById(id) { return data.topics.find((t) => t.topicId === id); }
+
+  // ---------- 論述の型（A 制度説明型／B 現状分析・対策型／C テーマ解説型） ----------
+  function patternOf(topic) {
+    const p = data.patterns;
+    return p && topic && p.types[topic.pattern] ? { letter: topic.pattern, ...p.types[topic.pattern] } : null;
+  }
+
+  function patternSlot(pat, slotId) {
+    return pat ? pat.slots.find((x) => x.slot === slotId) : null;
+  }
+
+  // 型の骨組み（段落・字数・書き出し・内容）の表
+  function patternTable(pat) {
+    const rows = pat.slots.map((x) => `<div class="pattern-row">`
+      + `<div class="pattern-row-head"><span>${esc(SLOT_SHORT[x.slot])}</span><span>${Number(x.chars)}字</span></div>`
+      + `<div class="pattern-opener">${esc(x.opener)}</div>`
+      + `<div class="pattern-content">${esc(x.content)}</div></div>`).join('');
+    const total = pat.slots.reduce((n, x) => n + Number(x.chars), 0);
+    return `<div class="pattern-rows">${rows}</div><div class="pattern-total">合計 約${total}字</div>`;
+  }
+
+  function commonRulesHtml() {
+    return `<ul class="pattern-common">${data.patterns.common.map((r) => `<li>${esc(r)}</li>`).join('')}</ul>`;
+  }
+
+  // サンプル答案（段落ごとに、型の段落名と字数を添える）
+  function sampleNode(pat) {
+    const smp = pat.sample;
+    const box = el('div', 'pattern-sample');
+    box.appendChild(el('div', 'pattern-sample-meta', `題材：${esc(smp.topicLabel)}　本文 ${Number(smp.chars)}字`));
+    for (const para of smp.paragraphs) {
+      const x = patternSlot(pat, para.slot);
+      const p = el('div', 'pattern-sample-para');
+      p.appendChild(el('div', 'pattern-sample-label',
+        `${esc(SLOT_SHORT[para.slot])}<span>${[...para.text].length}字${x ? `（目安${Number(x.chars)}字）` : ''}</span>`));
+      p.appendChild(el('p', 'pattern-sample-text', esc(para.text)));
+      box.appendChild(p);
+    }
+    box.appendChild(el('p', 'config-note', 'サンプルは学習用に作成した答案例です。数値・制度の根拠は、各論点カードの出典で確認できます。'));
+    return box;
+  }
+
+  // ホームの「論述の型」：3つの型・共通ルール・サンプル答案をまとめて見る
+  function showPatterns() {
+    const wrap = el('div', 'pattern-page');
+    const common = el('div', 'pattern-box');
+    common.appendChild(el('div', 'pattern-box-title', '共通ルール'));
+    common.insertAdjacentHTML('beforeend', commonRulesHtml());
+    wrap.appendChild(common);
+    for (const [letter, t] of Object.entries(data.patterns.types)) {
+      const pat = { letter, ...t };
+      const sec = el('div', 'pattern-box');
+      sec.appendChild(el('div', 'pattern-box-title',
+        `<span class="pattern-letter">${esc(letter)}</span>${esc(t.name)}<span class="pattern-field">${esc(t.field)}</span>`));
+      sec.appendChild(el('div', 'pattern-when', `使う論題：${esc(t.when)}`));
+      sec.insertAdjacentHTML('beforeend', patternTable(pat));
+      const used = data.topics.filter((x) => x.pattern === letter).map((x) => x.label);
+      sec.appendChild(el('div', 'pattern-used', `この型の論題：${esc(used.join('／'))}`));
+      const det = el('details', 'pattern-sample-details');
+      det.appendChild(el('summary', '', `型${esc(letter)}のサンプル答案を読む`));
+      det.appendChild(sampleNode(pat));
+      sec.appendChild(det);
+      wrap.appendChild(sec);
+    }
+    showList('論述の型', wrap);
+  }
+
+  // 構成練習の画面から、その論題の型のサンプル答案を開く
+  function showSample(pat, backScreen) {
+    refBackScreen = backScreen;
+    const body = document.getElementById('essay-ref-body');
+    body.innerHTML = '';
+    body.appendChild(el('h2', 'essay-h2', `型${esc(pat.letter)}（${esc(pat.name)}）のサンプル答案`));
+    body.appendChild(sampleNode(pat));
+    ctx.showScreen('essay-ref');
+  }
 
   function bestByTopic(results) {
     const map = new Map();
@@ -229,8 +306,9 @@ const Essay = (() => {
         const badge = b
           ? `<span class="count-badge${b.best === 100 ? ' is-done' : ''}">${b.runs}回・最高 ${b.best}点</span>`
           : '<span class="count-badge">未着手</span>';
+        const pat = patternOf(t);
         const item = el('button', 'config-item topic-item',
-          `<span class="topic-item-main"><span class="topic-item-label">${esc(t.label)}</span>`
+          `<span class="topic-item-main"><span class="topic-item-label">${pat ? `<span class="pattern-letter is-small">${esc(pat.letter)}</span>` : ''}${esc(t.label)}</span>`
           + `<span class="config-item-sub">${esc(t.summary.slice(0, 42))}…</span></span>${badge}`);
         item.addEventListener('click', () => startBuild(t.topicId));
         wrap.appendChild(item);
@@ -262,6 +340,20 @@ const Essay = (() => {
     head.innerHTML = `<div class="essay-topic-label">${esc(t.label)}</div>`
       + `<div class="essay-summary">${esc(t.summary)}</div>`
       + `<div class="essay-asks-title">問われていること</div><ul class="essay-asks">${asks}</ul>${kw}`;
+
+    // 型ガイド：この論題で使う型の骨組みを、振り分けの間ずっと見える位置に出す
+    const pat = patternOf(t);
+    if (pat) {
+      const guide = el('details', 'pattern-guide');
+      guide.open = true;
+      guide.appendChild(el('summary', 'pattern-guide-title',
+        `<span class="pattern-letter">${esc(pat.letter)}</span>この論題は「${esc(pat.name)}」で書く`));
+      guide.insertAdjacentHTML('beforeend', patternTable(pat) + commonRulesHtml());
+      const sb = el('button', 'secondary-btn pattern-sample-btn', `型${esc(pat.letter)}のサンプル答案を見る`);
+      sb.addEventListener('click', () => showSample(pat, 'essay-build'));
+      guide.appendChild(sb);
+      head.appendChild(guide);
+    }
 
     document.getElementById('essay-slot-legend').innerHTML =
       '書くべき論点だけを選び、置く段落をタップしてください。もう一度タップすると外れます。';
@@ -417,15 +509,24 @@ const Essay = (() => {
     }
 
     const model = el('div', 'essay-model');
-    model.appendChild(el('h3', 'essay-result-title', '模範構成（800字以内の目安）'));
+    const pat = patternOf(r.topic);
+    model.appendChild(el('h3', 'essay-result-title',
+      pat ? `模範構成（型${esc(pat.letter)} ${esc(pat.name)}・800字以内）` : '模範構成（800字以内の目安）'));
     let total = 0;
     for (const m of r.topic.model) {
       total += m.chars;
+      const x = patternSlot(pat, m.slot);
       model.appendChild(el('div', 'essay-model-row',
         `<div class="essay-model-head"><span>${esc(SLOT_SHORT[m.slot])}</span><span>${Number(m.chars)}字</span></div>`
+        + (x ? `<div class="pattern-opener">${esc(x.opener)}</div>` : '')
         + `<div class="essay-model-gist">${esc(m.gist)}</div>`));
     }
-    model.appendChild(el('div', 'config-note', `合計 約${total}字。手書きの演習では、この配分で序論から順に書き出してください。`));
+    model.appendChild(el('div', 'config-note', `合計 約${total}字。手書きの演習では、型の書き出しを使い、この配分で序論から順に書いてください。`));
+    if (pat) {
+      const sb = el('button', 'secondary-btn pattern-sample-btn', `型${esc(pat.letter)}のサンプル答案を見る`);
+      sb.addEventListener('click', () => showSample(pat, 'essay-result'));
+      model.appendChild(sb);
+    }
     body.appendChild(model);
   }
 
@@ -492,6 +593,13 @@ const Essay = (() => {
     lines.push('');
     lines.push('【形式条件】日本産業協会の消費生活アドバイザー第2次試験（論文）に準じ、60分・800字以内（600字以上が望ましい）。');
     lines.push('');
+    const pat = patternOf(t);
+    if (pat) {
+      lines.push(`【論述の型】型${pat.letter}「${pat.name}」`);
+      pat.slots.forEach((x) => lines.push(`・${SLOT_SHORT[x.slot]}（${x.chars}字）：${x.opener}／${x.content}`));
+      lines.push(`共通ルール：${data.patterns.common.join('。')}。`);
+      lines.push('');
+    }
     lines.push('【採点の観点：問われていること】');
     t.asks.forEach((a) => lines.push(`・${a}`));
     lines.push('');
@@ -505,7 +613,8 @@ const Essay = (() => {
     if (opt.length) lines.push(`（加点要素：${opt.join('／')}）`);
     lines.push('');
     lines.push('【依頼】添付した手書き答案を読み取り、上の観点に沿って100点満点で採点してください。'
-      + '必須論点の有無、構成（序論・本論・結論）、論理の一貫性、字数を確認し、改善点を3つ挙げてください。');
+      + '必須論点の有無、構成（序論・本論・結論）、論理の一貫性、字数を確認し、改善点を3つ挙げてください。'
+      + (pat ? `あわせて、型${pat.letter}の段落構成・書き出し・字数配分と共通ルールに沿っているかを確認してください。` : ''));
     return lines.join('\n');
   }
 
