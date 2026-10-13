@@ -261,6 +261,11 @@ const Storage = (() => {
     return true;
   }
 
+  async function removeFlag(cardId) {
+    const store = await tx('flags', 'readwrite');
+    await promisify(store.delete(cardId));
+  }
+
   async function getFlags() {
     const store = await tx('flags', 'readonly');
     return promisify(store.getAll());
@@ -275,6 +280,7 @@ const Storage = (() => {
     saveInterviewAnswer,
     getInterviewAnswers,
     toggleFlag,
+    removeFlag,
     getFlags,
     recordAnswer,
     getAllResults,
