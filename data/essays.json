@@ -747,6 +747,858 @@
    "legal": true,
    "related1st": [],
    "checked": "single"
+  },
+  "c-adr": {
+   "title": "国民生活センターADR（紛争解決委員会）",
+   "gist": "全国的に重要な消費者紛争について、国民生活センターの紛争解決委員会が和解の仲介・仲裁を行う（2009年4月開始）。手続は原則非公開だが、必要に応じて結果の概要を公表し、同種被害の防止に役立てる。",
+   "basis": "独立行政法人国民生活センター法 第11条・第19条・第29条・第36条",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/414AC0000000123",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [],
+   "checked": "double"
+  },
+  "c-kenri-kihon": {
+   "title": "消費者基本法が定める「消費者の権利」",
+   "gist": "2004年の改正で、安全の確保、選択の機会の確保、必要な情報・教育の機会の提供、意見の反映、被害が生じた場合に適切かつ迅速に救済されることが、消費者の権利として基本理念に明記された。",
+   "basis": "消費者基本法 第2条第1項",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/343AC1000000078",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [],
+   "checked": "double"
+  },
+  "c-8kenri": {
+   "title": "消費者の8つの権利（国際消費者機構）",
+   "gist": "生活の基本的ニーズが保障される権利、安全である権利、知らされる権利、選ぶ権利、意見を反映される権利、補償を受ける権利、消費者教育を受ける権利、健全な環境の中で働き生活する権利。",
+   "basis": "国際消費者機構（CI）／総務省資料",
+   "sourceUrl": "https://www.soumu.go.jp/main_content/000084506.pdf",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "c-kakusa": {
+   "title": "消費者と事業者の情報・交渉力の格差",
+   "gist": "消費者と事業者の間には情報の質・量と交渉力に構造的な格差がある。消費者契約法はこれを前提に、取消権や不当条項の無効を定めている。被害救済に公的な支援が必要な根拠になる。",
+   "basis": "消費者契約法 第1条",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/412AC0000000061",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [],
+   "checked": "double"
+  },
+  "c-jiko-tsuchi": {
+   "title": "消費者事故等の通知（消費者安全法12条）",
+   "gist": "地方公共団体の長や国民生活センターの長は、重大事故等を知ったときは直ちに、その他の消費者事故等も被害拡大のおそれがあるときは、内閣総理大臣（消費者庁）に通知する。",
+   "basis": "消費者安全法 第12条",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/421AC0000000050",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [],
+   "checked": "double"
+  },
+  "c-chuikanki-38": {
+   "title": "消費者庁による注意喚起・公表（消費者安全法38条）",
+   "gist": "消費者庁は、集まった消費者事故等の情報から消費者の注意を喚起する必要があると認めるとき、地方公共団体に情報を提供し、公表する。",
+   "basis": "消費者安全法 第38条第1項",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/421AC0000000050",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [],
+   "checked": "double"
+  },
+  "c-shobun": {
+   "title": "特定商取引法に基づく行政処分",
+   "gist": "違反した事業者に対し、国や都道府県は指示、業務停止命令、役員等への業務禁止命令を行い、公表する。相談情報は違反行為を把握する端緒になる。",
+   "basis": "特定商取引法 第7条・第8条・第8条の2（訪問販売の場合）",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/351AC0000000057",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [],
+   "checked": "double"
+  },
+  "c-houkaisei": {
+   "title": "相談情報が法改正につながった例（定期購入）",
+   "gist": "定期購入の相談が急増する中、2021年の特定商取引法改正で、最終確認画面の表示義務、誤認による申込みの取消し、解約妨害の禁止などが導入された（2022年6月施行）。",
+   "basis": "消費者庁「令和3年特定商取引法・預託法等改正」／国民生活センター公表資料",
+   "sourceUrl": "https://www.caa.go.jp/policies/policy/consumer_transaction/amendment/2021/",
+   "effective": "2022年6月1日施行",
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [],
+   "checked": "double"
+  },
+  "c-kiroku": {
+   "title": "相談処理で留意すべき点（正確な聴取と登録）",
+   "gist": "相談者から事実関係を時系列で正確に聴き取り、契約書等の証拠を確認する。PIO-NETに迅速・正確に登録し分類することで、相談情報が注意喚起・法執行に活かせる情報になる。個人情報の取扱いにも注意する。",
+   "basis": "国民生活センター「PIO-NET」",
+   "sourceUrl": "https://www.kokusen.go.jp/pionet/index.html",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "c-fukushi": {
+   "title": "福祉等との連携",
+   "gist": "地域包括支援センター、ケアマネジャー、ヘルパー、民生委員などは日常的に高齢者・障害者と接し、異変に気付きやすい。センターと情報を共有し、本人が気付かない被害を早期に発見する。",
+   "basis": "消費者庁「地域の見守りネットワーク」",
+   "sourceUrl": "https://www.caa.go.jp/policies/policy/local_cooperation/system_improvement/network/",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "c-kizukinikui": {
+   "title": "本人が被害に気付きにくい",
+   "gist": "認知症等の高齢者の相談は、本人ではなく家族やヘルパー等の周囲から寄せられるものが多い。本人はトラブルに遭っても気付きにくく、周囲の見守りが重要になる。",
+   "basis": "消費者白書（認知症等の高齢者の相談）",
+   "sourceUrl": "https://www.caa.go.jp/policies/policy/consumer_research/white_paper/figure_csv_2026/assets/1-1-3-15.csv",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "c-mimamori-joukyou": {
+   "title": "見守りネットワークの設置状況",
+   "gist": "消費者安全確保地域協議会は597自治体に設置されている（2026年9月末、広域連携を含む）。総自治体数1,788に対し3割余りにとどまり、未設置地域の解消と活動の活性化が課題。",
+   "basis": "消費者庁「地域の見守りネットワーク」設置状況",
+   "sourceUrl": "https://www.caa.go.jp/policies/policy/local_cooperation/system_improvement/network/assets/local_cooperation_cms205_261002_02.pdf",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "c-mimamori-joho": {
+   "title": "見守り関係者への消費者トラブル情報の提供",
+   "gist": "センターは、高齢者を狙う手口や対処法を見守り関係者に分かりやすく提供する（国民生活センター「見守り新鮮情報」など）。関係者が手口を知っていれば、異変に早く気付ける。",
+   "basis": "国民生活センター「見守り新鮮情報」",
+   "sourceUrl": "https://www.kokusen.go.jp/mimamori/",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "c-seinen-kouken": {
+   "title": "成年後見制度",
+   "gist": "判断能力が不十分な人のため家庭裁判所が後見人等を選ぶ。成年被後見人の契約は、日用品の購入など日常生活に関する行為を除き取り消せる。利用者は約26万人（2025年末）。",
+   "basis": "民法 第7条・第9条／最高裁判所「成年後見関係事件の概況」",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/129AC0000000089",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [],
+   "checked": "double"
+  },
+  "c-188": {
+   "title": "消費者ホットライン「188」",
+   "gist": "局番なしの「188（いやや）」に電話すると、身近な消費生活センター等の相談窓口につながる。困ったとき・迷ったときに早めに相談することを周知する。",
+   "basis": "消費者庁「消費者ホットライン」",
+   "sourceUrl": "https://www.caa.go.jp/policies/policy/local_cooperation/local_consumer_administration/hotline/",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "st-soudan": {
+   "title": "全国の消費生活相談の状況（2025年度）",
+   "gist": "PIO-NETに登録された相談は約100.6万件で前年度より約9万件増えた。販売購入形態では通信販売が38.0%で最も多く、手口では定期購入が約9.8万件。",
+   "basis": "国民生活センター「PIO-NETにみる2025年度の消費生活相談の概要」（2026年8月）",
+   "sourceUrl": "https://www.kokusen.go.jp/pdf/n-20260805_1.pdf",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "st-koureisha": {
+   "title": "高齢者の相談の状況",
+   "gist": "65歳以上の相談は2025年に32.0万件で、全体の約3割を占める（令和8年版消費者白書）。70歳以上は、訪問購入・訪問販売・電話勧誘販売などで年代別の割合が最も高い。",
+   "basis": "令和8年版消費者白書／国民生活センター2025年度概要",
+   "sourceUrl": "https://www.caa.go.jp/policies/policy/consumer_research/white_paper/assets/consumer_research_cms201_260612_33.pdf",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "st-1819": {
+   "title": "18歳・19歳の相談件数の推移",
+   "gist": "成年年齢引下げ前の2021年度8,536件に対し、2022年度10,027件、2025年度10,250件と、引下げ後は増えた状態が続く。脱毛エステなど「美」と副業など「金」の相談が多い。",
+   "basis": "国民生活センター公表資料（2026年5月）",
+   "sourceUrl": "https://www.kokusen.go.jp/news/data/n-20260527_2.html",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "st-nenrei-keitai": {
+   "title": "年齢層による販売形態の違い",
+   "gist": "20歳未満ではインターネット通販に関する相談が5割以上を占める一方、70歳代以上では訪問販売・電話勧誘販売・訪問購入の割合が他の年齢層より高い。被害防止策は年齢層ごとの接点に合わせる必要がある。",
+   "basis": "消費者白書（年齢階級別の販売購入形態別割合）",
+   "sourceUrl": "https://www.caa.go.jp/policies/policy/consumer_research/white_paper/assets/consumer_research_cms201_260612_33.pdf",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "st-sns-sagi": {
+   "title": "SNS型投資詐欺・ロマンス詐欺の被害状況",
+   "gist": "2025年はSNS型投資詐欺が9,538件・約1,275億円、SNS型ロマンス詐欺が5,604件・約552億円で、いずれも前年から大幅に増えた（警察庁暫定値）。",
+   "basis": "警察庁「SNS型投資・ロマンス詐欺の認知・検挙状況」",
+   "sourceUrl": "https://www.npa.go.jp/bureau/safetylife/sos47/new-topics/260213/03.html",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "st-foodloss": {
+   "title": "食品ロス量と削減目標",
+   "gist": "2024年度の食品ロスは461万トン（事業系237万・家庭系224万トン）。2030年度目標は、2000年度比で事業系60%減の219万トン、家庭系50%減の216万トン。",
+   "basis": "消費者庁・農林水産省・環境省 推計公表（2026年6月）",
+   "sourceUrl": "https://www.caa.go.jp/notice/assets/consumer_education_cms201_260630_02.pdf",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "y-1819-risk": {
+   "title": "18・19歳が狙われやすい理由",
+   "gist": "成年年齢引下げで、18・19歳は親の同意なく契約できる一方、未成年者取消権を失った。契約の知識・経験が乏しく、悪質な事業者が成年になった直後を狙う。",
+   "basis": "民法 第4条・第5条（成年年齢18歳、2022年4月施行）",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/129AC0000000089",
+   "effective": "2022年4月1日施行",
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [],
+   "checked": "double"
+  },
+  "y-multi": {
+   "title": "マルチ取引（連鎖販売取引）",
+   "gist": "「紹介すればもうかる」と勧誘し、入会金や商品購入をさせる取引。特商法により、契約書面を受け取った日（商品の引渡しが後なら引渡しの日）から20日間はクーリング・オフでき、その後も中途解約・返品のルールがある。",
+   "basis": "特定商取引法 第33条・第40条・第40条の2",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/351AC0000000057",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [],
+   "checked": "double"
+  },
+  "y-sns": {
+   "title": "SNSをきっかけとしたトラブル",
+   "gist": "SNSの広告やダイレクトメッセージをきっかけに、副業・情報商材、投資、美容などの契約に誘導される。相手の素性が分からず、連絡が取れなくなることも多い。",
+   "basis": "消費者白書（SNS関連の消費生活相談）",
+   "sourceUrl": "https://www.caa.go.jp/policies/policy/consumer_research/white_paper/assets/consumer_research_cms201_260612_34.pdf",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "y-shakkin": {
+   "title": "借金をさせて契約させる手口",
+   "gist": "支払能力がないと分かると、消費者金融やクレジットでの借入れを勧めて高額な契約をさせる。返済のために別の人を勧誘する悪循環に陥りやすい。",
+   "basis": "国民生活センター（若者の消費者トラブル）",
+   "sourceUrl": "https://www.kokusen.go.jp/soudan_now/data/wakamono.html",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "y-kyouiku": {
+   "title": "学校等での消費者教育",
+   "gist": "消費者教育推進法（2012年）に基づき、学校で契約の基本や悪質商法の手口、相談窓口を学ぶ。消費者庁の教材「社会への扉」なども活用され、成年前の実践的な教育が重要になる。",
+   "basis": "消費者教育の推進に関する法律",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/424AC0100000061",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "p-pl": {
+   "title": "製造物責任法（PL法）による損害賠償",
+   "gist": "製造物の欠陥（通常有すべき安全性を欠いていること）で生命・身体・財産に損害が生じた場合、製造業者等は過失の有無を問わず賠償責任を負う。被害者は過失ではなく、欠陥・損害・因果関係を証明する。",
+   "basis": "製造物責任法 第2条第2項・第3条",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/406AC0000000085",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [],
+   "checked": "double"
+  },
+  "p-houkoku": {
+   "title": "重大製品事故の報告と公表（消費生活用製品安全法）",
+   "gist": "製造・輸入事業者は、重大製品事故を知った日から10日以内に消費者庁へ報告する。国は危害の拡大防止に必要な場合、製品名や事故の内容を公表する。",
+   "basis": "消費生活用製品安全法 第35条・第36条",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/348AC0000000031",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [],
+   "checked": "double"
+  },
+  "p-recall": {
+   "title": "リコール（回収・無償修理）",
+   "gist": "事業者は事故の原因を調査し、必要に応じて回収等に努める。重大製品事故が生じた場合などで、危害の発生・拡大を防ぐため特に必要があるとき、主務大臣は回収等を命じることができる（危害防止命令）。",
+   "basis": "消費生活用製品安全法 第38条・第39条",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/348AC0000000031",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [],
+   "checked": "double"
+  },
+  "p-taiou": {
+   "title": "製品事故の相談を受けたときの対応",
+   "gist": "けがの状況や受診の有無、製品名・型番・購入先・使用状況を聴き取り、事故品を保全するよう助言する。事業者との交渉をあっせんし、必要に応じて原因究明（商品テスト）につなげる。",
+   "basis": "国民生活センター（商品テスト・事故情報）",
+   "sourceUrl": "https://www.kokusen.go.jp/category/test.html",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "g-2025-theme": {
+   "title": "令和7年度消費者月間の統一テーマ",
+   "gist": "「明日の地球を救うため、消費者にできること グリーン志向消費 ～どのグリーンにする？～」。消費者の買い物が地球環境の持続可能性に影響し得ることを自覚し、環境に配慮した選択を促す。",
+   "basis": "消費者庁「令和7年度消費者月間統一テーマについて」",
+   "sourceUrl": "https://www.caa.go.jp/policies/policy/consumer_education/public_awareness/gekkan/2025/assets/consumer_education_cms202_250110.pdf",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "g-haikei": {
+   "title": "グリーン志向消費が求められる背景",
+   "gist": "記録的な大雨や高温など気候変動の影響が身近になり、消費行動も温暖化の一因とされる。環境への関心は高いが、実際の購買で環境に配慮した選択が必ずしも行われていない。",
+   "basis": "消費者庁「令和7年度消費者月間統一テーマについて」",
+   "sourceUrl": "https://www.caa.go.jp/policies/policy/consumer_education/public_awareness/gekkan/2025/assets/consumer_education_cms202_250110.pdf",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "g-ethical": {
+   "title": "エシカル消費とは",
+   "gist": "消費者それぞれが社会的課題の解決を考慮したり、そうした課題に取り組む事業者を応援しながら消費活動を行うこと。人・社会・環境・地域に配慮した消費行動で、SDGsの目標12と関わる。",
+   "basis": "消費者庁「エシカル消費とは」",
+   "sourceUrl": "https://www.caa.go.jp/policies/policy/consumer_education/public_awareness/ethical/about",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "g-shouhisha": {
+   "title": "消費者ができること（環境配慮の選択）",
+   "gist": "環境ラベルや省エネ性能を確認して選ぶ、必要な分だけ買い使い切る（てまえどり等）、修理・リユースで長く使う、家族や周囲と話し合う。",
+   "basis": "消費者庁（エシカル消費・食品ロス）",
+   "sourceUrl": "https://www.caa.go.jp/policies/policy/consumer_education/public_awareness/ethical/about",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "g-kigyou": {
+   "title": "事業者ができること（環境配慮と正確な表示）",
+   "gist": "環境に配慮した商品・サービスを提供し、その根拠を分かりやすく正確に表示・開示する。食品ロスにつながる商慣習の見直しやフードバンクへの寄付にも取り組む。",
+   "basis": "消費者庁（エシカル消費・食品ロス）",
+   "sourceUrl": "https://www.caa.go.jp/policies/policy/consumer_policy/information/food_loss/promote",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "g-gyousei": {
+   "title": "行政ができること（情報提供と教育）",
+   "gist": "消費者教育や広報で環境に配慮した選択に必要な情報を提供し、エシカル消費を普及する。食品ロス削減推進法に基づき、国・自治体が削減の施策を進める。",
+   "basis": "消費者庁（消費者教育・食品ロス削減）",
+   "sourceUrl": "https://www.caa.go.jp/policies/policy/consumer_policy/information/food_loss/promote",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "g-greenwash": {
+   "title": "根拠のない環境表示は不当表示になり得る",
+   "gist": "実際より著しく環境に良いと誤認させる表示（いわゆるグリーンウォッシュ）は、景品表示法の優良誤認表示に当たり得る。表示の正確さが消費者の選択を支える。",
+   "basis": "景品表示法 第5条第1号",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/337AC0000000134",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [],
+   "checked": "double"
+  },
+  "fl-hou": {
+   "title": "食品ロス削減推進法",
+   "gist": "2019年10月施行。国・地方公共団体・事業者の責務と消費者の役割を定め、政府が基本方針を策定する（2025年3月に新たな基本方針を閣議決定）。10月は食品ロス削減月間。",
+   "basis": "食品ロスの削減の推進に関する法律",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/501AC1000000019",
+   "effective": "2019年10月1日施行",
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [],
+   "checked": "double"
+  },
+  "fl-torikumi": {
+   "title": "食品ロス削減の具体的な取組",
+   "gist": "消費者は買いすぎない・使い切る・てまえどり。事業者は納品期限の緩和や需要予測の精度向上、フードバンクへの寄付。行政は啓発と食品寄附の促進を担う。",
+   "basis": "消費者庁「食品ロス削減」",
+   "sourceUrl": "https://www.caa.go.jp/policies/policy/consumer_policy/information/food_loss/promote",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "sh-shimin": {
+   "title": "消費者市民社会",
+   "gist": "消費者が、互いの特性や消費生活の多様性を尊重しつつ、自らの消費行動が現在と将来の世代にわたって内外の社会経済や地球環境に影響を及ぼし得ることを自覚し、公正かつ持続可能な社会の形成に積極的に参画する社会。消費者教育推進法で定義された。",
+   "basis": "消費者教育の推進に関する法律 第2条第2項",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/424AC0100000061",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [],
+   "checked": "double"
+  },
+  "ai-theme": {
+   "title": "令和8年度消費者月間の統一テーマ",
+   "gist": "「見える情報 見えない仕組み ～AI時代の消費者力を高めるために～」。情報を届ける仕組みの基本を知り、デジタルの利便性を享受しつつ安全・安心で納得感のある選択ができる消費者力を高める。",
+   "basis": "消費者庁「令和8年度消費者月間統一テーマについて」",
+   "sourceUrl": "https://www.caa.go.jp/policies/policy/consumer_education/public_awareness/gekkan/2026/assets/consumer_education_cms201_20260113.pdf",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "ai-haikei": {
+   "title": "AI時代の消費生活の背景",
+   "gist": "AIなどに使われるアルゴリズムが発展し、消費者の好みに合わせて情報が届けられるようになった。情報は手に入れやすくなった一方、表示される理由や仕組み、そのリスクは消費者から見えにくい。",
+   "basis": "消費者庁「令和8年度消費者月間統一テーマについて」",
+   "sourceUrl": "https://www.caa.go.jp/policies/policy/consumer_education/public_awareness/gekkan/2026/assets/consumer_education_cms201_20260113.pdf",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "ai-hakusho": {
+   "title": "消費者白書（令和8年版）の特集",
+   "gist": "特集は「デジタル化とAI技術の進展で変化する、私たちの消費取引」。SNS関連の相談は2025年に約10.1万件となり、初めて10万件を超えた。",
+   "basis": "令和8年版消費者白書（図表I-1-3-21）",
+   "sourceUrl": "https://www.caa.go.jp/policies/policy/consumer_research/white_paper/assets/consumer_research_cms201_260612_34.pdf",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "ai-risk": {
+   "title": "見えない仕組みが生むリスク",
+   "gist": "好みに合わせたおすすめや広告で選択が誘導される、ダークパターンで意図しない契約をする、生成AIで作られた著名人のなりすまし広告に信用させられる、といったリスクがある。",
+   "basis": "消費者庁・警察庁等の公表資料",
+   "sourceUrl": "https://www.caa.go.jp/policies/policy/consumer_research/white_paper/assets/consumer_research_cms201_260612_34.pdf",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "ai-shouhisha": {
+   "title": "消費者ができること（AI時代の消費者力）",
+   "gist": "表示が広告か、根拠は何かを確かめる。おすすめをうのみにせず比較する。個人情報の提供範囲や設定を見直す。迷ったら188に相談する。",
+   "basis": "一般的な対策の整理（統一テーマ趣旨「仕組みやリスクを理解し消費者力を高める」に基づく）",
+   "sourceUrl": "https://www.caa.go.jp/policies/policy/consumer_education/public_awareness/gekkan/2026/assets/consumer_education_cms201_20260113.pdf",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "ai-kigyou": {
+   "title": "事業者ができること（仕組みの透明性）",
+   "gist": "広告であることやAIの利用を分かりやすく示し、ダークパターンを使わない。プラットフォーム事業者は広告主の確認やなりすまし広告の削除に取り組む。苦情を改善に活かす。",
+   "basis": "内閣官房「なりすまし広告詐欺等対策」関係資料",
+   "sourceUrl": "https://www.cas.go.jp/jp/seisaku/narisumashi/dai1/shiryo3-1.pdf",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "ai-gyousei": {
+   "title": "行政ができること（教育と事業者への働きかけ）",
+   "gist": "デジタルの仕組みとリスクに関する消費者教育・啓発を集中的に行う。プラットフォーム事業者に広告主の本人確認などを要請し、相談情報（PIO-NET）の分析を法執行に活かす。",
+   "basis": "消費者庁・内閣官房の公表資料",
+   "sourceUrl": "https://www.cas.go.jp/jp/seisaku/narisumashi/dai1/shiryo3-1.pdf",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "dg-phishing": {
+   "title": "フィッシング・偽の通販サイト",
+   "gist": "実在の企業や公的機関をかたるメールやSMSで偽サイトに誘導し、IDやカード情報を盗む。偽の通販サイトでは代金を払っても商品が届かず、事業者と連絡も取れない。",
+   "basis": "国民生活センター・消費者庁の注意喚起",
+   "sourceUrl": "https://www.kokusen.go.jp/news/data/n-20221221_2.html",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "dg-shouhisha": {
+   "title": "消費者の対応策（デジタル取引）",
+   "gist": "申込み前に最終確認画面と解約条件を確認し画面を保存する。メールのリンクではなく公式アプリやブックマークから利用する。SNSのもうけ話を信じない。困ったら188に相談する。",
+   "basis": "国民生活センター・消費者庁の注意喚起",
+   "sourceUrl": "https://www.kokusen.go.jp/news/data/n-20221221_2.html",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "dg-gyousei": {
+   "title": "行政の対応策（デジタル取引）",
+   "gist": "相談情報を基にした法改正（定期購入規制など）と法執行、手口の注意喚起、消費者教育を進める。プラットフォーム事業者に対し、なりすまし広告対策などの取組を求める。",
+   "basis": "消費者庁・内閣官房の公表資料",
+   "sourceUrl": "https://www.caa.go.jp/",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "dg-kigyou": {
+   "title": "企業の対応策（デジタル取引）",
+   "gist": "分かりやすい表示と簡単な解約手続を整え、ダークパターンを使わない。プラットフォーム事業者は不正な出品や広告を監視・削除する。苦情を分析して改善につなげる。",
+   "basis": "消費者庁・内閣官房の公表資料",
+   "sourceUrl": "https://www.caa.go.jp/",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "sns-teguchi": {
+   "title": "SNS型投資詐欺・ロマンス詐欺の手口",
+   "gist": "著名人になりすました広告やダイレクトメッセージをきっかけに、LINE等の非公開のグループへ誘導し、偽の投資サイトやアプリで送金させる。ロマンス詐欺はマッチングアプリ経由が多く、暗号資産での送金も多い。",
+   "basis": "警察庁・金融庁の公表資料",
+   "sourceUrl": "https://www.npa.go.jp/bureau/safetylife/sos47/new-topics/251225/01.html",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "sns-tokucho": {
+   "title": "SNS型投資詐欺の特徴と問題点",
+   "gist": "被害が高額化しており、暗号資産による送金も多い（ロマンス詐欺では件数の約4割）。被害者が自ら送金するため、だまされたと気付いた時には回復が難しい。",
+   "basis": "警察庁「SNS型投資・ロマンス詐欺の認知・検挙状況」（2025年暫定値）",
+   "sourceUrl": "https://www.npa.go.jp/bureau/safetylife/sos47/new-topics/260213/03.html",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "sns-fsa": {
+   "title": "金融庁の対応（投資詐欺広告の情報受付）",
+   "gist": "金融庁は2024年10月、SNS上の投資詐欺が疑われる広告の情報受付窓口を開設し、SNS事業者と連携して削除につなげている。こうした広告は金融商品取引法違反のおそれがある。",
+   "basis": "金融庁「SNS上の投資詐欺が疑われる広告等に関する情報受付窓口」",
+   "sourceUrl": "https://www.fsa.go.jp/receipt/toushisagi_koukoku.html",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "sns-pf": {
+   "title": "プラットフォーム事業者への要請（なりすまし広告対策）",
+   "gist": "政府（関係7府省庁）は2026年8月、詐欺の入口となっているSNS等のプラットフォーム事業者に、広告主の本人確認、広告主情報や生成AIで作成した旨の表示、削除要請への迅速な対応を要請した。",
+   "basis": "内閣官房「なりすまし広告詐欺等対策関係府省庁会議」（2026年8月）",
+   "sourceUrl": "https://www.cas.go.jp/jp/seisaku/narisumashi/dai1/shiryo3-1.pdf",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "sns-shouhisha": {
+   "title": "消費者の対策（投資の勧誘）",
+   "gist": "「必ずもうかる」「著名人が勧める」投資話は疑い、金融庁の登録業者かを確認する。送金を求められたら、その前に家族、188、警察相談専用電話（#9110）に相談する。",
+   "basis": "金融庁・警察庁・消費者庁の注意喚起",
+   "sourceUrl": "https://www.fsa.go.jp/receipt/toushisagi_koukoku.html",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "sns-kyouiku": {
+   "title": "金融経済教育の推進",
+   "gist": "2024年に金融経済教育推進機構（J-FLEC）が設立され、学校・職域での金融経済教育や中立的な相談を行う。投資を始める人が増える中、詐欺を見抜く力を育てることが重要。",
+   "basis": "金融経済教育推進機構（J-FLEC）",
+   "sourceUrl": "https://lfb.mof.go.jp/tohoku/rizai/j-flec.html",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "kp-tokucho": {
+   "title": "クレジット取引に関する被害の特徴",
+   "gist": "後払いのため支払いの実感が薄く、高額・過剰な契約になりやすい。訪問販売等と結び付いた個別クレジットでは、悪質な販売業者の勧誘による被害が大きくなる。",
+   "basis": "経済産業省（割賦販売法の概要）",
+   "sourceUrl": "https://www.meti.go.jp/policy/economy/consumer/credit/",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "kp-kouben": {
+   "title": "抗弁の接続（割賦販売法30条の4・35条の3の19）",
+   "gist": "販売業者に対して主張できる事由（商品が届かない、契約の取消し等）を、クレジット会社への支払請求に対しても主張して支払いを拒める。",
+   "basis": "割賦販売法 第30条の4・第35条の3の19",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/336AC0000000159",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [],
+   "checked": "double"
+  },
+  "kp-cooling": {
+   "title": "個別クレジット契約のクーリング・オフ（35条の3の10）",
+   "gist": "訪問販売等で個別クレジットを利用した場合、書面受領から8日以内ならクレジット契約を撤回・解除でき、販売契約も原則として解除されたものとみなされる。既払金は返還される。",
+   "basis": "割賦販売法 第35条の3の10",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/336AC0000000159",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [],
+   "checked": "double"
+  },
+  "kp-torikeshi": {
+   "title": "不実告知等による個別クレジット契約の取消し（35条の3の13）",
+   "gist": "訪問販売等で、販売業者が支払総額などのクレジットの条件や、商品の内容・引渡時期・解除に関する事項などの重要事項について不実を告げ、または故意に告げずに誤認させた場合、クレジット契約を取り消せる。クレジット会社に支払った金銭の返還も請求できる。",
+   "basis": "割賦販売法 第35条の3の13",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/336AC0000000159",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [],
+   "checked": "double"
+  },
+  "kp-kajou": {
+   "title": "過量販売に係る個別クレジット契約の解除（35条の3の12）",
+   "gist": "通常必要な分量を著しく超える訪問販売等の契約について、クレジット契約も締結から1年以内に解除でき、既払金の返還を受けられる。",
+   "basis": "割賦販売法 第35条の3の12",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/336AC0000000159",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [],
+   "checked": "double"
+  },
+  "kp-kameiten": {
+   "title": "加盟店調査義務（35条の3の5）",
+   "gist": "個別クレジット会社は、訪問販売等の契約について、販売業者が不実告知などの禁止行為をしていないかを契約前に調査し、記録を保存しなければならない。",
+   "basis": "割賦販売法 第35条の3の5",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/336AC0000000159",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [],
+   "checked": "double"
+  },
+  "kp-kanou": {
+   "title": "支払可能見込額の調査と過剰与信の禁止",
+   "gist": "クレジットカードの交付や極度額の増額の前に、年収・預貯金・他の債務などから支払可能見込額を調査する義務がある。指定信用情報機関の情報を使う。",
+   "basis": "割賦販売法 第30条の2・第30条の2の2",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/336AC0000000159",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [],
+   "checked": "double"
+  },
+  "kp-2020": {
+   "title": "2020年改正割賦販売法（2021年4月施行）",
+   "gist": "AI等を用いた与信審査を認める認定包括信用購入あっせん業者や、極度額10万円以下の登録少額包括信用購入あっせん業者の制度を新設し、書面の電子化なども認めた。",
+   "basis": "割賦販売法（令和2年改正）",
+   "sourceUrl": "https://www.meti.go.jp/policy/economy/consumer/credit/R2kaiseinogaiyou.pdf",
+   "effective": "2021年4月1日施行",
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [],
+   "checked": "double"
+  },
+  "kp-kadai": {
+   "title": "課題：多様化する後払い決済への対応",
+   "gist": "後払い決済サービスなど新しい決済手段の広がり、AI等による審査手法の多様化に伴う過剰与信の防止、加盟店管理の実効性、カード番号の不正利用への対応が課題となる。",
+   "basis": "経済産業省（割賦販売法の概要）",
+   "sourceUrl": "https://www.meti.go.jp/policy/economy/consumer/credit/R2kaiseinogaiyou.pdf",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "dt-igi": {
+   "title": "消費者団体訴訟制度の意義",
+   "gist": "少額で多数の被害は、費用・労力・情報の格差から個々の消費者が訴訟を起こしにくい。内閣総理大臣が認定した消費者団体が、消費者に代わって差止めや被害回復を求める。",
+   "basis": "消費者庁「消費者団体訴訟制度」",
+   "sourceUrl": "https://www.caa.go.jp/policies/policy/consumer_system/collective_litigation_system/about_system",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
+  },
+  "dt-sashidome": {
+   "title": "差止請求（適格消費者団体）",
+   "gist": "適格消費者団体は、事業者の不当な勧誘、不当な契約条項、不当な表示などについて、行為の差止めを請求できる。根拠は消費者契約法・景品表示法・特定商取引法・食品表示法。",
+   "basis": "消費者契約法 第12条 ほか",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/412AC0000000061",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [],
+   "checked": "double"
+  },
+  "dt-kaifuku": {
+   "title": "被害回復（特定適格消費者団体）",
+   "gist": "2016年10月施行の消費者裁判手続特例法による二段階の手続。まず団体が事業者の金銭支払義務の確認を求め（共通義務確認訴訟）、勝訴後に個々の消費者が加わって金額を確定する。",
+   "basis": "消費者裁判手続特例法",
+   "sourceUrl": "https://laws.e-gov.go.jp/law/425AC0000000096",
+   "effective": "2016年10月1日施行",
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [],
+   "checked": "double"
+  },
+  "dt-2022": {
+   "title": "2022年改正（2023年10月施行）",
+   "gist": "被害回復の対象に一定の慰謝料を加え、事業者とともに故意・重過失のある事業監督者や被用者も被告にできるようにした。和解の早期・柔軟化、消費者への情報提供の充実、団体を支援する法人の認定制度も設けた。",
+   "basis": "消費者裁判手続特例法（令和4年改正）",
+   "sourceUrl": "https://www.caa.go.jp/policies/policy/consumer_system/consumer_court_proceedings/amendment_2022/",
+   "effective": "2023年10月1日施行",
+   "dummy": false,
+   "dummyReason": null,
+   "legal": true,
+   "related1st": [],
+   "checked": "double"
+  },
+  "dt-kadai": {
+   "title": "課題：団体の基盤と制度の活用",
+   "gist": "制度の担い手である団体の財政・人材基盤の強化、消費者への制度の周知、団体への支援の拡大、行政との情報連携が課題とされる。",
+   "basis": "消費者庁「消費者団体訴訟制度」",
+   "sourceUrl": "https://www.caa.go.jp/policies/policy/consumer_system/collective_litigation_system/",
+   "effective": null,
+   "dummy": false,
+   "dummyReason": null,
+   "legal": false,
+   "related1st": [],
+   "checked": "single"
   }
  },
  "topics": [
@@ -1581,6 +2433,1536 @@
      "slot": "concl",
      "chars": 150,
      "gist": "相談員は取消しのあっせんを行い、学校・保護者向けの啓発で未然防止を図る。"
+    }
+   ]
+  },
+  {
+   "topicId": "nsk-2023-cons",
+   "org": "nissankyo",
+   "year": 2023,
+   "label": "日産協 2023年度 消費者問題",
+   "tier": "core",
+   "field": "consumer",
+   "summary": "PIO-NETの18・19歳の相談件数の推移と、2022年度の年齢階級別・販売購入形態別の相談割合の図表を参考に、(1)18・19歳の相談件数の動向とその理由、(2)年齢階級別の相談の特徴とその理由、(3)年齢階級ごとの具体的な被害防止方法を論じる。",
+   "keywords": [],
+   "asks": [
+    "18・19歳の相談件数の動向と理由",
+    "年齢階級別の特徴と理由",
+    "年齢階級ごとの被害防止方法"
+   ],
+   "cards": [
+    {
+     "id": "st-1819",
+     "slots": [
+      "intro",
+      "body1"
+     ]
+    },
+    {
+     "id": "y-1819-risk",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "st-nenrei-keitai",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "st-koureisha",
+     "slots": [
+      "body1",
+      "optional"
+     ]
+    },
+    {
+     "id": "y-kyouiku",
+     "slots": [
+      "body2"
+     ]
+    },
+    {
+     "id": "c-mimamori",
+     "slots": [
+      "body2"
+     ]
+    },
+    {
+     "id": "c-188",
+     "slots": [
+      "body2",
+      "concl"
+     ]
+    },
+    {
+     "id": "c-keihatsu",
+     "slots": [
+      "concl"
+     ]
+    },
+    {
+     "id": "y-sns",
+     "slots": [
+      "body1",
+      "optional"
+     ]
+    },
+    {
+     "id": "h-2023kaisei",
+     "slots": []
+    },
+    {
+     "id": "s-ad-kadai",
+     "slots": []
+    },
+    {
+     "id": "d-pl",
+     "slots": []
+    }
+   ],
+   "model": [
+    {
+     "slot": "intro",
+     "chars": 80,
+     "gist": "図表から読み取れる全体像（18・19歳の相談増加、年齢で販売形態が異なること）を示す。"
+    },
+    {
+     "slot": "body1",
+     "chars": 330,
+     "gist": "18・19歳は成年年齢引下げで未成年者取消権を失い相談が増加。若年層はネット通販、高齢層は訪問販売・電話勧誘の割合が高い理由を説明する。"
+    },
+    {
+     "slot": "body2",
+     "chars": 270,
+     "gist": "若年層には学校での消費者教育とSNS勧誘への注意、高齢層には見守りと家族の声かけ、全世代に188の周知。"
+    },
+    {
+     "slot": "concl",
+     "chars": 100,
+     "gist": "年齢層ごとの接点に合わせた啓発と、早期相談の徹底を結論とする。"
+    }
+   ]
+  },
+  {
+   "topicId": "nsk-2024-cons",
+   "org": "nissankyo",
+   "year": 2024,
+   "label": "日産協 2024年度 消費者問題",
+   "tier": "core",
+   "field": "consumer",
+   "summary": "デジタル社会の進展によって生じた消費者被害を3つ挙げ、それぞれの概要と問題点を述べる。さらに、それらの被害を解決するために必要な消費者・行政・企業それぞれの対応策を論じる。",
+   "keywords": [],
+   "asks": [
+    "デジタル化で生じた被害3つ（概要・問題点）",
+    "消費者の対応策",
+    "行政の対応策",
+    "企業の対応策"
+   ],
+   "cards": [
+    {
+     "id": "st-soudan",
+     "slots": [
+      "intro",
+      "optional"
+     ]
+    },
+    {
+     "id": "s-teiki-higai",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "st-sns-sagi",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "dg-phishing",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "s-ad-dark",
+     "slots": [
+      "body1",
+      "optional"
+     ]
+    },
+    {
+     "id": "dg-shouhisha",
+     "slots": [
+      "body2"
+     ]
+    },
+    {
+     "id": "dg-gyousei",
+     "slots": [
+      "body2",
+      "concl"
+     ]
+    },
+    {
+     "id": "dg-kigyou",
+     "slots": [
+      "body2",
+      "concl"
+     ]
+    },
+    {
+     "id": "t-kakunin",
+     "slots": [
+      "body2",
+      "optional"
+     ]
+    },
+    {
+     "id": "k-futaikyo",
+     "slots": []
+    },
+    {
+     "id": "t-meiji",
+     "slots": []
+    },
+    {
+     "id": "c-seinen-kouken",
+     "slots": []
+    }
+   ],
+   "model": [
+    {
+     "slot": "intro",
+     "chars": 80,
+     "gist": "通信販売が相談の最多を占めるなど、デジタル化で被害の形が変わったことを示す。"
+    },
+    {
+     "slot": "body1",
+     "chars": 360,
+     "gist": "①詐欺的な定期購入、②SNS型投資詐欺、③フィッシング・偽通販サイトについて、それぞれ概要と問題点を述べる。"
+    },
+    {
+     "slot": "body2",
+     "chars": 260,
+     "gist": "消費者：確認と保存・公式経路の利用・188。行政：法改正と執行・注意喚起。企業：分かりやすい表示と解約・不正広告の削除。"
+    },
+    {
+     "slot": "concl",
+     "chars": 80,
+     "gist": "三者がそれぞれの役割を果たし、変化する手口に継続して対応する必要がある。"
+    }
+   ]
+  },
+  {
+   "topicId": "nsk-2025-cons",
+   "org": "nissankyo",
+   "year": 2025,
+   "label": "日産協 2025年度 消費者問題",
+   "tier": "core",
+   "field": "consumer",
+   "summary": "2025（令和7）年度の消費者月間の統一テーマの内容を示し、なぜこのテーマが取り上げられたのかを、(1)統一テーマの内容、(2)テーマ設定の背景と現状、(3)テーマを実現するために消費者・企業・行政ができること、の視点から論じる。",
+   "keywords": [],
+   "asks": [
+    "統一テーマの内容",
+    "テーマ設定の背景と現状",
+    "消費者・企業・行政ができること"
+   ],
+   "cards": [
+    {
+     "id": "g-2025-theme",
+     "slots": [
+      "intro"
+     ]
+    },
+    {
+     "id": "g-haikei",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "g-ethical",
+     "slots": [
+      "body1",
+      "optional"
+     ]
+    },
+    {
+     "id": "st-foodloss",
+     "slots": [
+      "body1",
+      "optional"
+     ]
+    },
+    {
+     "id": "g-shouhisha",
+     "slots": [
+      "body2"
+     ]
+    },
+    {
+     "id": "g-kigyou",
+     "slots": [
+      "body2"
+     ]
+    },
+    {
+     "id": "g-gyousei",
+     "slots": [
+      "body2",
+      "concl"
+     ]
+    },
+    {
+     "id": "g-greenwash",
+     "slots": [
+      "body2",
+      "optional"
+     ]
+    },
+    {
+     "id": "sh-shimin",
+     "slots": [
+      "concl",
+      "optional"
+     ]
+    },
+    {
+     "id": "ai-theme",
+     "slots": []
+    },
+    {
+     "id": "st-sns-sagi",
+     "slots": []
+    },
+    {
+     "id": "t-cooling",
+     "slots": []
+    }
+   ],
+   "model": [
+    {
+     "slot": "intro",
+     "chars": 100,
+     "gist": "統一テーマ「グリーン志向消費 ～どのグリーンにする？～」の内容と趣旨を示す。"
+    },
+    {
+     "slot": "body1",
+     "chars": 250,
+     "gist": "気候変動の影響が身近になり、消費行動も一因とされる一方、関心が実際の選択に結び付いていない現状。"
+    },
+    {
+     "slot": "body2",
+     "chars": 330,
+     "gist": "消費者：表示を確かめて選ぶ・使い切る・長く使う。企業：環境配慮商品と正確な表示。行政：情報提供と教育。"
+    },
+    {
+     "slot": "concl",
+     "chars": 100,
+     "gist": "一人ひとりの選択が持続可能な社会をつくるという消費者市民社会の考え方で締める。"
+    }
+   ]
+  },
+  {
+   "topicId": "ksn-2021-seihin",
+   "org": "kokusen",
+   "year": 2021,
+   "label": "国セン 2021年度 テーマ1",
+   "tier": "applied",
+   "field": "law",
+   "summary": "「日常生活で使う製品でけがをした」という相談を受けた場合、被害救済と同種事故の発生防止の観点から、消費生活センターとしてどのような対応が必要かを、関連する法律や制度を踏まえて論じる。消費生活センター・相談員の役割を考慮する。",
+   "keywords": [
+    "欠陥",
+    "消費者事故等",
+    "通知",
+    "注意喚起",
+    "リコール"
+   ],
+   "asks": [
+    "被害救済の観点での対応",
+    "同種事故の防止の観点での対応",
+    "関連する法律・制度",
+    "センター・相談員の役割"
+   ],
+   "cards": [
+    {
+     "id": "p-taiou",
+     "slots": [
+      "intro",
+      "body1"
+     ]
+    },
+    {
+     "id": "p-pl",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "c-assen",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "c-jiko-tsuchi",
+     "slots": [
+      "body2"
+     ]
+    },
+    {
+     "id": "c-chuikanki-38",
+     "slots": [
+      "body2"
+     ]
+    },
+    {
+     "id": "p-houkoku",
+     "slots": [
+      "body2",
+      "optional"
+     ]
+    },
+    {
+     "id": "p-recall",
+     "slots": [
+      "body2",
+      "concl"
+     ]
+    },
+    {
+     "id": "c-pionet",
+     "slots": [
+      "concl",
+      "optional"
+     ]
+    },
+    {
+     "id": "k-date",
+     "slots": []
+    },
+    {
+     "id": "t-kakunin",
+     "slots": []
+    },
+    {
+     "id": "m-miseinen",
+     "slots": []
+    }
+   ],
+   "model": [
+    {
+     "slot": "intro",
+     "chars": 110,
+     "gist": "相談を受けたら、けがの状況・製品情報を聴き取り、事故品を保全するよう助言する。"
+    },
+    {
+     "slot": "body1",
+     "chars": 270,
+     "gist": "被害救済：製造物責任法（欠陥があれば過失不要）を踏まえ、事業者との交渉をあっせんする。"
+    },
+    {
+     "slot": "body2",
+     "chars": 270,
+     "gist": "事故防止：消費者安全法による消費者事故等の通知、消費者庁の注意喚起、リコールの周知。"
+    },
+    {
+     "slot": "concl",
+     "chars": 130,
+     "gist": "一件の相談を全国の事故防止につなげることが、センターの重要な役割である。"
+    }
+   ]
+  },
+  {
+   "topicId": "ksn-2021-zeijaku",
+   "org": "kokusen",
+   "year": 2021,
+   "label": "国セン 2021年度 テーマ2",
+   "tier": "applied",
+   "field": "consumer",
+   "summary": "高齢者や障害者の判断力不足につけ込んだ消費者トラブルの特徴を述べ、トラブル・被害の救済や防止のために消費生活センターとして果たすべき役割を論じる。",
+   "keywords": [
+    "ぜい弱な消費者",
+    "つけ込み型勧誘",
+    "見守りネットワーク",
+    "福祉等との連携",
+    "成年後見制度"
+   ],
+   "asks": [
+    "トラブルの特徴",
+    "救済のための役割",
+    "防止のための役割"
+   ],
+   "cards": [
+    {
+     "id": "s-koureisha",
+     "slots": [
+      "intro"
+     ]
+    },
+    {
+     "id": "c-kizukinikui",
+     "slots": [
+      "intro",
+      "body1"
+     ]
+    },
+    {
+     "id": "k-handan",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "k-kajou",
+     "slots": [
+      "body1",
+      "optional"
+     ]
+    },
+    {
+     "id": "c-assen",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "c-mimamori",
+     "slots": [
+      "body2"
+     ]
+    },
+    {
+     "id": "c-fukushi",
+     "slots": [
+      "body2"
+     ]
+    },
+    {
+     "id": "c-seinen-kouken",
+     "slots": [
+      "body2"
+     ]
+    },
+    {
+     "id": "c-mimamori-joho",
+     "slots": [
+      "concl",
+      "optional"
+     ]
+    },
+    {
+     "id": "t-kakunin",
+     "slots": []
+    },
+    {
+     "id": "h-stema",
+     "slots": []
+    },
+    {
+     "id": "d-pl",
+     "slots": []
+    }
+   ],
+   "model": [
+    {
+     "slot": "intro",
+     "chars": 160,
+     "gist": "判断力の低下につけ込む勧誘が多く、本人が被害に気付きにくく相談につながりにくい。"
+    },
+    {
+     "slot": "body1",
+     "chars": 250,
+     "gist": "救済：消費者契約法のつけ込み型の取消しや過量契約の取消しを根拠にあっせんする。"
+    },
+    {
+     "slot": "body2",
+     "chars": 250,
+     "gist": "防止：見守りネットワーク、福祉等との連携、成年後見制度の活用で早期発見と再発防止を図る。"
+    },
+    {
+     "slot": "concl",
+     "chars": 120,
+     "gist": "地域の関係者と一体となった見守りが、ぜい弱な消費者を守る。"
+    }
+   ]
+  },
+  {
+   "topicId": "ksn-2022-jakunen",
+   "org": "kokusen",
+   "year": 2022,
+   "label": "国セン 2022年度 テーマ1",
+   "tier": "applied",
+   "field": "consumer",
+   "summary": "若年者の消費者トラブルの特徴を説明した上で、18歳・19歳の消費者において懸念される点も踏まえ、消費者行政としてとるべき対応策を述べる。消費生活センター・相談員の役割を考慮する。",
+   "keywords": [
+    "SNS",
+    "マルチ取引",
+    "借金",
+    "未成年者取消権",
+    "学校教育"
+   ],
+   "asks": [
+    "若年者のトラブルの特徴",
+    "18・19歳で懸念される点",
+    "消費者行政の対応策"
+   ],
+   "cards": [
+    {
+     "id": "y-sns",
+     "slots": [
+      "intro"
+     ]
+    },
+    {
+     "id": "y-multi",
+     "slots": [
+      "intro",
+      "body1"
+     ]
+    },
+    {
+     "id": "y-shakkin",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "y-1819-risk",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "m-miseinen",
+     "slots": [
+      "body1",
+      "optional"
+     ]
+    },
+    {
+     "id": "st-1819",
+     "slots": [
+      "intro",
+      "optional"
+     ]
+    },
+    {
+     "id": "y-kyouiku",
+     "slots": [
+      "body2"
+     ]
+    },
+    {
+     "id": "c-assen",
+     "slots": [
+      "body2"
+     ]
+    },
+    {
+     "id": "c-188",
+     "slots": [
+      "concl",
+      "optional"
+     ]
+    },
+    {
+     "id": "c-keihatsu",
+     "slots": [
+      "concl"
+     ]
+    },
+    {
+     "id": "c-seinen-kouken",
+     "slots": []
+    },
+    {
+     "id": "p-recall",
+     "slots": []
+    },
+    {
+     "id": "t-kakunin-torikeshi",
+     "slots": []
+    }
+   ],
+   "model": [
+    {
+     "slot": "intro",
+     "chars": 200,
+     "gist": "SNSをきっかけにしたもうけ話・マルチ取引、借金をさせる手口など、若年者に特徴的なトラブル。"
+    },
+    {
+     "slot": "body1",
+     "chars": 230,
+     "gist": "18・19歳は未成年者取消権を失い、知識・経験が乏しいまま契約できるため被害が懸念される。"
+    },
+    {
+     "slot": "body2",
+     "chars": 230,
+     "gist": "学校での実践的な消費者教育、相談員によるあっせんと出前講座、188の周知。"
+    },
+    {
+     "slot": "concl",
+     "chars": 120,
+     "gist": "成年前からの教育と、困ったら相談できる環境づくりが対策の柱である。"
+    }
+   ]
+  },
+  {
+   "topicId": "ksn-2023-gyousei",
+   "org": "kokusen",
+   "year": 2023,
+   "label": "国セン 2023年度 テーマ1",
+   "tier": "applied",
+   "field": "consumer",
+   "summary": "消費生活相談が国や地方公共団体の消費者行政においてどのような役割を果たしているかを論じるとともに、相談情報が有効に活用されるために相談処理においてどのような点に留意すべきかを論じる。",
+   "keywords": [
+    "消費者安全法",
+    "注意喚起",
+    "行政処分",
+    "法改正"
+   ],
+   "asks": [
+    "消費生活相談の役割",
+    "相談情報の活用",
+    "相談処理での留意点"
+   ],
+   "cards": [
+    {
+     "id": "c-assen",
+     "slots": [
+      "intro",
+      "body1"
+     ]
+    },
+    {
+     "id": "c-pionet",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "c-jiko-tsuchi",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "c-chuikanki-38",
+     "slots": [
+      "body1",
+      "body2"
+     ]
+    },
+    {
+     "id": "c-shobun",
+     "slots": [
+      "body2"
+     ]
+    },
+    {
+     "id": "c-houkaisei",
+     "slots": [
+      "body2"
+     ]
+    },
+    {
+     "id": "c-kiroku",
+     "slots": [
+      "concl"
+     ]
+    },
+    {
+     "id": "k-date",
+     "slots": []
+    },
+    {
+     "id": "s-meisai",
+     "slots": []
+    },
+    {
+     "id": "d-pl",
+     "slots": []
+    }
+   ],
+   "model": [
+    {
+     "slot": "intro",
+     "chars": 130,
+     "gist": "消費生活相談は、個々の消費者の被害救済と、行政が被害の実態を把握する入口の両方の役割を持つ。"
+    },
+    {
+     "slot": "body1",
+     "chars": 260,
+     "gist": "相談情報はPIO-NETに集約され、消費者安全法の通知や消費者庁の注意喚起に使われる。"
+    },
+    {
+     "slot": "body2",
+     "chars": 220,
+     "gist": "相談情報は行政処分の端緒となり、定期購入規制のような法改正にもつながる。"
+    },
+    {
+     "slot": "concl",
+     "chars": 170,
+     "gist": "留意点：事実関係の正確な聴取と、迅速・正確なPIO-NETへの登録、個人情報の適切な取扱い。"
+    }
+   ]
+  },
+  {
+   "topicId": "ksn-2024-mimamori",
+   "org": "kokusen",
+   "year": 2024,
+   "label": "国セン 2024年度 テーマ1",
+   "tier": "applied",
+   "field": "consumer",
+   "summary": "高齢者・障害者等の消費者被害を予防・救済するための見守りネットワークの構築の重要性について述べた上で、見守りネットワークにおいて消費生活相談員が果たすべき役割を論じる。",
+   "keywords": [
+    "出前講座",
+    "見守り関係者",
+    "消費者安全法",
+    "消費者トラブル情報"
+   ],
+   "asks": [
+    "見守りネットワークの重要性",
+    "消費生活相談員が果たすべき役割"
+   ],
+   "cards": [
+    {
+     "id": "c-kizukinikui",
+     "slots": [
+      "intro"
+     ]
+    },
+    {
+     "id": "s-koureisha",
+     "slots": [
+      "intro",
+      "optional"
+     ]
+    },
+    {
+     "id": "c-mimamori",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "c-mimamori-joukyou",
+     "slots": [
+      "body1",
+      "optional"
+     ]
+    },
+    {
+     "id": "c-fukushi",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "c-mimamori-joho",
+     "slots": [
+      "body2"
+     ]
+    },
+    {
+     "id": "c-keihatsu",
+     "slots": [
+      "body2"
+     ]
+    },
+    {
+     "id": "c-assen",
+     "slots": [
+      "body2",
+      "concl"
+     ]
+    },
+    {
+     "id": "c-seinen-kouken",
+     "slots": [
+      "body2",
+      "optional"
+     ]
+    },
+    {
+     "id": "m-miseinen",
+     "slots": []
+    },
+    {
+     "id": "t-kakunin",
+     "slots": []
+    },
+    {
+     "id": "h-2023kaisei",
+     "slots": []
+    }
+   ],
+   "model": [
+    {
+     "slot": "intro",
+     "chars": 130,
+     "gist": "高齢者・障害者は被害に気付きにくく、本人からの相談につながりにくい。"
+    },
+    {
+     "slot": "body1",
+     "chars": 260,
+     "gist": "消費者安全法に基づく見守りネットワークで、福祉等の関係者が異変に気付きセンターにつなぐ仕組みが重要。設置の拡大が課題。"
+    },
+    {
+     "slot": "body2",
+     "chars": 260,
+     "gist": "相談員は見守り関係者に消費者トラブル情報を提供し、出前講座で啓発し、つながった相談をあっせんで解決する。"
+    },
+    {
+     "slot": "concl",
+     "chars": 130,
+     "gist": "相談員が地域の見守りの要となることで、被害の予防と救済が実現する。"
+    }
+   ]
+  },
+  {
+   "topicId": "ksn-2025-kyusai",
+   "org": "kokusen",
+   "year": 2025,
+   "label": "国セン 2025年度 テーマ1",
+   "tier": "applied",
+   "field": "consumer",
+   "summary": "消費者の権利の一つとして「救済される権利」がある。行政がこれを実現するためにどのような施策を実施することが求められるかを論じる。消費生活センター・消費生活相談窓口・消費生活相談員等の役割を考慮する。",
+   "keywords": [
+    "交渉力の格差",
+    "消費者安全法",
+    "消費生活相談",
+    "国民生活センターADR"
+   ],
+   "asks": [
+    "救済される権利の意味",
+    "行政に求められる施策",
+    "センター・相談員の役割"
+   ],
+   "cards": [
+    {
+     "id": "c-kenri-kihon",
+     "slots": [
+      "intro"
+     ]
+    },
+    {
+     "id": "c-8kenri",
+     "slots": [
+      "intro",
+      "optional"
+     ]
+    },
+    {
+     "id": "c-kakusa",
+     "slots": [
+      "intro",
+      "body1"
+     ]
+    },
+    {
+     "id": "c-assen",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "c-adr",
+     "slots": [
+      "body2"
+     ]
+    },
+    {
+     "id": "dt-kaifuku",
+     "slots": [
+      "body2",
+      "optional"
+     ]
+    },
+    {
+     "id": "c-pionet",
+     "slots": [
+      "body2",
+      "concl",
+      "optional"
+     ]
+    },
+    {
+     "id": "c-188",
+     "slots": [
+      "concl",
+      "optional"
+     ]
+    },
+    {
+     "id": "c-mimamori",
+     "slots": [
+      "concl",
+      "optional"
+     ]
+    },
+    {
+     "id": "s-ad-dark",
+     "slots": []
+    },
+    {
+     "id": "s-kessai",
+     "slots": []
+    },
+    {
+     "id": "k-hairyo",
+     "slots": []
+    }
+   ],
+   "model": [
+    {
+     "slot": "intro",
+     "chars": 180,
+     "gist": "消費者基本法は被害の適切・迅速な救済を消費者の権利とする。背景に事業者との情報・交渉力の格差がある。"
+    },
+    {
+     "slot": "body1",
+     "chars": 230,
+     "gist": "身近な消費生活相談窓口で、相談員が助言・あっせんを行い、消費者安全法に基づき相談体制を整える。"
+    },
+    {
+     "slot": "body2",
+     "chars": 230,
+     "gist": "解決が困難な重要紛争は国民生活センターADRで解決を図る。団体訴訟による集団的な被害回復も活用する。"
+    },
+    {
+     "slot": "concl",
+     "chars": 140,
+     "gist": "相談窓口の充実と周知、多様な救済手段の連携で救済される権利を実現する。"
+    }
+   ]
+  },
+  {
+   "topicId": "yo-kappu",
+   "org": "yosou",
+   "year": 2026,
+   "label": "予想 法律：割賦販売法",
+   "tier": "predicted",
+   "field": "law",
+   "summary": "クレジット取引（個別クレジット・クレジットカード）に関する消費者被害の特徴を述べ、割賦販売法による消費者保護の仕組みを説明した上で、残された課題を論じる。",
+   "keywords": [],
+   "asks": [
+    "クレジット被害の特徴",
+    "割賦販売法の保護の仕組み",
+    "残された課題"
+   ],
+   "cards": [
+    {
+     "id": "kp-tokucho",
+     "slots": [
+      "intro"
+     ]
+    },
+    {
+     "id": "kp-kouben",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "kp-cooling",
+     "slots": [
+      "body1",
+      "optional"
+     ]
+    },
+    {
+     "id": "kp-torikeshi",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "kp-kajou",
+     "slots": [
+      "body1",
+      "optional"
+     ]
+    },
+    {
+     "id": "kp-kameiten",
+     "slots": [
+      "body2"
+     ]
+    },
+    {
+     "id": "kp-kanou",
+     "slots": [
+      "body2"
+     ]
+    },
+    {
+     "id": "kp-2020",
+     "slots": [
+      "body2",
+      "optional"
+     ]
+    },
+    {
+     "id": "kp-kadai",
+     "slots": [
+      "concl"
+     ]
+    },
+    {
+     "id": "h-stema",
+     "slots": []
+    },
+    {
+     "id": "m-genkai",
+     "slots": []
+    },
+    {
+     "id": "s-mitsumori",
+     "slots": []
+    }
+   ],
+   "model": [
+    {
+     "slot": "intro",
+     "chars": 120,
+     "gist": "後払いで支払いの実感が薄く、訪問販売等と結び付いた個別クレジットで被害が大きくなる。"
+    },
+    {
+     "slot": "body1",
+     "chars": 300,
+     "gist": "事後の救済：抗弁の接続、個別クレジットのクーリング・オフ、不実告知等による取消しと既払金の返還。"
+    },
+    {
+     "slot": "body2",
+     "chars": 230,
+     "gist": "事前の規制：加盟店調査義務、支払可能見込額の調査と過剰与信の禁止。2020年改正の新制度。"
+    },
+    {
+     "slot": "concl",
+     "chars": 150,
+     "gist": "後払い決済など新しい手段への対応と、加盟店管理の実効性確保が課題。"
+    }
+   ]
+  },
+  {
+   "topicId": "yo-dantai",
+   "org": "yosou",
+   "year": 2026,
+   "label": "予想 法律：消費者団体訴訟制度",
+   "tier": "predicted",
+   "field": "law",
+   "summary": "消費者団体訴訟制度（差止請求・被害回復）の仕組みとその意義を説明し、制度の課題と今後の在り方を論じる。",
+   "keywords": [],
+   "asks": [
+    "制度の意義",
+    "差止請求の仕組み",
+    "被害回復の仕組み",
+    "課題"
+   ],
+   "cards": [
+    {
+     "id": "dt-igi",
+     "slots": [
+      "intro"
+     ]
+    },
+    {
+     "id": "c-kakusa",
+     "slots": [
+      "intro",
+      "optional"
+     ]
+    },
+    {
+     "id": "dt-sashidome",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "dt-kaifuku",
+     "slots": [
+      "body2"
+     ]
+    },
+    {
+     "id": "dt-2022",
+     "slots": [
+      "body2"
+     ]
+    },
+    {
+     "id": "c-adr",
+     "slots": [
+      "body2",
+      "optional"
+     ]
+    },
+    {
+     "id": "dt-kadai",
+     "slots": [
+      "concl"
+     ]
+    },
+    {
+     "id": "t-cooling",
+     "slots": []
+    },
+    {
+     "id": "s-kessai",
+     "slots": []
+    },
+    {
+     "id": "h-uchikeshi",
+     "slots": []
+    }
+   ],
+   "model": [
+    {
+     "slot": "intro",
+     "chars": 150,
+     "gist": "少額多数被害は個人では訴訟を起こしにくく、認定された消費者団体が代わって請求する意義がある。"
+    },
+    {
+     "slot": "body1",
+     "chars": 200,
+     "gist": "差止請求：適格消費者団体が不当な勧誘・条項・表示の差止めを求める。"
+    },
+    {
+     "slot": "body2",
+     "chars": 300,
+     "gist": "被害回復：特定適格消費者団体による二段階の手続と、2022年改正による対象拡大・手続の柔軟化。"
+    },
+    {
+     "slot": "concl",
+     "chars": 150,
+     "gist": "団体の財政・人材基盤の強化、制度の周知、行政との連携が課題。"
+    }
+   ]
+  },
+  {
+   "topicId": "yo-sns",
+   "org": "yosou",
+   "year": 2026,
+   "label": "予想 消費者問題：SNS型投資詐欺",
+   "tier": "predicted",
+   "field": "consumer",
+   "summary": "SNSを入口とした投資詐欺・ロマンス詐欺など、デジタル化に伴う金融関連の消費者被害の現状と特徴を述べ、被害防止に向けて消費者・事業者・行政がとるべき対策を論じる。",
+   "keywords": [],
+   "asks": [
+    "被害の現状",
+    "手口と特徴",
+    "消費者・事業者・行政の対策"
+   ],
+   "cards": [
+    {
+     "id": "st-sns-sagi",
+     "slots": [
+      "intro"
+     ]
+    },
+    {
+     "id": "sns-teguchi",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "sns-tokucho",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "sns-shouhisha",
+     "slots": [
+      "body2"
+     ]
+    },
+    {
+     "id": "sns-pf",
+     "slots": [
+      "body2"
+     ]
+    },
+    {
+     "id": "sns-fsa",
+     "slots": [
+      "body2",
+      "optional"
+     ]
+    },
+    {
+     "id": "sns-kyouiku",
+     "slots": [
+      "concl"
+     ]
+    },
+    {
+     "id": "c-188",
+     "slots": [
+      "body2",
+      "concl",
+      "optional"
+     ]
+    },
+    {
+     "id": "k-futaikyo",
+     "slots": []
+    },
+    {
+     "id": "t-meiji",
+     "slots": []
+    },
+    {
+     "id": "d-pl",
+     "slots": []
+    }
+   ],
+   "model": [
+    {
+     "slot": "intro",
+     "chars": 120,
+     "gist": "SNS型投資詐欺・ロマンス詐欺の被害件数・被害額が急増している。"
+    },
+    {
+     "slot": "body1",
+     "chars": 250,
+     "gist": "著名人のなりすまし広告やDMから非公開グループに誘導し送金させる。自ら送金するため気付きにくく、回復が困難。"
+    },
+    {
+     "slot": "body2",
+     "chars": 300,
+     "gist": "消費者：うまい話を疑い登録業者を確認・送金前に相談。事業者：広告主の確認となりすまし広告の削除。行政：情報受付と削除要請。"
+    },
+    {
+     "slot": "concl",
+     "chars": 130,
+     "gist": "金融経済教育で詐欺を見抜く力を育て、社会全体で被害を防ぐ。"
+    }
+   ]
+  },
+  {
+   "topicId": "yo-gekkan2026",
+   "org": "yosou",
+   "year": 2026,
+   "label": "予想 消費者問題：2026年度消費者月間",
+   "tier": "predicted",
+   "field": "consumer",
+   "summary": "2026（令和8）年度の消費者月間の統一テーマの内容を示し、このテーマが取り上げられた背景と現状、テーマを実現するために消費者・企業・行政ができることを論じる。",
+   "keywords": [],
+   "asks": [
+    "統一テーマの内容",
+    "背景と現状",
+    "消費者・企業・行政ができること"
+   ],
+   "cards": [
+    {
+     "id": "ai-theme",
+     "slots": [
+      "intro"
+     ]
+    },
+    {
+     "id": "ai-haikei",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "ai-hakusho",
+     "slots": [
+      "body1",
+      "optional"
+     ]
+    },
+    {
+     "id": "ai-risk",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "s-ad-dark",
+     "slots": [
+      "body1",
+      "optional"
+     ]
+    },
+    {
+     "id": "ai-shouhisha",
+     "slots": [
+      "body2"
+     ]
+    },
+    {
+     "id": "ai-kigyou",
+     "slots": [
+      "body2"
+     ]
+    },
+    {
+     "id": "ai-gyousei",
+     "slots": [
+      "body2",
+      "concl"
+     ]
+    },
+    {
+     "id": "h-stema",
+     "slots": [
+      "body2",
+      "optional"
+     ]
+    },
+    {
+     "id": "g-2025-theme",
+     "slots": []
+    },
+    {
+     "id": "k-futaikyo",
+     "slots": []
+    },
+    {
+     "id": "d-pl",
+     "slots": []
+    }
+   ],
+   "model": [
+    {
+     "slot": "intro",
+     "chars": 100,
+     "gist": "統一テーマ「見える情報 見えない仕組み ～AI時代の消費者力を高めるために～」の内容を示す。"
+    },
+    {
+     "slot": "body1",
+     "chars": 280,
+     "gist": "アルゴリズムの発展で情報が届く仕組みが変わり、仕組みとリスクが見えにくい。SNS関連の相談も過去最多。"
+    },
+    {
+     "slot": "body2",
+     "chars": 320,
+     "gist": "消費者：広告か・根拠は何かを確かめる。企業：仕組みの透明性。行政：リテラシー教育と事業者への働きかけ。"
+    },
+    {
+     "slot": "concl",
+     "chars": 100,
+     "gist": "仕組みを知った上で納得感のある選択ができる消費者力が、AI時代の安全・安心を支える。"
+    }
+   ]
+  },
+  {
+   "topicId": "yo-ethical",
+   "org": "yosou",
+   "year": 2026,
+   "label": "予想 消費者問題：エシカル消費・食品ロス",
+   "tier": "predicted",
+   "field": "consumer",
+   "summary": "エシカル消費の意義を説明し、食品ロスの削減など持続可能な社会の実現に向けて、消費者・事業者・行政に求められる取組を論じる。",
+   "keywords": [],
+   "asks": [
+    "エシカル消費の意義",
+    "食品ロスの現状",
+    "消費者・事業者・行政の取組"
+   ],
+   "cards": [
+    {
+     "id": "g-ethical",
+     "slots": [
+      "intro"
+     ]
+    },
+    {
+     "id": "sh-shimin",
+     "slots": [
+      "intro",
+      "body1"
+     ]
+    },
+    {
+     "id": "st-foodloss",
+     "slots": [
+      "body1"
+     ]
+    },
+    {
+     "id": "fl-hou",
+     "slots": [
+      "body1",
+      "optional"
+     ]
+    },
+    {
+     "id": "fl-torikumi",
+     "slots": [
+      "body2"
+     ]
+    },
+    {
+     "id": "g-kigyou",
+     "slots": [
+      "body2",
+      "optional"
+     ]
+    },
+    {
+     "id": "g-greenwash",
+     "slots": [
+      "body2",
+      "optional"
+     ]
+    },
+    {
+     "id": "g-2025-theme",
+     "slots": [
+      "concl",
+      "optional"
+     ]
+    },
+    {
+     "id": "g-gyousei",
+     "slots": [
+      "concl"
+     ]
+    },
+    {
+     "id": "st-sns-sagi",
+     "slots": []
+    },
+    {
+     "id": "k-kajou",
+     "slots": []
+    },
+    {
+     "id": "m-miseinen",
+     "slots": []
+    }
+   ],
+   "model": [
+    {
+     "slot": "intro",
+     "chars": 150,
+     "gist": "エシカル消費は社会的課題の解決を考慮した消費行動であり、消費者市民社会の実践である。"
+    },
+    {
+     "slot": "body1",
+     "chars": 230,
+     "gist": "食品ロスは2024年度461万トン。2030年度目標に向け、家庭系の削減が残る課題。"
+    },
+    {
+     "slot": "body2",
+     "chars": 300,
+     "gist": "消費者：買いすぎない・使い切る。事業者：商慣習の見直し・フードバンク・正確な環境表示。"
+    },
+    {
+     "slot": "concl",
+     "chars": 120,
+     "gist": "行政は情報提供と教育で後押しし、三者の取組で持続可能な社会を実現する。"
     }
    ]
   }

@@ -40,7 +40,23 @@ const Storage = (() => {
           db.createObjectStore('flags', { keyPath: 'cardId' });
         }
       };
-      req.onsuccess = () => resolve(req.result);
+      // 旧版のアプリ（別タブやホーム画面のアプリ）が開いたままだと、版の更新が待たされる。
+      // そのまま無言で止まらないよう、読み込み中の画面に案内を出す。
+      req.onblocked = () => {
+        const msg = document.querySelector('#screen-loading .loading-text');
+        if (msg) {
+          msg.textContent = 'アプリの更新中です。開いている他のタブや、ホーム画面から開いたこのアプリを閉じてから、もう一度開き直してください。';
+        }
+      };
+      req.onsuccess = () => {
+        const db = req.result;
+        // 次に新しい版が開かれたとき、こちらが接続を手放して更新を妨げないようにする。
+        db.onversionchange = () => {
+          db.close();
+          dbPromise = null;
+        };
+        resolve(db);
+      };
       req.onerror = () => reject(req.error);
     });
     return dbPromise;
@@ -261,6 +277,20 @@ const Storage = (() => {
     return true;
   }
 
+  // 要確認を付ける（すでに付いていてもそのまま。表示と保存内容がずれても逆の操作にならないよう、
+  // 画面からは toggle ではなく setFlag / removeFlag を明示的に使う）
+  async function setFlag(cardId, title) {
+    const store = await tx('flags', 'readwrite');
+    const existing = await promisify(store.get(cardId));
+    if (existing) return;
+    await promisify(store.put({ cardId, title, flaggedAt: new Date().toISOString() }));
+  }
+
+  async function removeFlag(cardId) {
+    const store = await tx('flags', 'readwrite');
+    await promisify(store.delete(cardId));
+  }
+
   async function getFlags() {
     const store = await tx('flags', 'readonly');
     return promisify(store.getAll());
@@ -275,6 +305,8 @@ const Storage = (() => {
     saveInterviewAnswer,
     getInterviewAnswers,
     toggleFlag,
+    setFlag,
+    removeFlag,
     getFlags,
     recordAnswer,
     getAllResults,

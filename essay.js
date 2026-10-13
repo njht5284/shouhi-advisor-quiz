@@ -17,7 +17,6 @@ const Essay = (() => {
   // 想起カード・面接カードの状態
   let recall = null;       // { kind: 'card'|'iv', items: [id], idx, revealed, requeued: Set, tally }
   let refBackScreen = 'home';
-  let listRenderer = null; // 一覧画面を描き直す関数（関連問題から戻ったとき用）
 
   const esc = (s) => ctx.escapeHtml(s);
 
@@ -32,7 +31,33 @@ const Essay = (() => {
       loadError = true;
     }
     wire();
-    await refreshHome();
+    try {
+      await refreshHome();
+    } catch (e) {
+      // 端末内の保存領域（IndexedDB）が使えない等。第2次を利用不能として案内する。
+      loadError = true;
+      await refreshHome();
+    }
+  }
+
+  // 要確認の一覧を読む。読めなくても画面の描画は続ける（空として扱う）
+  async function loadFlagSet() {
+    try {
+      return new Set((await Storage.getFlags()).map((f) => f.cardId));
+    } catch (e) {
+      return new Set();
+    }
+  }
+
+  // 構成練習の画面にまだいるか（採点中に別の画面へ移ったかどうかの判定に使う）
+  function stillOnBuild(token) {
+    const el = document.getElementById('screen-essay-build');
+    return token === buildToken && el && !el.hidden;
+  }
+
+  // 保存処理などの失敗を利用者に知らせる（無言で止まらないようにする）
+  function notifyError(message) {
+    window.alert(message);
   }
 
   function wire() {
@@ -44,12 +69,13 @@ const Essay = (() => {
     document.getElementById('essay-copy-btn').addEventListener('click', (ev) => copyText(buildCopyText(), ev.currentTarget));
     document.getElementById('essay-retry-btn').addEventListener('click', () => startBuild(lastResult.topic.topicId));
     document.getElementById('essay-list-btn').addEventListener('click', showTopicList);
-    document.getElementById('recall-quit').addEventListener('click', finishRecall);
-    document.getElementById('interview-edit-back').addEventListener('click', showInterviewList);
-    document.getElementById('essay-ref-back').addEventListener('click', () => {
-      if (refBackScreen === 'essay-list' && listRenderer) listRenderer();
-      ctx.showScreen(refBackScreen);
+    document.getElementById('recall-quit').addEventListener('click', () => {
+      if (!recall || recall.busy) return;
+      if (recall.idx > 0 && !window.confirm('ここで終了しますか？（評価済みのカードは記録されています）')) return;
+      finishRecall(recall);
     });
+    document.getElementById('interview-edit-back').addEventListener('click', showInterviewList);
+    document.getElementById('essay-ref-back').addEventListener('click', () => ctx.showScreen(refBackScreen));
   }
 
   function onHomeCard(kind) {
@@ -100,35 +126,54 @@ const Essay = (() => {
   }
 
   // ---------- ホーム（第2次タブ） ----------
+  let homeGen = 0; // refreshHome の呼出し世代。並行して呼ばれたとき、古い呼出しの描画を捨てる
   async function refreshHome() {
+    const gen = ++homeGen;
     const block = document.getElementById('essay-priority');
     const list = document.getElementById('essay-priority-list');
     if (!block) return;
-    list.innerHTML = '';
     if (loadError || !data) {
       block.hidden = false;
       list.innerHTML = '<p class="config-note">第2次試験のデータを読み込めませんでした。通信できる状態で一度開き直してください。</p>';
       return;
     }
 
-    const states = await Storage.getRecallStates();
+    let states; let flags; let best;
+    try {
+      states = await Storage.getRecallStates();
+      flags = await Storage.getFlags();
+      best = bestByTopic(await Storage.getEssayResults());
+    } catch (e) {
+      if (gen !== homeGen) return;
+      block.hidden = false;
+      list.innerHTML = '<p class="config-note">学習記録を読み込めませんでした。アプリを完全に終了してから開き直してください。</p>';
+      return;
+    }
+    if (gen !== homeGen) return; // より新しい呼出しがあるので描画しない
+
     const ids = recallCardIds();
     const due = ids.filter((id) => Storage.isRecallDue(states.get(id))).length;
-    document.getElementById('recall-count-desc').textContent = due > 0
-      ? `復習時期 ${due}枚 / 全${ids.length}枚`
+    const unseen = ids.filter((id) => !states.has(id)).length;
+    const dueSeen = due - unseen;
+    // 未学習と期限到来を分けて表示する（未学習を全部「復習時期」に数えると、見終えるまで大きな数が出続けるため）
+    const parts = [];
+    if (dueSeen > 0) parts.push(`復習時期 ${dueSeen}枚`);
+    if (unseen > 0) parts.push(`未学習 ${unseen}枚`);
+    document.getElementById('recall-count-desc').textContent = parts.length > 0
+      ? `${parts.join('・')} / 全${ids.length}枚`
       : `全${ids.length}枚・今日の復習は完了`;
 
-    const flags = await Storage.getFlags();
     document.getElementById('flag-count-desc').textContent = flags.length > 0
       ? `要確認 ${flags.length}件`
       : '気になったカードを書き出す';
 
     // 今日の優先：①復習時期の想起カード ②まだ解いていない中核論題、または最高点が最も低い論題
     const items = [];
-    if (due > 0) {
-      items.push({ label: `想起カード：復習時期 ${due}枚`, sub: '開始', action: () => startRecallDeck('due') });
+    if (dueSeen > 0) {
+      items.push({ label: `想起カード：復習時期 ${dueSeen}枚`, sub: '開始', action: () => startRecallDeck('due') });
+    } else if (unseen > 0) {
+      items.push({ label: `想起カード：未学習 ${unseen}枚`, sub: '開始', action: () => startRecallDeck('due') });
     }
-    const best = bestByTopic(await Storage.getEssayResults());
     const untouched = data.topics.find((t) => t.tier === 'core' && !best.has(t.topicId));
     if (untouched) {
       items.push({ label: `構成練習：${untouched.label}`, sub: '未着手', action: () => startBuild(untouched.topicId) });
@@ -140,6 +185,7 @@ const Essay = (() => {
         items.push({ label: `構成練習：${weakest.label}`, sub: `最高 ${best.get(weakest.topicId).best}点`, action: () => startBuild(weakest.topicId) });
       }
     }
+    list.innerHTML = '';
     for (const it of items) {
       const btn = document.createElement('button');
       btn.className = 'priority-item is-essay';
@@ -151,12 +197,11 @@ const Essay = (() => {
   }
 
   // 一覧画面（タイトル＋任意の中身）を表示する共通処理
-  function showList(title, bodyEl, renderer) {
+  function showList(title, bodyEl) {
     document.getElementById('essay-list-title').textContent = title;
     const body = document.getElementById('essay-list-body');
     body.innerHTML = '';
     body.appendChild(bodyEl);
-    listRenderer = renderer || null;
     ctx.showScreen('essay-list');
   }
 
@@ -169,11 +214,13 @@ const Essay = (() => {
 
   // ---------- 構成練習：論題一覧 ----------
   async function showTopicList() {
+    buildToken += 1;
     const best = bestByTopic(await Storage.getEssayResults());
     const wrap = el('div', 'config-list');
     const groups = [
       { tier: 'core', title: '中核：日本産業協会の過去問（本番と同じ形式）' },
       { tier: 'applied', title: '応用：国民生活センターの過去問（指定語句つき）' },
+      { tier: 'predicted', title: '予想論題（過去に出題されていない主要テーマ・最新の時事）' },
     ];
     for (const g of groups) {
       wrap.appendChild(el('div', 'essay-group-title', esc(g.title)));
@@ -195,7 +242,10 @@ const Essay = (() => {
   }
 
   // ---------- 構成練習：振り分け ----------
+  let buildToken = 0; // 構成練習の画面を開き直すたびに増やす（古い採点処理の描画を捨てるため）
+
   function startBuild(topicId) {
+    buildToken += 1;
     const topic = topicById(topicId);
     build = { topic, order: shuffle(topic.cards.map((c) => c.id)), assign: new Map() };
     renderBuild();
@@ -227,6 +277,7 @@ const Essay = (() => {
       for (const s of data.slots) {
         const b = el('button', 'slot-btn', esc(SLOT_SHORT[s.id]));
         b.dataset.slot = s.id;
+        b.setAttribute('aria-label', `${c.title}：${SLOT_SHORT[s.id]}に置く`);
         b.addEventListener('click', () => toggleAssign(id, s.id));
         slots.appendChild(b);
       }
@@ -262,7 +313,23 @@ const Essay = (() => {
   // 任意カード：置かなくても減点なし。置いた場合は段落だけを確認する。
   // ダミー（この論題では書くべきでない論点）：置くと「不要な論点」として1枚につき1点減点。
   // 点数 = (正しく置けた必須カード − 不要な論点) ÷ 必須カード数 × 100（0〜100）。
+  let grading = false;
   async function grade() {
+    if (grading || !build) return;
+    grading = true;
+    document.getElementById('essay-grade-btn').disabled = true;
+    const token = buildToken;
+    try {
+      await gradeInner(token);
+    } catch (e) {
+      notifyError('採点結果を保存できませんでした。もう一度「採点する」を押してください。');
+    } finally {
+      grading = false;
+      if (build && token === buildToken) syncBuildUi(); // ボタンの状態を元に戻す
+    }
+  }
+
+  async function gradeInner(token) {
     const t = build.topic;
     const missed = []; const dummies = []; const wrongSlot = []; const ok = [];
     let required = 0; let requiredOk = 0;
@@ -286,7 +353,10 @@ const Essay = (() => {
         wrongSlot.push({ entry, chosen });
       }
     }
-    const score = Math.max(0, Math.round(((requiredOk - dummies.length) / required) * 100));
+    // 必須カードが0枚の論題（データ上は存在しない想定）は、不要な論点を選ばなければ満点とする
+    const score = required === 0
+      ? (dummies.length === 0 ? 100 : 0)
+      : Math.max(0, Math.round(((requiredOk - dummies.length) / required) * 100));
     lastResult = { topic: t, score, missed, dummies, wrongSlot, ok, required, requiredOk };
     await Storage.saveEssayResult({
       topicId: t.topicId,
@@ -296,7 +366,15 @@ const Essay = (() => {
       dummies: dummies.map((x) => x.entry.id),
       wrongSlot: wrongSlot.map((x) => x.entry.id),
     });
-    await renderResult();
+    // ここから先は保存済み。描画で失敗しても再採点（＝二重保存）を促さない。
+    if (!stillOnBuild(token)) return; // 採点中に別の画面へ移った場合は結果画面へ引き戻さない
+    try {
+      await renderResult();
+    } catch (e) {
+      notifyError('採点結果は保存しましたが、表示に失敗しました。統計画面から結果を確認できます。');
+      return;
+    }
+    if (!stillOnBuild(token)) return;
     ctx.showScreen('essay-result');
   }
 
@@ -305,7 +383,7 @@ const Essay = (() => {
   async function renderResult() {
     const r = lastResult;
     const body = document.getElementById('essay-result-body');
-    const flags = new Set((await Storage.getFlags()).map((f) => f.cardId));
+    const flags = await loadFlagSet();
     body.innerHTML = '';
 
     const scoreEl = el('div', 'essay-score',
@@ -344,7 +422,7 @@ const Essay = (() => {
     for (const m of r.topic.model) {
       total += m.chars;
       model.appendChild(el('div', 'essay-model-row',
-        `<div class="essay-model-head"><span>${esc(SLOT_SHORT[m.slot])}</span><span>${m.chars}字</span></div>`
+        `<div class="essay-model-head"><span>${esc(SLOT_SHORT[m.slot])}</span><span>${Number(m.chars)}字</span></div>`
         + `<div class="essay-model-gist">${esc(m.gist)}</div>`));
     }
     model.appendChild(el('div', 'config-note', `合計 約${total}字。手書きの演習では、この配分で序論から順に書き出してください。`));
@@ -366,10 +444,13 @@ const Essay = (() => {
     const c = card(cardId);
     const foot = el('div', 'essay-card-foot');
     const basis = c.effective ? `${c.basis}（${c.effective}）` : c.basis;
-    const src = el('a', 'essay-card-basis', esc(basis));
-    src.href = c.sourceUrl;
-    src.target = '_blank';
-    src.rel = 'noopener';
+    const safeUrl = typeof c.sourceUrl === 'string' && /^https:\/\//.test(c.sourceUrl);
+    const src = el(safeUrl ? 'a' : 'span', 'essay-card-basis', esc(basis));
+    if (safeUrl) {
+      src.href = c.sourceUrl;
+      src.target = '_blank';
+      src.rel = 'noopener';
+    }
     foot.appendChild(src);
     const actions = el('div', 'essay-card-actions');
     (c.related1st || []).forEach((uid, i) => {
@@ -381,10 +462,20 @@ const Essay = (() => {
     const flagBtn = el('button', 'chip-btn flag-btn', flags.has(cardId) ? '要確認 ✓' : '要確認');
     flagBtn.classList.toggle('is-on', flags.has(cardId));
     flagBtn.addEventListener('click', async () => {
-      const on = await Storage.toggleFlag(cardId, c.title);
-      if (on) flags.add(cardId); else flags.delete(cardId);
-      flagBtn.textContent = on ? '要確認 ✓' : '要確認';
-      flagBtn.classList.toggle('is-on', on);
+      if (flagBtn.disabled) return;
+      flagBtn.disabled = true;
+      try {
+        // 画面に表示している状態の逆を明示的に保存する（読み込み失敗で表示がずれていても、記録を誤って消さない）
+        const on = !flags.has(cardId);
+        if (on) await Storage.setFlag(cardId, c.title); else await Storage.removeFlag(cardId);
+        if (on) flags.add(cardId); else flags.delete(cardId);
+        flagBtn.textContent = on ? '要確認 ✓' : '要確認';
+        flagBtn.classList.toggle('is-on', on);
+      } catch (e) {
+        notifyError('要確認の記録を保存できませんでした。もう一度押してください。');
+      } finally {
+        flagBtn.disabled = false;
+      }
     });
     actions.appendChild(flagBtn);
     foot.appendChild(actions);
@@ -509,7 +600,7 @@ const Essay = (() => {
       cardEl.appendChild(el('div', 'recall-front', esc(c.title)));
       if (r.revealed) {
         cardEl.appendChild(el('div', 'recall-back', esc(c.gist)));
-        const flags = new Set((await Storage.getFlags()).map((f) => f.cardId));
+        const flags = await loadFlagSet();
         cardEl.appendChild(cardFooter(id, flags, 'recall'));
       }
     } else {
@@ -549,8 +640,18 @@ const Essay = (() => {
 
   async function rateCurrent(rating) {
     const r = recall;
+    if (!r || r.busy) return; // 連打で同じカードを2回評価しないようにする
+    r.busy = true;
+    document.querySelectorAll('#recall-actions .rate-btn').forEach((b) => { b.disabled = true; });
     const id = r.items[r.idx];
-    await Storage.rateRecall(r.kind === 'iv' ? IV_PREFIX + id : id, rating);
+    try {
+      await Storage.rateRecall(r.kind === 'iv' ? IV_PREFIX + id : id, rating);
+    } catch (e) {
+      r.busy = false;
+      document.querySelectorAll('#recall-actions .rate-btn').forEach((b) => { b.disabled = false; });
+      notifyError('評価を保存できませんでした。もう一度押すか、「終了」で中断してください。');
+      return;
+    }
     r.tally[rating] += 1;
     // 言えなかったカードは、このセッションの最後にもう一度だけ出す
     if (rating === 'bad' && !r.requeued.has(id)) {
@@ -558,25 +659,29 @@ const Essay = (() => {
       r.items.push(id);
     }
     if (r.idx + 1 >= r.items.length) {
-      finishRecall();
+      finishRecall(r);
       return;
     }
     r.idx += 1;
     r.revealed = false;
+    r.busy = false;
     renderRecall();
   }
 
-  async function finishRecall() {
-    const r = recall;
-    const t = r ? r.tally : { good: 0, vague: 0, bad: 0 };
+  async function finishRecall(r) {
+    if (!r || r.finished) return;
+    r.finished = true;
+    const t = r.tally;
     const wrap = el('div', 'config-list');
     wrap.appendChild(el('div', 'stats-summary',
       `<div class="stat-tile"><div class="stat-value">${t.good}</div><div class="stat-label">言えた</div></div>`
       + `<div class="stat-tile"><div class="stat-value">${t.vague}</div><div class="stat-label">あやふや</div></div>`
       + `<div class="stat-tile"><div class="stat-value">${t.bad}</div><div class="stat-label">言えなかった</div></div>`));
-    wrap.appendChild(el('p', 'config-note', '「言えた」カードは次に出るまでの間隔が延び、「言えなかった」カードは翌日にもう一度出ます。'));
-    const back = el('button', 'secondary-btn', r && r.kind === 'iv' ? '質問一覧へ' : '想起カードの範囲選択へ');
-    back.addEventListener('click', () => (r && r.kind === 'iv' ? showInterviewList() : showRecallDecks()));
+    wrap.appendChild(el('p', 'config-note', r.kind === 'iv'
+      ? '「言えなかった」質問は、回答の要点を見直してからもう一度練習してください。'
+      : '「言えた」カードは次に出るまでの間隔が延び、「言えなかった」カードは翌日にもう一度出ます。'));
+    const back = el('button', 'secondary-btn', r.kind === 'iv' ? '質問一覧へ' : '想起カードの範囲選択へ');
+    back.addEventListener('click', () => (r.kind === 'iv' ? showInterviewList() : showRecallDecks()));
     wrap.appendChild(back);
     recall = null;
     await refreshHome();
@@ -590,7 +695,7 @@ const Essay = (() => {
     const filled = qs.filter((q) => answers.get(q.id)?.lines?.some((x) => x && x.trim())).length;
     const wrap = el('div', 'config-list');
     wrap.appendChild(el('p', 'config-note',
-      `回答の要点は「${data.interview.frame.join(' → ')}」の3行で入力します。長い文章を覚えると本番で棒読みになるため、要点だけにとどめてください。入力済み ${filled} / ${qs.length}問。入力内容はこの端末の中にだけ保存されます。`));
+      `回答の要点は「${esc(data.interview.frame.join(' → '))}」の3行で入力します。長い文章を覚えると本番で棒読みになるため、要点だけにとどめてください。入力済み ${filled} / ${qs.length}問。入力内容はこの端末の中にだけ保存されます。`));
 
     const practice = el('button', 'primary-btn', filled > 0 ? `面接の練習を始める（入力済み${filled}問）` : '面接の練習を始める（全問）');
     // 回答を入力済みの質問だけで練習する（未入力の質問では答え合わせができないため）。
@@ -645,8 +750,21 @@ const Essay = (() => {
     });
     const save = el('button', 'primary-btn', '保存する');
     save.addEventListener('click', async () => {
-      await Storage.saveInterviewAnswer({ id, lines: inputs.map((t) => t.value.trim()) });
-      showInterviewList();
+      if (save.disabled) return;
+      save.disabled = true;
+      try {
+        await Storage.saveInterviewAnswer({ id, lines: inputs.map((t) => t.value.trim()) });
+      } catch (e) {
+        save.disabled = false;
+        notifyError('回答を保存できませんでした。入力内容はそのまま残っています。もう一度「保存する」を押してください。');
+        return;
+      }
+      try {
+        await showInterviewList();
+      } catch (e) {
+        save.disabled = false;
+        notifyError('回答は保存しましたが、質問一覧の表示に失敗しました。ホームから開き直してください。');
+      }
     });
     body.appendChild(save);
     ctx.showScreen('interview-edit');
@@ -678,8 +796,16 @@ const Essay = (() => {
         `<span>${esc(c ? c.title : f.title)}<span class="config-item-sub flag-date">${esc(f.flaggedAt.slice(0, 10))}</span></span>`);
       const off = el('button', 'chip-btn', '解除');
       off.addEventListener('click', async () => {
-        await Storage.toggleFlag(f.cardId, f.title);
-        await refreshHome();
+        if (off.disabled) return;
+        off.disabled = true;
+        try {
+          await Storage.removeFlag(f.cardId);
+        } catch (e) {
+          off.disabled = false;
+          notifyError('解除できませんでした。もう一度押してください。');
+          return;
+        }
+        refreshHome().catch(() => {});
         showFlags();
       });
       row.appendChild(off);
@@ -695,7 +821,7 @@ const Essay = (() => {
     const body = document.getElementById('essay-ref-body');
     body.innerHTML = '';
     body.appendChild(el('div', 'essay-ref-meta',
-      `${esc(DataLoader.examLabel(u.examId))}　問${u.questionNumber}${u.kind === 'single' ? `-${u.subNumber}` : ''}（閲覧のみ・回答記録には残りません）`));
+      `${esc(DataLoader.examLabel(u.examId))}　問${Number(u.questionNumber)}${u.kind === 'single' ? `-${Number(u.subNumber)}` : ''}（閲覧のみ・回答記録には残りません）`));
     if (u.passage && (u.kind === 'group' || u.passage.length < 400)) {
       body.appendChild(el('div', 'quiz-passage', esc(u.passage)));
     }
@@ -712,7 +838,11 @@ const Essay = (() => {
 
   // ---------- 第2次の統計 ----------
   async function showStats() {
-    if (loadError || !data) return;
+    if (loadError || !data) {
+      showList('第2次試験の統計', el('p', 'empty-note',
+        '第2次試験のデータを読み込めませんでした。通信できる状態で一度開き直してください。第1次の統計は「第1次試験」タブで📊を押すと表示されます。'));
+      return;
+    }
     const results = await Storage.getEssayResults();
     const best = bestByTopic(results);
     const states = await Storage.getRecallStates();

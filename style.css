@@ -1247,3 +1247,50 @@ body {
   .essay-result-section.is-wrong .essay-result-title { color: #f0c766; }
   .essay-result-section.is-ok summary { color: #bfe3a6; }
 }
+
+/* ---------- 第2次：タップ領域とコントラストの調整（コードレビュー指摘対応） ---------- */
+.exam-tab { min-height: 44px; }
+.slot-btn { min-height: 44px; }
+.chip-btn { min-height: 40px; padding: 0.45rem 0.8rem; }
+.recall-quit { padding: 0.6rem 0.4rem; min-height: 44px; }
+.rate-good { color: #3f6b2a; border-color: #3f6b2a; }
+.rate-vague { color: #7a5d00; border-color: #7a5d00; }
+.rate-bad { color: #a8452a; border-color: #a8452a; }
+.essay-result-section.is-missed .essay-result-title,
+.essay-result-section.is-dummy .essay-result-title { color: #a8452a; }
+.essay-result-section.is-wrong .essay-result-title { color: #7a5d00; }
+.flag-btn.is-on { background: #a8452a; border-color: #a8452a; }
+
+@media (prefers-color-scheme: dark) {
+  /* 暗い背景の上の紺色の文字は読みにくいため、第2次の画面では明るい青を使う */
+  .chip-btn, .topic-item-label, .essay-h2, .essay-model-head, .essay-topic-label,
+  .essay-result-title, .recall-front, .iv-field-label, .essay-kw,
+  .priority-item.is-essay .priority-item-accuracy, .essay-score { color: #9cc0ea; }
+  .chip-btn, .essay-kw { border-color: #9cc0ea; }
+  .rate-good { color: #bfe3a6; border-color: #6b9a52; }
+  .rate-vague { color: #f0c766; border-color: #a8872a; }
+  .rate-bad { color: #f0b6a3; border-color: #b0644f; }
+  .essay-result-section.is-missed .essay-result-title,
+  .essay-result-section.is-dummy .essay-result-title { color: #f0b6a3; }
+  .essay-result-section.is-wrong .essay-result-title { color: #f0c766; }
+  .flag-btn.is-on { background: #f0b6a3; border-color: #f0b6a3; color: #0f1620; }
+}
+
+/* 新しい版の案内（Service Worker 更新時、入力途中の画面で表示） */
+.update-bar {
+  position: fixed;
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: calc(0.75rem + env(safe-area-inset-bottom));
+  z-index: 50;
+  background: var(--navy);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  min-height: 44px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
