@@ -66,8 +66,8 @@ const Essay = (() => {
     });
     document.getElementById('essay-build-back').addEventListener('click', showTopicList);
     document.getElementById('essay-step-back').addEventListener('click', () => {
-      if (step && !step.saving && (step.idx > 0 || step.confirmed)
-        && !window.confirm('途中で論題一覧へ戻りますか？（この論題の解答は記録されません）')) return;
+      if (step && step.saving) return; // 保存中は離れない（保存の成否を見届ける）
+      if (!confirmLeaveStep()) return;
       showTopicList();
     });
     document.getElementById('essay-grade-btn').addEventListener('click', grade);
@@ -186,9 +186,13 @@ const Essay = (() => {
     ctx.showScreen('essay-ref');
   }
 
+  // 段落ブロック方式の論題は段落ブロック方式の記録だけ、それ以外は従来方式の記録だけで集計する
+  // （採点の式が違うため混ぜない。従来方式の記録には mode がない）
   function bestByTopic(results) {
     const map = new Map();
     for (const r of results) {
+      const t = topicById(r.topicId);
+      if (t && hasBlocks(t) !== (r.mode === 'blocks')) continue;
       const e = map.get(r.topicId) || { best: 0, last: null, runs: 0 };
       e.runs += 1;
       if (r.score > e.best) e.best = r.score;
@@ -331,6 +335,17 @@ const Essay = (() => {
   let step = null; // { topic, idx, order: {slot: [id]}, picked: Set, confirmed, results: {slot: {...}}, saving }
 
   function hasBlocks(topic) { return Boolean(topic && topic.blocks); }
+
+  // 段落ブロックの途中（確定済みの段落がある）で画面を離れるときの確認。離れてよければ true
+  function stepInProgress() {
+    const sec = document.getElementById('screen-essay-step');
+    return Boolean(step && sec && !sec.hidden && (step.idx > 0 || step.confirmed));
+  }
+  function confirmLeaveStep() {
+    if (!stepInProgress()) return true;
+    if (step.saving) return false;
+    return window.confirm('途中で移動しますか？（この論題の解答は記録されません）');
+  }
   function stepSlots() { return data.slots.map((s) => s.id); }
   function blockList(slot) { return step.topic.blocks[slot] || []; }
   // 段落の字数目安：論題の模範構成の配分（型の標準配分を論題に合わせて調整したもの）を優先する
@@ -402,7 +417,7 @@ const Essay = (() => {
       body.appendChild(draft);
     }
 
-    body.appendChild(el('div', 'slot-legend',
+    body.appendChild(el('div', 'slot-legend step-legend',
       step.confirmed ? '判定結果です。理由を確認してから次へ進んでください。'
         : `${esc(SLOT_SHORT[slot])}に入れる文をすべて選んでください（正解は1つとは限りません）。`));
 
@@ -411,12 +426,12 @@ const Essay = (() => {
     for (const id of step.order[slot]) {
       const b = byId.get(id);
       const picked = step.picked.has(id);
-      const btn = el('button', 'step-block', '');
+      // 判定後はボタンではなく文として出す（押せないボタンは支援技術で読み飛ばされやすいため）
+      const btn = el(step.confirmed ? 'div' : 'button', 'step-block', '');
       btn.appendChild(el('span', 'step-block-text', esc(b.text)));
-      btn.setAttribute('aria-pressed', String(picked));
+      if (!step.confirmed) btn.setAttribute('aria-pressed', String(picked));
       btn.classList.toggle('is-picked', picked);
       if (step.confirmed) {
-        btn.disabled = true;
         let mark; let cls;
         if (b.ok && picked) { mark = '✓ 正解'; cls = 'is-correct'; }
         else if (b.ok) { mark = '△ 選び漏れ'; cls = 'is-missed'; }
@@ -481,8 +496,12 @@ const Essay = (() => {
       step.results[slot] = r;
       step.confirmed = true;
       renderStep();
-      const fin = document.querySelector('#essay-step-body .step-legend, #essay-step-body .slot-legend');
-      if (fin) fin.scrollIntoView({ block: 'start', behavior: 'smooth' });
+      const legend = document.querySelector('#essay-step-body .step-legend');
+      if (legend) {
+        legend.setAttribute('tabindex', '-1');
+        legend.focus({ preventScroll: true });
+        legend.scrollIntoView({ block: 'start', behavior: 'smooth' });
+      }
       return;
     }
     if (step.idx < slots.length - 1) {
@@ -520,7 +539,9 @@ const Essay = (() => {
     } catch (e) {
       s.saving = false;
       if (s === step) syncStepButton();
-      notifyError('結果を保存できませんでした。もう一度「論文を完成させる」を押してください。');
+      notifyError(stillOnStep(token)
+        ? '結果を保存できませんでした。もう一度「論文を完成させる」を押してください。'
+        : '結果を保存できませんでした。この回の結果は記録されていません。');
       return;
     }
     s.saving = false;
@@ -1262,5 +1283,5 @@ const Essay = (() => {
     showList('第2次試験の統計', wrap);
   }
 
-  return { init, refreshHome, showStats };
+  return { init, refreshHome, showStats, confirmLeaveStep };
 })();
