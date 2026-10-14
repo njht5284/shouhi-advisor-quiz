@@ -1399,7 +1399,7 @@ body {
   color: var(--text-muted);
   background: var(--bg);
 }
-.step-dot.is-done { background: var(--sage); border-color: var(--sage); color: #ffffff; }
+.step-dot.is-done { background: #4d7a35; border-color: #4d7a35; color: #ffffff; }
 .step-dot.is-now { border: 2px solid var(--navy); color: var(--navy); font-weight: 700; }
 .step-guide { margin: 0.6rem 0; }
 .step-draft {

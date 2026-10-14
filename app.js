@@ -830,12 +830,14 @@ const App = (() => {
   // ---------- 統計・ヘッダー ----------
   function wireHeader() {
     document.getElementById('nav-home').addEventListener('click', async () => {
+      if (typeof Essay !== 'undefined' && !Essay.confirmLeaveStep()) return; // 第2次の段落ブロックの途中なら確認する
       await refreshResumeBanner();
       await refreshPriorityCategories();
       showScreen('home');
       refreshEssayHomeIfOpen();
     });
     document.getElementById('nav-stats').addEventListener('click', async () => {
+      if (typeof Essay !== 'undefined' && !Essay.confirmLeaveStep()) return;
       // 第2次のタブを開いているときは、第2次（構成練習・想起カード）の統計を出す。
       if (currentExamTab === '2nd') {
         await Essay.showStats();
