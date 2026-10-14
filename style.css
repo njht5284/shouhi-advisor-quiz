@@ -1374,3 +1374,88 @@ body {
   .pattern-banner-title, .pattern-guide-title, .pattern-box-title, .pattern-row-head,
   .pattern-sample-details summary, .pattern-sample-label { color: #9cc0ea; }
 }
+
+/* ---------- 第2次：段落ブロック方式 ---------- */
+.block-badge {
+  display: inline-block;
+  margin-right: 0.35rem;
+  padding: 0 0.4rem;
+  border-radius: 4px;
+  background: var(--navy);
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+.step-question { margin-bottom: 0.6rem; }
+.step-question summary { cursor: pointer; min-height: 32px; }
+.step-progress { display: flex; gap: 0.3rem; margin: 0.4rem 0 0.2rem; }
+.step-dot {
+  flex: 1;
+  text-align: center;
+  font-size: 0.75rem;
+  padding: 0.3rem 0;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  background: var(--bg);
+}
+.step-dot.is-done { background: var(--sage); border-color: var(--sage); color: #ffffff; }
+.step-dot.is-now { border: 2px solid var(--navy); color: var(--navy); font-weight: 700; }
+.step-guide { margin: 0.6rem 0; }
+.step-draft {
+  background: var(--bg);
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+  padding: 0.5rem 0.8rem;
+  margin: 0.6rem 0;
+}
+.step-draft summary { cursor: pointer; font-weight: 700; color: var(--text-muted); min-height: 36px; display: flex; align-items: center; }
+.step-blocks { display: flex; flex-direction: column; gap: 0.55rem; margin: 0.5rem 0 0.8rem; }
+.step-block {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--text);
+  background: var(--bg);
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 0.65rem 0.8rem;
+  min-height: 44px;
+  cursor: pointer;
+}
+.step-block.is-picked { border-color: var(--navy); box-shadow: inset 4px 0 0 var(--navy); }
+.step-block:disabled { cursor: default; opacity: 1; }
+.step-block-why { display: block; margin-top: 0.4rem; padding-top: 0.4rem; border-top: 1px solid var(--border); font-size: 0.8rem; line-height: 1.6; }
+.step-block.is-correct { border-color: #3f6b2a; }
+.step-block.is-correct .step-block-why strong { color: #3f6b2a; }
+.step-block.is-missed { border-color: #7a5d00; border-style: dashed; }
+.step-block.is-missed .step-block-why strong { color: #7a5d00; }
+.step-block.is-wrong { border-color: #a8452a; }
+.step-block.is-wrong .step-block-why strong { color: #a8452a; }
+.step-block.is-skipped { color: var(--text-muted); }
+.step-final {
+  background: var(--bg);
+  border: 2px solid var(--sage);
+  border-radius: 10px;
+  padding: 0.6rem 0.8rem;
+  margin-bottom: 0.8rem;
+}
+.step-action { width: 100%; }
+.step-summary .session-row { font-size: 0.85rem; }
+
+@media (prefers-color-scheme: dark) {
+  .block-badge { background: #9cc0ea; color: #0f1620; }
+  .step-dot.is-now { border-color: #9cc0ea; color: #9cc0ea; }
+  .step-dot.is-done { background: #4d7a35; border-color: #4d7a35; }
+  .step-block.is-picked { border-color: #9cc0ea; box-shadow: inset 4px 0 0 #9cc0ea; }
+  .step-block.is-correct { border-color: #6b9a52; }
+  .step-block.is-correct .step-block-why strong { color: #bfe3a6; }
+  .step-block.is-missed { border-color: #a8872a; }
+  .step-block.is-missed .step-block-why strong { color: #f0c766; }
+  .step-block.is-wrong { border-color: #b0644f; }
+  .step-block.is-wrong .step-block-why strong { color: #f0b6a3; }
+  .step-final { border-color: #4d7a35; }
+}

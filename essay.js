@@ -65,6 +65,11 @@ const Essay = (() => {
       btn.addEventListener('click', () => onHomeCard(btn.dataset.essay));
     });
     document.getElementById('essay-build-back').addEventListener('click', showTopicList);
+    document.getElementById('essay-step-back').addEventListener('click', () => {
+      if (step && !step.saving && (step.idx > 0 || step.confirmed)
+        && !window.confirm('途中で論題一覧へ戻りますか？（この論題の解答は記録されません）')) return;
+      showTopicList();
+    });
     document.getElementById('essay-grade-btn').addEventListener('click', grade);
     document.getElementById('essay-copy-btn').addEventListener('click', (ev) => copyText(buildCopyText(), ev.currentTarget));
     document.getElementById('essay-retry-btn').addEventListener('click', () => startBuild(lastResult.topic.topicId));
@@ -309,7 +314,7 @@ const Essay = (() => {
         const pat = patternOf(t);
         const item = el('button', 'config-item topic-item',
           `<span class="topic-item-main"><span class="topic-item-label">${pat ? `<span class="pattern-letter is-small">${esc(pat.letter)}</span>` : ''}${esc(t.label)}</span>`
-          + `<span class="config-item-sub">${esc(t.summary.slice(0, 42))}…</span></span>${badge}`);
+          + `<span class="config-item-sub">${hasBlocks(t) ? '<span class="block-badge">段落ブロック</span>' : ''}${esc(t.summary.slice(0, 42))}…</span></span>${badge}`);
         item.addEventListener('click', () => startBuild(t.topicId));
         wrap.appendChild(item);
       }
@@ -319,12 +324,282 @@ const Essay = (() => {
     showList('構成練習：論題を選ぶ', wrap);
   }
 
+  // ---------- 構成練習：段落ブロック方式 ----------
+  // 序論→本論①→本論②→結論の順に、各段落の候補ブロック（正解の文と紛らわしい誤り）から
+  // 正解と思うものを選び、段落ごとにその場で判定する。確定した段落は正解の形で下書きに積み上げる。
+  // 点数 = (選べた正解 − 選んだ誤り) ÷ 正解の総数 × 100（0〜100）。
+  let step = null; // { topic, idx, order: {slot: [id]}, picked: Set, confirmed, results: {slot: {...}}, saving }
+
+  function hasBlocks(topic) { return Boolean(topic && topic.blocks); }
+  function stepSlots() { return data.slots.map((s) => s.id); }
+  function blockList(slot) { return step.topic.blocks[slot] || []; }
+  // 段落の字数目安：論題の模範構成の配分（型の標準配分を論題に合わせて調整したもの）を優先する
+  function targetChars(topic, slot) {
+    const m = (topic.model || []).find((x) => x.slot === slot);
+    if (m) return Number(m.chars);
+    const x = patternSlot(patternOf(topic), slot);
+    return x ? Number(x.chars) : null;
+  }
+  function slotText(topic, slot) { return (topic.blocks[slot] || []).filter((b) => b.ok).map((b) => b.text).join(''); }
+
+  function stillOnStep(token) {
+    const sec = document.getElementById('screen-essay-step');
+    return token === buildToken && sec && !sec.hidden;
+  }
+
+  function startBlocks(topic) {
+    const order = {};
+    for (const s of stepSlots()) order[s] = shuffle((topic.blocks[s] || []).map((b) => b.id));
+    step = { topic, idx: 0, order, picked: new Set(), confirmed: false, results: {}, saving: false };
+    renderStep();
+    ctx.showScreen('essay-step');
+    window.scrollTo(0, 0);
+  }
+
+  function renderStep() {
+    const t = step.topic;
+    const slots = stepSlots();
+    const slot = slots[step.idx];
+    const pat = patternOf(t);
+    const ps = patternSlot(pat, slot);
+    const body = document.getElementById('essay-step-body');
+    body.innerHTML = '';
+
+    // 論題と問い（折りたたみ。最初の段落だけ開いておく）
+    const q = el('details', 'step-question');
+    q.open = step.idx === 0;
+    q.appendChild(el('summary', 'essay-topic-label', esc(t.label)));
+    q.appendChild(el('div', 'essay-summary', esc(t.summary)));
+    q.appendChild(el('ul', 'essay-asks', t.asks.map((a) => `<li>${esc(a)}</li>`).join('')));
+    body.appendChild(q);
+
+    // 進み具合
+    const prog = el('div', 'step-progress');
+    slots.forEach((s, i) => {
+      const cls = i < step.idx ? 'is-done' : (i === step.idx ? 'is-now' : '');
+      prog.appendChild(el('span', `step-dot ${cls}`, esc(SLOT_SHORT[s])));
+    });
+    body.appendChild(prog);
+
+    // この段落の型ガイド
+    if (ps) {
+      body.appendChild(el('div', 'pattern-guide step-guide',
+        `<div class="pattern-guide-title"><span class="pattern-letter">${esc(pat.letter)}</span>${esc(SLOT_SHORT[slot])}の型（${targetChars(t, slot)}字目安）</div>`
+        + `<div class="pattern-opener">${esc(ps.opener)}</div><div class="pattern-content">${esc(ps.content)}</div>`));
+    }
+
+    // ここまでの下書き
+    if (step.idx > 0) {
+      const done = slots.slice(0, step.idx);
+      const chars = done.reduce((n, s) => n + [...slotText(t, s)].length, 0);
+      const draft = el('details', 'step-draft');
+      draft.open = true;
+      draft.appendChild(el('summary', '', `ここまでの下書き（${chars}字）`));
+      for (const s of done) {
+        draft.appendChild(el('div', 'pattern-sample-label', esc(SLOT_SHORT[s])));
+        draft.appendChild(el('p', 'pattern-sample-text', esc(slotText(t, s))));
+      }
+      body.appendChild(draft);
+    }
+
+    body.appendChild(el('div', 'slot-legend',
+      step.confirmed ? '判定結果です。理由を確認してから次へ進んでください。'
+        : `${esc(SLOT_SHORT[slot])}に入れる文をすべて選んでください（正解は1つとは限りません）。`));
+
+    const byId = new Map(blockList(slot).map((b) => [b.id, b]));
+    const list = el('div', 'step-blocks');
+    for (const id of step.order[slot]) {
+      const b = byId.get(id);
+      const picked = step.picked.has(id);
+      const btn = el('button', 'step-block', '');
+      btn.appendChild(el('span', 'step-block-text', esc(b.text)));
+      btn.setAttribute('aria-pressed', String(picked));
+      btn.classList.toggle('is-picked', picked);
+      if (step.confirmed) {
+        btn.disabled = true;
+        let mark; let cls;
+        if (b.ok && picked) { mark = '✓ 正解'; cls = 'is-correct'; }
+        else if (b.ok) { mark = '△ 選び漏れ'; cls = 'is-missed'; }
+        else if (picked) { mark = `✗ ${data.blockKinds[b.kind] || '誤り'}`; cls = 'is-wrong'; }
+        else { mark = `○ 除外できた（${data.blockKinds[b.kind] || '誤り'}）`; cls = 'is-skipped'; }
+        btn.classList.add(cls);
+        btn.appendChild(el('span', 'step-block-why', `<strong>${esc(mark)}</strong>　${esc(b.why)}`));
+      } else {
+        btn.addEventListener('click', () => {
+          if (step.picked.has(id)) step.picked.delete(id); else step.picked.add(id);
+          const on = step.picked.has(id);
+          btn.classList.toggle('is-picked', on);
+          btn.setAttribute('aria-pressed', String(on));
+          syncStepButton();
+        });
+      }
+      list.appendChild(btn);
+    }
+    body.appendChild(list);
+
+    if (step.confirmed) {
+      const fin = el('div', 'step-final');
+      fin.appendChild(el('div', 'pattern-sample-label', `${esc(SLOT_SHORT[slot])}の完成形<span>${[...slotText(t, slot)].length}字</span>`));
+      fin.appendChild(el('p', 'pattern-sample-text', esc(slotText(t, slot))));
+      body.appendChild(fin);
+    }
+
+    const act = el('button', 'primary-btn step-action', '');
+    act.id = 'essay-step-action';
+    act.addEventListener('click', onStepAction);
+    body.appendChild(act);
+    syncStepButton();
+  }
+
+  function syncStepButton() {
+    const btn = document.getElementById('essay-step-action');
+    if (!btn || !step) return;
+    const last = step.idx === stepSlots().length - 1;
+    if (!step.confirmed) {
+      const n = step.picked.size;
+      btn.textContent = n > 0 ? `この段落を確定（${n}個を選択）` : 'この段落を確定';
+      btn.disabled = n === 0;
+    } else {
+      btn.textContent = last ? (step.saving ? '保存しています…' : '論文を完成させる') : '次の段落へ';
+      btn.disabled = step.saving;
+    }
+  }
+
+  function onStepAction() {
+    if (!step || step.saving) return;
+    const slots = stepSlots();
+    const slot = slots[step.idx];
+    if (!step.confirmed) {
+      if (step.picked.size === 0) return;
+      const blocks = blockList(slot);
+      const r = { correct: [], wrong: [], missed: [], total: 0 };
+      for (const b of blocks) {
+        const picked = step.picked.has(b.id);
+        if (b.ok) { r.total += 1; if (picked) r.correct.push(b.id); else r.missed.push(b.id); }
+        else if (picked) r.wrong.push(b.id);
+      }
+      step.results[slot] = r;
+      step.confirmed = true;
+      renderStep();
+      const fin = document.querySelector('#essay-step-body .step-legend, #essay-step-body .slot-legend');
+      if (fin) fin.scrollIntoView({ block: 'start', behavior: 'smooth' });
+      return;
+    }
+    if (step.idx < slots.length - 1) {
+      step.idx += 1;
+      step.picked = new Set();
+      step.confirmed = false;
+      renderStep();
+      window.scrollTo(0, 0);
+      return;
+    }
+    finishBlocks();
+  }
+
+  async function finishBlocks() {
+    const token = buildToken;
+    const s = step;
+    s.saving = true;
+    syncStepButton();
+    const res = Object.values(s.results);
+    const total = res.reduce((n, r) => n + r.total, 0);
+    const correct = res.reduce((n, r) => n + r.correct.length, 0);
+    const wrong = res.reduce((n, r) => n + r.wrong.length, 0);
+    const score = total === 0 ? 0 : Math.max(0, Math.round(((correct - wrong) / total) * 100));
+    lastResult = { topic: s.topic, score, mode: 'blocks', results: s.results, total, correct, wrong };
+    try {
+      await Storage.saveEssayResult({
+        topicId: s.topic.topicId,
+        at: new Date().toISOString(),
+        score,
+        mode: 'blocks',
+        missed: res.flatMap((r) => r.missed),
+        dummies: res.flatMap((r) => r.wrong),
+        wrongSlot: [],
+      });
+    } catch (e) {
+      s.saving = false;
+      if (s === step) syncStepButton();
+      notifyError('結果を保存できませんでした。もう一度「論文を完成させる」を押してください。');
+      return;
+    }
+    s.saving = false;
+    // ここから先は保存済み。別の画面へ移っていたら結果画面へ引き戻さない
+    if (!stillOnStep(token)) return;
+    try {
+      await renderBlocksResult();
+    } catch (e) {
+      notifyError('結果は保存しましたが、表示に失敗しました。統計画面から結果を確認できます。');
+      return;
+    }
+    if (!stillOnStep(token)) return;
+    ctx.showScreen('essay-result');
+    window.scrollTo(0, 0);
+  }
+
+  async function renderBlocksResult() {
+    const r = lastResult;
+    const t = r.topic;
+    const pat = patternOf(t);
+    const body = document.getElementById('essay-result-body');
+    body.innerHTML = '';
+    body.appendChild(el('div', 'essay-score',
+      `<span class="essay-score-num">${r.score}</span><span class="essay-score-unit">点</span>`
+      + `<div class="essay-score-sub">${esc(t.label)}　正解 ${r.correct} / ${r.total}・誤選択 ${r.wrong}</div>`));
+
+    const tbl = el('div', 'essay-result-section step-summary');
+    tbl.appendChild(el('h3', 'essay-result-title', '段落ごとの結果'));
+    for (const s of stepSlots()) {
+      const x = r.results[s];
+      if (!x) continue;
+      tbl.appendChild(el('div', 'session-row',
+        `<span>${esc(SLOT_SHORT[s])}</span><span>正解 ${x.correct.length}/${x.total}${x.wrong.length ? `・誤選択 ${x.wrong.length}` : ''}${x.missed.length ? `・選び漏れ ${x.missed.length}` : ''}</span>`));
+    }
+    body.appendChild(tbl);
+
+    // 選んだ誤りと選び漏れを、理由つきで振り返る
+    const byId = new Map(stepSlots().flatMap((s) => (t.blocks[s] || []).map((b) => [b.id, { ...b, slot: s }])));
+    const review = (title, cls, ids, label) => {
+      if (ids.length === 0) return;
+      const sec = el('div', `essay-result-section ${cls}`);
+      sec.appendChild(el('h3', 'essay-result-title', `${esc(title)}（${ids.length}）`));
+      for (const id of ids) {
+        const b = byId.get(id);
+        const box = el('div', 'essay-card');
+        box.appendChild(el('div', 'essay-card-note', `${esc(SLOT_SHORT[b.slot])}・${esc(label(b))}`));
+        box.appendChild(el('div', 'essay-card-gist', esc(b.text)));
+        box.appendChild(el('div', 'essay-card-note', esc(b.why)));
+        sec.appendChild(box);
+      }
+      body.appendChild(sec);
+    };
+    const all = Object.values(r.results);
+    review('選んでしまった誤り', 'is-dummy', all.flatMap((x) => x.wrong), (b) => data.blockKinds[b.kind] || '誤り');
+    review('選び漏れ', 'is-missed', all.flatMap((x) => x.missed), () => '入れるべき文');
+
+    // 完成した論文
+    const essay = el('div', 'essay-model');
+    const totalChars = stepSlots().reduce((n, s) => n + [...slotText(t, s)].length, 0);
+    essay.appendChild(el('h3', 'essay-result-title',
+      `完成した論文（${pat ? `型${esc(pat.letter)} ${esc(pat.name)}・` : ''}本文 ${totalChars}字）`));
+    for (const s of stepSlots()) {
+      const target = targetChars(t, s);
+      const text = slotText(t, s);
+      essay.appendChild(el('div', 'pattern-sample-label',
+        `${esc(SLOT_SHORT[s])}<span>${[...text].length}字${target ? `（目安${target}字）` : ''}</span>`));
+      essay.appendChild(el('p', 'pattern-sample-text', esc(text)));
+    }
+    essay.appendChild(el('div', 'config-note', 'この論文を手本に、紙に手書きで書き写すか、見ずに再現して練習してください。'));
+    body.appendChild(essay);
+  }
+
   // ---------- 構成練習：振り分け ----------
   let buildToken = 0; // 構成練習の画面を開き直すたびに増やす（古い採点処理の描画を捨てるため）
 
   function startBuild(topicId) {
     buildToken += 1;
     const topic = topicById(topicId);
+    if (hasBlocks(topic)) { startBlocks(topic); return; }
     build = { topic, order: shuffle(topic.cards.map((c) => c.id)), assign: new Map() };
     renderBuild();
     ctx.showScreen('essay-build');

@@ -5,7 +5,7 @@ const App = (() => {
 
   const screens = ['loading', 'home', 'mode-config', 'quiz', 'result', 'stats', 'about',
     // 第2次試験対策（essay.js が描画する）
-    'essay-list', 'essay-build', 'essay-result', 'recall', 'interview-edit', 'essay-ref'];
+    'essay-list', 'essay-build', 'essay-step', 'essay-result', 'recall', 'interview-edit', 'essay-ref'];
 
   function showScreen(name) {
     for (const s of screens) {
