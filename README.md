@@ -77,7 +77,7 @@ python -m http.server 8420 --directory shouhi-advisor-quiz
 
 ### 第2次試験データ（data/essays.json）
 
-論題（topics）・論点カード（cards）・面接の質問（interview）・論述の型（patterns：共通ルール、型ごとの段落構成とサンプル答案）を収録。各論題の `pattern` は使う型（`A` / `B` / `C`）。`blocks` を持つ論題は段落ブロック方式で出題する（段落ごとの配列。`ok: true` の文を並べた順に連結すると模範の段落になる。誤りは `kind`：off / fact / slot / style と `why` を持つ）。論題の各カードの `slots` は置いてよい段落（`intro` / `body1` / `body2` / `concl`）で、`optional` を含むものは任意、空配列はその論題では書くべきでない論点（ダミー）。カードの条文・施行日は e-Gov法令API 等の一次資料と照合済み（`checked`: `double` は二重確認済み）。
+論題（topics）・論点カード（cards）・面接の質問（interview）・論述の型（patterns：共通ルール、型ごとの段落構成とサンプル答案）を収録。各論題の `pattern` は使う型（`A` / `B` / `C`）。`blocks` を持つ論題は段落ブロック方式で出題する（段落ごとの配列。`ok: true` の文を並べた順に連結すると模範の段落になる。誤りは `kind`：off / fact / advice / slot / style と `why` を持つ）。論題の各カードの `slots` は置いてよい段落（`intro` / `body1` / `body2` / `concl`）で、`optional` を含むものは任意、空配列はその論題では書くべきでない論点（ダミー）。カードの条文・施行日は e-Gov法令API 等の一次資料と照合済み（`checked`: `double` は二重確認済み）。
 
 ### 出荷時の注意
 
