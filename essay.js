@@ -90,6 +90,7 @@ const Essay = (() => {
     else if (kind === 'interview') showInterviewList();
     else if (kind === 'flags') showFlags();
     else if (kind === 'patterns') showPatterns();
+    else if (kind === 'keywords') showKeywordList();
   }
 
   // ---------- データの参照 ----------
@@ -327,6 +328,44 @@ const Essay = (() => {
     wrap.appendChild(el('p', 'config-note',
       '論題は出題の要旨を独自にまとめたものです。原文は手元の問題用紙で確認してください。'));
     showList('構成練習：論題を選ぶ', wrap);
+  }
+
+  // ---------- テーマとキーワード ----------
+  // 全論題のテーマと、論文に必ず入れる語句（国セン＝指定語句、それ以外＝必須キーワード）を一覧で確認する。
+  // 論題をタップすると、その論題の構成練習を始める。
+  function showKeywordList() {
+    buildToken += 1;
+    const wrap = el('div', 'config-list');
+    wrap.appendChild(el('p', 'config-note',
+      '国センの論題は問題文で指定された「指定語句」、それ以外は模範答案から選んだ「必須キーワード」です。論文では、これらの語句を本文に必ず入れます。論題をタップすると構成練習を始めます。'));
+    const groups = [
+      { tier: 'core', title: '中核：日本産業協会の過去問' },
+      { tier: 'applied', title: '応用：国民生活センターの過去問' },
+      { tier: 'predicted', title: '予想論題' },
+    ];
+    for (const g of groups) {
+      wrap.appendChild(el('div', 'essay-group-title', esc(g.title)));
+      for (const t of data.topics.filter((x) => x.tier === g.tier)) {
+        const pat = patternOf(t);
+        const item = el('button', 'config-item kw-item',
+          `<span class="topic-item-main"><span class="topic-item-label">${pat ? `<span class="pattern-letter is-small">${esc(pat.letter)}</span>` : ''}${esc(t.label)}</span>`
+          + `<span class="config-item-sub">${esc(t.asks.join('／'))}</span>`
+          + requiredWordsHtml(t, 'kw-item-words').replace(/<div /g, '<span ').replace(/<\/div>/g, '</span>')
+          + '</span>');
+        item.addEventListener('click', () => startBuild(t.topicId));
+        wrap.appendChild(item);
+      }
+    }
+    const copy = el('button', 'secondary-btn', '一覧をテキストでコピー');
+    copy.addEventListener('click', (ev) => {
+      const text = data.topics.map((t) => {
+        const r = requiredWords(t);
+        return `■${t.label}\n  問い：${t.asks.join('／')}\n  ${r.label}：${r.words.join('、')}`;
+      }).join('\n\n');
+      copyText(text, ev.currentTarget);
+    });
+    wrap.appendChild(copy);
+    showList('テーマとキーワード', wrap);
   }
 
   // ---------- 構成練習：段落ブロック方式 ----------
