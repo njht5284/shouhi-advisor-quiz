@@ -1162,6 +1162,47 @@ const Essay = (() => {
     return found;
   }
 
+  // 取り込み用リンク（#iv-import=〈UTF-8テキストのbase64url〉）で開かれたとき、面接カードの回答を読み込む。
+  // 「#」以降はサーバーに送られないため、回答の内容は公開サイトのアクセス記録にも残らない。
+  // 読み込みの前に件数を示して確認し、URLからはすぐに取り除く（再読み込みで二重に聞かないように）。
+  const IMPORT_HASH = '#iv-import=';
+  function hasImportLink() {
+    return location.hash.startsWith(IMPORT_HASH);
+  }
+  function decodeImportText(b64url) {
+    const b64 = b64url.replace(/-/g, '+').replace(/_/g, '/');
+    const bin = atob(b64 + '='.repeat((4 - (b64.length % 4)) % 4));
+    const bytes = Uint8Array.from(bin, (c) => c.charCodeAt(0));
+    return new TextDecoder('utf-8').decode(bytes);
+  }
+  async function importFromLink() {
+    if (!hasImportLink() || loadError) return;
+    const payload = location.hash.slice(IMPORT_HASH.length);
+    try { history.replaceState(null, '', location.pathname + location.search); } catch (e) { location.hash = ''; }
+    let found;
+    try {
+      found = parseInterviewText(decodeImportText(decodeURIComponent(payload)));
+    } catch (e) {
+      found = new Map();
+    }
+    if (found.size === 0) {
+      notifyError('リンクから面接カードの回答を読み取れませんでした。リンクが途中で切れていないか確認してください。');
+      return;
+    }
+    if (!window.confirm(`面接カード${found.size}問の回答をリンクから読み込みます。入力済みの回答は上書きされます。よろしいですか？`)) return;
+    let saved = 0;
+    try {
+      for (const [id, lines] of found) {
+        await Storage.saveInterviewAnswer({ id, lines });
+        saved += 1;
+      }
+    } catch (e) {
+      notifyError(`保存の途中で失敗しました（${saved} / ${found.size}問を保存済み）。もう一度リンクを開いてください。`);
+      return;
+    }
+    await showInterviewList();
+  }
+
   function showInterviewImport() {
     const body = document.getElementById('interview-edit-body');
     body.innerHTML = '';
@@ -1388,5 +1429,5 @@ const Essay = (() => {
     showList('第2次試験の統計', wrap);
   }
 
-  return { init, refreshHome, showStats, confirmLeaveStep };
+  return { init, refreshHome, showStats, confirmLeaveStep, hasImportLink, importFromLink };
 })();

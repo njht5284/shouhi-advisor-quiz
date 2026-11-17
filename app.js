@@ -69,6 +69,11 @@ const App = (() => {
     await refreshResumeBanner();
     await refreshPriorityCategories();
     showScreen('home');
+    // 面接カードの取り込み用リンクで開かれた場合は、第2次タブに切り替えて読み込む
+    if (typeof Essay !== 'undefined' && Essay.hasImportLink()) {
+      selectExamTab('2nd');
+      Essay.importFromLink().catch(() => {});
+    }
   }
 
   // 3回以上挑戦した分野に限定した「優先して学習すべき分野」トップ3をホーム画面に表示する。
