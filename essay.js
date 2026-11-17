@@ -1131,7 +1131,77 @@ const Essay = (() => {
       copyText(text, ev.currentTarget);
     });
     wrap.appendChild(exp);
+    const imp = el('button', 'secondary-btn', '回答を貼り付けて読み込む');
+    imp.addEventListener('click', showInterviewImport);
+    wrap.appendChild(imp);
     showList('面接カード', wrap);
+  }
+
+  // 「回答をテキストでコピー」と同じ形式のテキストを貼り付けて、記入欄にまとめて読み込む。
+  // 形式：「■質問文」の行に続けて「結論：〜」「根拠となる経験：〜」「資格取得後の展望：〜」の行。
+  // 個人的な内容を公開データに入れずに済むよう、模範解答などはこの方法で端末に取り込む。
+  function parseInterviewText(text) {
+    const qs = data.interview.questions;
+    const frame = data.interview.frame;
+    const norm = (x) => String(x).replace(/\s+/g, '');
+    const found = new Map();
+    for (const chunk of String(text).split(/^\s*■/m).slice(1)) {
+      const rows = chunk.split(/\r?\n/);
+      const head = norm(rows[0]);
+      const q = qs.find((x) => norm(x.q) === head || x.id === head);
+      if (!q) continue;
+      const lines = frame.map(() => '');
+      for (const r of rows.slice(1)) {
+        const m = r.match(/^\s*([^：:]+)[：:]\s*(.*)$/);
+        if (!m) continue;
+        const i = frame.indexOf(m[1].trim());
+        if (i >= 0) lines[i] = m[2].trim();
+      }
+      if (lines.some((x) => x)) found.set(q.id, lines);
+    }
+    return found;
+  }
+
+  function showInterviewImport() {
+    const body = document.getElementById('interview-edit-body');
+    body.innerHTML = '';
+    body.appendChild(el('div', 'recall-front', '回答を貼り付けて読み込む'));
+    body.appendChild(el('p', 'config-note',
+      `「■質問文」の行に続けて「${esc(data.interview.frame.join('：〜」「'))}：〜」の行を並べたテキストを貼り付けてください（「回答をテキストでコピー」と同じ形式）。読み込んだ質問は、入力済みの回答も上書きします。`));
+    const ta = document.createElement('textarea');
+    ta.className = 'iv-field iv-import';
+    ta.rows = 12;
+    ta.placeholder = '■消費生活アドバイザーを目指した動機を教えてください。\n  結論：〜\n  根拠となる経験：〜\n  資格取得後の展望：〜';
+    body.appendChild(ta);
+    const go = el('button', 'primary-btn', '読み込む');
+    go.addEventListener('click', async () => {
+      if (go.disabled) return;
+      const found = parseInterviewText(ta.value);
+      if (found.size === 0) {
+        notifyError('読み込める回答が見つかりませんでした。「■質問文」と「結論：」などの行がそろっているか確認してください。');
+        return;
+      }
+      if (!window.confirm(`${found.size}問の回答を読み込みます。入力済みの回答は上書きされます。よろしいですか？`)) return;
+      go.disabled = true;
+      let saved = 0;
+      try {
+        for (const [id, lines] of found) {
+          await Storage.saveInterviewAnswer({ id, lines });
+          saved += 1;
+        }
+      } catch (e) {
+        go.disabled = false;
+        notifyError(`保存の途中で失敗しました（${saved} / ${found.size}問を保存済み）。もう一度「読み込む」を押してください。`);
+        return;
+      }
+      try {
+        await showInterviewList();
+      } catch (e) {
+        notifyError('回答は保存しましたが、質問一覧の表示に失敗しました。ホームから開き直してください。');
+      }
+    });
+    body.appendChild(go);
+    ctx.showScreen('interview-edit');
   }
 
   async function editInterview(id) {
