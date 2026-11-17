@@ -1215,12 +1215,14 @@ const Essay = (() => {
 
     // 未入力の欄には記入例を入れておく。白紙から書き始めるより直すほうが早いため。
     // 一度でも保存していれば本人の回答が優先され、記入例で上書きされることはない。
+    // 判定は保存レコードの有無で行う。中身で見ると、意図して空にして保存した回答まで
+    // 未入力とみなして記入例を書き戻してしまうため。
     const sample = q.sample || null;
-    const hasSaved = !!(a && a.lines && a.lines.some((s) => s && s.trim()));
-    if (sample && !hasSaved) {
-      body.appendChild(el('p', 'iv-sample-note',
-        'この欄は記入例です。〔　〕を自分の事実で埋め、ご自身の言葉に直してから保存してください。借り物のままだと、面接官に掘り下げられたときに答えられなくなります。'));
-    }
+    const hasSaved = !!a;
+    const sampleNote = el('p', 'iv-sample-note',
+      'この欄は記入例です。〔　〕を自分の事実で埋め、ご自身の言葉に直してから保存してください。借り物のままだと、面接官に掘り下げられたときに答えられなくなります。');
+    sampleNote.hidden = !(sample && !hasSaved);
+    body.appendChild(sampleNote);
 
     const autosize = [];
     const inputs = data.interview.frame.map((f, i) => {
@@ -1249,6 +1251,10 @@ const Essay = (() => {
       const reset = el('button', 'secondary-btn', '記入例を入れ直す');
       reset.addEventListener('click', () => {
         inputs.forEach((ta, i) => { ta.value = sample[i]; });
+        // 代入では input が発火しないので、高さの計算は明示的に呼ぶ
+        autosize.forEach((f) => f());
+        // 保存済みの回答を記入例で置き換えた直後も、例であることを知らせる
+        sampleNote.hidden = false;
       });
       body.appendChild(reset);
     }
