@@ -1226,7 +1226,13 @@ const Essay = (() => {
     const go = el('button', 'primary-btn', '読み込む');
     go.addEventListener('click', async () => {
       if (go.disabled) return;
-      const found = parseInterviewText(ta.value);
+      // 取り込み用リンク（またはその「#iv-import=」以降）が貼られた場合は、中のテキストを取り出して読む
+      let src = ta.value;
+      const m = src.match(/#iv-import=([A-Za-z0-9_%-]+)/) || src.trim().match(/^([A-Za-z0-9_-]{40,})$/);
+      if (m) {
+        try { src = decodeImportText(decodeURIComponent(m[1])); } catch (e) { /* 通常のテキストとして読む */ }
+      }
+      const found = parseInterviewText(src);
       if (found.size === 0) {
         notifyError(`読み込める回答が見つかりませんでした（貼り付けた文字数：${ta.value.length}字）。質問文と「結論：」などの見出しが含まれているか確認してください。`);
         return;
