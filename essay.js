@@ -1212,17 +1212,46 @@ const Essay = (() => {
     body.innerHTML = '';
     body.appendChild(el('div', 'recall-front', esc(q.q)));
     body.appendChild(el('p', 'config-note', `ヒント：${esc(q.hint)}`));
+
+    // 未入力の欄には記入例を入れておく。白紙から書き始めるより直すほうが早いため。
+    // 一度でも保存していれば本人の回答が優先され、記入例で上書きされることはない。
+    const sample = q.sample || null;
+    const hasSaved = !!(a && a.lines && a.lines.some((s) => s && s.trim()));
+    if (sample && !hasSaved) {
+      body.appendChild(el('p', 'iv-sample-note',
+        'この欄は記入例です。〔　〕を自分の事実で埋め、ご自身の言葉に直してから保存してください。借り物のままだと、面接官に掘り下げられたときに答えられなくなります。'));
+    }
+
+    const autosize = [];
     const inputs = data.interview.frame.map((f, i) => {
       const label = el('label', 'iv-field-label', esc(f));
       const ta = document.createElement('textarea');
       ta.className = 'iv-field';
-      ta.rows = 2;
-      ta.value = (a && a.lines && a.lines[i]) || '';
+      ta.rows = 3;
+      ta.value = (a && a.lines && a.lines[i]) || (!hasSaved && sample ? sample[i] : '') || '';
       ta.placeholder = '要点を1行で';
       body.appendChild(label);
       body.appendChild(ta);
+      // 記入例は本人の要点より長いので、中身に合わせて高さを変える。
+      // 短く書き直すと欄も縮むため、余白が無駄にならない。
+      const fit = () => {
+        ta.style.height = 'auto';
+        ta.style.height = `${ta.scrollHeight}px`;
+      };
+      ta.addEventListener('input', fit);
+      autosize.push(fit);
       return ta;
     });
+    // 画面に乗せてからでないと scrollHeight が取れない
+    requestAnimationFrame(() => autosize.forEach((f) => f()));
+
+    if (sample) {
+      const reset = el('button', 'secondary-btn', '記入例を入れ直す');
+      reset.addEventListener('click', () => {
+        inputs.forEach((ta, i) => { ta.value = sample[i]; });
+      });
+      body.appendChild(reset);
+    }
     const save = el('button', 'primary-btn', '保存する');
     save.addEventListener('click', async () => {
       if (save.disabled) return;

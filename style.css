@@ -1217,6 +1217,18 @@ body {
   margin: 0.8rem 0 0.3rem;
 }
 
+/* 記入例が入っている状態であることを目立たせる注意書き */
+.iv-sample-note {
+  margin: 0.8rem 0 0;
+  padding: 0.6rem 0.7rem;
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: var(--terra);
+  background: #fdf1ec;
+  border-left: 3px solid var(--terra);
+  border-radius: 4px;
+}
+
 .iv-field {
   width: 100%;
   font: inherit;
@@ -1270,6 +1282,7 @@ body {
   .rate-good { color: #bfe3a6; border-color: #6b9a52; }
   .rate-vague { color: #f0c766; border-color: #a8872a; }
   .rate-bad { color: #f0b6a3; border-color: #b0644f; }
+  .iv-sample-note { color: #f0b6a3; background: #3a2320; border-left-color: #b0644f; }
   .essay-result-section.is-missed .essay-result-title,
   .essay-result-section.is-dummy .essay-result-title { color: #f0b6a3; }
   .essay-result-section.is-wrong .essay-result-title { color: #f0c766; }
