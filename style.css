@@ -1472,3 +1472,11 @@ body {
   .step-block.is-wrong .step-block-why strong { color: #f0b6a3; }
   .step-final { border-color: #4d7a35; }
 }
+
+/* ---------- 第2次：論題名の直下の必須語句 ---------- */
+.step-keywords { margin: 0.35rem 0 0.6rem; }
+.step-question-summary { cursor: pointer; font-size: 0.82rem; font-weight: 700; color: var(--text-muted); min-height: 36px; display: flex; align-items: center; }
+.topic-item-keywords { display: flex; margin-top: 0.3rem; gap: 0.25rem; }
+.topic-item-keywords .essay-kw { font-size: 0.7rem; padding: 0 0.45rem; }
+.topic-item-keywords .essay-kw-label { font-size: 0.66rem; }
+.kw-mark { background: transparent; color: inherit; font-weight: 700; text-decoration: underline; text-decoration-color: var(--terra); text-decoration-thickness: 2px; text-underline-offset: 3px; }

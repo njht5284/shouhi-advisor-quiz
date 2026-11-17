@@ -318,6 +318,7 @@ const Essay = (() => {
         const pat = patternOf(t);
         const item = el('button', 'config-item topic-item',
           `<span class="topic-item-main"><span class="topic-item-label">${pat ? `<span class="pattern-letter is-small">${esc(pat.letter)}</span>` : ''}${esc(t.label)}</span>`
+          + requiredWordsHtml(t, 'topic-item-keywords').replace(/<div /g, '<span ').replace(/<\/div>/g, '</span>')
           + `<span class="config-item-sub">${hasBlocks(t) ? '<span class="block-badge">段落ブロック</span>' : ''}${esc(t.summary.slice(0, 42))}…</span></span>${badge}`);
         item.addEventListener('click', () => startBuild(t.topicId));
         wrap.appendChild(item);
@@ -335,6 +336,27 @@ const Essay = (() => {
   let step = null; // { topic, idx, order: {slot: [id]}, picked: Set, confirmed, results: {slot: {...}}, saving }
 
   function hasBlocks(topic) { return Boolean(topic && topic.blocks); }
+
+  // 論文に必ず入れる語句。国センの論題は問題文の指定語句、それ以外は模範答案から選んだ必須キーワード。
+  function requiredWords(t) {
+    if (t.keywords && t.keywords.length) return { label: '指定語句', words: t.keywords };
+    return { label: '必須キーワード', words: t.mustWords || [] };
+  }
+  function requiredWordsHtml(t, cls = '') {
+    const r = requiredWords(t);
+    if (r.words.length === 0) return '';
+    return `<div class="essay-keywords ${cls}"><span class="essay-kw-label">${esc(r.label)}</span>`
+      + `${r.words.map((k) => `<span class="essay-kw">${esc(k)}</span>`).join('')}</div>`;
+  }
+  // 本文中の必須語句に印を付ける（エスケープ後の文字列に対して置き換える）
+  function markWords(t, html) {
+    let out = html;
+    for (const w of requiredWords(t).words) {
+      const ew = esc(w);
+      if (ew) out = out.split(ew).join(`<mark class="kw-mark">${ew}</mark>`);
+    }
+    return out;
+  }
 
   // 段落ブロックの途中（確定済みの段落がある）で画面を離れるときの確認。離れてよければ true
   function stepInProgress() {
@@ -380,10 +402,12 @@ const Essay = (() => {
     const body = document.getElementById('essay-step-body');
     body.innerHTML = '';
 
-    // 論題と問い（折りたたみ。最初の段落だけ開いておく）
+    // 論題名と、その直下に必須語句（常に表示）。問題の要旨と問いは折りたたみ（最初の段落だけ開いておく）
+    body.appendChild(el('div', 'essay-topic-label', esc(t.label)));
+    body.insertAdjacentHTML('beforeend', requiredWordsHtml(t, 'step-keywords'));
     const q = el('details', 'step-question');
     q.open = step.idx === 0;
-    q.appendChild(el('summary', 'essay-topic-label', esc(t.label)));
+    q.appendChild(el('summary', 'step-question-summary', '問題の要旨と問われていること'));
     q.appendChild(el('div', 'essay-summary', esc(t.summary)));
     q.appendChild(el('ul', 'essay-asks', t.asks.map((a) => `<li>${esc(a)}</li>`).join('')));
     body.appendChild(q);
@@ -412,7 +436,7 @@ const Essay = (() => {
       draft.appendChild(el('summary', '', `ここまでの下書き（${chars}字）`));
       for (const s of done) {
         draft.appendChild(el('div', 'pattern-sample-label', esc(SLOT_SHORT[s])));
-        draft.appendChild(el('p', 'pattern-sample-text', esc(slotText(t, s))));
+        draft.appendChild(el('p', 'pattern-sample-text', markWords(t, esc(slotText(t, s)))));
       }
       body.appendChild(draft);
     }
@@ -455,7 +479,7 @@ const Essay = (() => {
     if (step.confirmed) {
       const fin = el('div', 'step-final');
       fin.appendChild(el('div', 'pattern-sample-label', `${esc(SLOT_SHORT[slot])}の完成形<span>${[...slotText(t, slot)].length}字</span>`));
-      fin.appendChild(el('p', 'pattern-sample-text', esc(slotText(t, slot))));
+      fin.appendChild(el('p', 'pattern-sample-text', markWords(t, esc(slotText(t, slot)))));
       body.appendChild(fin);
     }
 
@@ -608,7 +632,7 @@ const Essay = (() => {
       const text = slotText(t, s);
       essay.appendChild(el('div', 'pattern-sample-label',
         `${esc(SLOT_SHORT[s])}<span>${[...text].length}字${target ? `（目安${target}字）` : ''}</span>`));
-      essay.appendChild(el('p', 'pattern-sample-text', esc(text)));
+      essay.appendChild(el('p', 'pattern-sample-text', markWords(t, esc(text))));
     }
     essay.appendChild(el('div', 'config-note', 'この論文を手本に、紙に手書きで書き写すか、見ずに再現して練習してください。'));
     body.appendChild(essay);
@@ -885,7 +909,7 @@ const Essay = (() => {
     const lines = [];
     lines.push(`【論題】${t.label}`);
     lines.push(t.summary);
-    if (t.keywords.length) lines.push(`指定語句：${t.keywords.join('、')}`);
+    { const r = requiredWords(t); if (r.words.length) lines.push(`${r.label}：${r.words.join('、')}`); }
     lines.push('');
     lines.push('【形式条件】日本産業協会の消費生活アドバイザー第2次試験（論文）に準じ、60分・800字以内（600字以上が望ましい）。');
     lines.push('');
