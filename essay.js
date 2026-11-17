@@ -1140,25 +1140,34 @@ const Essay = (() => {
   // 「回答をテキストでコピー」と同じ形式のテキストを貼り付けて、記入欄にまとめて読み込む。
   // 形式：「■質問文」の行に続けて「結論：〜」「根拠となる経験：〜」「資格取得後の展望：〜」の行。
   // 個人的な内容を公開データに入れずに済むよう、模範解答などはこの方法で端末に取り込む。
+  // 改行や行頭の空白がコピーで失われても読めるよう、空白をすべて除いたうえで
+  // 質問文と「結論：」などの見出しの位置から区切る（日本語の回答は空白を含まない前提）。
   function parseInterviewText(text) {
     const qs = data.interview.questions;
     const frame = data.interview.frame;
-    const norm = (x) => String(x).replace(/\s+/g, '');
-    const found = new Map();
-    for (const chunk of String(text).split(/^\s*■/m).slice(1)) {
-      const rows = chunk.split(/\r?\n/);
-      const head = norm(rows[0]);
-      const q = qs.find((x) => norm(x.q) === head || x.id === head);
-      if (!q) continue;
-      const lines = frame.map(() => '');
-      for (const r of rows.slice(1)) {
-        const m = r.match(/^\s*([^：:]+)[：:]\s*(.*)$/);
-        if (!m) continue;
-        const i = frame.indexOf(m[1].trim());
-        if (i >= 0) lines[i] = m[2].trim();
-      }
-      if (lines.some((x) => x)) found.set(q.id, lines);
+    const squash = (x) => String(x).replace(/[\s\u200B-\u200D\uFEFF]+/g, '');
+    const src = squash(text);
+    const hits = [];
+    for (const q of qs) {
+      const key = squash(q.q);
+      const at = src.indexOf(key);
+      if (at >= 0) hits.push({ q, start: at, end: at + key.length });
     }
+    hits.sort((a, b) => a.start - b.start);
+    const labelRe = new RegExp(`(${frame.map((f) => squash(f).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})[：:]`, 'g');
+    const found = new Map();
+    hits.forEach((h, k) => {
+      const seg = src.slice(h.end, k + 1 < hits.length ? hits[k + 1].start : src.length);
+      const marks = [...seg.matchAll(labelRe)];
+      const lines = frame.map(() => '');
+      marks.forEach((m, n) => {
+        const from = m.index + m[0].length;
+        const to = n + 1 < marks.length ? marks[n + 1].index : seg.length;
+        const i = frame.findIndex((f) => squash(f) === m[1]);
+        if (i >= 0) lines[i] = seg.slice(from, to).replace(/■+$/, '');
+      });
+      if (lines.some((x) => x)) found.set(h.q.id, lines);
+    });
     return found;
   }
 
@@ -1219,7 +1228,7 @@ const Essay = (() => {
       if (go.disabled) return;
       const found = parseInterviewText(ta.value);
       if (found.size === 0) {
-        notifyError('読み込める回答が見つかりませんでした。「■質問文」と「結論：」などの行がそろっているか確認してください。');
+        notifyError(`読み込める回答が見つかりませんでした（貼り付けた文字数：${ta.value.length}字）。質問文と「結論：」などの見出しが含まれているか確認してください。`);
         return;
       }
       if (!window.confirm(`${found.size}問の回答を読み込みます。入力済みの回答は上書きされます。よろしいですか？`)) return;
