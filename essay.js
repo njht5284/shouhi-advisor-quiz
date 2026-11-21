@@ -1048,7 +1048,7 @@ const Essay = (() => {
   }
 
   function startRecall(kind, items) {
-    recall = { kind, items, idx: 0, revealed: false, requeued: new Set(), tally: { good: 0, vague: 0, bad: 0 } };
+    recall = { kind, items, idx: 0, revealed: true, requeued: new Set(), tally: { good: 0, vague: 0, bad: 0 } };
     renderRecall();
     ctx.showScreen('recall');
   }
@@ -1131,7 +1131,7 @@ const Essay = (() => {
       return;
     }
     r.idx += 1;
-    r.revealed = false;
+    r.revealed = true; // 答えは最初から表示する（試験直前の確認用）
     r.busy = false;
     renderRecall();
   }
