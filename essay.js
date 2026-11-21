@@ -1048,7 +1048,7 @@ const Essay = (() => {
   }
 
   function startRecall(kind, items) {
-    recall = { kind, items, idx: 0, revealed: false, requeued: new Set(), tally: { good: 0, vague: 0, bad: 0 } };
+    recall = { kind, items, idx: 0, revealed: true, requeued: new Set(), tally: { good: 0, vague: 0, bad: 0 } };
     renderRecall();
     ctx.showScreen('recall');
   }
@@ -1097,13 +1097,31 @@ const Essay = (() => {
       actions.appendChild(b);
       return;
     }
+    // 試験直前の確認用：自己評価はせず、前後に移動して答えを読み流す
     const row = el('div', 'rate-row');
-    [['good', '言えた'], ['vague', 'あやふや'], ['bad', '言えなかった']].forEach(([key, label]) => {
-      const b = el('button', `rate-btn rate-${key}`, label);
-      b.addEventListener('click', () => rateCurrent(key));
-      row.appendChild(b);
-    });
+    if (r.idx > 0) {
+      const prev = el('button', 'secondary-btn recall-nav', '← 前へ');
+      prev.addEventListener('click', () => moveRecall(-1));
+      row.appendChild(prev);
+    }
+    const last = r.idx + 1 >= r.items.length;
+    const next = el('button', 'primary-btn recall-nav', last ? '終わる' : '次へ →');
+    next.addEventListener('click', () => moveRecall(1));
+    row.appendChild(next);
     actions.appendChild(row);
+  }
+
+  function moveRecall(step) {
+    const r = recall;
+    if (!r || r.busy) return;
+    if (step > 0 && r.idx + 1 >= r.items.length) {
+      finishRecall(r);
+      return;
+    }
+    r.idx = Math.max(0, r.idx + step);
+    r.revealed = true;
+    renderRecall();
+    window.scrollTo(0, 0);
   }
 
   async function rateCurrent(rating) {
@@ -1131,7 +1149,7 @@ const Essay = (() => {
       return;
     }
     r.idx += 1;
-    r.revealed = false;
+    r.revealed = true; // 答えは最初から表示する（試験直前の確認用）
     r.busy = false;
     renderRecall();
   }
@@ -1139,15 +1157,10 @@ const Essay = (() => {
   async function finishRecall(r) {
     if (!r || r.finished) return;
     r.finished = true;
-    const t = r.tally;
     const wrap = el('div', 'config-list');
     wrap.appendChild(el('div', 'stats-summary',
-      `<div class="stat-tile"><div class="stat-value">${t.good}</div><div class="stat-label">言えた</div></div>`
-      + `<div class="stat-tile"><div class="stat-value">${t.vague}</div><div class="stat-label">あやふや</div></div>`
-      + `<div class="stat-tile"><div class="stat-value">${t.bad}</div><div class="stat-label">言えなかった</div></div>`));
-    wrap.appendChild(el('p', 'config-note', r.kind === 'iv'
-      ? '「言えなかった」質問は、回答の要点を見直してからもう一度練習してください。'
-      : '「言えた」カードは次に出るまでの間隔が延び、「言えなかった」カードは翌日にもう一度出ます。'));
+      `<div class="stat-tile"><div class="stat-value">${r.items.length}</div><div class="stat-label">${r.kind === 'iv' ? '確認した質問' : '確認したカード'}</div></div>`));
+    wrap.appendChild(el('p', 'config-note', '本番まで、気になったものは何度でも読み返してください。'));
     const back = el('button', 'secondary-btn', r.kind === 'iv' ? '質問一覧へ' : '想起カードの範囲選択へ');
     back.addEventListener('click', () => (r.kind === 'iv' ? showInterviewList() : showRecallDecks()));
     wrap.appendChild(back);
