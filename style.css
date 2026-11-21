@@ -1487,3 +1487,7 @@ body {
 .kw-item .topic-item-main { width: 100%; }
 .kw-item-words { display: flex; margin-top: 0.4rem; gap: 0.3rem; }
 .kw-item-words .essay-kw { font-size: 0.75rem; }
+
+/* 想起カード：前へ／次へ */
+.rate-row .recall-nav { flex: 1; min-height: 48px; margin: 0; }
+#recall-actions .rate-row { display: flex; gap: 0.5rem; }
