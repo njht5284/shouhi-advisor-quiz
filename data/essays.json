@@ -9433,5 +9433,732 @@
   "advice": "誤った対処・考え方",
   "slot": "別の段落向け",
   "style": "型の違反"
+ },
+ "glossary": {
+  "source": "claude/20261102_過去テーマ再出題確率.md",
+  "probNote": "出題確率は、2026年度の消費者問題・法律のどちらか1題にその分類が出る確率の推計（国センの24年分と日産協の5年分から算出）。◎○は時事を加味した見立て。",
+  "categories": [
+   {
+    "id": "net",
+    "name": "ネット・デジタル取引",
+    "prob": 0.3,
+    "outlook": "◎",
+    "note": "令和8年版白書の特集（AI・デジタル）と2026年度消費者月間テーマに一致。実質の最有力。",
+    "topics": [
+     "nsk-2024-cons",
+     "nsk-2025-law",
+     "ksn-2024-teiki",
+     "yo-digital",
+     "yo-gekkan2026",
+     "yo-yakkan"
+    ],
+    "terms": [
+     {
+      "term": "定期購入",
+      "card": "s-teiki-higai"
+     },
+     {
+      "term": "最終確認画面",
+      "card": "t-kakunin"
+     },
+     {
+      "term": "誤認による申込みの取消し",
+      "card": "t-kakunin-torikeshi"
+     },
+     {
+      "term": "解約妨害の禁止",
+      "card": "t-kaiyaku-bougai"
+     },
+     {
+      "term": "通信販売の返品制度（クーリング・オフなし）",
+      "card": "t-henpin"
+     },
+     {
+      "term": "ダーク・コマーシャル・パターン",
+      "card": "dg-dark-def"
+     },
+     {
+      "term": "サブスクの解約トラブル",
+      "card": "dg-subsc"
+     },
+     {
+      "term": "SNSのチャットによる勧誘",
+      "card": "dg-sns-chat"
+     },
+     {
+      "term": "取引デジタルプラットフォーム消費者保護法",
+      "card": "s-dpf"
+     },
+     {
+      "term": "フィッシング・偽サイト",
+      "card": "dg-phishing"
+     },
+     {
+      "term": "令和8年度消費者月間の統一テーマ（AI時代の消費者力）",
+      "card": "ai-theme"
+     },
+     {
+      "term": "令和8年版消費者白書の特集",
+      "card": "ai-hakusho"
+     },
+     {
+      "term": "見えない仕組み（アルゴリズム）のリスク",
+      "card": "ai-risk"
+     },
+     {
+      "term": "なりすまし広告への対策",
+      "card": "sns-pf"
+     }
+    ]
+   },
+   {
+    "id": "young",
+    "name": "若年者",
+    "prob": 0.32,
+    "outlook": null,
+    "note": "日産協で2年連続（2022年度法律・2023年度消費者問題）。統計上の確率は最も高い。",
+    "topics": [
+     "nsk-2023-cons",
+     "ksn-2022-jakunen",
+     "ksn-2023-game"
+    ],
+    "terms": [
+     {
+      "term": "成年年齢の引下げ（18歳）",
+      "card": "y-1819-risk"
+     },
+     {
+      "term": "18・19歳の相談件数",
+      "card": "st-1819"
+     },
+     {
+      "term": "未成年者取消権",
+      "card": "m-miseinen"
+     },
+     {
+      "term": "未成年者取消権が使えない場合（処分許容・詐術）",
+      "card": "m-genkai"
+     },
+     {
+      "term": "マルチ取引（連鎖販売取引）",
+      "card": "y-multi"
+     },
+     {
+      "term": "借金をさせて契約させる手口",
+      "card": "y-shakkin"
+     },
+     {
+      "term": "SNSをきっかけとしたトラブル",
+      "card": "y-sns"
+     },
+     {
+      "term": "オンラインゲームの高額課金",
+      "card": "s-game"
+     },
+     {
+      "term": "経験不足につけ込む不安のあおり",
+      "card": "k-keiken-fuan"
+     },
+     {
+      "term": "デート商法",
+      "card": "k-date"
+     },
+     {
+      "term": "年齢層による販売形態の違い",
+      "card": "st-nenrei-keitai"
+     },
+     {
+      "term": "学校等での消費者教育",
+      "card": "y-kyouiku"
+     }
+    ]
+   },
+   {
+    "id": "gyousei",
+    "name": "行政・消費者の権利",
+    "prob": 0.31,
+    "outlook": null,
+    "note": "国センで24年中10回の最頻出分類。救済・注意喚起・法改正の流れで書けるようにする。",
+    "topics": [
+     "ksn-2023-gyousei",
+     "ksn-2025-kyusai"
+    ],
+    "terms": [
+     {
+      "term": "消費者の権利（消費者基本法）",
+      "card": "c-kenri-kihon"
+     },
+     {
+      "term": "消費者の8つの権利",
+      "card": "c-8kenri"
+     },
+     {
+      "term": "情報・交渉力の格差",
+      "card": "c-kakusa"
+     },
+     {
+      "term": "消費者事故等の通知（消費者安全法12条）",
+      "card": "c-jiko-tsuchi"
+     },
+     {
+      "term": "消費者庁による注意喚起・公表",
+      "card": "c-chuikanki-38"
+     },
+     {
+      "term": "特定商取引法の行政処分",
+      "card": "c-shobun"
+     },
+     {
+      "term": "相談情報が法改正につながった例",
+      "card": "c-houkaisei"
+     },
+     {
+      "term": "PIO-NET",
+      "card": "c-pionet"
+     },
+     {
+      "term": "国民生活センターADR",
+      "card": "c-adr"
+     },
+     {
+      "term": "消費者ホットライン188",
+      "card": "c-188"
+     },
+     {
+      "term": "全国の消費生活相談の状況",
+      "card": "st-soudan"
+     }
+    ]
+   },
+   {
+    "id": "keiyaku",
+    "name": "消費者契約法",
+    "prob": 0.14,
+    "outlook": "○",
+    "note": "パラダイムシフト答申（2025年7月）と消費者契約法検討会が進行中で、数値より上と見る。",
+    "topics": [
+     "nsk-2023-law",
+     "yo-paradigm",
+     "yo-yakkan"
+    ],
+    "terms": [
+     {
+      "term": "誤認類型による取消し",
+      "card": "k-gonin"
+     },
+     {
+      "term": "困惑類型による取消し",
+      "card": "k-konwaku-zentai"
+     },
+     {
+      "term": "判断力の低下につけ込む勧誘",
+      "card": "k-handan"
+     },
+     {
+      "term": "霊感等による告知",
+      "card": "k-reikan"
+     },
+     {
+      "term": "過量契約の取消し",
+      "card": "k-kajou"
+     },
+     {
+      "term": "取消権の行使期間",
+      "card": "k-kikan"
+     },
+     {
+      "term": "不当条項（平均的な損害・10条）",
+      "card": "k-futou-jouko"
+     },
+     {
+      "term": "サルベージ条項",
+      "card": "yk-menseki"
+     },
+     {
+      "term": "解約料の算定根拠の説明",
+      "card": "yk-setsumei"
+     },
+     {
+      "term": "情報提供の努力義務",
+      "card": "k-hairyo"
+     },
+     {
+      "term": "取消しの限界（要件の限定）",
+      "card": "k-genkai-youken"
+     },
+     {
+      "term": "取消しの限界（立証の負担）",
+      "card": "k-genkai-rissho"
+     },
+     {
+      "term": "消費者法制度のパラダイムシフト",
+      "card": "pd-toushin"
+     },
+     {
+      "term": "消費者の脆弱性",
+      "card": "pd-zeijakusei"
+     },
+     {
+      "term": "答申を受けた検討会",
+      "card": "pd-kentoukai"
+     },
+     {
+      "term": "定型約款",
+      "card": "yk-teigi"
+     }
+    ]
+   },
+   {
+    "id": "elderly",
+    "name": "高齢者",
+    "prob": 0.17,
+    "outlook": "○",
+    "note": "日産協では未出題だが、国センでは24年中8回の常連。数値以上に準備しておく。",
+    "topics": [
+     "ksn-2022-koureisha",
+     "ksn-2021-zeijaku",
+     "ksn-2024-mimamori",
+     "ksn-2025-tenken"
+    ],
+    "terms": [
+     {
+      "term": "高齢者被害の特徴",
+      "card": "s-koureisha"
+     },
+     {
+      "term": "高齢者の相談の状況",
+      "card": "st-koureisha"
+     },
+     {
+      "term": "点検商法",
+      "card": "s-tenken"
+     },
+     {
+      "term": "不退去・退去妨害",
+      "card": "k-futaikyo"
+     },
+     {
+      "term": "契約前の義務実施・現状変更",
+      "card": "k-jizen-jisshi"
+     },
+     {
+      "term": "過量販売の解除（特商法）",
+      "card": "t-kajou"
+     },
+     {
+      "term": "見守りネットワーク（消費者安全確保地域協議会）",
+      "card": "c-mimamori"
+     },
+     {
+      "term": "見守りネットワークの設置状況",
+      "card": "c-mimamori-joukyou"
+     },
+     {
+      "term": "福祉等との連携",
+      "card": "c-fukushi"
+     },
+     {
+      "term": "本人が被害に気付きにくい",
+      "card": "c-kizukinikui"
+     },
+     {
+      "term": "成年後見制度",
+      "card": "c-seinen-kouken"
+     },
+     {
+      "term": "見守り関係者への情報提供",
+      "card": "c-mimamori-joho"
+     }
+    ]
+   },
+   {
+    "id": "kyouiku",
+    "name": "消費者教育",
+    "prob": 0.18,
+    "outlook": null,
+    "note": "2021年度に出題。単独でも、他のテーマの結論（予防）でも使う語句。",
+    "topics": [
+     "ksn-2022-jakunen",
+     "yo-sns",
+     "yo-ethical"
+    ],
+    "terms": [
+     {
+      "term": "注意喚起と消費者教育",
+      "card": "c-keihatsu"
+     },
+     {
+      "term": "消費者市民社会",
+      "card": "sh-shimin"
+     },
+     {
+      "term": "学校等での消費者教育",
+      "card": "y-kyouiku"
+     },
+     {
+      "term": "金融経済教育の推進",
+      "card": "sns-kyouiku"
+     },
+     {
+      "term": "金融経済教育推進機構（J-FLEC）",
+      "card": "kn-jflec"
+     }
+    ]
+   },
+   {
+    "id": "hyouji",
+    "name": "表示・広告",
+    "prob": 0.16,
+    "outlook": null,
+    "note": "2024年度の法律で出題。定期購入（2025年度）とも重なる。",
+    "topics": [
+     "nsk-2024-law",
+     "nsk-2025-law"
+    ],
+    "terms": [
+     {
+      "term": "優良誤認・有利誤認表示",
+      "card": "h-yuuryou-yuuri"
+     },
+     {
+      "term": "「初回無料」と打消し表示",
+      "card": "h-uchikeshi"
+     },
+     {
+      "term": "不実証広告規制",
+      "card": "h-fujisshou"
+     },
+     {
+      "term": "ステルスマーケティング規制",
+      "card": "h-stema"
+     },
+     {
+      "term": "2023年改正景品表示法",
+      "card": "h-2023kaisei"
+     },
+     {
+      "term": "広告も「勧誘」に当たり得る（最高裁判決）",
+      "card": "k-koukoku-kanyu"
+     },
+     {
+      "term": "通信販売の広告表示義務",
+      "card": "t-koukoku"
+     },
+     {
+      "term": "グリーンウォッシュ",
+      "card": "g-greenwash"
+     },
+     {
+      "term": "ネット広告規制に残る課題",
+      "card": "s-ad-kadai"
+     }
+    ]
+   },
+   {
+    "id": "ethical",
+    "name": "環境・エシカル",
+    "prob": 0.12,
+    "outlook": null,
+    "note": "2025年度の消費者問題（消費者月間テーマ）で出題。",
+    "topics": [
+     "nsk-2025-cons",
+     "yo-ethical"
+    ],
+    "terms": [
+     {
+      "term": "エシカル消費",
+      "card": "g-ethical"
+     },
+     {
+      "term": "令和7年度消費者月間の統一テーマ",
+      "card": "g-2025-theme"
+     },
+     {
+      "term": "グリーン志向消費の背景",
+      "card": "g-haikei"
+     },
+     {
+      "term": "食品ロス量と削減目標",
+      "card": "st-foodloss"
+     },
+     {
+      "term": "食品ロス削減推進法",
+      "card": "fl-hou"
+     },
+     {
+      "term": "食品ロス削減の取組",
+      "card": "fl-torikumi"
+     },
+     {
+      "term": "消費者市民社会",
+      "card": "sh-shimin"
+     }
+    ]
+   },
+   {
+    "id": "soudan",
+    "name": "相談業務",
+    "prob": 0.12,
+    "outlook": null,
+    "note": "国センの常連。日産協では、他のテーマの「行政の役割」の段落で使う。",
+    "topics": [
+     "ksn-2023-gyousei",
+     "ksn-2025-kyusai",
+     "ksn-2021-seihin"
+    ],
+    "terms": [
+     {
+      "term": "消費生活センターのあっせん",
+      "card": "c-assen"
+     },
+     {
+      "term": "PIO-NETへの登録と情報の活用",
+      "card": "c-pionet"
+     },
+     {
+      "term": "相談処理の留意点（聴取と登録）",
+      "card": "c-kiroku"
+     },
+     {
+      "term": "製品事故の相談への対応",
+      "card": "p-taiou"
+     },
+     {
+      "term": "国民生活センターADR",
+      "card": "c-adr"
+     }
+    ]
+   },
+   {
+    "id": "dantai",
+    "name": "団体訴訟",
+    "prob": 0.1,
+    "outlook": null,
+    "note": "国センで2026年に出題（先行指標としては弱い傾向あり）。",
+    "topics": [
+     "yo-dantai"
+    ],
+    "terms": [
+     {
+      "term": "消費者団体訴訟制度の意義",
+      "card": "dt-igi"
+     },
+     {
+      "term": "差止請求（適格消費者団体）",
+      "card": "dt-sashidome"
+     },
+     {
+      "term": "被害回復（特定適格消費者団体）",
+      "card": "dt-kaifuku"
+     },
+     {
+      "term": "2022年改正",
+      "card": "dt-2022"
+     },
+     {
+      "term": "制度の課題",
+      "card": "dt-kadai"
+     }
+    ]
+   },
+   {
+    "id": "tokushou",
+    "name": "特商法・訪問販売系",
+    "prob": 0.1,
+    "outlook": null,
+    "note": "国センで2025年（点検商法）・2026年（訪問購入）に出題。",
+    "topics": [
+     "ksn-2025-tenken",
+     "ksn-2022-koureisha"
+    ],
+    "terms": [
+     {
+      "term": "クーリング・オフ（訪問販売）",
+      "card": "t-cooling"
+     },
+     {
+      "term": "勧誘目的等の明示義務",
+      "card": "t-meiji"
+     },
+     {
+      "term": "再勧誘の禁止",
+      "card": "t-saikanyu"
+     },
+     {
+      "term": "不実告知・威迫困惑の禁止と取消し",
+      "card": "t-fujitsu"
+     },
+     {
+      "term": "過量販売の解除",
+      "card": "t-kajou"
+     },
+     {
+      "term": "その場で契約せず見積もりを比較する",
+      "card": "s-mitsumori"
+     }
+    ]
+   },
+   {
+    "id": "credit",
+    "name": "クレジット・金融",
+    "prob": 0.08,
+    "outlook": null,
+    "note": "割賦販売法・金融商品・キャッシュレス・投資詐欺をまとめた分類。",
+    "topics": [
+     "yo-kappu",
+     "yo-kinyu",
+     "yo-cashless",
+     "yo-sns"
+    ],
+    "terms": [
+     {
+      "term": "抗弁の接続",
+      "card": "kp-kouben"
+     },
+     {
+      "term": "個別クレジットのクーリング・オフ",
+      "card": "kp-cooling"
+     },
+     {
+      "term": "個別クレジット契約の取消し",
+      "card": "kp-torikeshi"
+     },
+     {
+      "term": "加盟店調査義務",
+      "card": "kp-kameiten"
+     },
+     {
+      "term": "支払可能見込額の調査",
+      "card": "kp-kanou"
+     },
+     {
+      "term": "クレジットカード不正利用の現状",
+      "card": "cl-genjou"
+     },
+     {
+      "term": "フィッシングの急増",
+      "card": "cl-phishing"
+     },
+     {
+      "term": "EMV 3-Dセキュアと加盟店の義務",
+      "card": "cl-jigyousha"
+     },
+     {
+      "term": "重要事項の説明義務（金融サービス提供法）",
+      "card": "kn-setsumei"
+     },
+     {
+      "term": "断定的判断の提供の禁止",
+      "card": "kn-dantei"
+     },
+     {
+      "term": "適合性の原則",
+      "card": "kn-tekigou"
+     },
+     {
+      "term": "最善の利益を勘案した誠実公正義務",
+      "card": "kn-seijitsu"
+     },
+     {
+      "term": "SNS型投資・ロマンス詐欺の被害状況",
+      "card": "st-sns-sagi"
+     },
+     {
+      "term": "SNS型投資詐欺の手口",
+      "card": "sns-teguchi"
+     }
+    ]
+   },
+   {
+    "id": "seihin",
+    "name": "製品安全",
+    "prob": 0.06,
+    "outlook": null,
+    "note": "国センで2021年に出題。2025年12月施行の改正で時事性あり。",
+    "topics": [
+     "ksn-2021-seihin",
+     "yo-seihin"
+    ],
+    "terms": [
+     {
+      "term": "製造物責任法（PL法）",
+      "card": "p-pl"
+     },
+     {
+      "term": "重大製品事故の報告と公表",
+      "card": "p-houkoku"
+     },
+     {
+      "term": "リコール",
+      "card": "p-recall"
+     },
+     {
+      "term": "PSEマーク（電気用品安全法）",
+      "card": "ps-pse"
+     },
+     {
+      "term": "PSCマーク・子供PSCマーク",
+      "card": "ps-psc"
+     },
+     {
+      "term": "海外事業者と国内管理人",
+      "card": "ps-kanrinin"
+     },
+     {
+      "term": "オンラインモール運営者への要請",
+      "card": "ps-dpf"
+     },
+     {
+      "term": "リチウムイオン電池搭載製品の事故",
+      "card": "ps-jiko"
+     },
+     {
+      "term": "消費者事故等の通知",
+      "card": "c-jiko-tsuchi"
+     }
+    ]
+   },
+   {
+    "id": "jiji",
+    "name": "時事トピック（公益通報・カスハラ）",
+    "prob": null,
+    "outlook": null,
+    "note": "再出題確率の分析の対象外。2026年10月・12月の施行で時事性が高い。",
+    "topics": [
+     "yo-koueki",
+     "yo-kasuhara"
+    ],
+    "terms": [
+     {
+      "term": "公益通報者の保護",
+      "card": "kt-hogo"
+     },
+     {
+      "term": "事業者の体制整備義務",
+      "card": "kt-taisei"
+     },
+     {
+      "term": "2025年改正公益通報者保護法（2026年12月施行）",
+      "card": "kt-2026"
+     },
+     {
+      "term": "カスハラの定義と事業主の義務",
+      "card": "ks-teigi"
+     },
+     {
+      "term": "正当な苦情とカスハラの違い",
+      "card": "ks-kujou"
+     },
+     {
+      "term": "顧客等の責務",
+      "card": "ks-shouhisha"
+     },
+     {
+      "term": "カスハラの現状",
+      "card": "ks-genjou"
+     }
+    ]
+   }
+  ]
  }
 }
