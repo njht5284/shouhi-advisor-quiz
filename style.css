@@ -1491,3 +1491,64 @@ body {
 /* 想起カード：前へ／次へ */
 .rate-row .recall-nav { flex: 1; min-height: 48px; margin: 0; }
 #recall-actions .rate-row { display: flex; gap: 0.5rem; }
+
+/* ---------- 第2次：テーマ別キーワード集 ---------- */
+.gl-search {
+  width: 100%;
+  min-height: 44px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 1rem;
+  margin: 0.2rem 0 0.4rem;
+}
+.gl-cat > summary { cursor: pointer; list-style: none; gap: 0.4rem; min-height: 44px; }
+.gl-cat > summary::-webkit-details-marker { display: none; }
+.gl-cat > summary::before { content: "▸"; color: var(--text-muted); font-size: 0.8rem; }
+.gl-cat[open] > summary::before { content: "▾"; }
+.gl-cat-name { flex: 1 1 auto; min-width: 0; }
+.gl-mark { font-size: 0.9rem; color: var(--terra); }
+.gl-prob {
+  font-size: 0.72rem;
+  font-weight: 700;
+  border: 1px solid var(--navy);
+  border-radius: 999px;
+  padding: 0.05rem 0.5rem;
+  white-space: nowrap;
+}
+.gl-count { font-size: 0.72rem; font-weight: 400; color: var(--text-muted); white-space: nowrap; }
+.gl-term { border-top: 1px solid var(--border); padding: 0.1rem 0; }
+.gl-term > summary {
+  cursor: pointer;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.gl-term-title { font-size: 0.78rem; font-weight: 700; color: var(--navy); margin-top: 0.1rem; }
+.gl-term-gist { font-size: 0.88rem; line-height: 1.7; margin: 0.25rem 0; }
+.gl-term-basis { font-size: 0.75rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 0.5rem; }
+.gl-topics { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; border-top: 1px solid var(--border); padding-top: 0.5rem; margin-top: 0.2rem; }
+.gl-topic-btn {
+  font: inherit;
+  font-size: 0.75rem;
+  min-height: 36px;
+  border: 1px solid var(--navy);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--navy);
+  padding: 0.2rem 0.7rem;
+  cursor: pointer;
+}
+.gl-page .secondary-btn { width: 100%; margin-top: 0.8rem; }
+
+@media (prefers-color-scheme: dark) {
+  .gl-prob { border-color: #9cc0ea; color: #9cc0ea; }
+  .gl-term-title { color: #9cc0ea; }
+  .gl-topic-btn { border-color: #9cc0ea; color: #9cc0ea; }
+  .gl-mark { color: #f0b6a3; }
+}

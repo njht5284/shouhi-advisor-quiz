@@ -91,6 +91,7 @@ const Essay = (() => {
     else if (kind === 'flags') showFlags();
     else if (kind === 'patterns') showPatterns();
     else if (kind === 'keywords') showKeywordList();
+    else if (kind === 'glossary' && data.glossary) showGlossary();
   }
 
   // ---------- データの参照 ----------
@@ -366,6 +367,85 @@ const Essay = (() => {
     });
     wrap.appendChild(copy);
     showList('テーマとキーワード', wrap);
+  }
+
+  // ---------- テーマ別キーワード集 ----------
+  // 出題確率の高いテーマ分類ごとに関連キーワードを並べ、タップで意味（論点カードの要旨）と根拠を開く。
+  // 説明文はファクトチェック済みの論点カードをそのまま使う（キーワード集だけの説明文は持たない）。
+  function showGlossary() {
+    buildToken += 1;
+    const g = data.glossary;
+    const wrap = el('div', 'gl-page');
+    wrap.appendChild(el('p', 'config-note', esc(g.probNote)));
+    const search = el('input', 'gl-search');
+    search.type = 'search';
+    search.placeholder = 'キーワードを検索（例：取消し、PIO-NET）';
+    search.setAttribute('aria-label', 'キーワードを検索');
+    wrap.appendChild(search);
+    const empty = el('p', 'config-note gl-empty', '一致するキーワードはありません。');
+    empty.hidden = true;
+
+    const boxes = [];
+    g.categories.forEach((cat, i) => {
+      const box = el('details', 'pattern-box gl-cat');
+      if (i === 0) box.open = true;
+      const prob = cat.prob == null ? '' : `<span class="gl-prob">出題確率 ${Math.round(cat.prob * 100)}%</span>`;
+      const mark = cat.outlook ? `<span class="gl-mark">${esc(cat.outlook)}</span>` : '';
+      box.appendChild(el('summary', 'pattern-box-title gl-cat-title',
+        `<span class="gl-cat-name">${esc(cat.name)}</span>${mark}${prob}<span class="gl-count">${cat.terms.length}語</span>`));
+      box.appendChild(el('div', 'pattern-when', esc(cat.note)));
+      const items = [];
+      for (const t of cat.terms) {
+        const c = card(t.card);
+        const item = el('details', 'gl-term');
+        item.appendChild(el('summary', 'gl-term-name', esc(t.term)));
+        item.appendChild(el('div', 'gl-term-title', esc(c.title)));
+        item.appendChild(el('div', 'gl-term-gist', esc(c.gist)));
+        item.appendChild(el('div', 'gl-term-basis', `根拠：${esc(c.basis)}${c.effective ? `（${esc(c.effective)}）` : ''}`));
+        box.appendChild(item);
+        items.push({ item, text: `${t.term} ${c.title} ${c.gist} ${c.basis}`.toLowerCase() });
+      }
+      const rel = el('div', 'gl-topics');
+      rel.appendChild(el('span', 'essay-kw-label', '構成練習'));
+      for (const id of cat.topics) {
+        const tp = topicById(id);
+        const b = el('button', 'gl-topic-btn', esc(tp.label));
+        b.addEventListener('click', () => startBuild(id));
+        rel.appendChild(b);
+      }
+      box.appendChild(rel);
+      wrap.appendChild(box);
+      boxes.push({ box, items, open: box.open });
+    });
+    wrap.appendChild(empty);
+
+    search.addEventListener('input', () => {
+      const q = search.value.trim().toLowerCase();
+      let hits = 0;
+      for (const b of boxes) {
+        let n = 0;
+        for (const it of b.items) {
+          const ok = !q || it.text.includes(q);
+          it.item.hidden = !ok;
+          if (ok) n += 1;
+        }
+        b.box.hidden = Boolean(q) && n === 0;
+        b.box.open = q ? n > 0 : b.open;
+        hits += n;
+      }
+      empty.hidden = !q || hits > 0;
+    });
+
+    const copy = el('button', 'secondary-btn', 'キーワード集をテキストでコピー');
+    copy.addEventListener('click', (ev) => {
+      const text = g.categories.map((cat) => {
+        const head = `■${cat.name}${cat.prob == null ? '' : `（出題確率 ${Math.round(cat.prob * 100)}%${cat.outlook ? ` ${cat.outlook}` : ''}）`}`;
+        return [head, ...cat.terms.map((t) => `・${t.term}：${card(t.card).gist}`)].join('\n');
+      }).join('\n\n');
+      copyText(text, ev.currentTarget);
+    });
+    wrap.appendChild(copy);
+    showList('テーマ別キーワード集', wrap);
   }
 
   // ---------- 構成練習：段落ブロック方式 ----------
