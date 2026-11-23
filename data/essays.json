@@ -10160,5 +10160,85 @@
     ]
    }
   ]
+ },
+ "focus": {
+  "title": "直前予想（2026年11月23日）",
+  "note": "赤字は、直前予想の4テーマ（消費者問題2・法律2）に関係するキーワードです。",
+  "themes": [
+   {
+    "label": "消費者問題①",
+    "name": "AI・デジタル化で変わる消費取引",
+    "topics": [
+     "yo-gekkan2026",
+     "yo-digital"
+    ],
+    "cards": [
+     "ai-theme",
+     "ai-hakusho",
+     "ai-risk",
+     "dg-dark-def",
+     "dg-sns-chat",
+     "dg-subsc",
+     "s-dpf",
+     "sns-pf",
+     "dg-phishing"
+    ]
+   },
+   {
+    "label": "消費者問題②",
+    "name": "高齢者の消費者被害と見守り",
+    "topics": [
+     "ksn-2025-tenken",
+     "ksn-2024-mimamori",
+     "ksn-2022-koureisha",
+     "ksn-2021-zeijaku"
+    ],
+    "cards": [
+     "s-koureisha",
+     "st-koureisha",
+     "s-tenken",
+     "c-kizukinikui",
+     "c-mimamori",
+     "c-mimamori-joukyou",
+     "c-fukushi",
+     "c-seinen-kouken",
+     "t-cooling",
+     "t-kajou"
+    ]
+   },
+   {
+    "label": "法律①",
+    "name": "消費者契約法と消費者法制度のパラダイムシフト",
+    "topics": [
+     "nsk-2023-law",
+     "yo-paradigm",
+     "yo-yakkan"
+    ],
+    "cards": [
+     "k-gonin",
+     "k-konwaku-zentai",
+     "k-handan",
+     "k-futou-jouko",
+     "yk-menseki",
+     "k-genkai-youken",
+     "k-genkai-rissho",
+     "pd-toushin",
+     "pd-zeijakusei",
+     "pd-kentoukai"
+    ]
+   },
+   {
+    "label": "法律②",
+    "name": "公益通報者保護法（2026年12月施行の改正）",
+    "topics": [
+     "yo-koueki"
+    ],
+    "cards": [
+     "kt-hogo",
+     "kt-taisei",
+     "kt-2026"
+    ]
+   }
+  ]
  }
 }

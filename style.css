@@ -1552,3 +1552,29 @@ body {
   .gl-topic-btn { border-color: #9cc0ea; color: #9cc0ea; }
   .gl-mark { color: #f0b6a3; }
 }
+
+/* ---------- 第2次：直前予想（赤字） ---------- */
+:root { --focus-red: #c0392b; }
+@media (prefers-color-scheme: dark) { :root { --focus-red: #ff8a80; } }
+.focus-note { font-size: 0.82rem; font-weight: 700; color: var(--focus-red); margin: 0.3rem 0 0.5rem; }
+.focus-badge {
+  display: inline-block;
+  margin-left: 0.35rem;
+  padding: 0 0.45rem;
+  border: 1px solid var(--focus-red);
+  border-radius: 999px;
+  color: var(--focus-red);
+  font-size: 0.68rem;
+  font-weight: 700;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.essay-keywords.is-focus .essay-kw { color: var(--focus-red); border-color: var(--focus-red); font-weight: 700; }
+.gl-term.is-focus > summary { color: var(--focus-red); }
+.gl-focus { border-color: var(--focus-red); }
+.gl-focus > summary .gl-cat-name { color: var(--focus-red); }
+.gl-focus-theme { margin: 0.7rem 0 0.2rem; font-size: 0.85rem; font-weight: 700; }
+.gl-focus-theme .focus-badge { margin: 0 0.4rem 0 0; }
+@media (prefers-color-scheme: dark) {
+  .gl-focus { border-color: var(--focus-red); }
+}
