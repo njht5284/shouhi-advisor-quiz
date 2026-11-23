@@ -319,7 +319,7 @@ const Essay = (() => {
           : '<span class="count-badge">未着手</span>';
         const pat = patternOf(t);
         const item = el('button', 'config-item topic-item',
-          `<span class="topic-item-main"><span class="topic-item-label">${pat ? `<span class="pattern-letter is-small">${esc(pat.letter)}</span>` : ''}${esc(t.label)}</span>`
+          `<span class="topic-item-main"><span class="topic-item-label">${pat ? `<span class="pattern-letter is-small">${esc(pat.letter)}</span>` : ''}${esc(t.label)}${focusBadge(t)}</span>`
           + requiredWordsHtml(t, 'topic-item-keywords').replace(/<div /g, '<span ').replace(/<\/div>/g, '</span>')
           + `<span class="config-item-sub">${hasBlocks(t) ? '<span class="block-badge">段落ブロック</span>' : ''}${esc(t.summary.slice(0, 42))}…</span></span>${badge}`);
         item.addEventListener('click', () => startBuild(t.topicId));
@@ -339,6 +339,7 @@ const Essay = (() => {
     const wrap = el('div', 'config-list');
     wrap.appendChild(el('p', 'config-note',
       '国センの論題は問題文で指定された「指定語句」、それ以外は模範答案から選んだ「必須キーワード」です。論文では、これらの語句を本文に必ず入れます。論題をタップすると構成練習を始めます。'));
+    if (data.focus) wrap.appendChild(el('p', 'focus-note', esc(data.focus.note)));
     const groups = [
       { tier: 'core', title: '中核：日本産業協会の過去問' },
       { tier: 'applied', title: '応用：国民生活センターの過去問' },
@@ -349,7 +350,7 @@ const Essay = (() => {
       for (const t of data.topics.filter((x) => x.tier === g.tier)) {
         const pat = patternOf(t);
         const item = el('button', 'config-item kw-item',
-          `<span class="topic-item-main"><span class="topic-item-label">${pat ? `<span class="pattern-letter is-small">${esc(pat.letter)}</span>` : ''}${esc(t.label)}</span>`
+          `<span class="topic-item-main"><span class="topic-item-label">${pat ? `<span class="pattern-letter is-small">${esc(pat.letter)}</span>` : ''}${esc(t.label)}${focusBadge(t)}</span>`
           + `<span class="config-item-sub">${esc(t.asks.join('／'))}</span>`
           + requiredWordsHtml(t, 'kw-item-words').replace(/<div /g, '<span ').replace(/<\/div>/g, '</span>')
           + '</span>');
@@ -385,10 +386,53 @@ const Essay = (() => {
     const empty = el('p', 'config-note gl-empty', '一致するキーワードはありません。');
     empty.hidden = true;
 
+    const focusCards = focusCardIds();
+    const termItem = (term, cardId) => {
+      const c = card(cardId);
+      const item = el('details', `gl-term${focusCards.has(cardId) ? ' is-focus' : ''}`);
+      item.appendChild(el('summary', 'gl-term-name', esc(term)));
+      item.appendChild(el('div', 'gl-term-title', esc(c.title)));
+      item.appendChild(el('div', 'gl-term-gist', esc(c.gist)));
+      item.appendChild(el('div', 'gl-term-basis', `根拠：${esc(c.basis)}${c.effective ? `（${esc(c.effective)}）` : ''}`));
+      return item;
+    };
+    const termName = {};
+    for (const cat of g.categories) for (const t of cat.terms) if (!termName[t.card]) termName[t.card] = t.term;
+    const topicButtons = (ids) => {
+      const rel = el('div', 'gl-topics');
+      rel.appendChild(el('span', 'essay-kw-label', '構成練習'));
+      for (const id of ids) {
+        const tp = topicById(id);
+        const b = el('button', 'gl-topic-btn', esc(tp.label));
+        b.addEventListener('click', () => startBuild(id));
+        rel.appendChild(b);
+      }
+      return rel;
+    };
+
     const boxes = [];
+    if (data.focus) {
+      wrap.appendChild(el('p', 'focus-note', esc(data.focus.note)));
+      const fbox = el('details', 'pattern-box gl-cat gl-focus');
+      fbox.open = true;
+      fbox.appendChild(el('summary', 'pattern-box-title gl-cat-title',
+        `<span class="gl-cat-name">${esc(data.focus.title)}</span><span class="gl-count">${focusCards.size}語</span>`));
+      const items = [];
+      for (const th of data.focus.themes) {
+        fbox.appendChild(el('div', 'gl-focus-theme', `<span class="focus-badge">${esc(th.label)}</span>${esc(th.name)}`));
+        for (const id of th.cards) {
+          const item = termItem(termName[id], id);
+          fbox.appendChild(item);
+          items.push({ item, text: `${termName[id]} ${card(id).title} ${card(id).gist} ${card(id).basis}`.toLowerCase() });
+        }
+        fbox.appendChild(topicButtons(th.topics));
+      }
+      wrap.appendChild(fbox);
+      boxes.push({ box: fbox, items, open: true });
+    }
     g.categories.forEach((cat, i) => {
       const box = el('details', 'pattern-box gl-cat');
-      if (i === 0) box.open = true;
+      if (i === 0 && !data.focus) box.open = true;
       const prob = cat.prob == null ? '' : `<span class="gl-prob">出題確率 ${Math.round(cat.prob * 100)}%</span>`;
       const mark = cat.outlook ? `<span class="gl-mark">${esc(cat.outlook)}</span>` : '';
       box.appendChild(el('summary', 'pattern-box-title gl-cat-title',
@@ -397,23 +441,11 @@ const Essay = (() => {
       const items = [];
       for (const t of cat.terms) {
         const c = card(t.card);
-        const item = el('details', 'gl-term');
-        item.appendChild(el('summary', 'gl-term-name', esc(t.term)));
-        item.appendChild(el('div', 'gl-term-title', esc(c.title)));
-        item.appendChild(el('div', 'gl-term-gist', esc(c.gist)));
-        item.appendChild(el('div', 'gl-term-basis', `根拠：${esc(c.basis)}${c.effective ? `（${esc(c.effective)}）` : ''}`));
+        const item = termItem(t.term, t.card);
         box.appendChild(item);
         items.push({ item, text: `${t.term} ${c.title} ${c.gist} ${c.basis}`.toLowerCase() });
       }
-      const rel = el('div', 'gl-topics');
-      rel.appendChild(el('span', 'essay-kw-label', '構成練習'));
-      for (const id of cat.topics) {
-        const tp = topicById(id);
-        const b = el('button', 'gl-topic-btn', esc(tp.label));
-        b.addEventListener('click', () => startBuild(id));
-        rel.appendChild(b);
-      }
-      box.appendChild(rel);
+      box.appendChild(topicButtons(cat.topics));
       wrap.appendChild(box);
       boxes.push({ box, items, open: box.open });
     });
@@ -440,7 +472,7 @@ const Essay = (() => {
     copy.addEventListener('click', (ev) => {
       const text = g.categories.map((cat) => {
         const head = `■${cat.name}${cat.prob == null ? '' : `（出題確率 ${Math.round(cat.prob * 100)}%${cat.outlook ? ` ${cat.outlook}` : ''}）`}`;
-        return [head, ...cat.terms.map((t) => `・${t.term}：${card(t.card).gist}`)].join('\n');
+        return [head, ...cat.terms.map((t) => `・${focusCards.has(t.card) ? '【予想】' : ''}${t.term}：${card(t.card).gist}`)].join('\n');
       }).join('\n\n');
       copyText(text, ev.currentTarget);
     });
@@ -456,6 +488,16 @@ const Essay = (() => {
 
   function hasBlocks(topic) { return Boolean(topic && topic.blocks); }
 
+  // 直前予想（data.focus）：予想テーマに関係する論題と論点カード。キーワードを赤字で示す。
+  function focusTopicIds() {
+    return new Set(((data.focus && data.focus.themes) || []).flatMap((th) => th.topics));
+  }
+  function focusCardIds() {
+    return new Set(((data.focus && data.focus.themes) || []).flatMap((th) => th.cards || []));
+  }
+  function isFocusTopic(t) { return Boolean(t) && focusTopicIds().has(t.topicId); }
+  function focusBadge(t) { return isFocusTopic(t) ? '<span class="focus-badge">直前予想</span>' : ''; }
+
   // 論文に必ず入れる語句。国センの論題は問題文の指定語句、それ以外は模範答案から選んだ必須キーワード。
   function requiredWords(t) {
     if (t.keywords && t.keywords.length) return { label: '指定語句', words: t.keywords };
@@ -464,7 +506,8 @@ const Essay = (() => {
   function requiredWordsHtml(t, cls = '') {
     const r = requiredWords(t);
     if (r.words.length === 0) return '';
-    return `<div class="essay-keywords ${cls}"><span class="essay-kw-label">${esc(r.label)}</span>`
+    const focus = isFocusTopic(t) ? ' is-focus' : '';
+    return `<div class="essay-keywords ${cls}${focus}"><span class="essay-kw-label">${esc(r.label)}</span>`
       + `${r.words.map((k) => `<span class="essay-kw">${esc(k)}</span>`).join('')}</div>`;
   }
   // 本文中の必須語句に印を付ける（エスケープ後の文字列に対して置き換える）
