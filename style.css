@@ -1578,3 +1578,7 @@ body {
 @media (prefers-color-scheme: dark) {
   .gl-focus { border-color: var(--focus-red); }
 }
+
+/* 100点の模範解答 */
+.model-peek { width: 100%; min-height: 44px; margin: 0 0 0.6rem; }
+#essay-ref-body .primary-btn, #essay-ref-body .secondary-btn { width: 100%; margin-top: 0.6rem; }
