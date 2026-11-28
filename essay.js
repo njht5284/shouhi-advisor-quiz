@@ -322,13 +322,54 @@ const Essay = (() => {
           `<span class="topic-item-main"><span class="topic-item-label">${pat ? `<span class="pattern-letter is-small">${esc(pat.letter)}</span>` : ''}${esc(t.label)}${focusBadge(t)}</span>`
           + requiredWordsHtml(t, 'topic-item-keywords').replace(/<div /g, '<span ').replace(/<\/div>/g, '</span>')
           + `<span class="config-item-sub">${hasBlocks(t) ? '<span class="block-badge">段落ブロック</span>' : ''}${esc(t.summary.slice(0, 42))}…</span></span>${badge}`);
-        item.addEventListener('click', () => startBuild(t.topicId));
+        item.addEventListener('click', () => showModelAnswer(t.topicId));
         wrap.appendChild(item);
       }
     }
     wrap.appendChild(el('p', 'config-note',
       '論題は出題の要旨を独自にまとめたものです。原文は手元の問題用紙で確認してください。'));
     showList('構成練習：論題を選ぶ', wrap);
+  }
+
+  // ---------- 100点の模範解答（解かずに見る） ----------
+  // 段落ブロックの正解文を段落ごとにつないだ完成論文を、問題を解かずに表示する。記録は残さない。
+  function showModelAnswer(topicId, backScreen = 'essay-list') {
+    const t = topicById(topicId);
+    if (!t || !hasBlocks(t)) { startBuild(topicId); return; }
+    refBackScreen = backScreen;
+    const pat = patternOf(t);
+    const body = document.getElementById('essay-ref-body');
+    body.innerHTML = '';
+    body.appendChild(el('div', 'essay-topic-label', esc(t.label)));
+    body.insertAdjacentHTML('beforeend', requiredWordsHtml(t, 'step-keywords'));
+    const q = el('details', 'step-question');
+    q.appendChild(el('summary', 'step-question-summary', '問題の要旨と問われていること'));
+    q.appendChild(el('div', 'essay-summary', esc(t.summary)));
+    q.appendChild(el('ul', 'essay-asks', t.asks.map((a) => `<li>${esc(a)}</li>`).join('')));
+    body.appendChild(q);
+    const total = stepSlots().reduce((n, x) => n + [...slotText(t, x)].length, 0);
+    const essay = el('div', 'essay-model');
+    essay.appendChild(el('h3', 'essay-result-title',
+      `100点の模範解答（${pat ? `型${esc(pat.letter)} ${esc(pat.name)}・` : ''}本文 ${total}字）`));
+    for (const x of stepSlots()) {
+      const text = slotText(t, x);
+      const ps = patternSlot(pat, x);
+      essay.appendChild(el('div', 'pattern-sample-label', `${esc(SLOT_SHORT[x])}<span>${[...text].length}字</span>`));
+      if (ps) essay.appendChild(el('div', 'pattern-content', `書き出しの型：${esc(ps.opener)}`));
+      essay.appendChild(el('p', 'pattern-sample-text', markWords(t, esc(text))));
+    }
+    body.appendChild(essay);
+    const copy = el('button', 'secondary-btn', '模範解答をコピー');
+    copy.addEventListener('click', (ev) => {
+      const text = `${t.label}\n\n` + stepSlots().map((x) => slotText(t, x)).join('\n\n');
+      copyText(text, ev.currentTarget);
+    });
+    body.appendChild(copy);
+    const practice = el('button', 'primary-btn', '段落ブロックで練習する');
+    practice.addEventListener('click', () => startBuild(topicId));
+    body.appendChild(practice);
+    ctx.showScreen('essay-ref');
+    window.scrollTo(0, 0);
   }
 
   // ---------- テーマとキーワード ----------
@@ -338,7 +379,7 @@ const Essay = (() => {
     buildToken += 1;
     const wrap = el('div', 'config-list');
     wrap.appendChild(el('p', 'config-note',
-      '国センの論題は問題文で指定された「指定語句」、それ以外は模範答案から選んだ「必須キーワード」です。論文では、これらの語句を本文に必ず入れます。論題をタップすると構成練習を始めます。'));
+      '国センの論題は問題文で指定された「指定語句」、それ以外は模範答案から選んだ「必須キーワード」です。論文では、これらの語句を本文に必ず入れます。論題をタップすると100点の模範解答を表示します。'));
     if (data.focus) wrap.appendChild(el('p', 'focus-note', esc(data.focus.note)));
     const groups = [
       { tier: 'core', title: '中核：日本産業協会の過去問' },
@@ -354,7 +395,7 @@ const Essay = (() => {
           + `<span class="config-item-sub">${esc(t.asks.join('／'))}</span>`
           + requiredWordsHtml(t, 'kw-item-words').replace(/<div /g, '<span ').replace(/<\/div>/g, '</span>')
           + '</span>');
-        item.addEventListener('click', () => startBuild(t.topicId));
+        item.addEventListener('click', () => showModelAnswer(t.topicId));
         wrap.appendChild(item);
       }
     }
@@ -567,6 +608,9 @@ const Essay = (() => {
     // 論題名と、その直下に必須語句（常に表示）。問題の要旨と問いは折りたたみ（最初の段落だけ開いておく）
     body.appendChild(el('div', 'essay-topic-label', esc(t.label)));
     body.insertAdjacentHTML('beforeend', requiredWordsHtml(t, 'step-keywords'));
+    const peek = el('button', 'secondary-btn model-peek', '100点の模範解答を見る');
+    peek.addEventListener('click', () => showModelAnswer(t.topicId, 'essay-step'));
+    body.appendChild(peek);
     const q = el('details', 'step-question');
     q.open = step.idx === 0;
     q.appendChild(el('summary', 'step-question-summary', '問題の要旨と問われていること'));
